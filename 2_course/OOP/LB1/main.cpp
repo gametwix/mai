@@ -7,6 +7,7 @@ class BritishMoney
 {
     private:
 
+
         BritishMoney sum(const BritishMoney &a,const BritishMoney &b)
             {
                 BritishMoney c;
@@ -43,6 +44,7 @@ class BritishMoney
         
         BritishMoney norm(BritishMoney a)
         {
+            //если количество монет больше максимума,то переносим на больший разряд
             if((int)a.penny>=12)
                 {
                     a.shilling += (int)a.penny/12;
@@ -86,6 +88,12 @@ class BritishMoney
             this->penny = 0;
         }
 
+
+        void print()
+        {
+            cout << this->pounds << " " << (int)this->shilling << " " << (int)this->penny << endl;    
+        }
+
         BritishMoney operator+(BritishMoney b)
         {
             return sum(*this,b);
@@ -100,21 +108,38 @@ class BritishMoney
 
         BritishMoney operator*(double b) 
         {
-            int ostpenny = ((int)this->penny*b)/12;
-            int ostshilling = ((int)this->shilling*b+ostpenny)/20;
-
             BritishMoney c;
 
-            int shillingvozvr =  ((int)this->shilling)*b-(int)((int)this->shilling*b);
-            int shillingvozvr_to_penny = (int)(shillingvozvr*12)%12;
-            c.penny = (int)((int)this->penny*b)%12+shillingvozvr_to_penny;
+            //значения без переносов
+            c.penny = (int)((int)this->penny*b)%12; 
+            c.shilling = (int)((int)this->shilling*b)%20;
+            c.pounds = (unsigned long long)(this->pounds*b);
 
-            int poundvozvr =  this->pounds*b-(long long)(this->pounds*b);
-            int poundvozvr_to_shilling = (int)(poundvozvr*12)%12;
-            c.shilling = (int)((int)this->shilling*b+ostpenny)%20+poundvozvr_to_shilling;
 
-            c.pounds = this->pounds*b+ostshilling;
+            //остатки от умножения на дробное число
+            double ost_pound = (int)this->pounds*b - c.pounds;
+            double ost_shilling = this->shilling*b - (int)((int)this->shilling*b);
 
+            //приведение остатка фунтов в шиллинги и пенни
+            int pound_to_shilling = (int)(ost_pound*20);
+            int pound_to_penny = (int)((ost_pound*20 - pound_to_shilling)*12);
+
+            //приведение остатка шиллингов в пенни
+            int shilling_to_penny = (int)(ost_shilling*12);
+
+            //приведение лишних пенни в шиллинги и фунты
+            int penny_to_shilling = ((int)((int)this->penny*b)/12)%20;
+            unsigned long long penny_to_pound = (unsigned long long)(((int)((int)this->penny*b)/12 - penny_to_shilling)/20);
+
+            //приведение лишних шиллингов в фунты 
+            unsigned long long shilling_to_puond = (int)((int)this->shilling*b)/20;
+
+            //прибавляем остатки
+            c.penny += pound_to_penny + shilling_to_penny;
+            c.shilling += pound_to_shilling + penny_to_shilling;
+            c.pounds += penny_to_pound + shilling_to_puond;
+
+            //переносим к нормальному виду
             c = norm(c);
             
             return c;
@@ -210,8 +235,10 @@ int main()
     a.pounds = 10;
     a.shilling = 13;
     a.penny = 7;
-    a = a;
-    b = a*2;
-    cout << a/a << " " << a/b << " " << b/a << endl;
+    b = a*1.6;
+    a.print();
+    b.print();
+    b = b/1.6;
+    b.print();
     return 0;
 }
