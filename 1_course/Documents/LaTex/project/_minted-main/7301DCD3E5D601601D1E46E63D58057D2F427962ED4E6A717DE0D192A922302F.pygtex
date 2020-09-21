@@ -1,0 +1,22 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{lowestCommonAncestor}\PYG{p}{(}\PYG{n}{root}\PYG{p}{,}\PYG{n}{node1}\PYG{p}{,}\PYG{n}{node2}\PYG{p}{)} \PYG{c+c1}{//нахождение общего предка для 2 узлов}
+\PYG{p}{\PYGZob{}}
+\PYG{k}{if}\PYG{p}{(}\PYG{n}{root} \PYG{o}{==} \PYG{n+nb}{NULL}\PYG{p}{)} \PYG{k}{return} \PYG{n+nb}{NULL}\PYG{p}{;}
+\PYG{k}{else} \PYG{n+nf}{if}\PYG{p}{(}\PYG{n}{node1}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data} \PYG{o}{==} \PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data} \PYG{o}{||} \PYG{n}{node2}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data} \PYG{o}{==} \PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data}\PYG{p}{)} \PYG{c+c1}{//один из узлов}
+																\PYG{c+c1}{//корень}
+	\PYG{k}{return} \PYG{n}{root}\PYG{p}{;} \PYG{c+c1}{//возвращаем корень}
+\PYG{k}{else} \PYG{n+nf}{if}\PYG{p}{((}\PYG{n}{node1}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data} \PYG{o}{\PYGZlt{}=} \PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{node}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data} \PYG{o}{\PYGZgt{}} \PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data}\PYG{p}{)} \PYG{c+c1}{//узлы по разные}
+	\PYG{o}{||} \PYG{p}{(}\PYG{n}{node2}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data} \PYG{o}{\PYGZlt{}=} \PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{node1}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data} \PYG{o}{\PYGZgt{}} \PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data}\PYG{p}{))\PYGZob{}} \PYG{c+c1}{//стороны}
+																\PYG{c+c1}{//от корня}
+	\PYG{k}{return} \PYG{n}{root}\PYG{p}{;} \PYG{c+c1}{//возвращаем корень}
+	\PYG{p}{\PYGZcb{}}
+\PYG{k}{else} \PYG{n+nf}{if}\PYG{p}{(}\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data} \PYG{o}{\PYGZgt{}}\PYG{n}{max}\PYG{p}{(}\PYG{n}{node1}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data}\PYG{p}{,}\PYG{n}{node2}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data}\PYG{p}{))\PYGZob{}} \PYG{c+c1}{//узлы меньше корня}
+\PYG{c+c1}{//ищем общего предка для этих узлов в левом поддереве}
+	\PYG{k}{return} \PYG{n}{lowestCommonAncestor}\PYG{p}{(}\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left}\PYG{p}{,} \PYG{n}{node1}\PYG{p}{,} \PYG{n}{node2}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+\PYG{k}{else}\PYG{p}{\PYGZob{}} \PYG{c+c1}{//узлы больше корня}
+\PYG{c+c1}{//ищем общего предка для этих узлов в левом поддереве}
+	\PYG{k}{return} \PYG{n}{lowestCommonAncestor}\PYG{p}{(}\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{p}{,} \PYG{n}{node1}\PYG{p}{,} \PYG{n}{node2}\PYG{p}{);}		
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

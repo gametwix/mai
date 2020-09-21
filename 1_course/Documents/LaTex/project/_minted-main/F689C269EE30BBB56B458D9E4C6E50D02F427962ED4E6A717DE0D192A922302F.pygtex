@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{def} \PYG{n}{incr} \PYG{n}{n}
+	\PYG{k}{return} \PYG{n}{n} \PYG{o}{+} \PYG{l+m+mi}{1}
+\end{Verbatim}

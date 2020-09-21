@@ -1,0 +1,24 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Set} \PYG{n}{C} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n}{new} \PYG{n}{Set}\PYG{o}{\PYGZlt{}}\PYG{n}{Vertex}\PYG{o}{\PYGZgt{}}\PYG{p}{()}
+
+\PYG{n}{Set} \PYG{n}{X} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n}{new} \PYG{n}{Set}\PYG{o}{\PYGZlt{}}\PYG{n}{Vertex}\PYG{o}{\PYGZgt{}}\PYG{p}{()}
+
+\PYG{n}{X} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n}{G}\PYG{p}{.}\PYG{n}{getAllVerticiesArrangedDescendinglyByDegree}\PYG{p}{()}
+
+\PYG{k}{for} \PYG{n}{v} \PYG{n}{in} \PYG{n}{X} \PYG{k}{do}
+	\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Vertex}\PYG{o}{\PYGZgt{}} \PYG{n}{adjacentVertices1} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n}{G}\PYG{p}{.}\PYG{n}{getAdjacent}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}
+	
+	\PYG{k}{if} \PYG{o}{!}\PYG{n}{C} \PYG{n}{contains} \PYG{n}{any} \PYG{n}{of} \PYG{n}{adjacentVertices1} \PYG{n}{then}
+
+		\PYG{n}{C}\PYG{p}{.}\PYG{n}{add}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}
+		
+\PYG{k}{for} \PYG{n}{vertex} \PYG{n}{in} \PYG{n}{C} \PYG{k}{do}
+
+	\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{vertex}\PYG{o}{\PYGZgt{}} \PYG{n}{adjacentVertices2} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n}{G}\PYG{p}{.}\PYG{n}{adjacentVertecies}\PYG{p}{(}\PYG{n}{vertex}\PYG{p}{)}
+	
+	\PYG{k}{if} \PYG{n}{C} \PYG{n}{contains} \PYG{n}{any} \PYG{n}{of} \PYG{n}{adjacentVertices2} \PYG{n}{then}
+
+		\PYG{n}{C}\PYG{p}{.}\PYG{n}{remove}\PYG{p}{(}\PYG{n}{vertex}\PYG{p}{)}
+
+\PYG{k}{return} \PYG{n}{C}
+\end{Verbatim}

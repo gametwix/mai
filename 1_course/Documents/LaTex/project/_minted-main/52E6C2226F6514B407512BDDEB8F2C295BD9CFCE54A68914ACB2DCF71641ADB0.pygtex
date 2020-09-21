@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{subalgo} \PYG{n}{unionSet}\PYG{p}{(}\PYG{n}{u}\PYG{p}{,} \PYG{n}{v}\PYG{p}{:} \PYG{n}{nodes}\PYG{p}{):}
+\PYG{c+c1}{\PYGZsh{} свяжем два узла с их корнями}
+		\PYG{n}{vRoot} \PYG{o}{=} \PYG{n}{findSet}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}
+		\PYG{n}{uRoot} \PYG{o}{=} \PYG{n}{findSet}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}
+		\PYG{k}{if} \PYG{n}{vRoot} \PYG{o}{==} \PYG{n}{uRoot}\PYG{p}{:}  \PYG{c+c1}{\PYGZsh{} проверим, чтобы два узла не совпадали}
+			\PYG{k}{return}
+		\PYG{k}{if} \PYG{n}{random}\PYG{p}{()} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{2} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} выберем родителя случайным образом}
+			\PYG{n}{vRoot}\PYG{o}{.}\PYG{n}{parent} \PYG{o}{=} \PYG{n}{uRoot}
+		\PYG{k}{else}\PYG{p}{:}
+			\PYG{n}{uRoot}\PYG{o}{.}\PYG{n}{parent} \PYG{o}{=} \PYG{n}{vRoot}
+\end{Verbatim}

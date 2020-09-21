@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Procedure} \PYG{n}{Rabin}\PYG{o}{\PYGZhy{}}\PYG{n}{Karp}\PYG{p}{(}\PYG{n}{Text}\PYG{p}{,} \PYG{n}{Pattern}\PYG{p}{,} \PYG{n}{Prime}\PYG{p}{)}\PYG{o}{:}
+\PYG{n+nl}{m} \PYG{p}{:}\PYG{o}{=} \PYG{n}{Pattern}\PYG{p}{.}\PYG{n}{Length}
+\PYG{n+nl}{HashValue} \PYG{p}{:}\PYG{o}{=} \PYG{n}{Calculate}\PYG{o}{\PYGZhy{}}\PYG{n}{Hash}\PYG{p}{(}\PYG{n}{Pattern}\PYG{p}{,} \PYG{n}{Prime}\PYG{p}{,} \PYG{n}{m}\PYG{p}{)}
+\PYG{n+nl}{CurrValue} \PYG{p}{:}\PYG{o}{=} \PYG{n}{Calculate}\PYG{o}{\PYGZhy{}}\PYG{n}{Hash}\PYG{p}{(}\PYG{n}{Pattern}\PYG{p}{,} \PYG{n}{Prime}\PYG{p}{,} \PYG{n}{m}\PYG{p}{)}
+\PYG{k}{for} \PYG{n}{i} \PYG{n}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{Text}\PYG{p}{.}\PYG{n}{length}\PYG{o}{\PYGZhy{}} \PYG{n}{m}
+	\PYG{k}{if} \PYG{n}{HashValue} \PYG{o}{==} \PYG{n}{CurrValue} \PYG{n}{and} \PYG{n}{String}\PYG{o}{\PYGZhy{}}\PYG{n}{Match}\PYG{p}{(}\PYG{n}{Text}\PYG{p}{,} \PYG{n}{Pattern}\PYG{p}{,} \PYG{n}{i}\PYG{p}{)} \PYG{n}{is} \PYG{n+nb}{true}
+		\PYG{n}{Return} \PYG{n}{i}
+	\PYG{n}{end} \PYG{k}{if}	
+	\PYG{n+nl}{CurrValue} \PYG{p}{:}\PYG{o}{=} \PYG{n}{Recalculate}\PYG{o}{\PYGZhy{}}\PYG{n}{Hash}\PYG{p}{(}\PYG{n}{String}\PYG{p}{,} \PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{Prime}\PYG{p}{,} \PYG{n}{CurrValue}\PYG{p}{)}
+\PYG{n}{end} \PYG{k}{for}
+\end{Verbatim}

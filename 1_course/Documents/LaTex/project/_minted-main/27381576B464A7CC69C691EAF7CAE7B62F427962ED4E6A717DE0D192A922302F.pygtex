@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{m} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+m+mi}{1}
+\PYG{k}{for} \PYG{n+nl}{i} \PYG{p}{:}\PYG{l+m+mf}{2.}\PYG{p}{.}\PYG{n}{n}
+	\PYG{k}{if} \PYG{n}{A}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)} \PYG{o}{\PYGZgt{}} \PYG{n}{A}\PYG{p}{(}\PYG{n}{m}\PYG{p}{)} \PYG{n}{then}
+		\PYG{n}{m} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n}{i}	
+	\PYG{n}{end} \PYG{k}{if}
+\PYG{n}{end} \PYG{k}{for}
+\end{Verbatim}

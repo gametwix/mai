@@ -1,0 +1,54 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public} \PYG{k+kd}{class} \PYG{n+nc}{LCS} \PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{// начало вычислений}
+	\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{main}\PYG{p}{(}\PYG{n}{String}\PYG{o}{[]} \PYG{n}{args}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{c+c1}{// TODO Автоматически сгенерированный метод заглушки}
+		\PYG{n}{String} \PYG{n}{str1} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}AGGTAB\PYGZdq{}}\PYG{p}{;}
+		\PYG{n}{String} \PYG{n}{str2} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}GXTXAYB\PYGZdq{}}\PYG{p}{;}
+		\PYG{c+c1}{// берем объект наибольшей общей подпоследовательности}
+		\PYG{n}{LCS} \PYG{n}{obj} \PYG{o}{=} \PYG{k}{new} \PYG{n}{LCS}\PYG{p}{();}
+		\PYG{c+c1}{// выводим наибольшую общую последовательность}
+		\PYG{c+c1}{// аргументы \PYGZhy{} два слова и два значения длины слов соответственно}
+		\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{n}{obj}\PYG{p}{.}\PYG{n+na}{lcs}\PYG{p}{(}\PYG{n}{str1}\PYG{p}{,} \PYG{n}{str2}\PYG{p}{,} \PYG{n}{str1}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{(),} \PYG{n}{str2}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{()));}
+		\PYG{c+c1}{// аргументы \PYGZhy{} два слова}
+		\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{n}{obj}\PYG{p}{.}\PYG{n+na}{lcs2}\PYG{p}{(}\PYG{n}{str1}\PYG{p}{,} \PYG{n}{str2}\PYG{p}{));}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{c+c1}{// Рекурсивная функция}
+	\PYG{k+kd}{public} \PYG{k+kt}{int} \PYG{n+nf}{lcs}\PYG{p}{(}\PYG{n}{String} \PYG{n}{str1}\PYG{p}{,} \PYG{n}{String} \PYG{n}{str2}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{m}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)\PYGZob{}}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{m}\PYG{o}{==}\PYG{l+m+mi}{0} \PYG{o}{||} \PYG{n}{n}\PYG{o}{==}\PYG{l+m+mi}{0}\PYG{p}{)}
+			\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+		\PYG{c+c1}{// если символы совпадают, рекурсивно прибавляем 1 к результату}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{str1}\PYG{p}{.}\PYG{n+na}{charAt}\PYG{p}{(}\PYG{n}{m}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{==} \PYG{n}{str2}\PYG{p}{.}\PYG{n+na}{charAt}\PYG{p}{(}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{))}
+			\PYG{k}{return} \PYG{l+m+mi}{1} \PYG{o}{+} \PYG{n}{lcs}\PYG{p}{(}\PYG{n}{str1}\PYG{p}{,} \PYG{n}{str2}\PYG{p}{,} \PYG{n}{m}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{);}
+	\PYG{k}{else}
+		\PYG{c+c1}{// иначе сдвиг на символ по второму слову}
+		\PYG{c+c1}{// максимум между словами со сдвинутыми индексами на одну позицию}
+		\PYG{c+cm}{/* первый аргумент \PYGZhy{} наибольшая общая последовательность при сдвиге}
+\PYG{c+cm}{		//на символ в первом слове, второй \PYGZhy{} во втором слове */}
+		\PYG{k}{return} \PYG{n}{Math}\PYG{p}{.}\PYG{n+na}{max}\PYG{p}{(}\PYG{n}{lcs}\PYG{p}{(}\PYG{n}{str1}\PYG{p}{,} \PYG{n}{str2}\PYG{p}{,} \PYG{n}{m}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{n}\PYG{p}{),} \PYG{n}{lcs}\PYG{p}{(}\PYG{n}{str1}\PYG{p}{,} \PYG{n}{str2}\PYG{p}{,} \PYG{n}{m}\PYG{p}{,} \PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{));}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{c+c1}{// Итерационная функция}
+	\PYG{k+kd}{public} \PYG{k+kt}{int} \PYG{n+nf}{lcs2}\PYG{p}{(}\PYG{n}{String} \PYG{n}{str1}\PYG{p}{,} \PYG{n}{String} \PYG{n}{str2}\PYG{p}{)\PYGZob{}}
+		\PYG{c+c1}{// определяем двумерный массив исходных слов}
+		\PYG{k+kt}{int} \PYG{n}{lcs}\PYG{o}{[][]} \PYG{o}{=} \PYG{k}{new} \PYG{k+kt}{int}\PYG{o}{[}\PYG{n}{str1}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{()}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{o}{][}\PYG{n}{str2}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{()}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{;}
+		\PYG{c+c1}{// итерация по строке и перебор столбцов}
+		\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}=}\PYG{n}{str1}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{();}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+			\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{j}\PYG{o}{\PYGZlt{}=}\PYG{n}{str2}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{();}\PYG{n}{j}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+				\PYG{c+c1}{// начало отсчета}
+				\PYG{k}{if}\PYG{p}{(}\PYG{n}{i}\PYG{o}{==}\PYG{l+m+mi}{0} \PYG{o}{||} \PYG{n}{j}\PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)\PYGZob{}}
+					\PYG{n}{lcs}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+				\PYG{p}{\PYGZcb{}}
+				\PYG{c+c1}{// прибавляем к матрице счетчиков}
+				\PYG{k}{else} \PYG{k}{if}\PYG{p}{(}\PYG{n}{str1}\PYG{p}{.}\PYG{n+na}{charAt}\PYG{p}{(}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{==} \PYG{n}{str2}\PYG{p}{.}\PYG{n+na}{charAt}\PYG{p}{(}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{))\PYGZob{}}
+					\PYG{n}{lcs}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{o}{+} \PYG{n}{lcs}\PYG{o}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{][}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{;}
+				\PYG{p}{\PYGZcb{}}\PYG{k}{else}\PYG{p}{\PYGZob{}}
+					\PYG{c+c1}{// “протягивание” к углу матрицы максимального значения	}
+					\PYG{n}{lcs}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]} \PYG{o}{=} \PYG{n}{Math}\PYG{p}{.}\PYG{n+na}{max}\PYG{p}{(}\PYG{n}{lcs}\PYG{o}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]}\PYG{p}{,} \PYG{n}{lcs}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{);}
+				\PYG{p}{\PYGZcb{}}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{c+c1}{// возвращаем максимально значение в нижним правом углу}
+		\PYG{k}{return} \PYG{n}{lcs}\PYG{o}{[}\PYG{n}{str1}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{()}\PYG{o}{][}\PYG{n}{str2}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{()}\PYG{o}{]}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

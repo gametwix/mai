@@ -1,0 +1,161 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}define f(x) ( ((x)*(x)*(x)) \PYGZhy{} (x) \PYGZhy{} 2 )}
+\PYG{c+cp}{\PYGZsh{}define f2(x) ( (3*(x)*(x)) \PYGZhy{} 1 )}
+\PYG{c+cp}{\PYGZsh{}define g(x) ( cbrt( (x) + 2 ) )}
+
+\PYG{k+kt}{double} \PYG{n+nf}{BisectionMethod}\PYG{p}{()\PYGZob{}}
+	\PYG{k+kt}{double} \PYG{n}{root}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+	
+	\PYG{k+kt}{double} \PYG{n}{a}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{b}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{;}
+	\PYG{k+kt}{double} \PYG{n}{c}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+
+	\PYG{k+kt}{int} \PYG{n}{loopCounter}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{f}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{o}{*}\PYG{n}{f}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{0}\PYG{p}{)\PYGZob{}}
+		\PYG{k}{while}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)\PYGZob{}}
+			\PYG{n}{loopCounter}\PYG{o}{++}\PYG{p}{;}
+			\PYG{n}{c}\PYG{o}{=}\PYG{p}{(}\PYG{n}{a}\PYG{o}{+}\PYG{n}{b}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{;}
+			
+			\PYG{k}{if}\PYG{p}{(}\PYG{n}{f}\PYG{p}{(}\PYG{n}{c}\PYG{p}{)}\PYG{o}{\PYGZlt{}}\PYG{l+m+mf}{0.00001} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{f}\PYG{p}{(}\PYG{n}{c}\PYG{p}{)}\PYG{o}{\PYGZgt{}\PYGZhy{}}\PYG{l+m+mf}{0.00001}\PYG{p}{)\PYGZob{}}
+				\PYG{n}{root}\PYG{o}{=}\PYG{n}{c}\PYG{p}{;}
+				\PYG{k}{break}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}
+
+			\PYG{k}{if}\PYG{p}{((}\PYG{n}{f}\PYG{p}{(}\PYG{n}{a}\PYG{p}{))}\PYG{o}{*}\PYG{p}{(}\PYG{n}{f}\PYG{p}{(}\PYG{n}{c}\PYG{p}{))}\PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{0}\PYG{p}{)\PYGZob{}}
+				\PYG{n}{b}\PYG{o}{=}\PYG{n}{c}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}\PYG{k}{else}\PYG{p}{\PYGZob{}}
+				\PYG{n}{a}\PYG{o}{=}\PYG{n}{c}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}It took \PYGZpc{}d loops.}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{loopCounter}\PYG{p}{);}
+	
+	\PYG{k}{return} \PYG{n}{root}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{double} \PYG{n+nf}{FalsePosition}\PYG{p}{()\PYGZob{}}
+	\PYG{k+kt}{double} \PYG{n}{root}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+	
+	\PYG{k+kt}{double} \PYG{n}{a}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{b}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{;}
+	\PYG{k+kt}{double} \PYG{n}{c}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+	
+	\PYG{k+kt}{int} \PYG{n}{loopCounter}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{f}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{o}{*}\PYG{n}{f}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{0}\PYG{p}{)\PYGZob{}}
+		\PYG{k}{while}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)\PYGZob{}}
+			\PYG{n}{loopCounter}\PYG{o}{++}\PYG{p}{;}
+			
+			\PYG{n}{c}\PYG{o}{=}\PYG{p}{(}\PYG{n}{a}\PYG{o}{*}\PYG{n}{f}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{o}{\PYGZhy{}} \PYG{n}{b}\PYG{o}{*}\PYG{n}{f}\PYG{p}{(}\PYG{n}{a}\PYG{p}{))}\PYG{o}{/}\PYG{p}{(}\PYG{n}{f}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{o}{\PYGZhy{}} \PYG{n}{f}\PYG{p}{(}\PYG{n}{a}\PYG{p}{));}
+			
+			\PYG{c+cm}{/*/printf(\PYGZdq{}\PYGZpc{}lf\PYGZbs{}t \PYGZpc{}lf \PYGZbs{}n\PYGZdq{}, c, f(c));/**/}\PYG{c+c1}{///tes}
+			\PYG{k}{if}\PYG{p}{(}\PYG{n}{f}\PYG{p}{(}\PYG{n}{c}\PYG{p}{)}\PYG{o}{\PYGZlt{}}\PYG{l+m+mf}{0.00001} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{f}\PYG{p}{(}\PYG{n}{c}\PYG{p}{)}\PYG{o}{\PYGZgt{}\PYGZhy{}}\PYG{l+m+mf}{0.00001}\PYG{p}{)\PYGZob{}}
+				\PYG{n}{root}\PYG{o}{=}\PYG{n}{c}\PYG{p}{;}
+				\PYG{k}{break}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}
+
+			\PYG{k}{if}\PYG{p}{((}\PYG{n}{f}\PYG{p}{(}\PYG{n}{a}\PYG{p}{))}\PYG{o}{*}\PYG{p}{(}\PYG{n}{f}\PYG{p}{(}\PYG{n}{c}\PYG{p}{))}\PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{0}\PYG{p}{)\PYGZob{}}
+				\PYG{n}{b}\PYG{o}{=}\PYG{n}{c}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}\PYG{k}{else}\PYG{p}{\PYGZob{}}
+				\PYG{n}{a}\PYG{o}{=}\PYG{n}{c}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}It took \PYGZpc{}d loops.}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{loopCounter}\PYG{p}{);}
+	
+	\PYG{k}{return} \PYG{n}{root}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{double} \PYG{n+nf}{NewtonRaphson}\PYG{p}{()\PYGZob{}}
+	\PYG{k+kt}{double} \PYG{n}{root}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+	
+	\PYG{k+kt}{double} \PYG{n}{x1}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}
+	\PYG{k+kt}{double} \PYG{n}{x2}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+	
+	\PYG{k+kt}{int} \PYG{n}{loopCounter}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k}{while}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)\PYGZob{}}
+		\PYG{n}{loopCounter}\PYG{o}{++}\PYG{p}{;}
+		
+		\PYG{n}{x2} \PYG{o}{=} \PYG{n}{x1} \PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{n}{f}\PYG{p}{(}\PYG{n}{x1}\PYG{p}{)}\PYG{o}{/}\PYG{n}{f2}\PYG{p}{(}\PYG{n}{x1}\PYG{p}{));}
+		\PYG{c+cm}{/*/printf(\PYGZdq{}\PYGZpc{}lf \PYGZbs{}t \PYGZpc{}lf \PYGZbs{}n\PYGZdq{}, x2, f(x2));/**/}\PYG{c+c1}{///test}
+		
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{f}\PYG{p}{(}\PYG{n}{x2}\PYG{p}{)}\PYG{o}{\PYGZlt{}}\PYG{l+m+mf}{0.00001} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{f}\PYG{p}{(}\PYG{n}{x2}\PYG{p}{)}\PYG{o}{\PYGZgt{}\PYGZhy{}}\PYG{l+m+mf}{0.00001}\PYG{p}{)\PYGZob{}}
+			\PYG{n}{root}\PYG{o}{=}\PYG{n}{x2}\PYG{p}{;}
+			\PYG{k}{break}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+		
+		\PYG{n}{x1}\PYG{o}{=}\PYG{n}{x2}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}It took \PYGZpc{}d loops.}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{loopCounter}\PYG{p}{);}
+	
+	\PYG{k}{return} \PYG{n}{root}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{double} \PYG{n+nf}{FixedPoint}\PYG{p}{()\PYGZob{}}
+	\PYG{k+kt}{double} \PYG{n}{root}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k+kt}{double} \PYG{n}{x}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}
+	
+	\PYG{k+kt}{int} \PYG{n}{loopCounter}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k}{while}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)\PYGZob{}}
+		\PYG{n}{loopCounter}\PYG{o}{++}\PYG{p}{;}
+		
+		\PYG{k}{if}\PYG{p}{((}\PYG{n}{x}\PYG{o}{\PYGZhy{}}\PYG{n}{g}\PYG{p}{(}\PYG{n}{x}\PYG{p}{))}\PYG{o}{\PYGZlt{}}\PYG{l+m+mf}{0.00001} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZhy{}}\PYG{n}{g}\PYG{p}{(}\PYG{n}{x}\PYG{p}{))}\PYG{o}{\PYGZgt{}\PYGZhy{}}\PYG{l+m+mf}{0.00001}\PYG{p}{)\PYGZob{}}
+			\PYG{n}{root} \PYG{o}{=} \PYG{n}{x}\PYG{p}{;}
+			\PYG{k}{break}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+		
+		\PYG{c+cm}{/*/printf(\PYGZdq{}\PYGZpc{}lf \PYGZbs{}t \PYGZpc{}lf \PYGZbs{}n\PYGZdq{}, g(x), x\PYGZhy{}(g(x)));/**/}\PYG{c+c1}{///test}
+		
+		\PYG{n}{x}\PYG{o}{=}\PYG{n}{g}\PYG{p}{(}\PYG{n}{x}\PYG{p}{);}
+		
+		\PYG{p}{\PYGZcb{}}
+		\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}It took \PYGZpc{}d loops.}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{loopCounter}\PYG{p}{);}
+		
+		\PYG{k}{return} \PYG{n}{root}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{double} \PYG{n+nf}{Secant}\PYG{p}{()\PYGZob{}}
+	\PYG{k+kt}{double} \PYG{n}{root}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+	
+	\PYG{k+kt}{double} \PYG{n}{x0}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}
+	\PYG{k+kt}{double} \PYG{n}{x1}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{;}
+	\PYG{k+kt}{double} \PYG{n}{x2}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+	
+	\PYG{k+kt}{int} \PYG{n}{loopCounter}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k}{while}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)\PYGZob{}}
+			\PYG{n}{loopCounter}\PYG{o}{++}\PYG{p}{;}
+			
+			\PYG{c+cm}{/*/printf(\PYGZdq{}\PYGZpc{}lf \PYGZbs{}t \PYGZpc{}lf \PYGZbs{}t \PYGZpc{}lf \PYGZbs{}n\PYGZdq{}, x0, x1, f(x1));/**/}\PYG{c+c1}{///test}
+			
+			\PYG{k}{if}\PYG{p}{(}\PYG{n}{f}\PYG{p}{(}\PYG{n}{x1}\PYG{p}{)}\PYG{o}{\PYGZlt{}}\PYG{l+m+mf}{0.00001} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{f}\PYG{p}{(}\PYG{n}{x1}\PYG{p}{)}\PYG{o}{\PYGZgt{}\PYGZhy{}}\PYG{l+m+mf}{0.00001}\PYG{p}{)\PYGZob{}}
+				\PYG{n}{root}\PYG{o}{=}\PYG{n}{x1}\PYG{p}{;}
+				\PYG{k}{break}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}
+			
+			\PYG{n}{x2} \PYG{o}{=}\PYG{p}{((}\PYG{n}{x0}\PYG{o}{*}\PYG{n}{f}\PYG{p}{(}\PYG{n}{x1}\PYG{p}{))}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{n}{x1}\PYG{o}{*}\PYG{n}{f}\PYG{p}{(}\PYG{n}{x0}\PYG{p}{)))}\PYG{o}{/}\PYG{p}{(}\PYG{n}{f}\PYG{p}{(}\PYG{n}{x1}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{n}{f}\PYG{p}{(}\PYG{n}{x0}\PYG{p}{));}
+			
+		   \PYG{n}{x0}\PYG{o}{=}\PYG{n}{x1}\PYG{p}{;}
+		   \PYG{n}{x1}\PYG{o}{=}\PYG{n}{x2}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}It took \PYGZpc{}d loops.}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{loopCounter}\PYG{p}{);}
+		
+		\PYG{k}{return} \PYG{n}{root}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()\PYGZob{}}
+	\PYG{k+kt}{double} \PYG{n}{root}\PYG{p}{;}
+	
+	\PYG{n}{root} \PYG{o}{=} \PYG{n}{BisectionMethod}\PYG{p}{();}
+	\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Using Bisection Method the root is: \PYGZpc{}lf }\PYG{l+s+se}{\PYGZbs{}n\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{root}\PYG{p}{);}
+	
+	\PYG{n}{root} \PYG{o}{=} \PYG{n}{FalsePosition}\PYG{p}{();}
+	\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Using False Position Method the root is: \PYGZpc{}lf }\PYG{l+s+se}{\PYGZbs{}n\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{root}\PYG{p}{);}
+	
+	\PYG{n}{root} \PYG{o}{=} \PYG{n}{NewtonRaphson}\PYG{p}{();}
+	\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Using Newton\PYGZhy{}Raphson Method the root is: \PYGZpc{}lf }\PYG{l+s+se}{\PYGZbs{}n\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{root}\PYG{p}{);}
+	
+	\PYG{n}{root} \PYG{o}{=} \PYG{n}{FixedPoint}\PYG{p}{();}
+	\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Using Fixed Point Method the root is: \PYGZpc{}lf }\PYG{l+s+se}{\PYGZbs{}n\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{root}\PYG{p}{);}
+	
+	\PYG{n}{root} \PYG{o}{=} \PYG{n}{Secant}\PYG{p}{();}
+	\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Using Secant Method the root is: \PYGZpc{}lf }\PYG{l+s+se}{\PYGZbs{}n\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{root}\PYG{p}{);}
+	\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

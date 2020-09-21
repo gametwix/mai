@@ -1,0 +1,26 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{(}\PYG{n}{input}\PYG{p}{)}
+\PYG{n}{output} \PYG{o}{=} \PYG{l+m+mi}{0}
+\PYG{k}{for} \PYG{n}{cycleStart} \PYG{n}{from} \PYG{l+m+mi}{0} \PYG{n}{to} \PYG{n}{length}\PYG{p}{(}\PYG{n}{array}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{2}
+	\PYG{n}{item} \PYG{o}{=} \PYG{n}{array}\PYG{p}{[}\PYG{n}{cycleStart}\PYG{p}{]}
+	\PYG{n}{pos} \PYG{o}{=} \PYG{n}{cycleStart}
+	\PYG{k}{for} \PYG{n}{i} \PYG{n}{from} \PYG{n}{cycleStart} \PYG{o}{+} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{length}\PYG{p}{(}\PYG{n}{array}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}
+		\PYG{k}{if} \PYG{n}{array}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{n+nl}{item}\PYG{p}{:}
+			\PYG{n}{pos} \PYG{o}{+=} \PYG{l+m+mi}{1}
+	\PYG{k}{if} \PYG{n}{pos} \PYG{o}{==} \PYG{n+nl}{cycleStart}\PYG{p}{:}
+		\PYG{k}{continue}
+	\PYG{k}{while} \PYG{n}{item} \PYG{o}{==} \PYG{n}{array}\PYG{p}{[}\PYG{n}{pos}\PYG{p}{]}\PYG{o}{:}
+		\PYG{n}{pos} \PYG{o}{+=} \PYG{l+m+mi}{1}
+	\PYG{n}{array}\PYG{p}{[}\PYG{n}{pos}\PYG{p}{],} \PYG{n}{item} \PYG{o}{=} \PYG{n}{item}\PYG{p}{,} \PYG{n}{array}\PYG{p}{[}\PYG{n}{pos}\PYG{p}{]}
+	\PYG{n}{writes} \PYG{o}{+=} \PYG{l+m+mi}{1}
+	\PYG{k}{while} \PYG{n}{pos} \PYG{o}{!=} \PYG{n+nl}{cycleStart}\PYG{p}{:}
+		\PYG{n}{pos} \PYG{o}{=} \PYG{n}{cycleStart}
+		\PYG{k}{for} \PYG{n}{i} \PYG{n}{from} \PYG{n}{cycleStart} \PYG{o}{+} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{length}\PYG{p}{(}\PYG{n}{array}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}
+			\PYG{k}{if} \PYG{n}{array}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{n+nl}{item}\PYG{p}{:}
+				\PYG{n}{pos} \PYG{o}{+=} \PYG{l+m+mi}{1}
+		\PYG{k}{while} \PYG{n}{item} \PYG{o}{==} \PYG{n}{array}\PYG{p}{[}\PYG{n}{pos}\PYG{p}{]}\PYG{o}{:}
+			\PYG{n}{pos} \PYG{o}{+=} \PYG{l+m+mi}{1}
+		\PYG{n}{array}\PYG{p}{[}\PYG{n}{pos}\PYG{p}{],} \PYG{n}{item} \PYG{o}{=} \PYG{n}{item}\PYG{p}{,} \PYG{n}{array}\PYG{p}{[}\PYG{n}{pos}\PYG{p}{]}
+		\PYG{n}{writes} \PYG{o}{+=} \PYG{l+m+mi}{1}
+\PYG{k}{return} \PYG{n}{outout}
+\end{Verbatim}

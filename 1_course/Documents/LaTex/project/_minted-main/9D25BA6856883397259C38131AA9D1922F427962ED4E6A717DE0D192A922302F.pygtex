@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n+nf}{bSearch}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{arr}\PYG{p}{[],}\PYG{k+kt}{int} \PYG{n}{size}\PYG{p}{,}\PYG{k+kt}{int} \PYG{n}{item}\PYG{p}{)\PYGZob{}}
+	\PYG{c+c1}{// Бинарный поиск. item \PYGZhy{} эл\PYGZhy{}т который ищем,}
+	\PYG{c+c1}{// size \PYGZhy{} размер массива(кол\PYGZhy{}во эл\PYGZhy{}ов), arr[] \PYGZhy{} массив с которым работаем}
+	\PYG{k+kt}{int} \PYG{n}{low}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{c+c1}{// левая граница эл\PYGZhy{}ов в которых ведём поиск}
+	\PYG{k+kt}{int} \PYG{n}{mid}\PYG{p}{;} \PYG{c+c1}{// номер проверяемого эл\PYGZhy{}та}
+	\PYG{k+kt}{int} \PYG{n}{high}\PYG{o}{=}\PYG{n}{size}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{c+c1}{// правая граница}
+	\PYG{k}{while}\PYG{p}{(}\PYG{n}{low}\PYG{o}{\PYGZlt{}=}\PYG{n}{high}\PYG{p}{)\PYGZob{}} \PYG{c+c1}{// пока не кончатся эл\PYGZhy{}ты}
+		\PYG{n}{mid}\PYG{o}{=}\PYG{n}{low}\PYG{o}{+}\PYG{p}{(}\PYG{n}{high}\PYG{o}{\PYGZhy{}}\PYG{n}{low}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{;} \PYG{c+c1}{// берется средний элемент между low и high}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{[}\PYG{n}{mid}\PYG{p}{]}\PYG{o}{==}\PYG{n}{item}\PYG{p}{)} \PYG{c+c1}{// если эл\PYGZhy{}т массива \PYGZhy{} искомый}
+			\PYG{k}{return} \PYG{n}{mid}\PYG{p}{;} \PYG{c+c1}{// возвращаем номер(итерационный номер в	 массиве)}
+		\PYG{k}{else} \PYG{k}{if}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{[}\PYG{n}{mid}\PYG{p}{]}\PYG{o}{\PYGZlt{}}\PYG{n}{item}\PYG{p}{)} \PYG{c+c1}{// если эл\PYGZhy{}т массива меньше чем нужно нам}
+			\PYG{n}{low}\PYG{o}{=}\PYG{n}{mid}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{c+c1}{// передвигаем левую границу вправо}
+		\PYG{k}{else} \PYG{n}{high}\PYG{o}{=}\PYG{n}{mid}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{c+c1}{// иначе двигаем правую границу влево}
+
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{c+c1}{// Неудачный результат}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

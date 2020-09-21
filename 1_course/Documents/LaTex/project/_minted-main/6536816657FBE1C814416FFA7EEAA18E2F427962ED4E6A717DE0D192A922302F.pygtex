@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{function} \PYG{n}{select}\PYG{p}{(}\PYG{n}{list}\PYG{p}{[}\PYG{l+m+mf}{1.}\PYG{p}{.}\PYG{n}{n}\PYG{p}{],} \PYG{n}{k}\PYG{p}{)}
+ \PYG{k}{for} \PYG{n}{i} \PYG{n}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{k}
+	\PYG{n}{minIndex} \PYG{o}{=} \PYG{n}{i}
+	\PYG{n}{minValue} \PYG{o}{=} \PYG{n}{list}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}
+	\PYG{k}{for} \PYG{n}{j} \PYG{n}{from} \PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{n}
+		\PYG{k}{if} \PYG{n}{list}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{n}{minValue}
+			\PYG{n}{minIndex} \PYG{o}{=} \PYG{n}{j}
+			\PYG{n}{minValue} \PYG{o}{=} \PYG{n}{list}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}
+	\PYG{n}{swap} \PYG{n}{list}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{n}{and} \PYG{n}{list}\PYG{p}{[}\PYG{n}{minIndex}\PYG{p}{]}
+\PYG{k}{return} \PYG{n}{list}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]}
+\end{Verbatim}

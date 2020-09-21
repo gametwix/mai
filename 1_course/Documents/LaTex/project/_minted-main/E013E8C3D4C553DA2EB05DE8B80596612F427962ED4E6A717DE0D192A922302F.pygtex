@@ -1,0 +1,30 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}stdio.h\PYGZgt{}}
+\PYG{c+c1}{// Линейный поиск x в arr[]. Если x находится в arr[], вернем его индекс,}
+\PYG{c+c1}{// Иначе вернем \PYGZhy{}1}
+\PYG{k+kt}{int} \PYG{n+nf}{search}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{arr}\PYG{p}{[],} \PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{;}
+\PYG{c+c1}{// Пробегаем по массиву arr[] от 0 до n}
+\PYG{k}{for} \PYG{p}{(}\PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{// Если x найден, вернем его индекс}
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{arr}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{n}{x}\PYG{p}{)}
+\PYG{k}{return} \PYG{n}{i}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+cm}{/* Программа\PYGZhy{}тестер*/}
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+\PYG{k+kt}{int} \PYG{n}{arr}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{10}\PYG{p}{,} \PYG{l+m+mi}{30}\PYG{p}{,} \PYG{l+m+mi}{15}\PYG{p}{\PYGZcb{};}
+\PYG{k+kt}{int} \PYG{n}{x} \PYG{o}{=} \PYG{l+m+mi}{30}\PYG{p}{;}
+\PYG{c+c1}{// n \PYGZhy{} количество элементов в arr[]}
+\PYG{c+c1}{// Делим на размер arr[0], так как}
+\PYG{c+c1}{// каждый элемент может занимать несколько байт}
+\PYG{k+kt}{int} \PYG{n}{n} \PYG{o}{=} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{)}\PYG{o}{/}\PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]);}
+\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d is present at index \PYGZpc{}d\PYGZdq{}}\PYG{p}{,} \PYG{n}{x}\PYG{p}{,} \PYG{n}{search}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{,} \PYG{n}{n}\PYG{p}{,} \PYG{n}{x}\PYG{p}{));}
+\PYG{c+c1}{// Задержка вывода программы}
+\PYG{c+c1}{// Нажатием любой клавиши закончим программу}
+\PYG{n}{getchar}\PYG{p}{();}
+\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

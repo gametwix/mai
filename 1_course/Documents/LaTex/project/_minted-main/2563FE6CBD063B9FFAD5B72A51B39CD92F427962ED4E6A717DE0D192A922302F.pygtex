@@ -1,0 +1,23 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Procedure} \PYG{n}{KMP}\PYG{p}{(}\PYG{n}{Text}\PYG{p}{,} \PYG{n}{Pattern}\PYG{p}{)}
+\PYG{n}{GenerateSuffixArray}\PYG{p}{(}\PYG{n}{Pattern}\PYG{p}{)}
+\PYG{n+nl}{m} \PYG{p}{:}\PYG{o}{=} \PYG{n}{Text}\PYG{p}{.}\PYG{n}{Length}
+\PYG{n+nl}{n} \PYG{p}{:}\PYG{o}{=} \PYG{n}{Pattern}\PYG{p}{.}\PYG{n}{Length}
+\PYG{n+nl}{i} \PYG{p}{:}\PYG{o}{=}\PYG{l+m+mi}{0}
+\PYG{n+nl}{j} \PYG{p}{:}\PYG{o}{=}\PYG{l+m+mi}{0}
+\PYG{k}{while} \PYG{n}{i} \PYG{n}{is} \PYG{n}{less} \PYG{n}{than} \PYG{n}{m}
+	\PYG{k}{if} \PYG{n}{Pattern}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{n}{is} \PYG{n}{equal} \PYG{n}{to} \PYG{n}{Text}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}
+		\PYG{n+nl}{j} \PYG{p}{:}\PYG{o}{=} \PYG{n}{j} \PYG{o}{+}\PYG{l+m+mi}{1}
+		\PYG{n+nl}{i} \PYG{p}{:}\PYG{o}{=} \PYG{n}{i} \PYG{o}{+}\PYG{l+m+mi}{1}
+		\PYG{k}{if} \PYG{n}{j} \PYG{n}{is} \PYG{n}{equal} \PYG{n}{to} \PYG{n}{n}
+			\PYG{n}{Return}\PYG{p}{(}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{n}{i}\PYG{p}{)}
+		\PYG{n}{elseif} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{m} \PYG{n}{and} \PYG{n}{Pattern}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{n}{is} \PYG{n}{not} \PYG{n}{equal} \PYG{n}{t} \PYG{n}{Text}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}
+			\PYG{k}{if} \PYG{n}{j} \PYG{n}{is} \PYG{n}{not} \PYG{n}{equal} \PYG{n}{to} \PYG{l+m+mi}{0}
+				\PYG{n}{j} \PYG{o}{=} \PYG{n}{S}\PYG{p}{[}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}
+			\PYG{k}{else}
+				\PYG{n+nl}{i} \PYG{p}{:}\PYG{o}{=} \PYG{n}{i} \PYG{o}{+}\PYG{l+m+mi}{1}
+		\PYG{n}{end} \PYG{k}{if}
+	\PYG{n}{end} \PYG{k}{if}
+\PYG{n}{end} \PYG{k}{while}
+\PYG{n}{Return}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+\end{Verbatim}

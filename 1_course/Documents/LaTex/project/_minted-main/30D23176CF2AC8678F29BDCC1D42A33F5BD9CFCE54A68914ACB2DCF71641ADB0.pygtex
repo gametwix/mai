@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{r} \PYG{o}{=} \PYG{n}{Node}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{)}				\PYG{c+c1}{\PYGZsh{} создания корня со значением 3}
+\PYG{n}{node} \PYG{o}{=} \PYG{n}{BinarySearchTree}\PYG{p}{()}			\PYG{c+c1}{\PYGZsh{} создание бинарного дерева}
+\PYG{n}{nodeList} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{8}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{12}\PYG{p}{,} \PYG{l+m+mi}{14}\PYG{p}{,} \PYG{l+m+mi}{6}\PYG{p}{,} \PYG{l+m+mi}{15}\PYG{p}{,} \PYG{l+m+mi}{7}\PYG{p}{,} \PYG{l+m+mi}{16}\PYG{p}{,} \PYG{l+m+mi}{8}\PYG{p}{]} \PYG{c+c1}{\PYGZsh{} массив вводимых значений}
+\PYG{k}{for} \PYG{n}{nd} \PYG{o+ow}{in} \PYG{n}{nodeList}\PYG{p}{:}				\PYG{c+c1}{\PYGZsh{} заполнение дерева}
+	\PYG{n}{node}\PYG{o}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{n}{r}\PYG{p}{,} \PYG{n}{Node}\PYG{p}{(}\PYG{n}{nd}\PYG{p}{))}
+\PYG{n+nb}{print} \PYG{l+s+s2}{\PYGZdq{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}In order \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZdq{}}			\PYG{c+c1}{\PYGZsh{} вывод дерева}
+\PYG{n+nb}{print} \PYG{p}{(}\PYG{n}{node}\PYG{o}{.}\PYG{n}{in\PYGZus{}order\PYGZus{}place}\PYG{p}{(}\PYG{n}{r}\PYG{p}{))}
+\PYG{n+nb}{print} \PYG{l+s+s2}{\PYGZdq{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}Pre order \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZdq{}}
+\PYG{n+nb}{print} \PYG{p}{(}\PYG{n}{node}\PYG{o}{.}\PYG{n}{pre\PYGZus{}order\PYGZus{}place}\PYG{p}{(}\PYG{n}{r}\PYG{p}{))}
+\PYG{n+nb}{print} \PYG{l+s+s2}{\PYGZdq{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}Post order \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZdq{}}
+\PYG{n+nb}{print} \PYG{p}{(}\PYG{n}{node}\PYG{o}{.}\PYG{n}{post\PYGZus{}order\PYGZus{}place}\PYG{p}{(}\PYG{n}{r}\PYG{p}{))}
+\end{Verbatim}

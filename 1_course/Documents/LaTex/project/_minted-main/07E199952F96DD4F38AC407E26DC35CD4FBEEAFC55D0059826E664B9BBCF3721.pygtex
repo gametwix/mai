@@ -1,0 +1,40 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Procedure} \PYG{n}{NegativeCycleDetector}\PYG{p}{(}\PYG{n}{Graph}\PYG{p}{,} \PYG{n}{source}\PYG{p}{):}
+\PYG{n}{n} \PYG{o}{:=} \PYG{n}{number} \PYG{n}{of} \PYG{n}{vertices} \PYG{o+ow}{in} \PYG{n}{Graph}
+\PYG{c+c1}{\PYGZsh{} задаем начальные бесконечные расстояния до вершин из source}
+\PYG{k}{for} \PYG{n}{i} \PYG{k+kn}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{n}
+	\PYG{c+c1}{\PYGZsh{} d \PYGZhy{}  массив расстояний от source}
+	\PYG{n}{d}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{:=} \PYG{n}{infinity}
+\PYG{n}{end} \PYG{k}{for}
+\PYG{c+c1}{\PYGZsh{} Очевидно, что от source до source расстояние 0}
+
+\PYG{n}{d}\PYG{p}{[}\PYG{n}{source}\PYG{p}{]} \PYG{o}{:=} \PYG{l+m+mi}{0}
+\PYG{c+c1}{\PYGZsh{} Улучшаем расстояние до других вершин.Сделаем n\PYGZhy{} 1 итераций}
+\PYG{k}{for} \PYG{n}{i} \PYG{k+kn}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{n}\PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}
+	\PYG{c+c1}{\PYGZsh{} если flag \PYGZhy{}  true, то мы нашли меньшее расстояние до другой вершины}
+	\PYG{n}{flag} \PYG{o}{:=} \PYG{n}{false}
+	\PYG{c+c1}{\PYGZsh{} Проходим по всем ребрам}
+	\PYG{k}{for} \PYG{n+nb}{all} \PYG{n}{edges} \PYG{k+kn}{from} \PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)} \PYG{o+ow}{in} \PYG{n}{Graph}
+	\PYG{c+c1}{\PYGZsh{} Если расстояние от вершины u до v меньше, чем было \PYGZhy{}  обновим}
+		\PYG{c+c1}{\PYGZsh{} расстояние на более оптимальное}
+		\PYG{k}{if} \PYG{n}{d}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{+} \PYG{n}{cost}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{v}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{n}{d}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]}
+			\PYG{n}{d}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{:=} \PYG{n}{d}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{+} \PYG{n}{cost}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{v}\PYG{p}{]}
+			\PYG{c+c1}{\PYGZsh{} изменения есть}
+			\PYG{n}{flag} \PYG{o}{:=} \PYG{n}{true}
+		\PYG{n}{end} \PYG{k}{if}
+	\PYG{n}{end} \PYG{k}{for}
+	\PYG{c+c1}{\PYGZsh{} А если изменений не было \PYGZhy{}  нет смысла прогонять ещё итерации}
+	\PYG{k}{if} \PYG{n}{flag} \PYG{o}{==} \PYG{n}{false}
+		\PYG{k}{break}
+\PYG{n}{end} \PYG{k}{for}
+\PYG{c+c1}{\PYGZsh{} Проведем последнюю итерацию}
+\PYG{c+c1}{\PYGZsh{} Если расстояния до других вершин из source уменьшится}
+\PYG{c+c1}{\PYGZsh{} То это укажет на наличие отрицательного цикла}
+\PYG{k}{for} \PYG{n+nb}{all} \PYG{n}{edges} \PYG{k+kn}{from} \PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)} \PYG{o+ow}{in} \PYG{n}{Graph}
+	\PYG{k}{if} \PYG{n}{d}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{+} \PYG{n}{cost}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{v}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{n}{d}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]}
+	\PYG{c+c1}{\PYGZsh{} Уменьшение расстояний произошло}
+		\PYG{n}{Return} \PYG{l+s+s2}{\PYGZdq{}Negative Cycle Detected\PYGZdq{}}
+	\PYG{n}{end} \PYG{k}{if}
+\PYG{n}{end} \PYG{k}{for}
+\PYG{n}{Return} \PYG{l+s+s2}{\PYGZdq{}No Negative Cycle\PYGZdq{}}
+\end{Verbatim}

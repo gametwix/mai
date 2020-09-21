@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{ret} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{p}{(}\PYG{n}{Length} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{8} \PYG{o}{?} \PYG{n}{Length} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{8} \PYG{o}{:} \PYG{l+m+mi}{0}\PYG{p}{);} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{Length}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{n}{ret} \PYG{o}{=} \PYG{p}{((}\PYG{n}{ret} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{5}\PYG{p}{)} \PYG{o}{+} \PYG{n}{ret}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{n}{comparer}\PYG{p}{.}\PYG{n}{GetHashCode}\PYG{p}{(}\PYG{n}{GetValue}\PYG{p}{(}\PYG{n}{i}\PYG{p}{));}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

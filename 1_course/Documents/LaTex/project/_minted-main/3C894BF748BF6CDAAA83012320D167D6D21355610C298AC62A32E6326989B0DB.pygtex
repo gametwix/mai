@@ -1,0 +1,52 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{package} \PYG{n+nx}{main}
+\PYG{k+kn}{import} \PYG{l+s}{\PYGZdq{}fmt\PYGZdq{}}
+\PYG{k+kd}{func} \PYG{n+nx}{mergeSort}\PYG{p}{(}\PYG{n+nx}{a} \PYG{p}{[]}\PYG{k+kt}{int}\PYG{p}{)} \PYG{p}{[]}\PYG{k+kt}{int} \PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{// базовый случай \PYGZhy{} один элемент в массиве \PYGZhy{} конечный результат}
+	\PYG{k}{if} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nx}{a}\PYG{p}{)} \PYG{p}{\PYGZlt{}} \PYG{l+m+mi}{2} \PYG{p}{\PYGZob{}}
+		\PYG{k}{return} \PYG{n+nx}{a}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{c+c1}{// медианный индекс}
+	\PYG{n+nx}{m} \PYG{o}{:=} \PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nx}{a}\PYG{p}{))} \PYG{o}{/} \PYG{l+m+mi}{2}
+	\PYG{c+c1}{// левая часть массива}
+	\PYG{n+nx}{f} \PYG{o}{:=} \PYG{n+nx}{mergeSort}\PYG{p}{(}\PYG{n+nx}{a}\PYG{p}{[:}\PYG{n+nx}{m}\PYG{p}{])}
+	\PYG{c+c1}{// правая часть}
+	\PYG{n+nx}{s} \PYG{o}{:=} \PYG{n+nx}{mergeSort}\PYG{p}{(}\PYG{n+nx}{a}\PYG{p}{[}\PYG{n+nx}{m}\PYG{p}{:])}
+	\PYG{c+c1}{// возвращаем через рекурсию более мелкие части массива до 1 элемента}
+	\PYG{k}{return} \PYG{n+nx}{merge}\PYG{p}{(}\PYG{n+nx}{f}\PYG{p}{,} \PYG{n+nx}{s}\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kd}{func} \PYG{n+nx}{merge}\PYG{p}{(}\PYG{n+nx}{f} \PYG{p}{[]}\PYG{k+kt}{int}\PYG{p}{,} \PYG{n+nx}{s} \PYG{p}{[]}\PYG{k+kt}{int}\PYG{p}{)} \PYG{p}{[]}\PYG{k+kt}{int} \PYG{p}{\PYGZob{}}
+	\PYG{k+kd}{var} \PYG{n+nx}{i}\PYG{p}{,} \PYG{n+nx}{j} \PYG{k+kt}{int}
+	\PYG{c+c1}{// сумма сравниваемых частей массива}
+	\PYG{n+nx}{size} \PYG{o}{:=} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nx}{f}\PYG{p}{)} \PYG{o}{+} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nx}{s}\PYG{p}{)}
+	\PYG{c+c1}{// выделяем память под результирующий массив}
+	\PYG{n+nx}{a} \PYG{o}{:=} \PYG{n+nb}{make}\PYG{p}{([]}\PYG{k+kt}{int}\PYG{p}{,} \PYG{n+nx}{size}\PYG{p}{,} \PYG{n+nx}{size}\PYG{p}{)}
+	\PYG{c+c1}{// итерация по всему массиву}
+	\PYG{k}{for} \PYG{n+nx}{z} \PYG{o}{:=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n+nx}{z} \PYG{p}{\PYGZlt{}} \PYG{n+nx}{size}\PYG{p}{;} \PYG{n+nx}{z}\PYG{o}{++} \PYG{p}{\PYGZob{}}
+		\PYG{n+nx}{lenF} \PYG{o}{:=} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nx}{f}\PYG{p}{)} \PYG{c+c1}{// длина первой части}
+		\PYG{n+nx}{lenS} \PYG{o}{:=} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nx}{s}\PYG{p}{)} \PYG{c+c1}{// длина второй части}
+		\PYG{k}{if} \PYG{n+nx}{i} \PYG{p}{\PYGZgt{}} \PYG{n+nx}{lenF}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n+nx}{j} \PYG{o}{\PYGZlt{}=} \PYG{n+nx}{lenS}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// элементов второго массива больше}
+			\PYG{n+nx}{a}\PYG{p}{[}\PYG{n+nx}{z}\PYG{p}{]} \PYG{p}{=} \PYG{n+nx}{s}\PYG{p}{[}\PYG{n+nx}{j}\PYG{p}{]} \PYG{c+c1}{// присваиваем недостающий элемент}
+			\PYG{n+nx}{j}\PYG{o}{++}
+		\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{k}{if} \PYG{n+nx}{j} \PYG{p}{\PYGZgt{}} \PYG{n+nx}{lenS}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n+nx}{i} \PYG{o}{\PYGZlt{}=} \PYG{n+nx}{lenF}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// первый массив больше}
+			\PYG{n+nx}{a}\PYG{p}{[}\PYG{n+nx}{z}\PYG{p}{]} \PYG{p}{=} \PYG{n+nx}{f}\PYG{p}{[}\PYG{n+nx}{i}\PYG{p}{]} \PYG{c+c1}{// присваиваем недостающий элемент}
+			\PYG{n+nx}{i}\PYG{o}{++}
+		\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{k}{if} \PYG{n+nx}{f}\PYG{p}{[}\PYG{n+nx}{i}\PYG{p}{]} \PYG{p}{\PYGZlt{}} \PYG{n+nx}{s}\PYG{p}{[}\PYG{n+nx}{j}\PYG{p}{]} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// элемент второго массива больше}
+			\PYG{n+nx}{a}\PYG{p}{[}\PYG{n+nx}{z}\PYG{p}{]} \PYG{p}{=} \PYG{n+nx}{f}\PYG{p}{[}\PYG{n+nx}{i}\PYG{p}{]} \PYG{c+c1}{// присваиваем элемент первого}
+			\PYG{n+nx}{i}\PYG{o}{++} \PYG{c+c1}{// элемент первого массива больше}
+		\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+			\PYG{n+nx}{a}\PYG{p}{[}\PYG{n+nx}{z}\PYG{p}{]} \PYG{p}{=} \PYG{n+nx}{s}\PYG{p}{[}\PYG{n+nx}{j}\PYG{p}{]} \PYG{c+c1}{// присваиваем элемент второго}
+			\PYG{n+nx}{j}\PYG{o}{++}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{n+nx}{a} \PYG{c+c1}{// возвращаем результатирующий массив}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kd}{func} \PYG{n+nx}{main}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{// тестовые}
+	\PYG{n+nx}{a} \PYG{o}{:=} \PYG{p}{[]}\PYG{k+kt}{int}\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{75}\PYG{p}{,} \PYG{l+m+mi}{12}\PYG{p}{,} \PYG{l+m+mi}{34}\PYG{p}{,} \PYG{l+m+mi}{45}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{123}\PYG{p}{,} \PYG{l+m+mi}{32}\PYG{p}{,} \PYG{l+m+mi}{56}\PYG{p}{,} \PYG{l+m+mi}{32}\PYG{p}{,} \PYG{l+m+mi}{99}\PYG{p}{,} \PYG{l+m+mi}{123}\PYG{p}{,} \PYG{l+m+mi}{11}\PYG{p}{,} \PYG{l+m+mi}{86}\PYG{p}{,} \PYG{l+m+mi}{33}\PYG{p}{\PYGZcb{}}
+	\PYG{c+c1}{// вывод исходных данных}
+	\PYG{n+nx}{fmt}\PYG{p}{.}\PYG{n+nx}{Println}\PYG{p}{(}\PYG{n+nx}{a}\PYG{p}{)}
+	\PYG{c+c1}{// вывод результата}
+	\PYG{n+nx}{fmt}\PYG{p}{.}\PYG{n+nx}{Println}\PYG{p}{(}\PYG{n+nx}{mergeSort}\PYG{p}{(}\PYG{n+nx}{a}\PYG{p}{))}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

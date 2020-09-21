@@ -1,0 +1,22 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Procedure} \PYG{n}{DTW}\PYG{p}{(}\PYG{n}{Sample}\PYG{p}{,} \PYG{n}{Test}\PYG{p}{)}\PYG{o}{:}
+\PYG{n+nl}{n} \PYG{p}{:}\PYG{o}{=} \PYG{n}{Sample}\PYG{p}{.}\PYG{n}{length}
+\PYG{n+nl}{m} \PYG{p}{:}\PYG{o}{=} \PYG{n}{Test}\PYG{p}{.}\PYG{n}{length}
+\PYG{n}{Create} \PYG{n}{Table}\PYG{p}{[}\PYG{n}{n} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{][}\PYG{n}{m} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{]}
+\PYG{k}{for} \PYG{n}{i} \PYG{n}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{n}
+	\PYG{n}{Table}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{:=} \PYG{n}{infinity}
+\PYG{n}{end} \PYG{k}{for}
+\PYG{k}{for} \PYG{n}{i} \PYG{n}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{m}
+	\PYG{n}{Table}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{n}{i}\PYG{p}{]} \PYG{o}{:=} \PYG{n}{infinity}
+\PYG{n}{end} \PYG{k}{for}
+\PYG{n}{Table}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{:=} \PYG{l+m+mi}{0}
+\PYG{k}{for} \PYG{n}{i} \PYG{n}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{n}
+	\PYG{k}{for} \PYG{n}{j} \PYG{n}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{m}
+		\PYG{n}{Table}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{:=} \PYG{n}{d}\PYG{p}{(}\PYG{n}{Sample}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{Test}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])}
+			\PYG{o}{+} \PYG{n}{minimum}\PYG{p}{(}\PYG{n}{Table}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{][}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{],}
+				\PYG{n}{Table}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{],}
+				\PYG{n}{Table}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{][}\PYG{n}{j}\PYG{p}{])}
+	\PYG{n}{end} \PYG{k}{for}
+\PYG{n}{end} \PYG{k}{for}
+\PYG{n}{Return} \PYG{n}{Table}\PYG{p}{[}\PYG{n}{n} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{][}\PYG{n}{m} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{]}
+\end{Verbatim}

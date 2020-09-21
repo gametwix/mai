@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Procedure} \PYG{n}{Recalculate}\PYG{o}{\PYGZhy{}}\PYG{n}{Hash}\PYG{p}{(}\PYG{n}{String}\PYG{p}{,} \PYG{n}{Curr}\PYG{p}{,} \PYG{n}{Prime}\PYG{p}{,} \PYG{n}{Hash}\PYG{p}{)}\PYG{o}{:}
+\PYG{n+nl}{Hash} \PYG{p}{:}\PYG{o}{=} \PYG{n}{Hash} \PYG{o}{\PYGZhy{}} \PYG{n}{Value} \PYG{n}{of} \PYG{n}{String}\PYG{p}{[}\PYG{n}{Curr}\PYG{p}{]}	 \PYG{n}{First} \PYG{n}{Letter} \PYG{n}{of} \PYG{n}{Previous} \PYG{n}{String}
+\PYG{n+nl}{Hash} \PYG{p}{:}\PYG{o}{=} \PYG{n}{Hash} \PYG{o}{/} \PYG{n}{Prime}
+\PYG{n+nl}{m} \PYG{p}{:}\PYG{o}{=}\PYG{n}{String}\PYG{p}{.}\PYG{n}{length}
+\PYG{n+nl}{New}\PYG{p}{:}\PYG{o}{=} \PYG{n}{Curr} \PYG{o}{+} \PYG{n}{m} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+\PYG{n+nl}{Hash} \PYG{p}{:}\PYG{o}{=} \PYG{n}{Hash} \PYG{o}{+}\PYG{p}{(}\PYG{n}{Value} \PYG{n}{of} \PYG{n}{String}\PYG{p}{[}\PYG{n}{New}\PYG{p}{])}\PYG{o}{\PYGZca{}}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{n}{Return} \PYG{n}{Hash}
+\end{Verbatim}

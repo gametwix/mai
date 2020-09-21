@@ -1,0 +1,400 @@
+% Ивенкова
+\vspace{\baselineskip}
+\includeimage{0.55}{images/103_1.pdf}
+
+\vspace{\baselineskip}
+\textbf{Подход кратчайшего интервала } также не является самым оптимальным,
+
+\vspace{\baselineskip}
+\includeimage{0.55}{images/103_2.pdf}
+
+\vspace{\baselineskip}
+в то время как \textbf{наименее конфликтный подход} действительно может показаться оптимальнее, однако существует пример, показывающий обратное:
+
+\vspace{\baselineskip}
+\includeimage{0.55}{images/103_3.pdf}
+
+\vspace{\baselineskip}
+Что вынуждает нас использовать подход \textbf{Наименьших временных затрат}. Псевдокод достаточно прост:
+
+\vspace{\baselineskip}
+\begin{enumerate} 
+    \item Отсортировать задачи по времени окончания так, чтобы $f_1 \le f_2 \le ... \le f_n$
+    \item Пусть А --- пустое множество
+    \item для j от 1 до n: если j совместимо со \textbf{всеми} задачами во множестве А, тогда множество А = A + {j}
+     \item множество А --- это \textbf{максимальное подмножество взаимно совместимых задач}
+\end{enumerate}
+
+\vspace{\baselineskip}
+Или программа на C++:
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3]{C++}
+#include <iostream>
+#include <utility>
+#include <tuple>
+#include <vector>
+#include <algorithm>
+const int jobCnt = 10;
+const int startTimes[] = { 2, 3, 1, 4, 3, 2, 6, 7, 8, 9};
+const int endTimes[] = { 4, 4, 3, 5, 5, 5, 8, 9, 9, 10};
+using namespace std;
+int main()
+{
+    vector<pair<int,int>> jobs;
+    for(int i=0; i<jobCnt; ++i)
+        jobs.push_back(make_pair(startTimes[i], endTimes[i]));
+    sort(jobs.begin(), jobs.end(),[](pair<int,int> p1, pair<int,int> p2)
+        { return p1.second < p2.second; });
+    vector<int> A;
+    for(int i=0; i<jobCnt; ++i)
+    {
+        auto job = jobs[i];
+        bool isCompatible = true;
+        for(auto jobIndex : A)
+        {
+            if(job.second >= jobs[jobIndex].first &&
+            job.first <= jobs[jobIndex].second)
+            {
+                isCompatible = false;
+                break;
+            }
+        }
+        if(isCompatible)
+        A.push_back(i);
+    }
+    cout << "Compatible: ";
+    for(auto i : A)
+        cout << "(" << jobs[i].first << "," << jobs[i].second << ") ";
+    cout << endl;
+    return 0;
+    }
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Вывод для этого примера: Compatible: ({\color{Purple}{1}},{\color{Purple}{3}}) ({\color{Purple}{4}},{\color{Purple}{5}}) ({\color{Purple}{6}},{\color{Purple}{8}}) ({\color{Purple}{9}},{\color{Purple}{10}})
+
+\vspace{\baselineskip}
+Явно выражена сложность реализованного алгоритма --- $\theta(n^2)$. Также здесь представлена реализация за $\theta(n \ \log \ n)$(пример на языке Java), заинтересованный читатель может прочесть его ниже.
+
+\vspace{\baselineskip}
+Теперь у нас есть жадный алгоритм для интервального планирования, но оптимален ли он?
+
+\vspace{\baselineskip}
+\textbf{Утверждение:} Самое раннее время завершения жадного алгоритма --- оптимальное.
+
+\vspace{\baselineskip}
+\textbf{Доказательство} (от обратного):
+
+\vspace{\baselineskip}
+Допустим жадный алгоритм не оптимален и $i_1, i_2, \ldots, i_k$ обозначают множество всех выбранных жадным алгоритмом задач. Пусть $j_1, j_2, \ldots, j_m$ обозначают множество в \textbf{оптимальном} решении при $i_1 = j_1, i_2 = j_2, \ldots, i_r = j_r$ для \textbf{наибольшего} возможного значения r.
+
+\vspace{\baselineskip}
+Задача $i_{(r+1)}$ существует и заканчивается до $j_{(r+1)}$ (самое раннее выполнение). Но $j_1, j_2, \ldots, j_r, i_{(r+1)},j_{(r+2)}, \ldots, j_m$ также \textbf{оптимальное} решение и для всех k в промежутке от 1 до r+1 включительно выполнено $j_k = i_k$. Это \textbf{противоречит} условию максимизации r. Что и следовало доказать.
+
+\vspace{\baselineskip}
+Второй пример демонстрирует то, что обычно существует много способов задания жадного алгоритма, но только некоторые могут найти оптимальное решение в каждом примере или, что вполне возможно, ни один не сможет найти оптимальное решение к данной задаче в каком-либо примере.
+
+\vspace{\baselineskip}
+Ниже представлена программа на языке Java, которая работает за $\theta(n \log n)$
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3]{Java}
+import java.util.Arrays;
+import java.util.Comparator;
+class Job
+{
+    int start, finish, profit;
+    Job(int start, int finish, int profit)
+    {
+        this.start = start;
+        this.finish = finish;
+        this.profit = profit;
+    }
+}
+class JobComparator implements Comparator<Job>
+{
+    public int compare(Job a, Job b)
+    {
+        return a.finish < b.finish ? -1 : a.finish == b.finish ? 0 : 1;
+    }
+}
+public class WeightedIntervalScheduling
+{
+    static public int binarySearch(Job jobs[], int index)
+    {
+        int lo = 0, hi = index - 1;
+        while (lo <= hi)
+            {
+            int mid = (lo + hi) / 2;
+            if (jobs[mid].finish <= jobs[index].start)
+            {
+                if (jobs[mid + 1].finish <= jobs[index].start)
+                    lo = mid + 1;
+                else
+                    return mid;
+            }
+            else
+                hi = mid - 1;
+        }
+        return -1;
+    }
+    static public int schedule(Job jobs[])
+    {
+    Arrays.sort(jobs, new JobComparator());
+    int n = jobs.length;
+    int table[] = new int[n];
+    table[0] = jobs[0].profit;
+    for (int i=1; i<n; i++)
+    {
+        int inclProf = jobs[i].profit;
+        int l = binarySearch(jobs, i);
+        if (l != -1)
+            inclProf += table[l];
+        table[i] = Math.max(inclProf, table[i-1]);
+    }
+    return table[n-1];
+    }
+    public static void main(String[] args)
+    {
+        Job jobs[] = {new Job(1, 2, 50), new Job(3, 5, 20), 
+                    new Job(6, 19, 100), new Job(2, 100, 200)};
+        System.out.println("Optimal profit is " + schedule(jobs));
+    }
+}
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+И ожидаемый вывод:
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+    Optimal profit is \p{250}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+\section*{Раздел 18.4: Минимизация задержки}
+
+\vspace{\baselineskip}
+Существует множество проблем минимизации задержки, в данном случае мы имеем один исполнитель, который может обрабатывать только одну задачу в одно и то же время. Задание j требует единиц времени обработки $t_j$ и должно быть выполнено в момент времени $d_j$. Если задача j начнется в момент времени sj, тогда время окончания обработки будет равно $f_j = s_j+t_j$. Мы объявляем задержку, как $L = \max(${\color{Purple}{0}}$, f_j - d_h)$ для всех j. Цель состоит в том, чтобы минимизировать максимальную задержку L.
+
+\vspace{\baselineskip}
+\begin{tabular}{ccccccc}
+\multicolumn{1}{c}{\textbf{}} &
+\multicolumn{1}{c}{\textbf{1}} & \multicolumn{1}{c}{\textbf{2}} & \multicolumn{1}{c}{\textbf{3}} & \multicolumn{1}{c}{\textbf{4}} &
+\multicolumn{1}{c}{\textbf{5}} &
+\multicolumn{1}{c}{\textbf{6}} \\[5pt]
+\ttfamily $t_j$ & 3 & 2 & 1 & 4 & 3 & 2\\[5pt]
+\ttfamily $d_j$ & 6 & 8 & 9 & 9 & 10 & 11\\[5pt]
+\end{tabular}
+
+\vspace{\baselineskip}
+\begin{tabular}{lccccccccccccccc}
+\multicolumn{1}{l}{\textbf{Задача}} & \multicolumn{1}{c}{\textbf{3}} & \multicolumn{1}{c}{\textbf{2}} & \multicolumn{1}{c}{\textbf{2}} &
+\multicolumn{1}{c}{\textbf{5}} &
+\multicolumn{1}{c}{\textbf{5}} &
+\multicolumn{1}{c}{\textbf{5}} &
+\multicolumn{1}{c}{\textbf{4}} &
+\multicolumn{1}{c}{\textbf{4}} &
+\multicolumn{1}{c}{\textbf{4}} &
+\multicolumn{1}{c}{\textbf{4}} &
+\multicolumn{1}{c}{\textbf{1}} &
+\multicolumn{1}{c}{\textbf{1}} &
+\multicolumn{1}{c}{\textbf{1}} &
+\multicolumn{1}{c}{\textbf{6}} &
+\multicolumn{1}{c}{\textbf{6}}\\[5pt]
+\ttfamily Время & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15\\[5pt]
+\ttfamily $l_j$ & -8 & \ & -5 & \ & \ & -4 & \ & \ & \ & 1 & \ & \ & \textbf{7} & \ & 4\\[5pt]
+\end{tabular}
+
+\vspace{\baselineskip}
+Очевидно, что решение L={\color{Purple}{7}} не является оптимальным. Давайте посмотрим bнекоторые способы задания жадного алгоритма:
+
+\vspace{\baselineskip}
+\begin{enumerate}
+    \item \textbf{Первоочередный вызов с наименьшим временем обработки:} спланировать задачи по возрастанию времени обработки j
+    \item \textbf{\textbf{}} спланировать задачи по возрастанию срока окончания задачи $d_j$
+    \item \textbf{Первоочередный вызов с наименьшей разницей:} спланировать задачи по возрастанию разницы $d_j - t_j$
+\end{enumerate}
+
+\vspace{\baselineskip}
+Легко заметить, что \textbf{первоочередный вызов с наименьшим временем обработки} неоптимальный, показательным примером для этого является
+
+\vspace{\baselineskip}
+\begin{tabular}{ccc}
+\multicolumn{1}{c}{\textbf{}} &
+\multicolumn{1}{c}{\textbf{1}} & \multicolumn{1}{c}{\textbf{2}} \\[5pt]
+\ttfamily $t_j$ & 1 & 5\\[5pt]
+\ttfamily $d_j$ & 10 & 5 \\[5pt]
+\end{tabular}
+
+\vspace{\baselineskip}
+решение \textbf{первоочередного вызова с наименьшей разницей} имеет схожие недостатки
+
+\vspace{\baselineskip}
+\begin{tabular}{ccc}
+\multicolumn{1}{c}{\textbf{}} &
+\multicolumn{1}{c}{\textbf{1}} & \multicolumn{1}{c}{\textbf{2}} \\[5pt]
+\ttfamily $t_j$ & 1 & 5\\[5pt]
+\ttfamily $d_j$ & 3 & 5 \\[5pt]
+\end{tabular}
+
+\vspace{\baselineskip}
+последняя стратегия похожа на правильную, поэтому давайте начнём с псевдо-кода:
+
+\vspace{\baselineskip}
+\begin{enumerate}
+    \item Отсортировать n задач по времени так, чтобы $d_1 \le d_2 \le \ldots \le d_n$
+    \item Положим t = {\color{Purple}{0}}
+    \item Для j от {\color{Purple}{1}} до n:
+    \begin{enumerate}
+        \item[$\circ$] Назначить задание j на интервал [t, t + $t_j$]
+        \item[$\circ$] Положим $s_j = t$ и $f_j = t + t_j$
+        \item[$\circ$] Положим $t = t + t_j$
+    \end{enumerate}
+    \item Возвратить интервалы [$s_1, f_1$], [$s_2, f_2$], \ldots, [$s_n, f_n$]
+\end{enumerate}
+
+\vspace{\baselineskip}
+И реализация на C++:
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3]{C++}
+#include <iostream>
+#include <utility>
+#include <tuple>
+#include <vector>
+#include <algorithm>
+const int jobCnt = 10;
+const int processTimes[] = { 2, 3, 1, 4, 3, 2, 3, 5, 2, 1};
+const int dueTimes[] = { 4, 7, 9, 13, 8, 17, 9, 11, 22, 25};
+using namespace std;
+int main()
+{
+    vector<pair<int,int>> jobs;
+    for(int i=0; i<jobCnt; ++i)
+        jobs.push_back(make_pair(processTimes[i], dueTimes[i]));
+    sort(jobs.begin(), jobs.end(),[](pair<int,int> p1, pair<int,int> p2)
+        { return p1.second < p2.second; });
+    int t = 0;
+    vector<pair<int,int>> jobIntervals;
+    for(int i=0; i<jobCnt; ++i)
+    {
+        jobIntervals.push_back(make_pair(t,t+jobs[i].first));
+    t += jobs[i].first;
+    }
+    cout << "Intervals:\n" << endl;
+    int lateness = 0;
+    for(int i=0; i<jobCnt; ++i)
+    {
+        auto pair = jobIntervals[i];
+        lateness = max(lateness, pair.second-jobs[i].second);
+        cout << "(" << pair.first << "," << pair.second << ") "
+             << "Lateness: " << pair.second-jobs[i].second << std::endl;
+    }
+    cout << "\nmaximal lateness is " << lateness << endl;
+    return 0;
+}
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+И вывод этой программы:
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C++}
+Intervals:
+(0,2) Lateness:-2
+(2,5) Lateness:-2
+(5,8) Lateness: 0
+(8,9) Lateness: 0
+(9,12) Lateness: 3
+(12,17) Lateness: 6
+(17,21) Lateness: 8
+(21,23) Lateness: 6
+(23,25) Lateness: 3
+(25,26) Lateness: 1
+maximal lateness is 8
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Рабочий цикл алгоритма очевидно имеет сложность $\theta(n \log n)$, потому что сортировка является преобладающей операцией алгоритма. Сейчас нам нужно показать, что он оптимальный. Тривиально у самой оптимальной планировки \textbf{нет времени простоя. Первоочередный вызов с наиболее ранним дедлайном} также не имеет времени простоя.
+
+\vspace{\baselineskip}
+Давайте предполагать, что задачи пронумерованы так, что $d_1 \le d_2 \le \ldots \le d_n$. Мы говорим, что \textbf{инверсия} расписания --- это пара заданий i и j таких, что $i < j$, но j запланировано раньше i. Следуя этому определению \textbf{первоочередный вызов с наиболее ранним дедлайном} не имеет инверсий. Конечно, если расписание имеет инверсию, то оно также имеет пару обращенных к друг другу задач (inverted jobs), запланированных последовательно.
+
+\vspace{\baselineskip}
+\textbf{Утверждение:} Замена двух смежных, обращенных друг к другу задач уменьшает количество инверсий \textbf{на одно} и \textbf{не увеличивает} максимальную задержку.
+
+\vspace{\baselineskip}
+\textbf{Доказательство:} пусть L будет задержкой перед заменой, а M после. Т.к. обмен двумя соседними задачами не сдвигает другие задачи с их позиций, то для всех k != i, j выполняется равенство $L_k = M_k$.
+
+\vspace{\baselineskip}
+Очевидно, что $M_i \le L_i$, т.к. задача i была запланирована раньше. Если задача j запаздывает, то следуем определению: 
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+
+\hspace{5cm} $M_j$ \ = \ $f_i - d_j$ (definition)
+
+\hspace{5cm} \hspace{4mm} <= \ $f_i - d_i$ (since i and j are exchanged)
+ 
+\hspace{5cm} \hspace{4mm} <= \ $L_i$    
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Это означает, что задержка после перестановки меньше или равна той, что была до неё. Что и следовало доказать.
+
+\vspace{\baselineskip}
+\textbf{Утверждение: Первоочередный вызов с наиболее ранним дедлайном} является оптимальной стратегией S.
+
+\vspace{\baselineskip}
+\textbf{Доказательство}(от обратного): 
+
+\vspace{\baselineskip}
+Предположим, S* это оптимальное расписание с \textbf{наименьшим возможным} количеством инверсий. Мы можем предположить, что у S* нет времени простоя. Если у S* нет инверсий, тогда S = S* и проблема решена. Если у S* есть инверсия, следовательно, в данном расписании имеется смежная инверсия. В последнем утверждении говорится, что мы можем менять местами соседние инверсии, не увеличивая задержку, но уменьшая эти самые инверсии. Это противоречит определению S*.
+
+\vspace{\baselineskip}
+Проблема минимизации задержки и смежные ей проблемы минимизации суммарного времени выполнения, где задается вопрос о минимальном сроке, имеет множество применений в реальном мире. Но обычно вы работаете не с одной машиной, и всё множество машин обрабатывают одинаковую задачу с разной скоростью. Эти NP-полные проблемы решаются очень быстро.
+
+\vspace{\baselineskip}
+Еще один интересный вопрос возникает, если не рассматривать проблему в \textbf{автономном режиме}, где у нас есть все задачи и данные при себе, а рассматривать как способ поступления данных \textbf{онлайн}, где задачи появляются во время работы программы.
+
+\chapter*{Глава 19: Алгоритм Прима}
+
+\vspace{\baselineskip}
+\section*{Раздел 19.1: Введение в алгоритм Прима}
+
+\vspace{\baselineskip}
+Допустим, у нас есть \textbf{8} домов. Вы хотим установить телефонные линии между этими домами. Ребро между домами представляет из себя стоимость установки телефонной линии между этими двумя домами.
+
+\includeimage{0.7}{images/110.pdf}
+
+\vspace{\baselineskip}
+Наша задача установить линии таким способом, чтобы все дома были соединены, и чтобы стоимость всей установки связи была минимальная. И как мы решим эту проблему? Мы можем использовать \textbf{алгоритм Прима}.
+
+\vspace{\baselineskip}
+\href{https://vk.cc/atMoK7}{\underline{Алгоритм Прима}} это жадный алгоритм, который находит минимальное остовное дерево для взвешенного неориентированного графа. Это означает, что он находит подмножество ребер, таких, что формируют дерево, которое включает каждый узел, где общий вес всех ребер в дереве минимизирован. Алгоритм был разработан в 1930 году чешским математиком \\ \href{https://vk.cc/atMoNq}{\underline{Ярником Войтехомом}} и затем переоткрыт и заново опубликован учёным компьютерных наук \href{https://en.wikipedia.org/wiki/Robert_C._Prim}{\underline{Робертом Примом}} в 1957 году и \href{https://vk.cc/atMoUn}{\underline{Эдсгером Вибе Дейкстрой}} в 1959. Этот алгоритм также известен, как \textbf{алгоритм DJP, алгоритм Ярника, алгоритм Прим-Ярника или алгоритм Прим-Дейкстры.}
+
+\vspace{\baselineskip}
+А теперь первым делом давайте посмотрим на техническую составляющую алгоритма. Если мы создаем граф \textbf{S} , используя некоторые узлы и ребра неориентированного графа \textbf{G}, тогда \textbf{S} называется \textbf{подграфом} графа \textbf{G}. Здесь и далее \textbf{S} будет называться \textbf{остовным деревом} если и только если:
+
+\vspace{\baselineskip}
+\begin{itemize}
+  \item Он содержит все узлы графа \textbf{G}.
+  \item Это дерево, что значит, что в нем нет циклов и все узлы соединены между собой.
+  \item В дереве ровно \textbf{(n - 1)} узлов, где \textbf{n} это количество узлов в \textbf{G}.
+\end{itemize}
+
+\vspace{\baselineskip}
+В графе может быть несколько \textbf{остовных деревьев. Минимальное остовное дерево} взвешенного неориентированного графа --- это такое дерево, что сумма весов на ребрах минимальна. Сейчас мы воспользуемся \textbf{алгоритмом Прима}, чтобы найти минимальное остовное дерево, или же найдем способ настроить телефонные линии в нашем графе-примере таким образом, чтобы стоимость установки была минимальной.
+
+\vspace{\baselineskip}
+Для начала вы выберем узел-\textbf{источник}. Допустим, что \textbf{node-1} это наш \textbf{источник}. Теперь мы добавим ребро из \textbf{node-1} так, чтобы к нашему подграфу добавилась как можно меньший вес. Тут мы отметим ребро, которое находится в подграфе, используя \textbf{синий} цвет. Здесь \textbf{1-5} это наше желаемое ребро.

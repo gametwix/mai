@@ -1,0 +1,77 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public} \PYG{k+kd}{class} \PYG{n+nc}{KMP} \PYG{p}{\PYGZob{}}
+
+\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{main}\PYG{p}{(}\PYG{n}{String}\PYG{o}{[]} \PYG{n}{args}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//строка данный над которой мы будем работать}
+	\PYG{n}{String} \PYG{n}{str} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}abcabdabc\PYGZdq{}}\PYG{p}{;}
+	\PYG{c+c1}{//паттерн, являющийся префиксом и суффиксом}
+	\PYG{n}{String} \PYG{n}{pattern} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}abc\PYGZdq{}}\PYG{p}{;}
+	\PYG{c+c1}{//создаем новый объект класс}
+	\PYG{n}{KMP} \PYG{n}{obj} \PYG{o}{=} \PYG{k}{new} \PYG{n}{KMP}\PYG{p}{();}
+	\PYG{c+c1}{//выводим строку данных и паттерн}
+	\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{n}{obj}\PYG{p}{.}\PYG{n+na}{patternExistKMP}\PYG{p}{(}\PYG{n}{str}\PYG{p}{.}\PYG{n+na}{toCharArray}\PYG{p}{(),}                           \PYG{n}{pattern}\PYG{p}{.}\PYG{n+na}{toCharArray}\PYG{p}{()));}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kd}{public} \PYG{k+kt}{int}\PYG{o}{[]} \PYG{n+nf}{computeLPS}\PYG{p}{(}\PYG{k+kt}{char}\PYG{o}{[]} \PYG{n}{str}\PYG{p}{)\PYGZob{}}
+	\PYG{c+c1}{//создаем вспомогательный массив длина которого, равна длины строки}
+	\PYG{k+kt}{int} \PYG{n}{lps}\PYG{o}{[]} \PYG{o}{=} \PYG{k}{new} \PYG{k+kt}{int}\PYG{o}{[}\PYG{n}{str}\PYG{p}{.}\PYG{n+na}{length}\PYG{o}{]}\PYG{p}{;}
+	\PYG{c+c1}{//обнуляем первый элемент массива и счетчик}
+	\PYG{n}{lps}\PYG{o}{[}\PYG{l+m+mi}{0}\PYG{o}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{c+c1}{//обходим всю строку}
+	\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{str}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{;}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+		\PYG{c+c1}{//если j элемент строки равен i элементе}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{str}\PYG{o}{[}\PYG{n}{j}\PYG{o}{]} \PYG{o}{==} \PYG{n}{str}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{p}{)\PYGZob{}}
+			\PYG{c+c1}{//кладем значение j+1 в i элемент вспомогательного массива}
+			\PYG{n}{lps}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]} \PYG{o}{=} \PYG{n}{j}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{;}
+			\PYG{c+c1}{//увеличиваем j и i}
+			\PYG{n}{j}\PYG{o}{++}\PYG{p}{;}
+			\PYG{n}{i}\PYG{o}{++}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}\PYG{k}{else}\PYG{p}{\PYGZob{}}
+			\PYG{c+c1}{//иначе,если j не равен нулю, то j равен}
+			\PYG{c+c1}{//j\PYGZhy{}1 элементу вспомогательного массива}
+			\PYG{k}{if}\PYG{p}{(}\PYG{n}{j}\PYG{o}{!=}\PYG{l+m+mi}{0}\PYG{p}{)\PYGZob{}}
+				\PYG{n}{j} \PYG{o}{=} \PYG{n}{lps}\PYG{o}{[}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}\PYG{k}{else}\PYG{p}{\PYGZob{}}
+				\PYG{c+c1}{//если j равен нулю, то приравниваем i}
+				\PYG{c+c1}{//элемент вспомогательного массива значению j+1}
+				\PYG{n}{lps}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]} \PYG{o}{=} \PYG{n}{j}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{;}
+				\PYG{c+c1}{//увеличиваем i}
+				\PYG{n}{i}\PYG{o}{++}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{c+c1}{//возвращаем вспомогательный массив}
+	\PYG{k}{return} \PYG{n}{lps}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kd}{public} \PYG{k+kt}{boolean} \PYG{n+nf}{patternExistKMP}\PYG{p}{(}\PYG{k+kt}{char}\PYG{o}{[]} \PYG{n}{text}\PYG{p}{,}\PYG{k+kt}{char}\PYG{o}{[]} \PYG{n}{pat}\PYG{p}{)\PYGZob{}}
+	\PYG{c+c1}{//заполняем вспомогательный массив}
+	\PYG{k+kt}{int}\PYG{o}{[]} \PYG{n}{lps} \PYG{o}{=} \PYG{n}{computeLPS}\PYG{p}{(}\PYG{n}{pat}\PYG{p}{);}
+
+	\PYG{c+c1}{//обнуляем переменные}
+	\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{j}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{c+c1}{//пока длина строки больше i и длина паттерна больше j}
+	\PYG{k}{while}\PYG{p}{(}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{text}\PYG{p}{.}\PYG{n+na}{length} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{j}\PYG{o}{\PYGZlt{}}\PYG{n}{pat}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{)\PYGZob{}}
+		\PYG{c+c1}{//если i буква строки равна J букве паттерна}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{text}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]} \PYG{o}{==} \PYG{n}{pat}\PYG{o}{[}\PYG{n}{j}\PYG{o}{]}\PYG{p}{)\PYGZob{}}
+			\PYG{c+c1}{//увеличивает i и j на единицу}
+			\PYG{n}{i}\PYG{o}{++}\PYG{p}{;}
+			\PYG{n}{j}\PYG{o}{++}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}\PYG{k}{else}\PYG{p}{\PYGZob{}}
+			\PYG{c+c1}{//иначе,если j не равен нулю, то присваиваем ему значение}
+			\PYG{c+c1}{//элемента j\PYGZhy{}1 из вспомогательного массива в}
+			\PYG{k}{if}\PYG{p}{(}\PYG{n}{j}\PYG{o}{!=}\PYG{l+m+mi}{0}\PYG{p}{)\PYGZob{}}
+				\PYG{n}{j} \PYG{o}{=} \PYG{n}{lps}\PYG{o}{[}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}\PYG{k}{else}\PYG{p}{\PYGZob{}}
+				\PYG{c+c1}{//иначе увеличиваем i на единицу}
+				\PYG{n}{i}\PYG{o}{++}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{c+c1}{//если j равен длине паттерна возвращаем истину, иначе ложь}
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{j}\PYG{o}{==}\PYG{n}{pat}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{)}
+		\PYG{k}{return} \PYG{k+kc}{true}\PYG{p}{;}
+	\PYG{k}{return} \PYG{k+kc}{false}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

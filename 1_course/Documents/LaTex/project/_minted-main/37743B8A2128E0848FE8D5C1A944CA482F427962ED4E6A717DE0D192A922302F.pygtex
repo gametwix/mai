@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Procedure} \PYG{n}{AdjacencyMatrix}\PYG{p}{(}\PYG{n}{N}\PYG{p}{,} \PYG{n}{E}\PYG{p}{)}\PYG{o}{:}	\PYG{c+c1}{// N \PYGZhy{}\PYGZgt{} количество вершин}
+\PYG{n}{Matrix}\PYG{p}{[}\PYG{n}{N}\PYG{p}{][}\PYG{n}{E}\PYG{p}{]}	   					\PYG{c+c1}{// E \PYGZhy{}\PYGZgt{} количество рёбер}
+\PYG{k}{for} \PYG{n}{i} \PYG{n}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{E}
+	\PYG{n}{input} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{n1}\PYG{p}{,} \PYG{n}{n2}\PYG{p}{,} \PYG{n}{cost}
+	\PYG{n}{Matrix}\PYG{p}{[}\PYG{n}{n1}\PYG{p}{][}\PYG{n}{n2}\PYG{p}{]}\PYG{o}{=}\PYG{n}{cost}
+	\PYG{n}{Matrix}\PYG{p}{[}\PYG{n}{n2}\PYG{p}{][}\PYG{n}{n1}\PYG{p}{]}\PYG{o}{=}\PYG{n}{cost}
+\PYG{n}{endfor}
+\end{Verbatim}

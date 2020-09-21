@@ -1,0 +1,24 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//Функция возвращает индекс искомого элемента}
+\PYG{c+c1}{// Если элемент не был найден, то функция вернет \PYGZhy{}1}
+\PYG{k+kt}{int} \PYG{n+nf}{binsearch}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{a}\PYG{p}{[],} \PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{low}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{high}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{k+kt}{int} \PYG{n}{mid}\PYG{p}{;}
+\PYG{c+c1}{// low больше high, значит, элемент не был найден}
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{low} \PYG{o}{\PYGZgt{}} \PYG{n}{high}\PYG{p}{)}
+\PYG{k}{return} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+	\PYG{c+c1}{// Берем середину}
+\PYG{n}{mid} \PYG{o}{=} \PYG{p}{(}\PYG{n}{low} \PYG{o}{+} \PYG{n}{high}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mi}{2}\PYG{p}{;}
+\PYG{c+c1}{// Элемент найден}
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{x} \PYG{o}{==} \PYG{n}{a}\PYG{p}{[}\PYG{n}{mid}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+\PYG{k}{return} \PYG{p}{(}\PYG{n}{mid}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}} \PYG{k}{else}
+\PYG{c+c1}{// Если середина больше, то}
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{x} \PYG{o}{\PYGZlt{}} \PYG{n}{a}\PYG{p}{[}\PYG{n}{mid}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{// Ищем в меньшей половине}
+\PYG{n}{binsearch}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{x}\PYG{p}{,} \PYG{n}{low}\PYG{p}{,} \PYG{n}{mid} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{// Ищем в большей половине}
+\PYG{n}{binsearch}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{x}\PYG{p}{,} \PYG{n}{mid} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{high}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

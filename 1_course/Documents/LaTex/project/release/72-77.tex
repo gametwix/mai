@@ -1,0 +1,524 @@
+% Ивенкова
+
+\vspace{\baselineskip}
+Это похоже на задачу выбора действия с использованием жадного алгоритма, но есть ещё кое-что. То есть вместо максимизации количества выполненных работ, мы ориентируемся на получение максимальной выгоды. Количество выполненных заданий здесь не важно. Давайте посмотрим на пример: 
+
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{17.6mm}Name\hspace{17.6mm}|\hspace{6.57mm}A\hspace{6.57mm} |\hspace{6.57mm}B\hspace{6.57mm} |\hspace{6.57mm}C\hspace{6.57mm} |\hspace{6.57mm}D\hspace{6.57mm} |\hspace{6.57mm}E\hspace{6.57mm} |\hspace{6.8mm}F\hspace{6.8mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{0.7mm}{\small{(Start Time,Finish Time)}}\hspace{0.7mm}
+|\hspace{3.85mm}(2,5)\hspace{3.85mm} |\hspace{3.85mm}(6,7)\hspace{3.85mm} |\hspace{3.85mm}(7,9)\hspace{3.85mm} |\hspace{3.85mm}(1,3)\hspace{3.85mm} |\hspace{3.85mm}(5,8)\hspace{3.85mm} |\hspace{3.85mm}(4,6)\hspace{3.85mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{17.6mm}Profit\hspace{17.6mm}|\hspace{7.1mm}6\hspace{7.1mm} |\hspace{7.1mm}4\hspace{7.1mm} |\hspace{7.1mm}2\hspace{7.1mm} |\hspace{7.1mm}5\hspace{7.1mm} |\hspace{5.8mm}11\hspace{5.8mm} |\hspace{7.1mm}5\hspace{7.1mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Задания обозначены именем, временем их начала и окончания и выгодой. После нескольких итераций мы можем выяснить, что, если мы выполняем {\bfseries задание-A} и {\bfseries задание-E}, мы можем получить максимальную выгоду 17. Как это выяснить с помощью алгоритма? Первое, что мы делаем, это сортируем задания по времени их окончания в порядке неубывания. Зачем мы это делаем? Потому что если мы выбираем задание, которое занимает меньше времени, то мы оставляем больше времени для выбора других работ. У нас есть: 
+
+\newpage
+\begin{tcolorbox}
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{17.6mm}Name\hspace{17.6mm}|\hspace{6.57mm}D\hspace{6.57mm} |\hspace{6.57mm}A\hspace{6.57mm} |\hspace{6.57mm}F\hspace{6.57mm} |\hspace{6.57mm}B\hspace{6.57mm} |\hspace{6.57mm}E\hspace{6.57mm} |\hspace{6.8mm}C\hspace{6.8mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{0.7mm}{\small{(Start Time,Finish Time)}}\hspace{0.7mm}
+|\hspace{3.85mm}(1,3)\hspace{3.85mm} |\hspace{3.85mm}(2,5)\hspace{3.85mm} |\hspace{3.85mm}(4,6)\hspace{3.85mm} |\hspace{3.85mm}(6,7)\hspace{3.85mm} |\hspace{3.85mm}(5,8)\hspace{3.85mm} |\hspace{3.85mm}(7,9)\hspace{3.85mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{17.6mm}Profit\hspace{17.6mm}|\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}6\hspace{7.1mm} |\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}4\hspace{7.1mm} |\hspace{5.8mm}11\hspace{5.8mm} |\hspace{7.1mm}2\hspace{7.1mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+У нас имеется дополнительный временный массив {\bfseries Acc\_Prof} размера n (n здесь обозначает общее количество заданий). Он будет содержать максимальную накопленную выгоду от выполнения работ. Мы инициализируем значения массива с выгодой от каждого задания. Это означает, что {\bfseries Acc\_Prof [i]} сначала будет содержать прибыль от выполнения {\bfseries i-го} задания. 
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{14mm}Acc\_Prof\hspace{14mm}|\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}6\hspace{7.1mm} |\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}4\hspace{7.1mm} |\hspace{5.8mm}11\hspace{5.8mm} |\hspace{7.1mm}2\hspace{7.1mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Теперь давайте обозначим {\bfseries позицию 2} через {\bfseries i}, а {\bfseries позиция 1} будет обозначена через {\bfseries j}. Наша стратегия будет состоять в том, чтобы перебрать {\bfseries j} от {\bfseries 1} до {\bfseries i-1}, и после каждой итерации мы будем увеличивать {\bfseries i} на 1, пока {\bfseries i} не станет равна {\bfseries n + 1}. 
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\hspace{56mm}j\hspace{17.5mm}i
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{17.6mm}Name\hspace{17.6mm}|\hspace{6.57mm}D\hspace{6.57mm} |\hspace{6.57mm}A\hspace{6.57mm} |\hspace{6.57mm}F\hspace{6.57mm} |\hspace{6.57mm}B\hspace{6.57mm} |\hspace{6.57mm}E\hspace{6.57mm} |\hspace{6.8mm}C\hspace{6.8mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{0.7mm}{\small{(Start Time,Finish Time)}}\hspace{0.7mm}
+|\hspace{3.85mm}(1,3)\hspace{3.85mm} |\hspace{3.85mm}(2,5)\hspace{3.85mm} |\hspace{3.85mm}(4,6)\hspace{3.85mm} |\hspace{3.85mm}(6,7)\hspace{3.85mm} |\hspace{3.85mm}(5,8)\hspace{3.85mm} |\hspace{3.85mm}(7,9)\hspace{3.85mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{17.6mm}Profit\hspace{17.6mm}|\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}6\hspace{7.1mm} |\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}4\hspace{7.1mm} |\hspace{5.8mm}11\hspace{5.8mm} |\hspace{7.1mm}2\hspace{7.1mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{14mm}Acc\_Prof\hspace{14mm}|\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}6\hspace{7.1mm} |\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}4\hspace{7.1mm} |\hspace{5.8mm}11\hspace{5.8mm} |\hspace{7.1mm}2\hspace{7.1mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Мы проверяем, не совпадают ли \textbf{задание[i]} и \textbf{задание[j]}, то есть, если время завершения \textbf{задания[j]} больше времени начала \textbf{задания[i]}, то эти две работы не могут быть выполнены вместе. Однако, если они не пересекаются, мы смотрим, если \textbf{Acc\_Prof [j] + Profit [i]> Acc\_Prof [i]}. В этом случае мы обновим \textbf{Acc\_Prof [i] = Acc\_Prof [j] + Profit [i]}. Это: 
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{Java}
+if Job[j].finish_time <= Job[i].start_time
+	if Acc_Prof[j] + Profit[i] > Acc_Prof[i]
+		Acc_Prof[i] = Acc_Prof[j] + Profit[i]
+	endif
+endif
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Здесь \textbf{Acc\_Prof [j] + Profit [i]} представляет собой накопленную выгоду от выполнения этих двух заданий вместе. Давайте проверим это для нашего примера: Здесь \textbf{задание[j]} пересекается с \textbf{заданием[i]}. Следовательно, они не могут быть выполнены вместе. Так как наш \textbf{j} равен \textbf{i-1}, мы увеличиваем значение \textbf{i} до \textbf{i + 1}, то есть до \textbf{3}. И мы устанавливаем \textbf{j = 1}. 
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\hspace{56mm}j\hspace{36mm}i
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{17.6mm}Name\hspace{17.6mm}|\hspace{6.57mm}D\hspace{6.57mm} |\hspace{6.57mm}A\hspace{6.57mm} |\hspace{6.57mm}F\hspace{6.57mm} |\hspace{6.57mm}B\hspace{6.57mm} |\hspace{6.57mm}E\hspace{6.57mm} |\hspace{6.8mm}C\hspace{6.8mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{0.7mm}{\small{(Start Time,Finish Time)}}\hspace{0.7mm}
+|\hspace{3.85mm}(1,3)\hspace{3.85mm} |\hspace{3.85mm}(2,5)\hspace{3.85mm} |\hspace{3.85mm}(4,6)\hspace{3.85mm} |\hspace{3.85mm}(6,7)\hspace{3.85mm} |\hspace{3.85mm}(5,8)\hspace{3.85mm} |\hspace{3.85mm}(7,9)\hspace{3.85mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{17.6mm}Profit\hspace{17.6mm}|\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}6\hspace{7.1mm} |\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}4\hspace{7.1mm} |\hspace{5.8mm}11\hspace{5.8mm} |\hspace{7.1mm}2\hspace{7.1mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{14mm}Acc\_Prof\hspace{14mm}|\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}6\hspace{7.1mm} |\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}4\hspace{7.1mm} |\hspace{5.8mm}11\hspace{5.8mm} |\hspace{7.1mm}2\hspace{7.1mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Теперь \textbf{задание[j]} и \textbf{задание[i]} не пересекаются. Общая выгода, которую мы можем получить, выбрав эти два задания: \textbf{Acc\_Prof [j] + Profit [i] = 5 + 5 = 10}, что больше, чем \textbf{Acc\_Prof [i]}. Поэтому мы обновляем \textbf{Acc\_Prof [i] = 10}. Мы также увеличиваем \textbf{j} на \textbf{1}. Мы получили, 
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\hspace{75mm}j\hspace{17mm}i
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{17.6mm}Name\hspace{17.6mm}|\hspace{6.57mm}D\hspace{6.57mm} |\hspace{6.57mm}A\hspace{6.57mm} |\hspace{6.57mm}F\hspace{6.57mm} |\hspace{6.57mm}B\hspace{6.57mm} |\hspace{6.57mm}E\hspace{6.57mm} |\hspace{6.8mm}C\hspace{6.8mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{0.7mm}{\small{(Start Time,Finish Time)}}\hspace{0.7mm}
+|\hspace{3.85mm}(1,3)\hspace{3.85mm} |\hspace{3.85mm}(2,5)\hspace{3.85mm} |\hspace{3.85mm}(4,6)\hspace{3.85mm} |\hspace{3.85mm}(6,7)\hspace{3.85mm} |\hspace{3.85mm}(5,8)\hspace{3.85mm} |\hspace{3.85mm}(7,9)\hspace{3.85mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{17.6mm}Profit\hspace{17.6mm}|\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}6\hspace{7.1mm} |\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}4\hspace{7.1mm} |\hspace{5.8mm}11\hspace{5.8mm} |\hspace{7.1mm}2\hspace{7.1mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{14mm}Acc\_Prof\hspace{14mm}|\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}6\hspace{7.1mm} |\hspace{6mm}10\hspace{6mm} |\hspace{7.1mm}4\hspace{7.1mm} |\hspace{5.8mm}11\hspace{5.8mm} |\hspace{7.1mm}2\hspace{7.1mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Здесь \textbf{задание[j]} перекрывается с \textbf{заданием[i]} и \textbf{j} равен \textbf{i-1}. Таким образом, мы увеличиваем \textbf{i} на \textbf{1} и устанавливаем \textbf{j = 1}. Мы получили, 
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\hspace{56mm}j\hspace{54.5mm}i
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{17.6mm}Name\hspace{17.6mm}|\hspace{6.57mm}D\hspace{6.57mm} |\hspace{6.57mm}A\hspace{6.57mm} |\hspace{6.57mm}F\hspace{6.57mm} |\hspace{6.57mm}B\hspace{6.57mm} |\hspace{6.57mm}E\hspace{6.57mm} |\hspace{6.8mm}C\hspace{6.8mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{0.7mm}{\small{(Start Time,Finish Time)}}\hspace{0.7mm}
+|\hspace{3.85mm}(1,3)\hspace{3.85mm} |\hspace{3.85mm}(2,5)\hspace{3.85mm} |\hspace{3.85mm}(4,6)\hspace{3.85mm} |\hspace{3.85mm}(6,7)\hspace{3.85mm} |\hspace{3.85mm}(5,8)\hspace{3.85mm} |\hspace{3.85mm}(7,9)\hspace{3.85mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{17.6mm}Profit\hspace{17.6mm}|\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}6\hspace{7.1mm} |\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}4\hspace{7.1mm} |\hspace{5.8mm}11\hspace{5.8mm} |\hspace{7.1mm}2\hspace{7.1mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{14mm}Acc\_Prof\hspace{14mm}|\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}6\hspace{7.1mm} |\hspace{6mm}10\hspace{6mm} |\hspace{7.1mm}4\hspace{7.1mm} |\hspace{5.8mm}11\hspace{5.8mm} |\hspace{7.1mm}2\hspace{7.1mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Теперь \textbf{задание[j]} и \textbf{задание[i]} не пересекаются, мы получаем выгоду \textbf{5 + 4 = 9}, которая больше, чем \textbf{Acc\_Prof [i]}. Обновим \textbf{Acc\_Prof [i] = 9} и увеличим \textbf{j} на 1. 
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\hspace{75mm}j\hspace{35.5mm}i
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{17.6mm}Name\hspace{17.6mm}|\hspace{6.57mm}D\hspace{6.57mm} |\hspace{6.57mm}A\hspace{6.57mm} |\hspace{6.57mm}F\hspace{6.57mm} |\hspace{6.57mm}B\hspace{6.57mm} |\hspace{6.57mm}E\hspace{6.57mm} |\hspace{6.8mm}C\hspace{6.8mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{0.7mm}{\small{(Start Time,Finish Time)}}\hspace{0.7mm}
+|\hspace{3.85mm}(1,3)\hspace{3.85mm} |\hspace{3.85mm}(2,5)\hspace{3.85mm} |\hspace{3.85mm}(4,6)\hspace{3.85mm} |\hspace{3.85mm}(6,7)\hspace{3.85mm} |\hspace{3.85mm}(5,8)\hspace{3.85mm} |\hspace{3.85mm}(7,9)\hspace{3.85mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{17.6mm}Profit\hspace{17.6mm}|\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}6\hspace{7.1mm} |\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}4\hspace{7.1mm} |\hspace{5.8mm}11\hspace{5.8mm} |\hspace{7.1mm}2\hspace{7.1mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{14mm}Acc\_Prof\hspace{14mm}|\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}6\hspace{7.1mm} |\hspace{6mm}10\hspace{6mm} |\hspace{7.1mm}9\hspace{7.1mm} |\hspace{5.8mm}11\hspace{5.8mm} |\hspace{7.1mm}2\hspace{7.1mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+И снова \textbf{задание[j]} и \textbf{задание[i]} не пересекаются. Суммарная выгода: \textbf{6 + 4 = 10}, что больше, чем \textbf{Acc\_Prof [i]}. Мы снова обновляем \textbf{Acc\_Prof [i] = 10}. Увеличиваем \textbf{j} на \textbf{1}. Получаем: 
+ 
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\hspace{93mm}j\hspace{17.5mm}i
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{17.6mm}Name\hspace{17.6mm}|\hspace{6.57mm}D\hspace{6.57mm} |\hspace{6.57mm}A\hspace{6.57mm} |\hspace{6.57mm}F\hspace{6.57mm} |\hspace{6.57mm}B\hspace{6.57mm} |\hspace{6.57mm}E\hspace{6.57mm} |\hspace{6.8mm}C\hspace{6.8mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{0.7mm}{\small{(Start Time,Finish Time)}}\hspace{0.7mm}
+|\hspace{3.85mm}(1,3)\hspace{3.85mm} |\hspace{3.85mm}(2,5)\hspace{3.85mm} |\hspace{3.85mm}(4,6)\hspace{3.85mm} |\hspace{3.85mm}(6,7)\hspace{3.85mm} |\hspace{3.85mm}(5,8)\hspace{3.85mm} |\hspace{3.85mm}(7,9)\hspace{3.85mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{17.6mm}Profit\hspace{17.6mm}|\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}6\hspace{7.1mm} |\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}4\hspace{7.1mm} |\hspace{5.8mm}11\hspace{5.8mm} |\hspace{7.1mm}2\hspace{7.1mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{14mm}Acc\_Prof\hspace{14mm}|\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}6\hspace{7.1mm} |\hspace{6mm}10\hspace{6mm} |\hspace{6mm}10\hspace{6mm} |\hspace{5.8mm}11\hspace{5.8mm} |\hspace{7.1mm}2\hspace{7.1mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Если мы продолжим этот процесс после итерации всей таблицы с использованием \textbf{i}, наша таблица будет выглядеть примерно так: 
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{17.6mm}Name\hspace{17.6mm}|\hspace{6.57mm}D\hspace{6.57mm} |\hspace{6.57mm}A\hspace{6.57mm} |\hspace{6.57mm}F\hspace{6.57mm} |\hspace{6.57mm}B\hspace{6.57mm} |\hspace{6.57mm}E\hspace{6.57mm} |\hspace{6.8mm}C\hspace{6.8mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{0.7mm}{\small{(Start Time,Finish Time)}}\hspace{0.7mm}
+|\hspace{3.85mm}(1,3)\hspace{3.85mm} |\hspace{3.85mm}(2,5)\hspace{3.85mm} |\hspace{3.85mm}(4,6)\hspace{3.85mm} |\hspace{3.85mm}(6,7)\hspace{3.85mm} |\hspace{3.85mm}(5,8)\hspace{3.85mm} |\hspace{3.85mm}(7,9)\hspace{3.85mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{17.6mm}Profit\hspace{17.6mm}|\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}6\hspace{7.1mm} |\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}4\hspace{7.1mm} |\hspace{5.8mm}11\hspace{5.8mm} |\hspace{7.1mm}2\hspace{7.1mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{14mm}Acc\_Prof\hspace{14mm}|\hspace{7.1mm}5\hspace{7.1mm} |\hspace{7.1mm}6\hspace{7.1mm} |\hspace{6mm}10\hspace{6mm} |\hspace{6mm}14\hspace{6mm} |\hspace{5.8mm}17\hspace{5.8mm} |\hspace{7.1mm}8\hspace{7.1mm} |
+
+{\tiny{+ - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+* Несколько шагов были пропущены, чтобы сделать документ короче. 
+
+\vspace{\baselineskip}
+Если мы проведем итерацию по массиву \textbf{Acc\_Prof}, мы увидим, что максимальная выгода равна \textbf{17!} Псевдокод: 
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{Java}
+// сортировка по времени окончания в неубывающем порядке
+// первый цикл начиная с 2 элемента, второй --- с 1 элемента
+for i -> 2 to n
+	for j -> 1 to i-1
+		// Если окончание работы раньше чем начало следующей
+		if Job[j].finish_time <= Job[i].start_time
+			// и если накопленная выгода больше текущей, то 
+			if Acc_Prof[j] + Profit[i] > Acc_Prof[i]
+				// Изменяем текущую выгоду на накопленную
+				Acc_Prof[i] = Acc_Prof[j] + Profit[i]
+			endif
+		endif
+	endfor
+endfor
+
+// ищем максимальную выгоду
+maxProfit = 0
+for i -> 1 to n
+	if maxProfit < Acc_Prof[i]
+		maxProfit = Acc_Prof[i]
+	endif
+endfor
+// возвращаем максимальную выгоду
+return maxProfit
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Сложность заполнения массива \textbf{Acc\_Prof --- O (n2)}. Обход массива занимает \textbf{O (n)}. Таким образом, общая сложность этого алгоритма равна \textbf{O (n2)}. 
+
+\vspace{\baselineskip}
+Если мы хотим выяснить, какие задания были выполнены, чтобы получить максимальную выгоду, нам нужно пройти по массиву в обратном порядке, и если \textbf{Acc\_Prof} соответствует \textbf{maxProfit}, мы поместим название задания в стек и вычтем выгоду от выполнения этого задания от \textbf{maxProfit}. Мы будем делать это до тех пор, пока \textbf{maxProfit > 0} или мы не достигнем начальной точки массива \textbf{Acc\_Prof}. Псевдокод будет выглядеть так: 
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{Java}
+Procedure FindingPerformedJobs(Job, Acc_Prof, maxProfit):
+S = stack()
+// обратный цикл с условием
+for i -> n down to 0 and maxProfit > 0
+	// если максимальная выгода равна текущей выгоде
+	if maxProfit is equal to Acc_Prof[i]
+		// помещаем название задания в стек
+		S.push(Job[i].name)
+		// вычитаем выгоду от выполнения этого задания от maxProfit
+		maxProfit = maxProfit - Job[i].profit
+	endif
+endfor
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Сложность этой процедуры: \textbf{O (n)}. 
+
+\vspace{\baselineskip}
+Следует помнить одну вещь: если есть несколько графиков работы, которые могут дать нам максимальную прибыль, мы можем найти только один график работы с помощью этой процедуры. 
+
+\vspace{\baselineskip}
+\section*{Раздел 14.3: Самая длинная общая подпоследовательность}
+
+\vspace{\baselineskip}
+Если нам даны две строки, мы должны найти самую длинную общую подпоследовательность, присутствующую в обеих из них. 
+
+\vspace{\baselineskip}
+\textbf{Пример}
+
+\vspace{\baselineskip}
+Самая длинная общая подпоследовательность для входных последовательностей «ABCDGH» и «AEDFHR» --- это «ADH» длины 3. 
+
+\vspace{\baselineskip}
+Самая длинная общая подпоследовательность для входных последовательностей «AGGTAB» и «GXTXAYB» --- это «GTAB» длины 4.
+
+\vspace{\baselineskip}
+\textbf{Реализация на Java}
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{Java}
+public class LCS {
+	// начало вычислений
+	public static void main(String[] args) {
+		// TODO Автоматически сгенерированный метод заглушки
+		String str1 = "AGGTAB";
+		String str2 = "GXTXAYB";
+		// берем объект наибольшей общей подпоследовательности
+		LCS obj = new LCS();
+		// выводим наибольшую общую последовательность
+		// аргументы - два слова и два значения длины слов соответственно
+		System.out.println(obj.lcs(str1, str2, str1.length(), str2.length()));
+		// аргументы - два слова
+		System.out.println(obj.lcs2(str1, str2));
+	}
+	// Рекурсивная функция
+	public int lcs(String str1, String str2, int m, int n){
+		if(m==0 || n==0)
+			return 0;
+		// если символы совпадают, рекурсивно прибавляем 1 к результату
+		if(str1.charAt(m-1) == str2.charAt(n-1))
+			return 1 + lcs(str1, str2, m-1, n-1);
+	else
+		// иначе сдвиг на символ по второму слову
+		// максимум между словами со сдвинутыми индексами на одну позицию
+		/* первый аргумент - наибольшая общая последовательность при сдвиге 
+		//на символ в первом слове, второй - во втором слове */ 
+		return Math.max(lcs(str1, str2, m-1, n), lcs(str1, str2, m, n-1));
+	}
+	// Итерационная функция
+	public int lcs2(String str1, String str2){
+		// определяем двумерный массив исходных слов
+		int lcs[][] = new int[str1.length()+1][str2.length()+1];
+		// итерация по строке и перебор столбцов
+		for(int i=0;i<=str1.length();i++){
+			for(int j=0;j<=str2.length();j++){
+				// начало отсчета
+				if(i==0 || j== 0){
+					lcs[i][j] = 0;
+				}
+				// прибавляем к матрице счетчиков
+				else if(str1.charAt(i-1) == str2.charAt(j-1)){
+					lcs[i][j] = 1 + lcs[i-1][j-1];
+				}else{
+					// “протягивание” к углу матрицы максимального значения	
+					lcs[i][j] = Math.max(lcs[i-1][j], lcs[i][j-1]);
+				}
+			}
+		}
+		// возвращаем максимально значение в нижним правом углу
+		return lcs[str1.length()][str2.length()];
+	}
+}
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+\textbf{Вывод}
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\color{Purple}{4}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+\section*{Раздел 14.4. Число Фибоначчи}
+
+\vspace{\baselineskip}
+Подход «снизу вверх» для печати n-го числа Фибоначчи с использованием динамического программирования.
+
+\vspace{\baselineskip}
+\textbf{Рекурсивное дерево}
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3]{Python}
+                     fib(5)
+                   /        \
+             fib(4)          fib(3)
+            /       \        /     \
+      fib(3)    fib(2)      fib(2)  fib(1)
+     /     \   /      \      /    \
+fib(2) fib(1) fib(1) fib(0) fib(1) fib(0)
+/     \
+fib(1) fib(0)
+
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+\textbf{Пересекающиеся подзадачи}
+
+\vspace{\baselineskip}
+Здесь \textbf{fib(0)}, \textbf{fib(1)} и \textbf{fib(3)} являются пересекающимися подзадачами. \textbf{Fib(0)} повторяется \textbf{3} раза, \textbf{fib(1)} повторяется \textbf{5} раз, а \textbf{fib(3)} повторяется \textbf{2} раза. 
+
+\vspace{\baselineskip}
+\textbf{Реализация}
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}
+public int fib(int n){
+	// определение массива
+	int f[] = new int[n+1];
+	// начальные значения
+	f[0]=0; f[1]=1;
+	for(int i=2;i<=n;i++){
+		// динамический подсчет
+		f[i]=f[i-1]+f[i-2];
+	}
+	return f[n];
+}
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+\textbf{Сложность выполнения}
+
+\vspace{\baselineskip}
+O(n) 
+
+\vspace{\baselineskip}
+\section*{Раздел 14.5: Самая длинная общая подстрока}
+
+\vspace{\baselineskip}
+Даны 2 строки \textbf{str1} и \textbf{str2}, мы должны найти длину самой длинной общей подстроки между ними. 
+
+\vspace{\baselineskip}
+\textbf{Примеры }
+
+
+Вход: X = "abcdxyz", y = "xyzabcd" \ Выход: 4
+
+\vspace{\baselineskip}
+Самая длинная общая подстрока --- это «abcd», она имеет длину 4.
+
+\vspace{\baselineskip}
+Вход: X = "zxabcdezy", y = "yzabcdezx" \ Выход: 6 
+
+\vspace{\baselineskip}
+Самая длинная общая подстрока --- это «abcdez», она имеет длину 6. 
+
+\vspace{\baselineskip}
+\textbf{Реализация на Java}
+
+
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=1]{Java}
+public int getLongestCommonSubstring(String str1, String str2){
+	//определение двумерного массива
+	int arr[][] = new int[str2.length()+1][str1.length()+1];
+	// инициализируем минимальное значение для поиска максимального
+	int max = Integer.MIN_VALUE;
+	// итерации по матрице
+	for(int i=1;i<=str2.length();i++){
+		for(int j=1;j<=str1.length();j++){
+			// если символы совпадают
+			if(str1.charAt(j-1) == str2.charAt(i-1)){
+				// записываем в соседнюю клетку, ближе к правому нижнему углу
+				arr[i][j] = arr[i-1][j-1]+1;
+				// запоминаем максимальное значение
+				if(arr[i][j] > max)
+					max = arr[i][j];
+			}
+			else // если символы не равны
+				arr[i][j] = 0;
+		}
+	}
+	// возврат максимального значения
+	return max;
+}
+
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+\textbf{Сложность алгоритма }
+
+O(m*n)

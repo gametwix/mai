@@ -1,0 +1,368 @@
+% Назарова
+
+\chapter*{Глава 50 : Треугольник Паскаля}
+\section*{Раздел 50.1: Треугольник Паскаля на C}
+\begin{tcolorbox}\begin{minted}{C}
+int i, space, rows, k=0, count = 0, count1 = 0; /*rows - кол-во строк, 
+//space - кол-во отступов, count - кол-во чисел до "середины строки",
+//k (count1) - число, на которое числа увеличиваются(уменьшаются)*/
+rows=5;
+
+//вывод треугольника Паскаля
+ for(i=1; i<=rows; ++i)//подсчет выведенных строк
+ {
+	for(space=1; space <= rows-i; ++space)/*создание отступов для выравнивания
+	//треугольника. количество отступов соответствует (число строк - номер 
+	//строки)*/
+	{
+		printf("  ");
+		++count;
+	}
+	while(k != 2*i-1)//количество чисел в строке
+	{
+		if (count <= rows-1)/*вывод первой половины строки. первое число - 
+		//номер строки, 
+		//последующие - увеличиваются на единицу. 
+		//максимальное число - середина строки - с номером rows по счету*/
+		{
+			printf("%d ", i+k);
+			++count;
+		}
+		else/*вывод второй половины строки. каждое последующее число уменьшается 
+		//на единицу*/
+		{
+			++count1;
+			printf("%d ", (i+k-2*count1));
+		}
+		++k;
+	}
+	count1 = count = k = 0;
+	printf("\n");//переход к новой строке
+ }
+
+\end{minted}
+\end{tcolorbox}
+\vspace{\baselineskip}
+
+\textbf{Выход}
+\vspace{\baselineskip}
+\begin{tcolorbox}
+{\color{Purple}{
+\hspace{14,5mm}1 \newline
+\hspace*{11mm}2 3 2\newline
+\hspace*{7,5mm}3 4 5 4 3\newline
+\hspace*{4,5mm}4 5 6 7 6 5 4\newline
+\hspace*{1mm}5 6 7 8 9 8 7 6 5
+}}
+
+\end{tcolorbox}
+
+\chapter*{Глава 51: Алгоритм:- Вывод матрицы m*n по спирали}
+Примеры ввода и вывода приведены ниже.
+\section*{Раздел 51.1: Пример}
+\begin{tcolorbox}
+               Input:
+               
+\vspace{\baselineskip}
+14 15 16 17 18 21\newline
+19 10 20 11 54 36\newline
+64 55 44 23 80 39\newline 
+91 92 93 94 95 42
+
+\vspace{\baselineskip}
+Output:\newline 
+print value in index\newline
+14 15 16 17 18 21 36 39 42 95 94 93 92 91 64 19 10 20 11 54 80 23 44 55
+
+\vspace{\baselineskip}
+or print index\newline
+00 01 02 03 04 05 15 25 35 34 33 32 31 30 20 10 11 12 13 14 24 23 22 21 
+\end{tcolorbox}
+\section*{Раздел 51.2: Напишем общий код}
+\begin{tcolorbox}\begin{minted}{Python}
+#число "уровней" спирали
+function noOfLooping(m,n) {
+	# ищем минимальную сторону
+	if(m > n) {
+		smallestValue = n;
+	} else {
+		smallestValue = m;
+	}
+	# делим ее пополам с округлением вверх
+	if(smallestValue % 2 == 0) {
+			return smallestValue/2;
+	} else {
+			return (smallestValue+1)/2;
+	}
+ }
+#вывод матрицы по спирали
+function squarePrint(m,n) {
+	var looping = noOfLooping(m,n);#количество повторений
+
+	#вывод одного "уровня" спирали
+	for(var i = 0; i < looping; i++) {
+		for(var j = i; j < m - 1 - i; j++) {#верхняя горизонталь
+				console.log(i+''+j);#вывести индексы i, j
+		}
+		for(var k = i; k < n - 1 - i; k++) {#правая вертикаль
+				console.log(k+''+j);
+		}
+		for(var l = j; l > i; l--) {#нижняя горизонталь
+				console.log(k+''+l);
+		}
+		for(var x = k; x > i; x--) {#левая вертикаль
+				console.log(x+''+l);
+		}
+	}
+ }
+squarePrint(6,4);#применить к матрице размером 4x6
+
+\end{minted}
+\end{tcolorbox}
+\chapter*{Глава 52: Возведение матрицы в степень}
+\section*{Раздел 52.1: Возведение матрицы в степень для решения типовых задач}
+
+\textit{Найти f(n): n-е число Фибоначчи.} Задача довольно проста, когда \textbf{n} относительно маленькое. Мы можем использовать простую рекурсию, f(n) = f(n-\p{1}) + f(n-\p{2}), или динамическое программирование, чтобы избежать вычисления одной и той же функции снова и снова. Но что вы будете делать, если в задаче сказано: \textbf{при 0 < n < $10^9$ найти f (n) mod 999983?} Динамическое программирование не подойдет, так как же мы решим эту задачу?
+\vspace{\baselineskip}
+
+Сначала давайте посмотрим, как возведение матрицы в степень может помочь представить рекурсивное отношение.
+\vspace{\baselineskip}
+
+\textbf{Необходимые умения:}
+\begin{itemize}
+    \itemИмея две матрицы, необходимо знать, как найти их произведение. Далее, имея матрицу, полученную путем перемножения этих двух матриц, и одну из этих матриц, необходимо знать, как найти другую матрицу.
+    \item Имея матрицу размера \textbf{d $\times$ d}, необходимо знать, как найти ее n-ю степень за \textbf{O(d3log (n))}.
+\end{itemize}
+\textbf{Шаблоны:}
+
+\vspace{\baselineskip}
+Сначала нам нужно рекурсивное отношение, а после  мы должны найти матрицу \textbf{M}, которая может привести нас к желаемому состоянию из множества уже известных состояний. Предположим, что мы знаем \textbf{k} состояний данного рекуррентного отношения и хотим найти состояние \textbf{(k + 1)}. Пусть \textbf{M} - матрица размера \textbf{k $\times$ k}, и из известных состояний рекуррентного отношения мы строим матрицу \textbf{A:[k $\times$ 1]}, после мы строим матрицу \textbf{B:[k $\times$ 1]}, которая будет представлять множество следующих состояний, т. е. \textbf{M $\times$ A = B}, как показано ниже:
+\begin{tcolorbox}
+  
+\hspace{12mm} |\hspace{3,5mm}f(n)\hspace{4,4mm}|\hspace{12,5mm}|\hspace{2,5mm}f(n+\p{1})\hspace{3mm}|\newline
+\hspace*{13,3mm}|\hspace{1mm} f(n-\p{1})\hspace{1mm} |\hspace{12,2mm}|\hspace{4mm}f(n)\hspace{7mm}|\newline
+\hspace*{3,5mm}M $\times$ |\hspace*{1mm} f(n-\p{2}) \hspace*{1mm}|\hspace*{2,5mm}  = \hspace*{2,5mm} |\hspace*{3,2mm}f(n-\p{1})\hspace*{2,8mm} |\newline
+\hspace*{13,3mm}|\hspace*{3mm} ...... \hspace*{2,4mm}|  \hspace*{9,5mm}   |\hspace*{3mm} ...... \hspace*{3,7mm} |\newline
+\hspace*{13,3mm}|\hspace*{1,1mm} f(n-k)\hspace*{1,1mm} | \hspace*{9,3mm} |\hspace*{1,1mm}f(n-k+\p{1})\hspace*{1,1mm}|
+
+\end{tcolorbox}
+
+Так что если мы сможем построить \textbf{M} в соответствии с вышесказанным, то наша задача будет выполнена! Затем матрица будет использоваться для представления рекуррентного отношения.
+
+\vspace{\baselineskip}
+\textbf{Тип 1:}
+
+
+Начнем с самого простого,f(n) = f(n-\p{1}) + f(n-\p{2}) .\newline Мы получаем, f(n+\p{1}) = f(n) + f(n-\p{1}).\newline
+Предположим, что мы знаем f(n) и f(n-\p{1}); Мы хотим найти f(n+\p{1})\newline
+Из ситуации, описанной выше, матрица \textbf{A} и матрица \textbf{В} могут быть построены так, как показано ниже:
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\hspace{3,5mm} Matrix A \hspace{20mm}Matrix B \newline
+\hspace*{3mm}|\hspace{5mm}  f(n)  \hspace*{5mm}|  \hspace*{13mm} |\hspace*{2mm} f(n+\p{1})\hspace*{2mm} |\newline
+\hspace*{3mm}|\hspace*{3mm} f(n-\p{1})\hspace*{3,5mm} |  \hspace*{13mm} |\hspace*{4mm}  f(n) \hspace{4mm}  |
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+[Примечание: Матрица \textbf{A} всегда будет построена таким образом, что каждое состояние, от которого зависит f(n+1) , будет присутствовать]
+Теперь нам нужно построить матрицу \textbf{M} размера \textbf{2$\times$2} таким образом, чтобы она удовлетворяла \textbf{M $\times$ A = B}, как указано выше.\newline
+Первый элемент \textbf{B} - это f(n+\p{1}), что на самом деле является f(n) + f(n-\p{1}). Чтобы получить это из матрицы \textbf{A}, нам нужно \textbf{1 $\times$ f(n)} и \textbf{1 $\times$ f (n-1)}. Таким образом, первая строка \textbf{M} будет равна \textbf{[1 1]}.
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+|\hspace{2mm} \p{1}\hspace{6mm}\p{1}\hspace{2mm}|\hspace{3mm} $\times$ \hspace{3mm}| \hspace{3mm} f(n) \hspace{3mm}|\hspace{3mm} = \hspace{3mm} |\hspace{1,5mm} f(n+\p{1})\hspace{1,5mm} |\newline
+|\hspace*{0,3mm} - - - - -\hspace{0,3mm} |\hspace*{10,5mm}     |\hspace*{2,5mm} f(n-\p{1})\hspace*{2,7mm}| \hspace*{10,5mm}    | - - - - - - |
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+[Примечание: - - - - - означает, что нам не важно это значение.]\newline
+Аналогично, 2-й элемент \textbf{B} это f(n), который можно получить просто взяв \textbf{1 $\times$ f (n)} из \textbf{A}, поэтому 2-я строка \textbf{M} равна [1 0].
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+|\hspace{0,3mm} - - - - - \hspace{0,3mm}|\hspace{3mm} $\times$ \hspace{3mm}| \hspace{3mm} f(n) \hspace{3mm}|\hspace{3mm}  = \hspace{3mm} |\hspace{0,3mm} - - - - - \hspace{0,3mm} |\newline
+|\hspace{1,5mm} \p{1}\hspace{6mm}\p{0}\hspace{1,5mm} |\hspace*{10,5mm}     |\hspace*{2,5mm} f(n-\p{1})\hspace*{2,9mm}| \hspace*{10,5mm}    |\hspace*{4,5mm} f(n)\hspace*{4,5mm}|
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Тогда мы получим нашу желаемую матрицу \textbf{M} размера \textbf{2 $\times$ 2}.
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+|\hspace{1,5mm} \p{1}\hspace{6mm}\p{1}\hspace{1,5mm}|\hspace{3mm} $\times$ \hspace{3mm}| \hspace{3mm} f(n) \hspace{3mm}|\hspace{3mm}  = \hspace{3mm} |\hspace*{2,5mm} f(n+\p{1})\hspace*{2,9mm} |\newline
+|\hspace{1,5mm} \p{1}\hspace{6mm}\p{0}\hspace{0,1mm} |\hspace*{10,7mm}     |\hspace*{2,5mm} f(n-\p{1})\hspace*{2,9mm}| \hspace*{10,5mm}    |\hspace*{6mm} f(n)\hspace*{6mm}|
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Эти матрицы просто выводятся с помощью матричного умножения.
+
+\vspace{\baselineskip}
+
+\textbf{Тип 2:}
+
+\vspace{\baselineskip}
+Давайте немного усложним задачу: найдем f(n) = a $\times$ f(n-\p{1}) + b $\times$ f(n-\p{2}), где \textbf{a} и \textbf{b} - константы.\newline
+Из этого следует, что f(n+\p{1}) = a $\times$ f(n) + b $\times$ f(n-\p{1}).\newline 
+К этому моменту должно быть ясно, что размерность матриц будет равна числу зависимостей, т. е. в данном примере снова 2. Таким образом, для \textbf{A} и \textbf{B} мы можем построить две матрицы размера \textbf{2 $\times$ 1}:
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\hspace{3,5mm} Matrix A \hspace{20mm}Matrix B \newline
+\hspace*{3mm}|\hspace{5mm}  f(n)  \hspace*{5mm}|  \hspace*{13mm} |\hspace*{2mm} f(n+\p{1})\hspace*{2mm} |\newline
+\hspace*{3mm}|\hspace*{3mm} f(n-\p{1})\hspace*{3,5mm} |  \hspace*{13mm} |\hspace*{4mm}  f(n) \hspace{4mm}  |
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Теперь для f(n+\p{1}) = a $\times$ f(n) + b $\times$ f(n-\p{1}) нам нужно иметь [a, b] в первой строке искомой матрицы \textbf{M}. Что касается 2-го элемента в \textbf{B}, т. е. f(n), мы уже знаем его из матрицы \textbf{A}, поэтому мы просто возьмем значение оттуда, из чего следует, что 2-я строка матрицы M равна [1 0]. На этот раз мы получим:
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+|\hspace{1,5mm} a \hspace{3mm}  b \hspace{0,1mm}|\hspace{3mm} $\times$ \hspace{3mm}| \hspace{3mm} f(n) \hspace{3mm}|\hspace{3mm}  = \hspace{3mm} |\hspace*{2,5mm} f(n+\p{1})\hspace*{2,9mm} |\newline
+|\hspace{1,5mm} \p{1}\hspace{6mm}\p{0}\hspace{0,1mm} |\hspace*{10,7mm}     |\hspace*{2,5mm} f(n-\p{1})\hspace*{2,9mm}| \hspace*{10,5mm}    |\hspace*{6mm} f(n)\hspace*{6mm}|
+\end{tcolorbox}
+
+
+\vspace{\baselineskip}
+Довольно просто, да?
+
+\vspace{\baselineskip}
+\textbf{Тип 3:}
+
+\vspace{\baselineskip}
+Если вы дошли до этого этапа, вы явно повзрослели и готовы столкнуться с немного сложным соотношением: найти f(n) = a $\times$ f(n-\p{1}) + c $\times$ f(n-\p{3})?\newline 
+Упс! Несколько минут назад все, что мы видели, имело непрерывные состояния, но здесь состояние \textbf{f(n-2)} отсутствует. Что теперь?
+
+\vspace{\baselineskip}
+На самом деле это уже не проблема, мы можем преобразовать соотношение следующим образом: f(n) = a $\times$ f(n-\p{1}) + \p{0} $\times$ f(n-\p{2}) + c $\times$ f(n-\p{3}), получая f(n+\p{1}) = a $\times$ f(n) + \p{0} $\times$ f(n-\p{1}) + c $\times$ f(n-\p{2}). Теперь мы видим, что это на самом деле форма, описанная в типе 2. Таким образом, здесь искомая матрица \textbf{M} будет иметь размер \textbf{3 X 3}, а ее элементы равны:
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+|\hspace{1,5mm} a \hspace{3mm}  \p{0} \hspace{3mm} c \hspace{0,5mm}| \hspace{11mm}| \hspace{3mm} f(n) \hspace{3mm}|\hspace{16mm} |\hspace*{2,5mm} f(n+\p{1})\hspace*{2,9mm} |\newline
+|\hspace{1,5mm} \p{1}\hspace{6mm}\p{0}\hspace{6mm}\p{0}\hspace{0mm} |\hspace*{3mm} $\times$\hspace{3mm}     |\hspace*{2,5mm} f(n-\p{1})\hspace*{2,9mm}|\hspace{5mm} = \hspace*{5mm}    |\hspace*{6mm} f(n)\hspace*{6mm}|\newline
+|\hspace{1,5mm} \p{0} \hspace{3mm}  \p{1} \hspace{3mm} \p{0} \hspace{0,5mm}| \hspace{10,7mm}| \hspace{1,7mm} f(n-\p{2}) \hspace{1mm}|\hspace{16mm} |\hspace*{2,5mm} f(n-\p{1})\hspace*{4,5mm} |
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Они рассчитываются так же, как и в типе 2. Если для вас это сложно, попробуйте вычислить их на бумаге.
+
+\vspace{\baselineskip}
+
+\textbf{Тип 4:}
+
+\vspace{\baselineskip}
+Жизнь становится адски сложной, и госпожа Проблема теперь просит вас найти f(n) = f(n-\p{1}) + f(n-\p{2}) + c, где \textbf{c} - любая константа.\newline
+На этот раз это что-то новое, ведь в прошлом мы видели лишь то, что после умножения каждое состояние в \textbf{А}  переходит в свое следующее состояние в \textbf{B}.
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+f(n)\hspace{2,5mm} = \hspace{2,5mm}f(n-\p{1})\hspace*{2,3mm} + \hspace*{0,6mm} f(n-\p{2})\hspace*{1,5mm} + \hspace*{1,5mm}c\newline
+f(n+\p{1})\hspace*{3mm}=\hspace*{2mm} f(n)\hspace*{1,9mm} +\hspace*{1,9mm} f(n-\p{1})\hspace*{1,7mm} +\hspace*{1,5mm} c\newline
+f(n+\p{2})\hspace*{2mm} = \hspace*{2mm}f(n+\p{1})\hspace*{0,9mm} +\hspace{0,9mm} f(n)\hspace*{1,5mm} +\hspace*{1,5mm} c\newline
+. . . . . . . . . . . . . . . . . . . . so on
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Итак, мы не сможем продолжить в той же манере, что и раньше, но что будет, если добавить \textbf{c} в качестве состояния:
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+  
+\hspace{13,4mm} |\hspace{3,5mm}f(n)\hspace{4,4mm}|\hspace{12,5mm}|\hspace{2,5mm}f(n+\p{1})\hspace{3mm}|\newline
+\hspace*{3,5mm} M $\times$ |\hspace{1mm} f(n-\p{1})\hspace{1mm} |\hspace{3,1mm} = \hspace*{3,1mm}|\hspace{4mm}f(n)\hspace{7mm}|\newline
+\hspace*{14,6mm}|\hspace*{5,3mm} c \hspace*{5,3mm}|\hspace*{10,7mm} |\hspace*{6mm} c \hspace*{6mm} |
+
+
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Теперь не так уж трудно составить \textbf{M}. Вот как это делается, но не забудьте проверить самостоятельно:
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+|\hspace{1,5mm} \p{1} \hspace{3mm}  \p{1} \hspace{3mm} \p{1} \hspace{0,5mm}| \hspace{10,5mm}| \hspace{3mm} f(n) \hspace{3mm}|\hspace{16mm} |\hspace*{2,5mm} f(n+\p{1})\hspace*{2,9mm} |\newline
+|\hspace{1,5mm} \p{1}\hspace{5,8mm}\p{0}\hspace{5,6mm}\p{0}\hspace{0,6mm} |\hspace*{3mm} $\times$\hspace{3mm}     |\hspace*{2,5mm} f(n-\p{1})\hspace*{2,9mm}|\hspace{5mm} = \hspace*{5mm}    |\hspace*{6mm} f(n)\hspace*{6mm}|\newline
+|\hspace{1,5mm} \p{0} \hspace{3mm}  \p{0} \hspace{3mm} \p{1} \hspace{0,5mm}| \hspace{10,7mm}| \hspace{5,5mm} c \hspace{5,5mm}|\hspace{16mm} |\hspace*{7,1mm} c \hspace*{7,1mm} |
+\end{tcolorbox}
+
+
+\vspace{\baselineskip}
+\textbf{Тип 5:}
+
+\vspace{\baselineskip}
+Давайте соберем все это: требуется найти f(n) = a $\times$ f(n-\p{1}) + c $\times$ f(n-\p{3}) + d $\times$ f(n-\p{4}) + e. Давайте оставим это в качестве упражнения для вас. Сначала попробуйте найти состояния и матрицу \textbf{M}. И проверить, соответствует ли она вашему решению. Также найдите матрицы \textbf{A} и \textbf{В}.
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+
+|\hspace{1mm} a \hspace{0,5mm} \p{0}\hspace*{1,5mm} c \hspace*{0,5mm} d \hspace*{0,5mm} \p{1} |\newline
+|\hspace*{1mm} \p{1} \hspace*{0,5mm} \p{0} \hspace*{1,5mm}\p{0}\hspace*{1,6mm} \p{0}\hspace*{2,2mm} \p{0}  |\newline
+|\hspace*{1mm} \p{0} \hspace*{0,5mm} \p{1} \hspace*{1,5mm}\p{0} \hspace*{0,5mm} \p{0}\hspace*{3,3mm}\p{0}  |\newline
+|\hspace*{1mm} \p{0}\hspace*{1,7mm} \p{0}\hspace*{1,5mm} \p{1} \hspace*{0,7mm} \p{0} \hspace*{0,6mm} \p{0}  |\newline
+|\hspace*{1mm} \p{0}\hspace*{1,7mm} \p{0}\hspace*{1,7mm} \p{0} \hspace*{0,5mm} \p{0} \hspace*{1,9mm}\p{1}  |\newline
+
+\end{tcolorbox}
+\vspace{\baselineskip}
+\textbf{Тип 6:}
+
+\vspace{\baselineskip}
+Иногда рекурсия дана в таком виде:
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+
+f(n) = f(n-\p{1})\hspace{3mm}   -> \textbf{if} n is odd\newline
+f(n) = f(n-\p{2})\hspace*{3mm}   -> \textbf{if} n is even
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+В сокращенной форме:
+
+ \vspace{\baselineskip}
+\begin{tcolorbox}
+   f(n) = (n\&\p{1}) $\times$ f(n-\p{1}) + (!(n\&\p{1})) $\times$ f(n-\p{2})
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Здесь мы можем разделить функции на основе четности (четные и нечетные) и хранить 2 разные матрицы для обеих из них, а затем вычислить их отдельно.
+
+\vspace{\baselineskip}
+\textbf{Тип 7:}
+
+\vspace{\baselineskip}
+Чувствуете себя слишком уверенно? Повезло вам. Иногда нам может потребоваться обработать более одной рекурсии там, где это необходимо. Например, пусть рекурсия задана следующим образом:
+
+\vspace{\baselineskip}
+
+\begin{tcolorbox}
+   g(n) = 2g(n-\p{1}) + 2g(n-\p{2}) + f(n)            
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Здесь рекурсия \textit{g(n)} зависит от f(n), и может быть вычислена в той же матрице, но с увеличенными размерами. Давайте сначала построим из этого выражения матрицы \textbf{A} и \textbf{B}.
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\hspace{3,5mm} Matrix A \hspace{20mm}Matrix B \newline
+\hspace*{3mm}|\hspace{5mm}  g(n)  \hspace*{5mm}|  \hspace*{13mm} |\hspace*{2mm} g(n+\p{1})\hspace*{2mm} |\newline
+\hspace*{3mm}|\hspace*{3mm} g(n-\p{1})\hspace*{3,5mm} |  \hspace*{13mm} |\hspace*{4mm}  g(n) \hspace{4mm}  |\newline
+\hspace*{3mm}|\hspace{3mm}  f(n+\p{1})  \hspace*{2,5mm}|  \hspace*{13mm} |\hspace*{2,5mm} f(n+\p{2})\hspace*{2,4mm} |\newline
+\hspace*{3mm}|\hspace*{5,3mm} f(n)\hspace*{5,4mm} |  \hspace*{13mm} |\hspace*{2,5mm}  f(n+\p{1}) \hspace{1,1mm}  |
+\end{tcolorbox}
+
+
+
+\vspace{\baselineskip}
+Здесь g(n+\p{1}) = 2g(n-\p{1}) + f(n+\p{1}) и  f(n+\p{2}) = 2f(n+\p{1}) + 2f(n). Теперь, используя процессы, описанные выше, мы можем найти искомую матрицу \textbf{M}, которая будет выглядеть следующим образом:
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+
+|\hspace{0,3mm} \p{2} \hspace{0,3mm} \p{2} \hspace{0,3mm} \p{1} \hspace{0,3mm} \p{0} \hspace*{0,3mm} |\newline
+|\hspace*{0,3mm} \p{1} \hspace*{0,3mm} \p{0} \hspace*{0,3mm} \p{0} \hspace*{0,3mm} \p{0} \hspace*{0,3mm} |\newline
+|\hspace*{0,3mm} \p{0} \hspace*{0,3mm} \p{0} \hspace*{0,3mm} \p{2} \hspace*{0,3mm} \p{2} \hspace*{0,3mm} |\newline
+|\hspace*{0,3mm} \p{0} \hspace*{0,3mm} \p{0} \hspace*{0,3mm} \p{1} \hspace*{0,3mm} \p{0} \hspace*{0,3mm} |
+\end{tcolorbox}
+\vspace{\baselineskip}
+Итак, это основные категории рекуррентных отношений, которые для решения используют эту простую методику.
+

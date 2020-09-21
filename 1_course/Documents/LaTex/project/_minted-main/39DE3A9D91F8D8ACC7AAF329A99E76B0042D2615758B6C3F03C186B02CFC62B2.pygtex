@@ -1,0 +1,35 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n+nf}{merge}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{arr}\PYG{p}{[],}\PYG{k+kt}{int} \PYG{n}{l}\PYG{p}{,}\PYG{k+kt}{int} \PYG{n}{m}\PYG{p}{,}\PYG{k+kt}{int} \PYG{n}{h}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{// Два временных массива для объединения}
+	\PYG{k+kt}{int} \PYG{n}{arr1}\PYG{p}{[}\PYG{l+m+mi}{10}\PYG{p}{],}\PYG{n}{arr2}\PYG{p}{[}\PYG{l+m+mi}{10}\PYG{p}{];}	
+	\PYG{k+kt}{int} \PYG{n}{n1}\PYG{p}{,}\PYG{n}{n2}\PYG{p}{,}\PYG{n}{i}\PYG{p}{,}\PYG{n}{j}\PYG{p}{,}\PYG{n}{k}\PYG{p}{;}
+	\PYG{n}{n1}\PYG{o}{=}\PYG{n}{m}\PYG{o}{\PYGZhy{}}\PYG{n}{l}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{c+c1}{// длина левой части}
+	\PYG{n}{n2}\PYG{o}{=}\PYG{n}{h}\PYG{o}{\PYGZhy{}}\PYG{n}{m}\PYG{p}{;} \PYG{c+c1}{// длина правой части}
+	\PYG{k}{for}\PYG{p}{(}\PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{n1}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{c+c1}{// записываем в буфер левую часть}
+		\PYG{n}{arr1}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{=}\PYG{n}{arr}\PYG{p}{[}\PYG{n}{l}\PYG{o}{+}\PYG{n}{i}\PYG{p}{];}
+	\PYG{k}{for}\PYG{p}{(}\PYG{n}{j}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j}\PYG{o}{\PYGZlt{}}\PYG{n}{n2}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)}
+		\PYG{n}{arr2}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}\PYG{o}{=}\PYG{n}{arr}\PYG{p}{[}\PYG{n}{m}\PYG{o}{+}\PYG{n}{j}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{];} \PYG{c+c1}{// записываем в буфер правую часть}
+	\PYG{n}{arr1}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{=}\PYG{l+m+mi}{9999}\PYG{p}{;} \PYG{c+c1}{// отметить конец каждого временного массива}
+	\PYG{n}{arr2}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}\PYG{o}{=}\PYG{l+m+mi}{9999}\PYG{p}{;}
+	\PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{pulseaudio} \PYG{o}{\PYGZhy{}}\PYG{n}{k} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{sudo} \PYG{n}{alsa} \PYG{n}{force}\PYG{o}{\PYGZhy{}}\PYG{n}{reload}
+	\PYG{n}{j}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k}{for}\PYG{p}{(}\PYG{n}{k}\PYG{o}{=}\PYG{n}{l}\PYG{p}{;} \PYG{n}{k}\PYG{o}{\PYGZlt{}=}\PYG{n}{h}\PYG{p}{;} \PYG{n}{k}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// объединение двух отсортированных массивов}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{arr1}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{\PYGZlt{}=}\PYG{n}{arr2}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])} \PYG{c+c1}{// меньший элемент присваиваем результату}
+			\PYG{n}{arr}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]}\PYG{o}{=}\PYG{n}{arr1}\PYG{p}{[}\PYG{n}{i}\PYG{o}{++}\PYG{p}{];}
+		\PYG{k}{else}
+			\PYG{n}{arr}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]}\PYG{o}{=}\PYG{n}{arr2}\PYG{p}{[}\PYG{n}{j}\PYG{o}{++}\PYG{p}{];}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{int} \PYG{n+nf}{merge\PYGZus{}sort}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{arr}\PYG{p}{[],}\PYG{k+kt}{int} \PYG{n}{low}\PYG{p}{,}\PYG{k+kt}{int} \PYG{n}{high}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{mid}\PYG{p}{;}
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{low}\PYG{o}{\PYGZlt{}}\PYG{n}{high}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{n}{mid}\PYG{o}{=}\PYG{p}{(}\PYG{n}{low}\PYG{o}{+}\PYG{n}{high}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{;} \PYG{c+c1}{// медианный индекс}
+		\PYG{c+c1}{// Разделение}
+		\PYG{n}{merge\PYGZus{}sort}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{,}\PYG{n}{low}\PYG{p}{,}\PYG{n}{mid}\PYG{p}{);} \PYG{c+c1}{// на левую}
+		\PYG{n}{merge\PYGZus{}sort}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{,}\PYG{n}{mid}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{high}\PYG{p}{);} \PYG{c+c1}{// на правую}
+		\PYG{n}{merge}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{,}\PYG{n}{low}\PYG{p}{,}\PYG{n}{mid}\PYG{p}{,}\PYG{n}{high}\PYG{p}{);} \PYG{c+c1}{// слияние}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

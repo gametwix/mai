@@ -1,0 +1,50 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void} \PYG{n+nf}{RabinfindPattern}\PYG{p}{(}\PYG{n}{String} \PYG{n}{text}\PYG{p}{,}\PYG{n}{String} \PYG{n}{pattern}\PYG{p}{)\PYGZob{}}
+\PYG{c+cm}{/*}
+\PYG{c+cm}{q \PYGZhy{} Простое число}
+\PYG{c+cm}{p \PYGZhy{} хеш\PYGZhy{}значение для pattern}
+\PYG{c+cm}{t \PYGZhy{} хеш\PYGZhy{}значение для text}
+\PYG{c+cm}{d \PYGZhy{} мощность алфавита}
+\PYG{c+cm}{*/}
+\PYG{k+kt}{int} \PYG{n}{d}\PYG{o}{=}\PYG{l+m+mi}{128}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{q}\PYG{o}{=}\PYG{l+m+mi}{100}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{n}\PYG{o}{=}\PYG{n}{text}\PYG{p}{.}\PYG{n}{length}\PYG{p}{();}
+\PYG{k+kt}{int} \PYG{n}{m}\PYG{o}{=}\PYG{n}{pattern}\PYG{p}{.}\PYG{n}{length}\PYG{p}{();}
+\PYG{k+kt}{int} \PYG{n}{t}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{p}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{h}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{,}\PYG{n}{j}\PYG{p}{;}
+\PYG{c+c1}{// Вычисляем хеш\PYGZhy{}значение для h,}
+\PYG{k}{for} \PYG{p}{(}\PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{m}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+	\PYG{c+c1}{// h \PYGZhy{} коэффициент хеша для первой буквы подстроки}
+\PYG{n}{h} \PYG{o}{=} \PYG{p}{(}\PYG{n}{h}\PYG{o}{*}\PYG{n}{d}\PYG{p}{)}\PYG{o}{\PYGZpc{}}\PYG{n}{q}\PYG{p}{;}
+\PYG{c+c1}{// Вычисляем хеш для подстроки начала text’а (размером m) и pattern}
+\PYG{k}{for} \PYG{p}{(}\PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{m}\PYG{p}{;}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+\PYG{n}{p} \PYG{o}{=} \PYG{p}{(}\PYG{n}{d}\PYG{o}{*}\PYG{n}{p} \PYG{o}{+} \PYG{n}{pattern}\PYG{p}{.}\PYG{n}{charAt}\PYG{p}{(}\PYG{n}{i}\PYG{p}{))}\PYG{o}{\PYGZpc{}}\PYG{n}{q}\PYG{p}{;}
+\PYG{n}{t} \PYG{o}{=} \PYG{p}{(}\PYG{n}{d}\PYG{o}{*}\PYG{n}{t} \PYG{o}{+} \PYG{n}{text}\PYG{p}{.}\PYG{n}{charAt}\PYG{p}{(}\PYG{n}{i}\PYG{p}{))}\PYG{o}{\PYGZpc{}}\PYG{n}{q}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// Поиск шаблона в строке}
+\PYG{k}{for}\PYG{p}{(}\PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{n}{m}\PYG{p}{;}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+	\PYG{c+c1}{// Если хеши p и t совпадают}
+\PYG{c+c1}{// проверим на совпадение символов посимвольно}
+\PYG{k}{if}\PYG{p}{(}\PYG{n}{p}\PYG{o}{==}\PYG{n}{t}\PYG{p}{)\PYGZob{}}
+\PYG{k}{for}\PYG{p}{(}\PYG{n}{j}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{j}\PYG{o}{\PYGZlt{}}\PYG{n}{m}\PYG{p}{;}\PYG{n}{j}\PYG{o}{++}\PYG{p}{)}
+\PYG{c+c1}{// Если нашли несовпадение}
+\PYG{k}{if}\PYG{p}{(}\PYG{n}{text}\PYG{p}{.}\PYG{n}{charAt}\PYG{p}{(}\PYG{n}{j}\PYG{o}{+}\PYG{n}{i}\PYG{p}{)}\PYG{o}{!=}\PYG{n}{pattern}\PYG{p}{.}\PYG{n}{charAt}\PYG{p}{(}\PYG{n}{j}\PYG{p}{))}
+\PYG{k}{break}\PYG{p}{;}
+		\PYG{c+c1}{// Если мы дошли до конца цикла и i \PYGZhy{} адекватное число}
+\PYG{c+c1}{// Мы нашли шаблон в тексте по индексу i}
+\PYG{k}{if}\PYG{p}{(}\PYG{n}{j}\PYG{o}{==}\PYG{n}{m} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{i}\PYG{o}{\PYGZgt{}=}\PYG{n}{start}\PYG{p}{)}
+\PYG{n}{System}\PYG{p}{.}\PYG{n}{out}\PYG{p}{.}\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Pattern match found at index \PYGZdq{}}\PYG{o}{+}\PYG{n}{i}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// Если ещё не конец текста}
+\PYG{k}{if}\PYG{p}{(}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{n}{m}\PYG{p}{)\PYGZob{}}
+	\PYG{c+c1}{// Перевычислим хеш для следующей подстроки}
+	\PYG{c+c1}{// Т.к мы текущую подстроку передвигаем на символ вперед}
+	\PYG{c+c1}{// Вычитаем из t хеш первой буквы и прибавляем хеш последней}
+\PYG{n}{t} \PYG{o}{=}\PYG{p}{(}\PYG{n}{d}\PYG{o}{*}\PYG{p}{(}\PYG{n}{t} \PYG{o}{\PYGZhy{}} \PYG{n}{text}\PYG{p}{.}\PYG{n}{charAt}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)}\PYG{o}{*}\PYG{n}{h}\PYG{p}{)} \PYG{o}{+} \PYG{n}{text}\PYG{p}{.}\PYG{n}{charAt}\PYG{p}{(}\PYG{n}{i}\PYG{o}{+}\PYG{n}{m}\PYG{p}{))}\PYG{o}{\PYGZpc{}}\PYG{n}{q}\PYG{p}{;}
+\PYG{c+c1}{// Если Хеш оказался отрицательным, прибавим q}
+\PYG{k}{if}\PYG{p}{(}\PYG{n}{t}\PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{n}{t}\PYG{o}{=}\PYG{n}{t}\PYG{o}{+}\PYG{n}{q}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

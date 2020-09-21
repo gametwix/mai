@@ -1,0 +1,323 @@
+% Ивенкова
+\chapter*{Глава 44: Задача коммивояжера}
+
+\vspace{\baselineskip}
+\section*{Раздел 44.1: Алгоритм полного перебора}
+
+\vspace{\baselineskip}
+Путь, в котором мы проходим через каждую вершину ровно один раз, равносилен упорядочиванию вершин в некотором порядке. Следовательно, чтобы рассчитать минимальную стоимость за прохождение через каждую вершину ровно один раз, мы можем сделать полный перебор каждой из N! перестановок чисел от 1 до N.
+
+\vspace{\baselineskip}
+\textbf{Псевдокод}
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3]{Python}
+minimum = INF # Присваиваем минимуму бесконечно большое значение
+for all permutations P # Перебираем все перестановки
+
+	current = 0 # Вводим счетчик для всех стоимостей путей
+
+	for i from 0 to N-2        
+	    current = current + cost[P[i]][P[i+1]] # Добавить стоимость пути
+	                                           # из вершины 1 в следующую
+       
+	current = current + cost[P[N-1]][P[0]] # Добавить стоимость пути из 
+                                    	   # последней вершины в первую
+	if current < minimum # Обновить минимум, если необходимо        
+		minimum = current   
+output minimum # Выводим минимальную стоимость 
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+\textbf{Временная сложность}
+
+\vspace{\baselineskip}
+Есть N! перестановок пути, которые нужно пройти. Цена за каждое прохождение вычисляется за O(N), следовательно, этот алгоритм занимает O(N * N!) времени для вывода точного ответа.
+
+\vspace{\baselineskip}
+\section*{Раздел 44.2: Алгоритм динамического программирования}
+
+\vspace{\baselineskip}
+Обратите внимание, что если мы рассмотрим путь (по порядку):
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+(\p{1},\p{2},\p{3},\p{4},\p{6},\p{0},\p{5},\p{7})
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+и путь
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+(\p{1},\p{2},\p{3},\p{5},\p{0},\p{6},\p{7},\p{4})
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+То стоимость за переход из вершины 1 в вершину 2, а затем в вершину 3 остается одинаковой, так зачем же ее пересчитывать? Этот результат может быть сохранен для дальнейшего использования.
+
+\vspace{\baselineskip}
+Пусть dp [битовая маска] [вершина] представляет собой минимальные затраты на перемещения через все вершины, у которых соответствующий бит в битовой маске установлен на 1 окончание в вершине. Например:
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+dp[\p{12}][\p{2}]
+
+\hspace{0.9cm}\p{12} = \hspace{0.5mm}\p{1} \hspace{0mm}\p{1} \p{0} \p{0}
+   
+ \ \ \ \ \ \ \ \ \ \ \ \ \ \ $\wedge \hspace{0.5mm}\wedge$ {\color{OliveGreen}{// соответствие вершин и значения 1 в битовой маске}}
+
+vertices: \hspace{2mm}  \p{3} \hspace{0cm}\p{2} \p{1} \p{0} {\color{OliveGreen}{// вершины}}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Поскольку 12 соответствует \p{1100} в двоичной системе счисления, значение dp[\p{12}] [\p{2}] - прохождение через вершины 2 и 3 в графе с путем, заканчивающимся в вершине 2.
+
+\vspace{\baselineskip}
+Таким образом, мы получаем следующий алгоритм (реализация на языке C++):
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3]{C++}
+int cost[N][N]; // Установить значение N, если необходимо
+int memo[1 << N][N]; // Установить здесь все на -1
+// Задача коммивояжера
+int TSP(int bitmask, int pos){    
+	int cost = INF; // Присваиваем бесконечно большое значение стоимости    
+	if (bitmask == ((1 << N) - 1)){ // Если все вершины были посещены        
+		return cost[pos][0]; // Стоимость возвращения    
+	}    
+	if (memo[bitmask][pos] != -1){ // Если данное значение уже было вычислено        
+		return memo[bitmask][pos]; // Просто возвратить значение, 
+		                          // не нужно пересчитывать    
+	}    
+	for (int i = 0; i < N; ++i){ // Для каждой вершины        
+		if ((bitmask & (1 << i)) == 0){ // Если вершина не была посещена            
+			cost = min(cost,TSP(bitmask |
+			(1 << i) , i) + cost[pos][i]); // Посетить вершину        
+		}    
+	}    
+	memo[bitmask][pos] = cost; // Сохранить результат    
+	return cost; 
+} 
+//Вызвать TSP(1,0)
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Эта строка может быть немного запутанной, поэтому давайте пройдемся по ней детально:
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+cost = min(cost,TSP(bitmask | (1 $\ll$  i) , i) + cost[pos][i]);
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Здесь \tcbox[nobeforeafter, tcbox raise base, right =0.5mm]{bitmask | (1 $\ll$ i)} устанавливает i-й бит \tcbox[nobeforeafter, tcbox raise base, right =0.5mm]{битовой маски} на 1, что означает, что была проверена i-я вершина. \tcbox[nobeforeafter, tcbox raise base, right =0.5mm]{i} после запятой означает новую \tcbox[nobeforeafter, tcbox raise base, right =0.5mm]{pos} (позицию) в вызове функции, которая является новой «последней» вершиной. \tcbox[nobeforeafter, tcbox raise base, right =0.5mm]{cost[pos][i]} нужна, чтобы добавлять к общим затратам стоимость перемещения из последней вершины ( \tcbox[nobeforeafter, tcbox raise base, right =0.5mm]{pos} ) в вершину \tcbox[nobeforeafter, tcbox raise base, right =0.5mm]{i}.
+
+\vspace{\baselineskip}
+Таким образом, эта строка нужна для нахождения минимально возможного значения за прохождение через все те вершины, которые еще не были проверены, и дальнейшего присвоения этого значения переменной \tcbox[nobeforeafter, tcbox raise base, right =0.5mm]{cost}.
+
+\vspace{\baselineskip}
+\textbf{Временная сложность}
+
+\vspace{\baselineskip} TSP(bitmask,pos)
+Функция \tcbox[nobeforeafter, tcbox raise base, right =0.5mm]{TSP(bitmask,pos)} имеет \tcbox[nobeforeafter, tcbox raise base, right =0.5mm]{$2^N$} значений для \tcbox[nobeforeafter, tcbox raise base, right =0.5mm]{битовой маски} и \tcbox[nobeforeafter, tcbox raise base, right =0.5mm]{N} значений для \tcbox[nobeforeafter, tcbox raise base, right =0.5mm]{pos}. Каждая функция занимает \tcbox[nobeforeafter, tcbox raise base, right =0.5mm]{O(N)} времени для выполнения (цикла \tcbox[nobeforeafter, tcbox raise base, right =0.5mm]{\textbf{for}}). Таким образом, эта реализация требует \tcbox[nobeforeafter, tcbox raise base, right =0.5mm]{O($N^2 * 2^N$)} времени, чтобы вывести точный ответ.
+
+\chapter*{Глава 45: Задача о рюкзаке}
+
+\vspace{\baselineskip}
+\section*{Раздел 45.1: Основы задачи о рюкзаке}
+
+\vspace{\baselineskip}
+\href{https://vk.cc/atR60o}{\textbf{\underline{Задача}}}: Дан набор предметов, в котором у каждого предмета есть два параметра: вес и ценность, определите сколько предметов нужно добавить в рюкзак, чтобы общий вес был меньше или равен заданному ограничению, а суммарная стоимость предметов была как можно больше.
+
+\vspace{\baselineskip}
+\textbf{Псевдокод к задаче о рюкзаке}
+
+\vspace{\baselineskip}
+Дано:
+
+\vspace{\baselineskip}
+\begin{enumerate}
+    \item Стоимости предметов (массив v)
+    \item Веса (массив w)
+    \item Количество предметов (n)
+    \item Вместимость (W)
+\end{enumerate}
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3]{Python}
+for j from 0 to W do: # Прямой ход    
+	m[0, j] := 0 # Все предметы не лежат в рюкзаке
+for i from 1 to n do:    
+	for j from 0 to W do:        
+		if w[i] > j then: # Если вес предмета больше ограничения по весу           
+			m[i, j] := m[i-1, j] # Решение задачи с i предметом 
+			# сводится к решению задачи с i-1 предметом        
+		else:            
+			m[i, j] := max(m[i-1, j], m[i-1, j-w[i]] + v[i]) 
+			# Стоимости выборки присваивается максимальное значение
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Простая реализация вышеуказанного псевдокода на Python:
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3]{Python}
+# Задача о рюкзаке
+def knapSack(W, wt, val, n):    
+	K = [[0 for x in range(W+1)] for x in range(n+1)] # Максимальная стоимость 
+	# предметов, которые можно уложить в рюкзак вместимости W, если можно 
+	# использовать только первые n предметов  
+	for i in range(n+1):        
+		for w in range(W+1):            
+			if i==0 or w==0:                
+				K[i][w] = 0 # Предмет не лежит в рюкзаке            
+			elif wt[i-1] <= w: # Вес i-1 предмета меньше вместимости рюкзака                
+				K[i][w] = max(val[i-1] + K[i-1][w-wt[i-1]],  K[i-1][w]) # Выбираем 
+			    # предмет наибольшей стоимости    
+			else: # Не берем предмет с номером i                
+				K[i][w] = K[i-1][w]    
+	return K[n][W] # Выводим максимальную стоимость предметов, которые мы кладем 
+	               # в рюкзак
+val = [60, 100, 120] # Входные значения стоимостей
+wt = [10, 20, 30] # Входные значения весов
+W = 50 # Вместимость рюкзака
+n = len(val) # Количество предметов
+print(knapSack(W, wt, val, n)) # Вывод ответа к задаче
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Запуск кода: сохраните это в файле с именем knapSack.py
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\$ python knapSack.py
+
+\p{220}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Временная сложность приведенного выше кода: O(nW), где n - количество предметов, а W - вместимость рюкзака.
+
+\vspace{\baselineskip}
+\section*{Раздел 45.2: Реализация решения на C\#}
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=2]{csharp}
+// Задача о рюкзаке
+public class KnapsackProblem 
+{
+	private static int Knapsack(int w, int[] weight, int[] value, int n)    
+	{        
+		int i;        
+		int[,] k = new int[n + 1, w + 1];        
+		for (i = 0; i <= n; i++)        
+		{            
+			int b;            
+			for (b = 0; b <= w; b++)            
+			{                
+				if (i==0 || b==0)                
+				{                    
+					k[i, b] = 0; // Все предметы не лежат в рюкзаке               
+				}                
+				else if (weight[i - 1] <= b) // Вес i-1 предмета меньше вместимости
+				                            // рюкзака                
+				{                    
+					k[i, b] = Math.Max(value[i - 1] + k[i - 1, b - weight[i - 1]], 
+					k[i - 1, b]); // Выбираем предмет наибольшей стоимости                
+				}                
+				else // Не берем предмет с номером i                
+				{                    
+					k[i, b] = k[i - 1, b];                
+				}            
+			}        
+		}        
+		return k[n, w]; // Выводим максимальную стоимость предметов, 
+		                // которые мы кладем в рюкзак   
+	}
+	public static int Main(int nItems, int[] weights, int[] values)  
+	{        
+		int n = values.Length; // Количество предметов        
+		return Knapsack(nItems, weights, values, n); // Вывод ответа к задаче
+    
+	} 
+}
+\end{minted}
+\end{tcolorbox}
+
+\chapter*{Глава 46: Решение уравнений}
+
+\vspace{\baselineskip}
+\section*{Раздел 46.1: Линейные уравнения}
+
+\vspace{\baselineskip}
+Существует два класса методов решения линейных уравнений:
+
+\vspace{\baselineskip}
+\begin{enumerate}
+    \item \textbf{Прямые методы:} Им свойственно преобразование исходного уравнения в эквивалентные уравнения, которые проще решаются, то есть мы получаем решение непосредственно из уравнения. 
+    \item \textbf{Итерационный метод (Непрямой метод):} Начинается с предположения о решении уравнения, а затем повторно уточняется решение до тех пор, пока не будет достигнут определенный критерий сходимости. Итерационные методы обычно менее эффективны, чем прямые методы, поскольку требуется большое количество операций. Примером могут послужить итерационный метод Якоби или итерационный метод Гаусса-Зейделя.
+\end{enumerate}
+
+\vspace{\baselineskip}
+Реализация на C-
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3]{C}
+// Реализация метода Якоби 
+void JacobisMethod(int n, double x[n], double b[n], double a[n][n]){ 
+// n-размерность матрицы, x[n]-решение уравнения, b[n]-начальное приближение, 
+// a[n][n]-матрица коэффициентов   
+	double Nx[n]; // модифицированная форма переменных   
+	int rootFound=0; // флаг
+
+	int i, j;    
+	while(!rootFound){        
+		for(i=0; i<n; i++){ // вычисление            
+			Nx[i]=b[i]; // присваиваем начальное приближение
+
+			for(j=0; j<n; j++){                
+				if(i!=j) Nx[i] = Nx[i]-a[i][j]*x[j]; // приближение для 
+				// недиагональных эл-в матрицы         
+			}            
+			Nx[i] = Nx[i] / a[i][i]; // приближение для диагональных эл-в      
+		}
+        
+		rootFound=1; // проверка        
+		for(i=0; i<n; i++){            
+			if(!( (Nx[i]-x[i])/x[i] > -0.000001 && (Nx[i]-x[i])/x[i] < 0.000001 )){ 
+			// уточнение погрешности              
+				rootFound=0;                
+				break;            
+			}        
+		}
+        
+		for(i=0; i<n; i++){ // оценка            
+			x[i]=Nx[i];        
+		}    
+	}
+    
+	return ; 
+}
+
+// Реализация метода Гаусса-Зейделя 
+void GaussSeidalMethod(int n, double x[n], double b[n], double a[n][n]){    
+	double Nx[n]; // модифицированная форма переменных    
+	int rootFound=0; //флаг
+    
+	int i, j;    
+	for(i=0; i<n; i++){ // инициализация        
+		Nx[i]=x[i];  
+	}
+\end{minted}
+\end{tcolorbox}

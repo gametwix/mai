@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{n}{x} \PYG{n}{in} \PYG{n+nl}{input}\PYG{p}{:}
+	\PYG{n}{count}\PYG{p}{[}\PYG{n}{key}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+\PYG{n}{total} \PYG{o}{=} \PYG{l+m+mi}{0}
+\PYG{k}{for} \PYG{n}{i} \PYG{n}{in} \PYG{n}{range}\PYG{p}{(}\PYG{n}{k}\PYG{p}{)}\PYG{o}{:}
+	\PYG{n}{oldCount} \PYG{o}{=} \PYG{n}{count}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}
+	\PYG{n}{count}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{total}
+	\PYG{n}{total} \PYG{o}{+=} \PYG{n}{oldCount}
+\PYG{k}{for} \PYG{n}{x} \PYG{n}{in} \PYG{n+nl}{input}\PYG{p}{:}
+	\PYG{n}{output}\PYG{p}{[}\PYG{n}{count}\PYG{p}{[}\PYG{n}{key}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)]]} \PYG{o}{=} \PYG{n}{x}
+	\PYG{n}{count}\PYG{p}{[}\PYG{n}{key}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+\PYG{k}{return} \PYG{n}{output}
+\end{Verbatim}

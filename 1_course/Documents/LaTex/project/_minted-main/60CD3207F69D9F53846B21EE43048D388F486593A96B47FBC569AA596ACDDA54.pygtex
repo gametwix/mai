@@ -1,0 +1,44 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{LFU} \PYG{o}{:} \PYG{k}{public} \PYG{n}{Strategy} \PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+	\PYG{n}{LFU}\PYG{p}{()} \PYG{o}{:} \PYG{n}{Strategy}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}LFU\PYGZdq{}}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{cacheSize}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{n}{requestFrequency}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{k+kt}{int} \PYG{n}{apply}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{requestIndex}\PYG{p}{)} \PYG{k}{override}
+	\PYG{p}{\PYGZob{}}
+		
+		\PYG{k+kt}{int} \PYG{n}{least} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+		
+		\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{cacheSize}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+		
+			\PYG{k}{if}\PYG{p}{(}\PYG{n}{cache}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{n}{request}\PYG{p}{[}\PYG{n}{requestIndex}\PYG{p}{])}
+				\PYG{k}{return} \PYG{n}{i}\PYG{p}{;}
+			
+			\PYG{k}{else} \PYG{n+nf}{if}\PYG{p}{(}\PYG{n}{requestFrequency}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{n}{requestFrequency}\PYG{p}{[}\PYG{n}{least}\PYG{p}{])}
+				\PYG{n}{least} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
+		
+		\PYG{p}{\PYGZcb{}}
+		
+		\PYG{k}{return} \PYG{n}{least}\PYG{p}{;}
+	
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{k+kt}{void} \PYG{n}{update}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{cachePos}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{requestIndex}\PYG{p}{,} \PYG{k+kt}{bool} \PYG{n}{cacheMiss}\PYG{p}{)} \PYG{k}{override}
+	\PYG{p}{\PYGZob{}}
+		
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{cacheMiss}\PYG{p}{)}
+			\PYG{n}{requestFrequency}\PYG{p}{[}\PYG{n}{cachePos}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+		
+		\PYG{k}{else}
+			\PYG{o}{++}\PYG{n}{requestFrequency}\PYG{p}{[}\PYG{n}{cachePos}\PYG{p}{];}
+		
+	\PYG{p}{\PYGZcb{}}
+
+\PYG{k}{private}\PYG{o}{:}
+
+	\PYG{k+kt}{int} \PYG{n}{requestFrequency}\PYG{p}{[}\PYG{n}{cacheSize}\PYG{p}{];}
+\PYG{p}{\PYGZcb{};}
+\end{Verbatim}

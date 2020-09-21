@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{RuntimeHelpers}\PYG{p}{.}\PYG{n}{GetHashCode}\PYG{p}{(}\PYG{n}{this}\PYG{p}{);}
+\end{Verbatim}

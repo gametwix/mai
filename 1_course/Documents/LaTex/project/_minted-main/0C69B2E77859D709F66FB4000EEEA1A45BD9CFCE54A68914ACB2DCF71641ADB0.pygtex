@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{algorithm} \PYG{n}{kruskalMST}\PYG{p}{(}\PYG{n}{G}\PYG{p}{:} \PYG{n}{a} \PYG{n}{graph}\PYG{p}{)}
+	\PYG{n}{sort} \PYG{n}{Gs} \PYG{n}{edges} \PYG{n}{by} \PYG{n}{their} \PYG{n}{value}
+\PYG{c+c1}{\PYGZsh{} отсортируем Gs ребра  по их значению}
+	\PYG{n}{MST} \PYG{o}{=} \PYG{n}{a} \PYG{n}{forest} \PYG{n}{of} \PYG{n}{trees}\PYG{p}{,} \PYG{n}{initially} \PYG{n}{each} \PYG{n}{tree} \PYG{o+ow}{is} \PYG{n}{a} \PYG{n}{node} \PYG{o+ow}{in} \PYG{n}{the} \PYG{n}{graph}
+\PYG{c+c1}{\PYGZsh{} MST = лес деревьев, изначально каждое дерево является узлом графа}
+	\PYG{k}{for} \PYG{n}{each} \PYG{n}{edge} \PYG{n}{e} \PYG{o+ow}{in} \PYG{n}{G}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{}  для каждого ребра в G:}
+		\PYG{k}{if} \PYG{n}{the} \PYG{n}{root} \PYG{n}{of} \PYG{n}{the} \PYG{n}{tree} \PYG{n}{that} \PYG{n}{e}\PYG{o}{.}\PYG{n}{first} \PYG{n}{belongs} \PYG{n}{to} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{n}{the} \PYG{n}{same}
+\PYG{c+c1}{\PYGZsh{} если корень дерева, к которому принадлежит e.first, не совпадает}
+		\PYG{k}{as} \PYG{n}{the} \PYG{n}{root} \PYG{n}{of} \PYG{n}{the} \PYG{n}{tree} \PYG{n}{that} \PYG{n}{e}\PYG{o}{.}\PYG{n}{second} \PYG{n}{belongs} \PYG{n}{to}\PYG{p}{:}
+\PYG{c+c1}{\PYGZsh{} как корень дерева, к которому принадлежит e.second:}
+			\PYG{n}{connect} \PYG{n}{one} \PYG{n}{of} \PYG{n}{the} \PYG{n}{roots} \PYG{n}{to} \PYG{n}{the} \PYG{n}{other}\PYG{p}{,} \PYG{n}{thus} \PYG{n}{merging} \PYG{n}{two} \PYG{n}{trees}
+\PYG{c+c1}{\PYGZsh{} соединить один из корней с другим, таким образом объединяя два дерева}
+		\PYG{k}{return} \PYG{n}{MST}\PYG{p}{,} \PYG{n}{which} \PYG{n}{now} \PYG{n}{a} \PYG{n}{single}\PYG{o}{\PYGZhy{}}\PYG{n}{tree} \PYG{n}{forest}
+\PYG{c+c1}{\PYGZsh{} вернуть MST, который теперь представляет из себя лес с одним деревом}
+\end{Verbatim}

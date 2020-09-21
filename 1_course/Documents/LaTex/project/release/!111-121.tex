@@ -1,0 +1,453 @@
+% Моисеенков
+
+\begin{center}
+    \includeimage{0.75}{images/111_1.pdf}
+\end{center}
+
+Теперь мы рассмотрим все ребра от \textbf{узла 1} и \textbf{узла 5} и возьмем минимум. Так как \textbf{1-5} уже отмечены, мы возьмем \textbf{1-2}.
+
+\newpage
+
+\begin{center}
+    \includeimage{0.85}{images/111_2.pdf}
+\end{center}
+
+На этот раз мы рассмотрим \textbf{узел 1}, \textbf{узел 2} и \textbf{узел 5} и возьмем минимальное ребро \textbf{5-4}.
+
+\begin{center}
+    \includeimage{0.75}{images/112_1.pdf}
+\end{center}
+
+Следующий шаг важен. От \textbf{узла-1}, \textbf{узла-2}, \textbf{узла-5} и \textbf{узла-4} наименьшее ребро - это \textbf{2-4}. Но если мы выберем его, то создадим цикл в нашем подграфе. Это из-за того, что \textbf{узел-2} и \textbf{узел-4} уже находятся в нашем подграфе. Таким образом, добавление ребра \textbf{2-4} не принесет нам никакой пользы. \textit{Мы выберем ребра такие, чтобы они добавили новый узел в наш подграф}. Поэтому мы выберем ребро \textbf{4-8}.
+
+\begin{center}
+    \includeimage{0.75}{images/112_2.pdf}
+\end{center}
+
+Если мы продолжим тем же образом, то выберем ребра \textbf{8-6}, \textbf{6-7} и \textbf{4-3}. Наш подграф будет выглядеть так:
+
+\begin{center}
+    \includeimage{0.75}{images/113_1.pdf}
+\end{center}
+
+Это подграф, который нам нужен, который даст нам дерево с минимальным охватом. Если мы уберем ребра, которые не выбирали,то получим:
+
+\begin{center}
+    \includeimage{0.75}{images/113_2.pdf}
+\end{center}
+
+Это наше \textbf{дерево с минимальным охватом} (MST). Таким образом, стоимость настройки телефонных соединений: \textbf{4 + 2 + 5 + 11 + 9 + 2 + 1 = 34}. А набор домов и их связей показаны на графе. На графе может быть несколько \textbf{MST}. Это зависит от выбранного нами \textbf{исходного} узла.
+
+\vspace{\baselineskip}
+
+Ниже приведен псевдокод алгоритма:
+
+\begin{tcolorbox}
+\begin{minted}{C}
+Procedure PrimsMST(Graph):
+Vnew[] = {x}
+Enew[] = {}
+while Vnew is not equal to V
+   u -> a node from Vnew
+   v -> a node that is not in Vnew such that edge u-v has the minimum cost
+   add v to Vnew
+   add edge (u, v) to Enew
+end while
+Return Vnew and Enew
+\end{minted}
+\end{tcolorbox}
+
+\textbf{Сложность:}
+
+\vspace{\baselineskip}
+
+Временная сложность вышеуказанного наивного подхода -- $\mathbf{O(V^2)}$. В нем используется матрица смежности. Мы можем уменьшить сложность, используя очередь приоритетов. Когда мы добавляем новый узел к \textbf{Vnew}, то мы можем добавить его соседние ребра в очередь c приоритетами. Затем вытаскиваем из него ребро с минимальным весом. Тогда сложность будет: \textbf{O(ElogE)}, где \textbf{E} --- это количество ребер. Также можно построить двоичную кучу, чтобы уменьшить сложность до \textbf{O(ElogV)}.
+
+\vspace{\baselineskip}
+
+Псевдокод, использующий очередь с приоритетами, приведен ниже:
+
+\begin{tcolorbox}
+\begin{minted}{C}
+Procedure MSTPrim(Graph, source):
+for each u in V
+	key[u] := inf
+	parent[u] := NULL
+end for
+key[source] := 0
+Q = Priority_Queue()
+Q = V
+while Q is not empty
+	u -> Q.pop
+	for each v adjacent to i
+		if v belongs to Q and Edge(u,v) < key[v]
+			parent[v] := u
+			key[v] := Edge(u, v)
+		end if
+	end for
+end while
+\end{minted}
+\end{tcolorbox}
+
+Здесь \textbf{key[]} хранит минимальную стоимость обхода \textbf{node-v. parent[]} используется для хранения родительского узла. Это полезно для обхода и вывода дерева.
+
+\vspace{\baselineskip}
+
+Ниже приведена простая программа на Java:
+
+\begin{tcolorbox}
+\begin{minted}{Java}
+import java.util.*;
+
+public class Graph
+{
+	private static int infinite = 9999999;
+	int[][] LinkCost;
+	int NNodes;
+	Graph(int[][] mat)
+	{
+		int i, j;
+		NNodes = mat.length;
+		LinkCost = new int[NNodes][NNodes];
+		for ( i=0; i < NNodes; i++)
+		{
+			for ( j=0; j < NNodes; j++)
+			{
+				LinkCost[i][j] = mat[i][j];
+				if (LinkCost[i][j] == 0)
+				{
+					LinkCost[i][j] = infinite;
+				}
+			}
+		for ( i = 0; i < NNodes; i++)
+		{
+			for (j = 0; j < NNodes; j++)
+				if (LinkCost[i][j] <infinite)
+					System.out.print( " " + LinkCost[i][j] + " " );
+				else
+					   System.out.print(" * " );
+				System.out.print();
+		}
+	}
+	public int unReached(boolean[] r)
+	{
+		boolean done = true;
+		for (int i = 0; i < r; i++)
+			if (r[i] == false)
+				return i;
+		return -1;
+	}
+	public void Prim( )
+	{
+		int i, j, k, x, y;
+		boolean[] Reached = new boolean[NNoodes];
+		Reached[0] = true;
+		for (k = 1; k < NNoodes; k++ )
+		{
+			Reached[k] = false;
+		}
+		predNode[0] = 0;
+		printReachSet( Reached);
+		for(k=1; k < NNodes; k++)
+		{
+			x= y=0;
+			for( i=0; i< NNodes; i++)
+				for( j=0; j< NNodes; j++)
+				{
+					if (Reached[i] &&!Reached[j] &&  
+						 LinkCost[i][j] < LinkCost[x][y])
+					{
+						x= i;
+						y= j;
+					}
+				}
+			System.out.println("Min cost edge: 
+						("+ x + "," + y + ")" + "cost =  " + LinkCost[x][y]);
+			predNode[y]= x;
+			Reached[y]= true;
+			printReachSet( Reached);
+			System.out.println();
+		}
+		int[] a= predNode;
+	for( i=0; i < NNodes; i++)
+		System.out.println( a[i]+ " --> "+ i);
+	}
+	void printReachSet(boolean[] Reached)
+	{
+		System.out.print("ReachSet = ");
+		for(int i=0; i< Reached.length; i++)
+			if( Reached[i])
+				System.out.print( i+ " ");
+	}
+	public static void main(String[] args)
+	{
+		int[][] conn={{0,3,0,2,0,0,0,0,4}, // 0
+					   {3,0,0,0,0,0,0,4,0}, // 1
+					   {0,0,0,6,0,1,0,2,0}, // 2
+					   {2,0,6,0,1,0,0,0,0}, // 3
+					   {0,0,0,1,0,0,0,0,8}, // 4
+					   {0,0,1,0,0,0,8,0,0}, // 5
+					   {0,0,0,0,0,8,0,0,0}, // 6
+					   {0,4,2,0,0,0,0,0,0}, // 7
+					   {4,0,0,0,8,0,0,0,0} // 8
+					 };
+		Graph G= new Graph(conn);
+		G.Prim();
+	}
+}
+\end{minted}
+\end{tcolorbox}
+
+Скомпилируем код выше, используя {\usefont{T2A}{cmtt}{m}{n} javac Graph.\textcolor{Blue}{java}}
+
+\vspace{\baselineskip}
+
+На выходе получим:
+
+\begin{tcolorbox}
+	{\usefont{T2A}{cmtt}{m}{n}
+    \$ java Graph \\
+    \begin{tabular}{*{9}{c}}
+        \textcolor{Gray}{*} & \textcolor{Purple}{3} & \textcolor{Gray}{*} & \textcolor{Purple}{2} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Purple}{4} \\
+        
+        \textcolor{Purple}{3} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Purple}{4} & \textcolor{Gray}{*} \\
+        
+        \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Purple}{6} & \textcolor{Gray}{*} & \textcolor{Purple}{1} & \textcolor{Gray}{*} & \textcolor{Purple}{2} & \textcolor{Gray}{*} \\
+        
+        \textcolor{Purple}{2} & \textcolor{Gray}{*} & \textcolor{Purple}{6} & \textcolor{Gray}{*} & \textcolor{Purple}{1} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} \\
+        
+        \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Purple}{1} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Purple}{8} \\
+        
+        \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Purple}{1} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Purple}{8} & \textcolor{Gray}{*} & \textcolor{Gray}{*} \\
+        
+        \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Purple}{8} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} \\
+        
+        \textcolor{Gray}{*} & \textcolor{Purple}{4} & \textcolor{Purple}{2} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} \\
+        
+        \textcolor{Purple}{4} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Purple}{8} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} & \textcolor{Gray}{*} \\
+        
+    \end{tabular}
+    
+    \vspace{\baselineskip}
+    
+    ReachSet = \textcolor{Purple}{0} Min cost edge: \textcolor{Gray}{(}\textcolor{Purple}{0},\textcolor{Purple}{3}\textcolor{Gray}{)}cost = \textcolor{Purple}{2} \\
+    ReachSet = \textcolor{Purple}{0 3} \\
+    Min cost edge: \textcolor{Gray}{(}\textcolor{Purple}{3},\textcolor{Purple}{4}\textcolor{Gray}{)}cost = \textcolor{Purple}{1} \\
+    ReachSet = \textcolor{Purple}{0 3 4} \\
+    Min cost edge: \textcolor{Gray}{(}\textcolor{Purple}{0},\textcolor{Purple}{1}\textcolor{Gray}{)}cost = \textcolor{Purple}{3} \\
+    ReachSet = \textcolor{Purple}{0 1 3 4} \\
+    Min cost edge: \textcolor{Gray}{(}\textcolor{Purple}{0},\textcolor{Purple}{8}\textcolor{Gray}{)}cost = \textcolor{Purple}{4} \\
+    ReachSet = \textcolor{Purple}{0 1 3 4 8} \\
+    Min cost edge: \textcolor{Gray}{(}\textcolor{Purple}{1},\textcolor{Purple}{7}\textcolor{Gray}{)}cost = \textcolor{Purple}{4} \\
+    ReachSet = \textcolor{Purple}{0 1 3 4 7 8} \\
+    Min cost edge: \textcolor{Gray}{(}\textcolor{Purple}{7},\textcolor{Purple}{2}\textcolor{Gray}{)}cost = \textcolor{Purple}{2} \\
+    ReachSet = \textcolor{Purple}{0 1 2 3 4 7 8} \\
+    Min cost edge: \textcolor{Gray}{(}\textcolor{Purple}{2},\textcolor{Purple}{5}\textcolor{Gray}{)}cost = \textcolor{Purple}{1} \\
+    ReachSet = \textcolor{Purple}{0 1 2 3 4 5 7 8} \\
+    Min cost edge: \textcolor{Gray}{(}\textcolor{Purple}{5},\textcolor{Purple}{6}\textcolor{Gray}{)}cost = \textcolor{Purple}{8} \\
+    ReachSet = \textcolor{Purple}{0 1 2 3 4 5 6 7 8} \\
+    \textcolor{Purple}{0} \textcolor{Gray}{--->} \textcolor{Purple}{0} \\
+    \textcolor{Purple}{0} \textcolor{Gray}{--->} \textcolor{Purple}{1} \\
+    \textcolor{Purple}{7} \textcolor{Gray}{--->} \textcolor{Purple}{2} \\
+    \textcolor{Purple}{0} \textcolor{Gray}{--->} \textcolor{Purple}{3} \\
+    \textcolor{Purple}{3} \textcolor{Gray}{--->} \textcolor{Purple}{4} \\
+    \textcolor{Purple}{2} \textcolor{Gray}{--->} \textcolor{Purple}{5} \\
+    \textcolor{Purple}{5} \textcolor{Gray}{--->} \textcolor{Purple}{6} \\
+    \textcolor{Purple}{1} \textcolor{Gray}{--->} \textcolor{Purple}{7} \\
+    \textcolor{Purple}{0} \textcolor{Gray}{--->} \textcolor{Purple}{8} \\
+    }
+\end{tcolorbox}
+
+\chapter*{Глава 20: Алгоритм Беллмана-Форда}
+\section*{Раздел 20.1: Алгоритм поиска кратчайшего пути от одной вершины }
+
+\textit{Перед прочтением данного примера необходимо иметь краткое представление о релаксации ребер графа. Вы можете узнать об этом отсюда}
+
+\vspace{\baselineskip}
+
+Алгоритм \href{https://vk.cc/6DZOvo}{\underline{Беллмана-Форда}} вычисляет кратчайшие пути из одной исходной вершины до всех остальных вершин во взвешенном графе. Несмотря на то, что он медленнее, чем алгоритм Дейкстры, он работает в тех случаях, когда вес ребра отрицательный, а также находит в графе цикл с отрицательным весом. Проблема с алгоритмом Дейкстры в том, что если имеется отрицательный цикл, то он продолжает проходить через цикл снова и снова и продолжает сокращать расстояние между двумя вершинами.
+
+\vspace{\baselineskip}
+
+Идея данного алгоритма заключается в том, чтобы пройти все ребра этого графа одно за другим в некотором случайном порядке. Это может быть любой случайный порядок. Но вы должны убедиться, что если \textbf{u-v} (где \textbf{u} и \textbf{v} - две вершины графа) является одним из ваших порядков, то должно иметься ребро, соединяющее \textit{u} и \textit{v}. Обычно оно берется непосредственно из порядка, заданного входными данными. Опять же, любой случайный порядок будет работать.
+
+\vspace{\baselineskip}
+
+После выбора порядка, мы \textit{релаксируем} ребра в соответствии с формулой релаксации. Для данного ребра \textbf{u-v}, проходя от от \textbf{u} до \textbf{v}, формула следующая:
+
+\begin{tcolorbox}
+\begin{minted}{C++}
+if distance[u] + cost[u][v] < d[v]
+    d[v] = d[u] + cost[u][v]
+\end{minted}
+\end{tcolorbox}
+
+
+То есть, если расстояние от \textbf{источника} до любой вершины \textbf{u} + вес \textbf{ребра u-v} меньше, чем расстояние от источника до другой вершины \textbf{v}, мы обновляем расстояние от \textbf{источника} до \textbf{v}. Нам нужно \textit{релаксировать} ребра не более чем \textbf{(V-1)} раз, где \textbf{V} - число ребер графа. Вы спросите, почему \textbf{(V-1)}? Мы объясним это в другом примере. Также мы будем отслеживать родительскую вершину любой вершины, т.е. когда мы релаксируем ребро, мы установим:
+
+\begin{tcolorbox}
+\begin{minted}{C++}
+parent[v] = u
+\end{minted}
+\end{tcolorbox}
+
+Это означает, что мы нашли еще один короткий путь для достижения \textbf{v} через \textbf{u}. Он понадобится нам позже, чтобы вывести кратчайший путь от \textbf{источника} к нужной вершине.
+
+\vspace{\baselineskip}
+
+Давайте рассмотрим пример. У нас есть граф:
+
+\newpage
+
+\begin{center}
+    \includeimage{0.75}{images/118_1.pdf}
+\end{center}
+
+В качестве \textbf{исходной} вершины мы выбрали \textbf{1}. Мы хотим найти кратчайший путь от \textbf{источника} до всех остальных вершин.
+
+\vspace{\baselineskip}
+
+Сначала \textbf{d[1] = 0}, потому что это источник. А остальные - \textit{бесконечность}, потому что мы еще не знаем их расстояния.
+
+\vspace{\baselineskip}
+
+Мы будем релаксировать ребра в этой последовательности:
+
+\vspace{\baselineskip}
+
+\begin{tcolorbox}
+{\tiny{+ - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{3.7mm}Serial\hspace{3.6mm}|\hspace{7.1mm}1\hspace{7.1mm} |\hspace{7.1mm}2\hspace{7.1mm} |\hspace{7.1mm}3\hspace{6.8mm} |\hspace{7.1mm}4\hspace{7.1mm} |\hspace{7.1mm}5\hspace{6.8mm} |\hspace{6.8mm}6\hspace{7.3mm} |
+
+{\tiny{+ - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+
+\hspace{0.4mm}|\hspace{3.5mm}Edge\hspace{3.5mm}
+|\hspace{3.7mm}4->5\hspace{3.7mm} |\hspace{3.7mm}3->4\hspace{3.7mm} |\hspace{3.7mm}1->3\hspace{3.7mm} |\hspace{3.7mm}1->4\hspace{3.7mm} |\hspace{3.7mm}4->6\hspace{3.7mm} |\hspace{3.7mm}2->3\hspace{3.7mm} |
+
+{\tiny{+ - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - + - - - - - - - - - +}}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+
+Вы можете взять любую последовательность. Если мы \textit{прорелаксируем} ребра один раз, то что мы получим? Мы получим расстояние от \textbf{источника} до всех остальных вершин пути, которые используют максимум 1 ребро. Теперь давайте ослабим ребра и обновим значения \textbf{d[]}. Мы получим:
+
+\begin{enumerate}
+    \item \textbf{d[4] + cost[4][5] = infinity + 7 = infinity}. Мы не можем обновить это значение.
+    \item \textbf{d[2] + cost[3][4] = infinity}. Мы не можем обновить это значение.
+    \item \textbf{d[1] + cost[1][3] = 0 + 2 = 2 < d[2]}. Поэтому \textbf{d[3] = 2}. Также \textbf{parent[1] = 1}.
+    \item \textbf{d[1] + cost[1][4] = 4}.
+    \item \textbf{d[4] + cost[4][6] = 9. d[6] = 9 < d[6]. parent[6] = 4}.
+    \item \textbf{d[2] + cost[2][3] = infinity}. Мы не можем обновить это значение.
+\end{enumerate}
+
+Мы не смогли обновить некоторые вершины, потому что условие {\usefont{T2A}{cmtt}{m}{n} d[u] + cost[u][v] < d[v]} не совпадало. Как мы уже говорили ранее, мы нашли пути от \textbf{исходных} вершин к другим узлам, используя максимум 1 ребро.
+
+\begin{center}
+    \includeimage{0.75}{images/119_1.pdf}
+\end{center}
+
+Вторая итерация предоставит нам путь с использованием 2 узлов. Мы получим:
+
+\begin{enumerate}
+    \item \textbf{d[4] + cost[4][5] = 12 < d[5]. d[5] = 12. parent[5] = 4.}
+    \item \textbf{d[3] + cost[3][4] = 1 < d[4]. d[4] = 1. parent[4] = 3.}
+    \item \textbf{d[3]} остается без изменений.
+    \item \textbf{d[4]} остается без изменений.
+    \item \textbf{d[4] + cost[4][6] = 6 < d[6]. d[6] = 6. parent[6] = 4.}
+    \item \textbf{d[3]} остается без изменений.
+\end{enumerate}
+
+Наш граф будет выглядеть так:
+
+\begin{center}
+    \includeimage{0.75}{images/120_1.pdf}
+\end{center}
+
+Наша 3-я итерация обновит только \textbf{вершину 5}, где \textbf{d[5]} будет \textbf{8}. Наш граф будет выглядеть так:
+
+\begin{center}
+	\includeimage{0.75}{images/120_2.pdf}
+\end{center}
+
+После этого, сколько бы итераций мы ни делали, у нас будут одинаковые расстояния. Поэтому у нас будет флаг, который проверяет, происходит обновление или нет. Если нет,то мы просто прервем цикл. Наш псевдокод будет выглядеть так:
+
+\begin{tcolorbox}
+\begin{minted}{C}
+Procedure Bellman-Ford(Graph, source):
+n := number of vertices in Graph
+for i from 1 to n
+	d[i] := infinity
+	parent[i] := NULL
+end for
+d[source] := 0
+for i from 1 to n-1
+	flag := false
+	for all edges from (u,v) in Graph
+		if d[u] + cost[u][v] < d[v]
+			d[v] := d[u] + cost[u][v]
+			parent[v] := u
+			flag := true
+		end if
+	end for
+	if flag == false
+		break
+end for
+Return d
+\end{minted}
+\end{tcolorbox}
+
+Чтобы отслеживать отрицательные циклы, мы можем модифицировать наш код, используя описанную здесь процедуру. Наш конечный псевдокод будет выглядеть так:
+
+\begin{tcolorbox}
+\begin{minted}{C}
+Procedure Bellman-Ford-With-Negative-Cycle-Detection(Graph, source):
+n := number of vertices in Graph
+for i from 1 to n
+	d[i] := infinity
+	parent[i] := NULL
+end for
+d[source] := 0
+for i from 1 to n-1
+	flag := false
+	for all edges from (u,v) in Graph
+	  if d[u] + cost[u][v] < d[v]
+		 d[v] := d[u] + cost[u][v]
+		 parent[v] := u
+		 flag := true
+	  end if
+	end for
+	if flag == false
+		break
+end for
+for all edges from (u,v) in Graph
+	if d[u] + cost[u][v] < d[v]
+		Return "Negative Cycle Detected"
+	end if
+end for
+Return d
+\end{minted}
+\end{tcolorbox}
+
+\textbf{Вывод пути:}
+
+\vspace{\baselineskip}
+
+Чтобы вывести кратчайший путь до вершины, мы будем возвращаться назад к ее родителю до тех пор, пока не встретим \textbf{NULL}, и затем выведем вершины. Псевдокод будет выглядеть так:
+
+\begin{tcolorbox}
+\begin{minted}{C}
+Procedure PathPrinting(u)
+v := parent[u]
+if v == NULL
+   return
+PathPrinting(v)
+print -> u
+\end{minted}
+\end{tcolorbox}
+
+\textbf{Сложность:}
+
+\vspace{\baselineskip}
+
+Так как нам необходимо ослабить ребра максимум \textbf{(V-1)} раз, то временная сложность этого алгоритма будет равна \textbf{O(V * E)}, где \textbf{E} - количество ребер, если мы используем {\usefont{T2A}{cmtt}{m}{n} список смежности} для отображения графа. Однако, если для представления графа используется {\usefont{T2A}{cmtt}{m}{n} матрица смежности}, то временная сложность будет равна $\mathbf{O(V^3)}$. Причина в том, что при использовании {\usefont{T2A}{cmtt}{m}{n} списка смежности} мы можем выполнить итерацию по всем ребрам во времени \textbf{O(E)}, но при использовании {\usefont{T2A}{cmtt}{m}{n} матрицы смежности} требуется время $\mathbf{O(V^2)}$.

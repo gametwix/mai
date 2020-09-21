@@ -1,0 +1,38 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}число \PYGZdq{}уровней\PYGZdq{} спирали}
+\PYG{n}{function} \PYG{n}{noOfLooping}\PYG{p}{(}\PYG{n}{m}\PYG{p}{,}\PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{\PYGZsh{} ищем минимальную сторону}
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{m} \PYG{o}{\PYGZgt{}} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{n}{smallestValue} \PYG{o}{=} \PYG{n}{n}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+		\PYG{n}{smallestValue} \PYG{o}{=} \PYG{n}{m}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{c+c1}{\PYGZsh{} делим ее пополам с округлением вверх}
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{smallestValue} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{2} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+			\PYG{k}{return} \PYG{n}{smallestValue}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+			\PYG{k}{return} \PYG{p}{(}\PYG{n}{smallestValue}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+ \PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{\PYGZsh{}вывод матрицы по спирали}
+\PYG{n}{function} \PYG{n}{squarePrint}\PYG{p}{(}\PYG{n}{m}\PYG{p}{,}\PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{n}{var} \PYG{n}{looping} \PYG{o}{=} \PYG{n}{noOfLooping}\PYG{p}{(}\PYG{n}{m}\PYG{p}{,}\PYG{n}{n}\PYG{p}{);}\PYG{c+c1}{\PYGZsh{}количество повторений}
+
+	\PYG{c+c1}{\PYGZsh{}вывод одного \PYGZdq{}уровня\PYGZdq{} спирали}
+	\PYG{k}{for}\PYG{p}{(}\PYG{n}{var} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{looping}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{k}{for}\PYG{p}{(}\PYG{n}{var} \PYG{n}{j} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{m} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1} \PYG{o}{\PYGZhy{}} \PYG{n}{i}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{c+c1}{\PYGZsh{}верхняя горизонталь}
+				\PYG{n}{console}\PYG{o}{.}\PYG{n}{log}\PYG{p}{(}\PYG{n}{i}\PYG{o}{+}\PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}\PYG{o}{+}\PYG{n}{j}\PYG{p}{);}\PYG{c+c1}{\PYGZsh{}вывести индексы i, j}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{for}\PYG{p}{(}\PYG{n}{var} \PYG{n}{k} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;} \PYG{n}{k} \PYG{o}{\PYGZlt{}} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1} \PYG{o}{\PYGZhy{}} \PYG{n}{i}\PYG{p}{;} \PYG{n}{k}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{c+c1}{\PYGZsh{}правая вертикаль}
+				\PYG{n}{console}\PYG{o}{.}\PYG{n}{log}\PYG{p}{(}\PYG{n}{k}\PYG{o}{+}\PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}\PYG{o}{+}\PYG{n}{j}\PYG{p}{);}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{for}\PYG{p}{(}\PYG{n}{var} \PYG{n}{l} \PYG{o}{=} \PYG{n}{j}\PYG{p}{;} \PYG{n}{l} \PYG{o}{\PYGZgt{}} \PYG{n}{i}\PYG{p}{;} \PYG{n}{l}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{c+c1}{\PYGZsh{}нижняя горизонталь}
+				\PYG{n}{console}\PYG{o}{.}\PYG{n}{log}\PYG{p}{(}\PYG{n}{k}\PYG{o}{+}\PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}\PYG{o}{+}\PYG{n}{l}\PYG{p}{);}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{for}\PYG{p}{(}\PYG{n}{var} \PYG{n}{x} \PYG{o}{=} \PYG{n}{k}\PYG{p}{;} \PYG{n}{x} \PYG{o}{\PYGZgt{}} \PYG{n}{i}\PYG{p}{;} \PYG{n}{x}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{c+c1}{\PYGZsh{}левая вертикаль}
+				\PYG{n}{console}\PYG{o}{.}\PYG{n}{log}\PYG{p}{(}\PYG{n}{x}\PYG{o}{+}\PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}\PYG{o}{+}\PYG{n}{l}\PYG{p}{);}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+ \PYG{p}{\PYGZcb{}}
+\PYG{n}{squarePrint}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{);}\PYG{c+c1}{\PYGZsh{}применить к матрице размером 4x6}
+\end{Verbatim}

@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Procedure} \PYG{n+nf}{PrimsMST}\PYG{p}{(}\PYG{n}{Graph}\PYG{p}{)}\PYG{o}{:}
+\PYG{n}{Vnew}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{n}{x}\PYG{p}{\PYGZcb{}}
+\PYG{n}{Enew}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+\PYG{k}{while} \PYG{n}{Vnew} \PYG{n}{is} \PYG{n}{not} \PYG{n}{equal} \PYG{n}{to} \PYG{n}{V}
+   \PYG{n}{u} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{a} \PYG{n}{node} \PYG{n}{from} \PYG{n}{Vnew}
+   \PYG{n}{v} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{a} \PYG{n}{node} \PYG{n}{that} \PYG{n}{is} \PYG{n}{not} \PYG{n}{in} \PYG{n}{Vnew} \PYG{n}{such} \PYG{n}{that} \PYG{n}{edge} \PYG{n}{u}\PYG{o}{\PYGZhy{}}\PYG{n}{v} \PYG{n}{has} \PYG{n}{the} \PYG{n}{minimum} \PYG{n}{cost}
+   \PYG{n}{add} \PYG{n}{v} \PYG{n}{to} \PYG{n}{Vnew}
+   \PYG{n}{add} \PYG{n}{edge} \PYG{p}{(}\PYG{n}{u}\PYG{p}{,} \PYG{n}{v}\PYG{p}{)} \PYG{n}{to} \PYG{n}{Enew}
+\PYG{n}{end} \PYG{k}{while}
+\PYG{n}{Return} \PYG{n}{Vnew} \PYG{n}{and} \PYG{n}{Enew}
+\end{Verbatim}

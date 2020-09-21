@@ -1,0 +1,23 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{subalgo} \PYG{n}{makeSet}\PYG{p}{(}\PYG{n}{v}\PYG{p}{:} \PYG{n}{a} \PYG{n}{node}\PYG{p}{):}  \PYG{c+c1}{\PYGZsh{} создаём поддерево}
+	\PYG{n}{v}\PYG{o}{.}\PYG{n}{parent} \PYG{o}{=} \PYG{n}{v}	\PYG{c+c1}{\PYGZsh{} создаём поддерево с корнем v}
+
+\PYG{n}{subalgo} \PYG{n}{findSet}\PYG{p}{(}\PYG{n}{v}\PYG{p}{:} \PYG{n}{a} \PYG{n}{node}\PYG{p}{):} \PYG{c+c1}{\PYGZsh{} находим корень узла по уже известной функции}
+	\PYG{k}{if} \PYG{n}{v}\PYG{o}{.}\PYG{n}{parent} \PYG{o}{==} \PYG{n}{v}\PYG{p}{:}
+		\PYG{k}{return} \PYG{n}{v}
+	\PYG{k}{return} \PYG{n}{findSet}\PYG{p}{(}\PYG{n}{v}\PYG{o}{.}\PYG{n}{parent}\PYG{p}{)}
+
+\PYG{n}{subalgo} \PYG{n}{unionSet}\PYG{p}{(}\PYG{n}{v}\PYG{p}{,} \PYG{n}{u}\PYG{p}{:} \PYG{n}{nodes}\PYG{p}{):} \PYG{c+c1}{\PYGZsh{} для двух корней определим иерархию}
+	\PYG{n}{vRoot} \PYG{o}{=} \PYG{n}{findSet}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}
+	\PYG{n}{uRoot} \PYG{o}{=} \PYG{n}{findSet}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}
+	\PYG{n}{uRoot}\PYG{o}{.}\PYG{n}{parent} \PYG{o}{=} \PYG{n}{vRoot}
+
+\PYG{n}{algorithm} \PYG{n}{kruskalMST}\PYG{p}{(}\PYG{n}{G}\PYG{p}{:} \PYG{n}{a} \PYG{n}{graph}\PYG{p}{):}
+	\PYG{n}{sort} \PYG{n}{Gs} \PYG{n}{edges} \PYG{n}{by} \PYG{n}{their} \PYG{n}{value} \PYG{c+c1}{\PYGZsh{} отсортируем Gs грани по их значениям}
+	\PYG{k}{for} \PYG{n}{each} \PYG{n}{node} \PYG{n}{n} \PYG{o+ow}{in} \PYG{n}{G}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} для каждого узла создадим поддерево}
+		\PYG{n}{makeSet}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)}
+	\PYG{k}{for} \PYG{n}{each} \PYG{n}{edge} \PYG{n}{e} \PYG{o+ow}{in} \PYG{n}{G}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} если узлы не принадлежат к одному корню, объединим}
+						 \PYG{c+c1}{\PYGZsh{} деревья}
+		\PYG{k}{if} \PYG{n}{findSet}\PYG{p}{(}\PYG{n}{e}\PYG{o}{.}\PYG{n}{first}\PYG{p}{)} \PYG{o}{!=} \PYG{n}{findSet}\PYG{p}{(}\PYG{n}{e}\PYG{o}{.}\PYG{n}{second}\PYG{p}{):}
+			\PYG{n}{unionSet}\PYG{p}{(}\PYG{n}{e}\PYG{o}{.}\PYG{n}{first}\PYG{p}{,} \PYG{n}{e}\PYG{o}{.}\PYG{n}{second}\PYG{p}{)}
+\end{Verbatim}

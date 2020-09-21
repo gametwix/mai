@@ -1,0 +1,138 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}stdio.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}stdlib.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}define MAXVERTICES 100}
+
+\PYG{k+kt}{void} \PYG{n+nf}{enqueue}\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{);}
+\PYG{k+kt}{int} \PYG{n+nf}{deque}\PYG{p}{();}
+\PYG{k+kt}{int} \PYG{n+nf}{isConnected}\PYG{p}{(}\PYG{k+kt}{char} \PYG{o}{**}\PYG{n}{graph}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{noOfVertices}\PYG{p}{);}
+\PYG{k+kt}{void} \PYG{n+nf}{BFS}\PYG{p}{(}\PYG{k+kt}{char} \PYG{o}{**}\PYG{n}{graph}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{vertex}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{noOfVertices}\PYG{p}{);}
+\PYG{k+kt}{int} \PYG{n}{count} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+
+\PYG{k}{struct} \PYG{n}{node}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{v}\PYG{p}{;}
+	\PYG{k}{struct} \PYG{n}{node} \PYG{o}{*}\PYG{n}{next}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{k}{typedef} \PYG{k}{struct} \PYG{n}{node} \PYG{n}{Node}\PYG{p}{;}
+\PYG{k}{typedef} \PYG{k}{struct} \PYG{n}{node} \PYG{o}{*}\PYG{n}{Nodeptr}\PYG{p}{;}
+
+\PYG{n}{Nodeptr} \PYG{n}{Qfront} \PYG{o}{=} \PYG{n+nb}{NULL}\PYG{p}{;}
+\PYG{n}{Nodeptr} \PYG{n}{Qrear} \PYG{o}{=} \PYG{n+nb}{NULL}\PYG{p}{;}
+\PYG{k+kt}{char} \PYG{o}{*}\PYG{n}{visited}\PYG{p}{;}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{,} \PYG{n}{e}\PYG{p}{;}
+	\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{;}
+	\PYG{k+kt}{char} \PYG{o}{**}\PYG{n}{graph}\PYG{p}{;}
+	
+	\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Enter number of vertices:\PYGZdq{}}\PYG{p}{);}
+	\PYG{n}{scanf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d\PYGZdq{}}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{n}\PYG{p}{);}
+	
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{n} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0} \PYG{o}{||} \PYG{n}{n} \PYG{o}{\PYGZgt{}} \PYG{n}{MAXVERTICES}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{fprintf}\PYG{p}{(}\PYG{n}{stderr}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}Please enter a valid positive integer}
+							\PYG{n}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{o}{\PYGZpc{}}\PYG{n}{d}\PYG{l+s}{\PYGZdq{}, MAXVERTICES);}
+		\PYG{k}{return} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{n}{graph} \PYG{o}{=} \PYG{n}{malloc}\PYG{p}{(}\PYG{n}{n} \PYG{o}{*} \PYG{k}{sizeof}\PYG{p}{(}\PYG{k+kt}{char} \PYG{o}{*}\PYG{p}{));}
+	\PYG{n}{visited} \PYG{o}{=} \PYG{n}{malloc}\PYG{p}{(}\PYG{n}{n} \PYG{o}{*} \PYG{k}{sizeof}\PYG{p}{(}\PYG{k+kt}{char}\PYG{p}{));}
+	
+	\PYG{k}{for} \PYG{p}{(}\PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{graph}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{malloc}\PYG{p}{(}\PYG{n}{n} \PYG{o}{*} \PYG{k}{sizeof}\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{));}
+		\PYG{n}{visited}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{l+s+sc}{\PYGZsq{}N\PYGZsq{}}\PYG{p}{;}
+		\PYG{k}{for} \PYG{p}{(}\PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{o}{++}\PYG{n}{j}\PYG{p}{)}
+			\PYG{n}{graph}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}enter number of edges and then enter them in pairs:\PYGZdq{}}\PYG{p}{);}
+	\PYG{n}{scanf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d\PYGZdq{}}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{e}\PYG{p}{);}
+	
+	\PYG{k}{for} \PYG{p}{(}\PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{e}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{,} \PYG{n}{v}\PYG{p}{;}
+		\PYG{n}{scanf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d\PYGZpc{}d\PYGZdq{}}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{u}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{v}\PYG{p}{);}
+		\PYG{n}{graph}\PYG{p}{[}\PYG{n}{u} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{][}\PYG{n}{v} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+		\PYG{n}{graph}\PYG{p}{[}\PYG{n}{v} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{][}\PYG{n}{u} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{isConnected}\PYG{p}{(}\PYG{n}{graph}\PYG{p}{,} \PYG{n}{n}\PYG{p}{))}
+		\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}The graph is connected\PYGZdq{}}\PYG{p}{);}
+	\PYG{k}{else} \PYG{n+nf}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}The graph is NOT connected}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n}{enqueue}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{vertex}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{Qfront} \PYG{o}{==} \PYG{n+nb}{NULL}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{Qfront} \PYG{o}{=} \PYG{n}{malloc}\PYG{p}{(}\PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{Node}\PYG{p}{));}
+		\PYG{n}{Qfront}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{v} \PYG{o}{=} \PYG{n}{vertex}\PYG{p}{;}
+		\PYG{n}{Qfront}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{next} \PYG{o}{=} \PYG{n+nb}{NULL}\PYG{p}{;}
+		\PYG{n}{Qrear} \PYG{o}{=} \PYG{n}{Qfront}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{else}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{Nodeptr} \PYG{n}{newNode} \PYG{o}{=} \PYG{n}{malloc}\PYG{p}{(}\PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{Node}\PYG{p}{));}
+		\PYG{n}{newNode}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{v} \PYG{o}{=} \PYG{n}{vertex}\PYG{p}{;}
+		\PYG{n}{newNode}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{next} \PYG{o}{=} \PYG{n+nb}{NULL}\PYG{p}{;}
+		\PYG{n}{Qrear}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{next} \PYG{o}{=} \PYG{n}{newNode}\PYG{p}{;}
+		\PYG{n}{Qrear} \PYG{o}{=} \PYG{n}{newNode}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int} \PYG{n}{deque}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{Qfront} \PYG{o}{==} \PYG{n+nb}{NULL}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Q is empty, returning \PYGZhy{}1}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{);}
+		\PYG{k}{return} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{else}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{v} \PYG{o}{=} \PYG{n}{Qfront}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{v}\PYG{p}{;}
+		\PYG{n}{Nodeptr} \PYG{n}{temp} \PYG{o}{=} \PYG{n}{Qfront}\PYG{p}{;}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{Qfront} \PYG{o}{==} \PYG{n}{Qrear}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{Qfront} \PYG{o}{=} \PYG{n}{Qfront}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{next}\PYG{p}{;}
+			\PYG{n}{Qrear} \PYG{o}{=} \PYG{n+nb}{NULL}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{else}
+			\PYG{n}{Qfront} \PYG{o}{=} \PYG{n}{Qfront}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{next}\PYG{p}{;}
+		\PYG{n}{free}\PYG{p}{(}\PYG{n}{temp}\PYG{p}{);}
+		\PYG{k}{return} \PYG{n}{v}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int} \PYG{n}{isConnected}\PYG{p}{(}\PYG{k+kt}{char} \PYG{o}{**}\PYG{n}{graph}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{noOfVertices}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{;}
+	
+	\PYG{n}{BFS}\PYG{p}{(}\PYG{n}{graph}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{noOfVertices}\PYG{p}{);}
+	
+	\PYG{k}{for} \PYG{p}{(}\PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{noOfVertices}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{visited}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{l+s+sc}{\PYGZsq{}N\PYGZsq{}}\PYG{p}{)}
+			\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+	
+	\PYG{k}{return} \PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n}{BFS}\PYG{p}{(}\PYG{k+kt}{char} \PYG{o}{**}\PYG{n}{graph}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{v}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{noOfVertices}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{,} \PYG{n}{vertex}\PYG{p}{;}
+	\PYG{n}{visited}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{l+s+sc}{\PYGZsq{}Y\PYGZsq{}}\PYG{p}{;}
+	\PYG{n}{enqueue}\PYG{p}{(}\PYG{n}{v}\PYG{p}{);}
+	\PYG{k}{while} \PYG{p}{((}\PYG{n}{vertex} \PYG{o}{=} \PYG{n}{deque}\PYG{p}{())} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{for} \PYG{p}{(}\PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{noOfVertices}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+			\PYG{k}{if} \PYG{p}{(}\PYG{n}{graph}\PYG{p}{[}\PYG{n}{vertex}\PYG{p}{][}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{l+m+mi}{1} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{visites}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{l+s+sc}{\PYGZsq{}N\PYGZsq{}}\PYG{p}{)}
+			\PYG{p}{\PYGZob{}}
+				\PYG{n}{enqueue}\PYG{p}{(}\PYG{n}{i}\PYG{p}{);}
+				\PYG{n}{visited}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{l+s+sc}{\PYGZsq{}Y\PYGZsq{}}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,184 @@
+\babel@toc {russian}{}
+\contentsline {chapter}{\underline {О книге}}{7}{chapter*.1}% 
+\contentsline {chapter}{\underline {Глава 1: Приступим к алгоритмам}}{8}{chapter*.2}% 
+\contentsline {section}{\underline {Раздел 1.1: Образец алгоритмической задачи}}{8}{section*.3}% 
+\contentsline {section}{\underline {Раздел 1.2: Приступим к простой реализации Fizz Buzz алгоритма на Swift}}{8}{section*.4}% 
+\contentsline {chapter}{\underline {Глава 2: Сложность Алгоритмов}}{11}{chapter*.5}% 
+\contentsline {section}{\underline {Раздел 2.1: Большая-Тета нотация}}{11}{section*.6}% 
+\contentsline {section}{\underline {Раздел 2.2: Сравнение асимптотических обозначений}}{11}{section*.7}% 
+\contentsline {section}{\underline {Раздел 2.3: Большая-Омега нотация}}{12}{section*.8}% 
+\contentsline {chapter}{\underline {Глава 3: Обозначение О-большое}}{14}{chapter*.9}% 
+\contentsline {section}{\underline {Раздел 3.1: Простой цикл}}{15}{section*.10}% 
+\contentsline {section}{\underline {Раздел 3.2: Вложенный цикл}}{16}{section*.11}% 
+\contentsline {section}{\underline {Раздел 3.3: Типы алгоритмов O(log n)}}{17}{section*.12}% 
+\contentsline {section}{\underline {Раздел 3.4: Пример O(log n)}}{19}{section*.13}% 
+\contentsline {chapter}{\underline {Глава 4: Деревья}}{21}{chapter*.14}% 
+\contentsline {section}{\underline {Раздел 4.1: Типичное представление анарного дерева}}{21}{section*.15}% 
+\contentsline {section}{\underline {Раздел 4.2: Введение}}{22}{section*.16}% 
+\contentsline {section}{\underline {Раздел 4.3: Проверка, одинаковы два двоичных дерева или нет}}{23}{section*.17}% 
+\contentsline {chapter}{\underline {Глава 5: Поиск в двоичных деревьях}}{25}{chapter*.18}% 
+\contentsline {section}{\underline {Раздел 5.1: Дерево поиска двоичных файлов - Вставка (Python)}}{25}{section*.19}% 
+\contentsline {section}{\underline {Раздел 5.2: Дерево двоичного поиска - удаление (C++)}}{27}{section*.20}% 
+\contentsline {section}{\underline {Раздел 5.3: Самый низкий предок в BST}}{29}{section*.21}% 
+\contentsline {section}{\underline {Раздел 5.4: Поиск в двоичном дереве - Python}}{30}{section*.22}% 
+\contentsline {chapter}{\underline {Глава 6: Проверка, является дерево BST или нет}}{32}{chapter*.23}% 
+\contentsline {section}{\underline {Раздел 6.1: Алгоритм проверки, является ли данное двоичное дерево BST}}{32}{section*.24}% 
+\contentsline {section}{\underline {Раздел 6.2: Имеет ли данное на входе дерево свойства \newline бинарного дерева поиска или нет}}{33}{section*.25}% 
+\contentsline {chapter}{\underline {Глава 7: Обходы бинарного дерева}}{34}{chapter*.26}% 
+\contentsline {section}{\underline {Раздел 7.1: Реализация обхода в порядке уровней}}{34}{section*.27}% 
+\contentsline {section}{\underline {Раздел 7.2:Прямой, симметричный и обратный обход \newline бинарного дерева}}{35}{section*.28}% 
+\contentsline {chapter}{\underline {Глава 8: Самый нижний общий предок бинарного дерева}}{37}{chapter*.29}% 
+\contentsline {section}{\underline {Раздел 8.1: Нахождение самого нижнего общего предка}}{37}{section*.30}% 
+\contentsline {chapter}{\underline {Глава 9: Граф}}{38}{chapter*.31}% 
+\contentsline {section}{\underline {Раздел 9.1: Хранение графов (матрицы смежности)}}{38}{section*.32}% 
+\contentsline {section}{\underline {Раздел 9.2: Введение в теорию графов}}{42}{section*.33}% 
+\contentsline {section}{\underline {Раздел 9.3: Хранение графов (Список смежности)}}{45}{section*.34}% 
+\contentsline {section}{\underline {Раздел 9.4: Топологическая сортировка}}{47}{section*.35}% 
+\contentsline {section}{\underline {Раздел 9.5. Обнаружение цикла в ориентированном графе}}{48}{section*.36}% 
+\contentsline {section}{\underline {Раздел 9.6: Алгоритм Торупа}}{50}{section*.37}% 
+\contentsline {chapter}{\underline {Глава 10: Обходы графов}}{52}{chapter*.38}% 
+\contentsline {section}{\underline {Раздел 10.1: Функция обхода поиска в глубину}}{52}{section*.39}% 
+\contentsline {chapter}{\underline {Глава 11: Алгоритм Дейкстры}}{53}{chapter*.40}% 
+\contentsline {section}{\underline {Раздел 11.1: Алгоритм Дейкстры по поиску~кратчайшего \ пути}}{53}{section*.41}% 
+\contentsline {chapter}{\underline {Глава 12: Поиск пути А*}}{60}{chapter*.42}% 
+\contentsline {section}{\underline {Раздел 12.1: Введение в А*}}{60}{section*.43}% 
+\contentsline {section}{\underline {Раздел 12.2: Поиск пути А* в лабиринте без препятствий}}{60}{section*.44}% 
+\contentsline {section}{\underline {Раздел 12.3: Решаем “Пятнашки” (3х3) используя алгоритм А*}}{67}{section*.45}% 
+\contentsline {chapter}{\underline {Глава 13: Алгоритм поиска пути A* }}{70}{chapter*.46}% 
+\contentsline {section}{\underline {Раздел 13.1: Простой пример алгоритма поиска пути A*: Лабиринт без препятствий}}{70}{section*.47}% 
+\contentsline {chapter}{\underline {Глава 14: Динамическое программирование }}{77}{chapter*.48}% 
+\contentsline {section}{\underline {Раздел 14.1: Расстояние Левенштейна}}{77}{section*.49}% 
+\contentsline {section}{\underline {Раздел 14.2: Алгоритм взвешенного планирования работ}}{78}{section*.50}% 
+\contentsline {section}{\underline {Раздел 14.3: Самая длинная общая подпоследовательность}}{82}{section*.51}% 
+\contentsline {section}{\underline {Раздел 14.4. Число Фибоначчи}}{84}{section*.52}% 
+\contentsline {section}{\underline {Раздел 14.5: Самая длинная общая подстрока}}{85}{section*.53}% 
+\contentsline {chapter}{\underline {Глава 15: Применение динамического программирования}}{86}{chapter*.54}% 
+\contentsline {section}{\underline {Раздел 15.1: Числа Фибоначчи}}{86}{section*.55}% 
+\contentsline {chapter}{\underline {Глава 16. Алгоритм Крускала}}{89}{chapter*.56}% 
+\contentsline {section}{\underline {Раздел 16.1: Оптимальное применение на основе непересекающихся множеств.}}{89}{section*.57}% 
+\contentsline {section}{\underline {Раздел 16.2: Простое, более детальное использование}}{90}{section*.58}% 
+\contentsline {section}{\underline {Раздел 16.3: Простое использование, основанное на непересекающихся множествах}}{91}{section*.59}% 
+\contentsline {section}{\underline {Раздел 16.4: Простое высокоуровневое использование}}{91}{section*.60}% 
+\contentsline {chapter}{\underline {Глава 17: Жадные алгоритмы}}{92}{chapter*.61}% 
+\contentsline {section}{\underline {Раздел 17.1: Кодировка Хаффмана}}{92}{section*.62}% 
+\contentsline {section}{\underline {Раздел 17.2: Проблема выбора вида деятельности}}{96}{section*.63}% 
+\contentsline {section}{\underline {Раздел 17.3: Проблема выдачи сдачи}}{98}{section*.64}% 
+\contentsline {chapter}{\underline {Глава 18: Применение жадной стратегии}}{100}{chapter*.65}% 
+\contentsline {section}{\underline {Раздел 18.1: Офлайн кэширование}}{100}{section*.66}% 
+\contentsline {section}{\underline {Раздел 18.2: Автомат билетов}}{110}{section*.67}% 
+\contentsline {section}{\underline {Раздел 18.3: Интервальное планирование}}{113}{section*.68}% 
+\contentsline {section}{\underline {Раздел 18.4: Минимизация задержки}}{118}{section*.69}% 
+\contentsline {chapter}{\underline {Глава 19: Алгоритм Прима}}{122}{chapter*.70}% 
+\contentsline {section}{\underline {Раздел 19.1: Введение в алгоритм Прима}}{122}{section*.71}% 
+\contentsline {chapter}{\underline {Глава 20: Алгоритм Беллмана-Форда}}{131}{chapter*.72}% 
+\contentsline {section}{\underline {Раздел 20.1: Алгоритм поиска кратчайшего пути от одной вершины }}{131}{section*.73}% 
+\contentsline {section}{\underline {Раздел 20.2. Обнаружение отрицательного цикла в графе}}{135}{section*.74}% 
+\contentsline {section}{\underline {Раздел 20.3: Почему нам нужно ослабить все ребра в (V- 1) раз}}{137}{section*.75}% 
+\contentsline {chapter}{\underline {Глава 21: Линейный алгоритм}}{140}{chapter*.76}% 
+\contentsline {section}{\underline {Раздел 21.1: Алгоритм рисования линий Брезенхэма}}{140}{section*.77}% 
+\contentsline {chapter}{\underline {Глава 22: Алгоритм Флойда- Уоршелла}}{144}{chapter*.78}% 
+\contentsline {section}{\underline {Раздел 22.1. Алгоритм кратчайшего пути для всех пар}}{144}{section*.79}% 
+\contentsline {chapter}{\underline {Глава 23: Числа Каталана}}{148}{chapter*.80}% 
+\contentsline {section}{\underline {Раздел 23.1: Числа Каталана. Основная информация}}{148}{section*.81}% 
+\contentsline {chapter}{\underline {Глава 24:Многопоточные алгоритмы}}{150}{chapter*.82}% 
+\contentsline {section}{\underline {Раздел 24.1:Многопоточное умножение квадратной матрицы}}{150}{section*.83}% 
+\contentsline {section}{\underline {Раздел 24.2:Многопоточное умножение вектора матрицы}}{150}{section*.84}% 
+\contentsline {section}{\underline {Раздел 24.3:Многопоточная сортировка слиянием}}{150}{section*.85}% 
+\contentsline {chapter}{\underline {Глава 25:Алгоритм Кнута-Морриса-Пратта (KMP)}}{153}{chapter*.86}% 
+\contentsline {section}{\underline {Раздел 25.1:Пример KMP}}{153}{section*.87}% 
+\contentsline {chapter}{\underline {Глава 26:Алгоритм изменения динамического расстояния}}{156}{chapter*.88}% 
+\contentsline {section}{\underline {Раздел 26.1:Преобразования строки 1 в строку 2}}{156}{section*.89}% 
+\contentsline {chapter}{\underline {Глава 27: Онлайн алгоритмы}}{159}{chapter*.90}% 
+\contentsline {section}{\underline {Раздел 27.1: Пейджирование (онлайн кэширование)}}{161}{section*.91}% 
+\contentsline {chapter}{\underline {Глава 28: Сортировка}}{167}{chapter*.92}% 
+\contentsline {section}{\underline {Раздел 28.1: Устойчивость сортировок}}{167}{section*.93}% 
+\contentsline {chapter}{\underline {Глава 29: Сортировка пузырьком (Bubble Sort)}}{169}{chapter*.94}% 
+\contentsline {section}{\underline {Раздел 29.1: Сортировка пузырьком (Bubble Sort)}}{169}{section*.95}% 
+\contentsline {section}{\underline {Раздел 29.2: Реализация на С и С++}}{169}{section*.96}% 
+\contentsline {section}{\underline {Раздел 29.3: Реализация на C\#}}{171}{section*.97}% 
+\contentsline {section}{\underline {Раздел 29.4: Реализация на Python}}{172}{section*.98}% 
+\contentsline {section}{\underline {Раздел 29.5: Реализация на Java}}{172}{section*.99}% 
+\contentsline {section}{\underline {Раздел 29.6: Реализация на Javascript}}{173}{section*.100}% 
+\contentsline {chapter}{\underline {Глава 30: Сортировка слиянием}}{174}{chapter*.101}% 
+\contentsline {section}{\underline {Раздел 30.1: Основы сортировки слиянием}}{174}{section*.102}% 
+\contentsline {section}{\underline {Раздел 30.2: Реализация сортировки слиянием на Go}}{175}{section*.103}% 
+\contentsline {section}{\underline {Раздел 30.3: Реализация сортировки слиянием на C $\&$ C$\#$}}{176}{section*.104}% 
+\contentsline {section}{\underline {Раздел 30.4: Реализация сортировки слиянием на Java}}{178}{section*.105}% 
+\contentsline {section}{\underline {Раздел 30.5: Реализация сортировки слиянием на Python}}{179}{section*.106}% 
+\contentsline {section}{\underline {Раздел 30.6: Реализация на Java метода восходящего слияния}}{179}{section*.107}% 
+\contentsline {chapter}{\underline {Глава 31: Сортировка вставками }}{181}{chapter*.108}% 
+\contentsline {section}{\underline {Раздел 31.1: Реализация на Haskell}}{181}{section*.109}% 
+\contentsline {chapter}{\underline {Глава 32: Блочная сортировка}}{182}{chapter*.110}% 
+\contentsline {section}{\underline {Раздел 32.1: Реализация на C$\#$}}{182}{section*.111}% 
+\contentsline {chapter}{\underline {Глава 33: Быстрая сортировка}}{183}{chapter*.112}% 
+\contentsline {section}{\underline {Раздел 33.1: Основы быстрой сортировки}}{183}{section*.113}% 
+\contentsline {section}{\underline {33.2: Реализация быстрой сортировки на Python}}{185}{section*.114}% 
+\contentsline {section}{\underline {Раздел 33.3: Реализация разбиения Ломуто на Java}}{185}{section*.115}% 
+\contentsline {chapter}{\underline {Глава 34. Сортировка подсчетом}}{187}{chapter*.116}% 
+\contentsline {section}{\underline {Раздел 34.1: Основная информация о сортировке подсчетом}}{187}{section*.117}% 
+\contentsline {section}{\underline {Раздел 34.2: Реализация на псевдокоде}}{187}{section*.118}% 
+\contentsline {chapter}{\underline {Глава 35: Пирамидальная сортировка}}{189}{chapter*.119}% 
+\contentsline {section}{\underline {Раздел 35.1: Реализация на C\#}}{189}{section*.120}% 
+\contentsline {section}{\underline {Раздел 35.2: Основная информация о пирамидальной сортировке}}{190}{section*.121}% 
+\contentsline {chapter}{\underline {Глава 36: Сортировка циклом}}{191}{chapter*.122}% 
+\contentsline {section}{\underline {Раздел 36.1: Реализация на псевдокоде}}{191}{section*.123}% 
+\contentsline {chapter}{\underline {Глава 37: Четно-нечетная сортировка}}{192}{chapter*.124}% 
+\contentsline {section}{\underline {Раздел 37.1: Основная информация о четно-нечетной сортировке}}{192}{section*.125}% 
+\contentsline {chapter}{\underline {Глава 38: Сортировка выбором}}{195}{chapter*.126}% 
+\contentsline {section}{\underline {Раздел 38.1: Реализация на Elixir}}{195}{section*.127}% 
+\contentsline {section}{\underline {Раздел 38.2: Основная информация о сортировке выбором}}{195}{section*.128}% 
+\contentsline {section}{\underline {Раздел 38.3: Реализация Сортировки выбором на C\#}}{197}{section*.129}% 
+\contentsline {chapter}{\underline {Глава 39: Поиск}}{199}{chapter*.130}% 
+\contentsline {section}{\underline {Раздел 39.1: Бинарный поиск}}{199}{section*.131}% 
+\contentsline {section}{\underline {Раздел 39.2: Рабин Карп}}{201}{section*.132}% 
+\contentsline {section}{\underline {Раздел 39.3: Анализ линейного поиска (худший, средний и лучший случаи)}}{203}{section*.133}% 
+\contentsline {section}{\underline {Раздел 39.4: Бинарный поиск: на отсортированных числах}}{205}{section*.134}% 
+\contentsline {section}{\underline {Раздел 39.5: Линейный поиск}}{206}{section*.135}% 
+\contentsline {chapter}{\underline {Глава 40: Поиск подстроки}}{207}{chapter*.136}% 
+\contentsline {section}{\underline {Раздел 40.1: Введение в алгоритм Кнута-Морриса-Пратта (KMП)}}{207}{section*.137}% 
+\contentsline {section}{\underline {Раздел 40.2: Введение в алгоритм Рабина-Карпа}}{211}{section*.138}% 
+\contentsline {section}{\underline {Раздел 40.3: Реализация алгоритма КМП на Python}}{214}{section*.139}% 
+\contentsline {section}{\underline {Раздел 40.4: Алгоритм КМП на Си}}{215}{section*.140}% 
+\contentsline {chapter}{\underline {Глава 41: Поиск в ширину}}{219}{chapter*.141}% 
+\contentsline {section}{\underline {Раздел 41.1. Нахождение кратчайшего пути от источника к другим узлам}}{219}{section*.142}% 
+\contentsline {section}{\underline {Раздел 41.2. Поиск кратчайшего пути от источника в двумерном графе}}{223}{section*.143}% 
+\contentsline {section}{\underline {Раздел 41.3: Связные компоненты неориентированного графа с использованием BFS}}{225}{section*.144}% 
+\contentsline {chapter}{\underline {Глава 42: Поиск в глубину}}{230}{chapter*.145}% 
+\contentsline {section}{\underline {Раздел 42.1: Введение в “поиск в глубину”}}{230}{section*.146}% 
+\contentsline {chapter}{\underline {Глава 43: Хеш-функции}}{235}{chapter*.147}% 
+\contentsline {section}{\underline {Раздел 43.1: Хеш-коды для общих типов в C\#}}{235}{section*.148}% 
+\contentsline {section}{\underline {Раздел 43.2: Введение в хеш-функции}}{236}{section*.149}% 
+\contentsline {chapter}{\underline {Глава 44: Задача коммивояжера}}{239}{chapter*.150}% 
+\contentsline {section}{\underline {Раздел 44.1: Алгоритм полного перебора}}{239}{section*.151}% 
+\contentsline {section}{\underline {Раздел 44.2: Алгоритм динамического программирования}}{239}{section*.152}% 
+\contentsline {chapter}{\underline {Глава 45: Задача о рюкзаке}}{242}{chapter*.153}% 
+\contentsline {section}{\underline {Раздел 45.1: Основы задачи о рюкзаке}}{242}{section*.154}% 
+\contentsline {section}{\underline {Раздел 45.2: Реализация решения на C\#}}{243}{section*.155}% 
+\contentsline {chapter}{\underline {Глава 46: Решение уравнений}}{245}{chapter*.156}% 
+\contentsline {section}{\underline {Раздел 46.1: Линейные уравнения}}{245}{section*.157}% 
+\contentsline {section}{\underline {Раздел 46.2: Нелинейное уравнение}}{247}{section*.158}% 
+\contentsline {chapter}{\underline {Глава 47: Самая длинная общая подпоследовательность}}{252}{chapter*.159}% 
+\contentsline {section}{\underline {Раздел 47.1: Объяснение самой длинной общей подпоследовательности}}{252}{section*.160}% 
+\contentsline {chapter}{\underline {Глава 48: Cамая длинная возрастающая подпоследовательность}}{258}{chapter*.161}% 
+\contentsline {section}{\underline {Раздел 48.1: Самая длинная возрастающая подпоследовательность.}}{258}{section*.162}% 
+\contentsline {chapter}{\underline {Глава 49: Проверка двух строк на анаграмму}}{262}{chapter*.163}% 
+\contentsline {section}{\underline {Раздел 49.1: Ввод и вывод образцов}}{262}{section*.164}% 
+\contentsline {section}{\underline {Раздел 49.2: Общий код для анаграмм}}{263}{section*.165}% 
+\contentsline {chapter}{\underline {Глава 50 : Треугольник Паскаля}}{265}{chapter*.166}% 
+\contentsline {section}{\underline {Раздел 50.1: Треугольник Паскаля на C}}{265}{section*.167}% 
+\contentsline {chapter}{\underline {Глава 51: Алгоритм:- Вывод матрицы m*n по спирали}}{266}{chapter*.168}% 
+\contentsline {section}{\underline {Раздел 51.1: Пример}}{266}{section*.169}% 
+\contentsline {section}{\underline {Раздел 51.2: Напишем общий код}}{266}{section*.170}% 
+\contentsline {chapter}{\underline {Глава 52: Возведение матрицы в степень}}{268}{chapter*.171}% 
+\contentsline {section}{\underline {Раздел 52.1: Возведение матрицы в степень для решения типовых задач}}{268}{section*.172}% 
+\contentsline {chapter}{\underline {Глава 53: Алгоритм минимального вершинного покрытия}}{273}{chapter*.173}% 
+\contentsline {section}{\underline {Псевдокод алгоритма}}{273}{section*.174}% 
+\contentsline {chapter}{\underline {Глава 54: Динамическая трансформация временной шкалы (DTW)}}{274}{chapter*.175}% 
+\contentsline {section}{\underline {Раздел 54.1: Введение в динамическую трансформацию временной шкалы (DTW)}}{274}{section*.176}% 
+\contentsline {chapter}{\underline {Глава 55: Быстрое преобразование Фурье}}{279}{chapter*.177}% 
+\contentsline {section}{\underline {Раздел 55.1: Алгоритм Radix-2 для БПФ}}{279}{section*.178}% 
+\contentsline {section}{\underline {Раздел 55.2: Обратное быстрое преобразование Фурье с \newline двумя корнями}}{284}{section*.179}% 
+\contentsline {chapter}{\underline {Приложение А: Псевдокод}}{286}{chapter*.180}% 
+\contentsline {section}{\underline {Раздел А.1: Переменные аффектации}}{286}{section*.181}% 
+\contentsline {section}{\underline {Раздел А.2: Функции}}{286}{section*.182}% 
+\contentsline {chapter}{\underline {Титры}}{287}{chapter*.183}% 

@@ -1,0 +1,27 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Procedure} \PYG{n}{BFS2D}\PYG{p}{(}\PYG{n}{Graph}\PYG{p}{,} \PYG{n}{blocksign}\PYG{p}{,} \PYG{n}{row}\PYG{p}{,} \PYG{n}{column}\PYG{p}{)}\PYG{o}{:}
+\PYG{k}{for} \PYG{n}{i} \PYG{n}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{row}
+	\PYG{k}{for} \PYG{n}{j} \PYG{n}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{column}
+		\PYG{n}{visited}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{:=} \PYG{n+nb}{false}
+	\PYG{n}{end} \PYG{k}{for}
+\PYG{n}{end} \PYG{k}{for}
+\PYG{n}{visited}\PYG{p}{[}\PYG{n}{source}\PYG{p}{.}\PYG{n}{x}\PYG{p}{][}\PYG{n}{source}\PYG{p}{.}\PYG{n}{y}\PYG{p}{]} \PYG{o}{:=} \PYG{n+nb}{true}
+\PYG{n}{level}\PYG{p}{[}\PYG{n}{source}\PYG{p}{.}\PYG{n}{x}\PYG{p}{][}\PYG{n}{source}\PYG{p}{.}\PYG{n}{y}\PYG{p}{]} \PYG{o}{:=} \PYG{l+m+mi}{0}
+\PYG{n}{Q} \PYG{o}{=} \PYG{n}{queue}\PYG{p}{()}
+\PYG{n}{Q}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{source}\PYG{p}{)}
+\PYG{n+nl}{m} \PYG{p}{:}\PYG{o}{=} \PYG{n}{dx}\PYG{p}{.}\PYG{n}{size}
+\PYG{k}{while} \PYG{n}{Q} \PYG{n}{is} \PYG{n}{not} \PYG{n}{empty}
+	\PYG{n+nl}{top} \PYG{p}{:}\PYG{o}{=} \PYG{n}{Q}\PYG{p}{.}\PYG{n}{pop}
+	\PYG{k}{for} \PYG{n}{i} \PYG{n}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{m}
+		\PYG{n}{temp}\PYG{p}{.}\PYG{n+nl}{x} \PYG{p}{:}\PYG{o}{=} \PYG{n}{top}\PYG{p}{.}\PYG{n}{x} \PYG{o}{+} \PYG{n}{dx}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}
+		\PYG{n}{temp}\PYG{p}{.}\PYG{n+nl}{y} \PYG{p}{:}\PYG{o}{=} \PYG{n}{top}\PYG{p}{.}\PYG{n}{y} \PYG{o}{+} \PYG{n}{dy}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}
+		\PYG{k}{if} \PYG{n}{temp} \PYG{n}{is} \PYG{n}{inside} \PYG{n}{the} \PYG{n}{row} \PYG{n}{and} \PYG{n}{column} \PYG{n}{and} \PYG{n}{top}
+		                        \PYG{n}{does} \PYG{n}{not} \PYG{n}{equal} \PYG{n}{to} \PYG{n}{blocksign}
+			\PYG{n}{visited}\PYG{p}{[}\PYG{n}{temp}\PYG{p}{.}\PYG{n}{x}\PYG{p}{][}\PYG{n}{temp}\PYG{p}{.}\PYG{n}{y}\PYG{p}{]} \PYG{o}{:=} \PYG{n+nb}{true}
+			\PYG{n}{level}\PYG{p}{[}\PYG{n}{temp}\PYG{p}{.}\PYG{n}{x}\PYG{p}{][}\PYG{n}{temp}\PYG{p}{.}\PYG{n}{y}\PYG{p}{]} \PYG{o}{:=} \PYG{n}{level}\PYG{p}{[}\PYG{n}{top}\PYG{p}{.}\PYG{n}{x}\PYG{p}{][}\PYG{n}{top}\PYG{p}{.}\PYG{n}{y}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mi}{1}
+			\PYG{n}{Q}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{temp}\PYG{p}{)}
+		\PYG{n}{end} \PYG{k}{if}
+	\PYG{n}{end} \PYG{k}{for}
+\PYG{n}{end} \PYG{k}{while}
+\PYG{n}{Return} \PYG{n}{level}
+\end{Verbatim}

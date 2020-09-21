@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Procedure} \PYG{n}{PathPrinting}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}
+\PYG{n+nl}{v} \PYG{p}{:}\PYG{o}{=} \PYG{n}{parent}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}
+\PYG{k}{if} \PYG{n}{v} \PYG{o}{==} \PYG{n+nb}{NULL}
+   \PYG{k}{return}
+\PYG{n}{PathPrinting}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}
+\PYG{n}{print} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{u}
+\end{Verbatim}

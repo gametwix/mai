@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{a} \PYG{o}{=} \PYG{l+m+mi}{0}
+\PYG{n}{b} \PYG{o}{=} \PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+\PYG{k}{while} \PYG{k+kc}{True}\PYG{p}{:}
+	\PYG{n}{h} \PYG{o}{=} \PYG{p}{(}\PYG{n}{a}\PYG{o}{+}\PYG{n}{b}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2} \PYG{c+c1}{\PYGZsh{} делим нацело поэтому h будет целым}
+	\PYG{k}{if} \PYG{n}{L}\PYG{p}{[}\PYG{n}{h}\PYG{p}{]} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+		\PYG{k}{return} \PYG{n}{h}
+	\PYG{k}{elif} \PYG{n}{L}\PYG{p}{[}\PYG{n}{h}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} если э\PYGZhy{}т под номером h больше нуля}
+		\PYG{n}{b} \PYG{o}{=} \PYG{n}{h} \PYG{c+c1}{\PYGZsh{} двигаем правую границу влево}
+	\PYG{k}{elif} \PYG{n}{L}\PYG{p}{[}\PYG{n}{h}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} если э\PYGZhy{}т под номером h меньше нуля}
+		\PYG{n}{a} \PYG{o}{=} \PYG{n}{h} \PYG{c+c1}{\PYGZsh{} двигаем левую границу вправо}
+\end{Verbatim}

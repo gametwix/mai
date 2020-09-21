@@ -1,0 +1,53 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/* Программа на Си с реализацией алгоритма Брезенхэма для рисования линий для |m|\PYGZlt{}1 */}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{c+cpf}{\PYGZlt{}stdio.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{c+cpf}{\PYGZlt{}conio.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{c+cpf}{\PYGZlt{}graphics.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{c+cpf}{\PYGZlt{}math.h\PYGZgt{}}
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{gdriver}\PYG{o}{=}\PYG{n}{DETECT}\PYG{p}{,}\PYG{n}{gmode}\PYG{p}{;}
+	
+	\PYG{k+kt}{int} \PYG{n}{x1}\PYG{p}{,}\PYG{n}{y1}\PYG{p}{,}\PYG{n}{x2}\PYG{p}{,}\PYG{n}{y2}\PYG{p}{,}\PYG{n}{delx}\PYG{p}{,}\PYG{n}{dely}\PYG{p}{,}\PYG{n}{p}\PYG{p}{,}\PYG{n}{i}\PYG{p}{;}
+	\PYG{c+c1}{// Инициализируем график}
+	\PYG{n}{initgraph}\PYG{p}{(}\PYG{o}{\PYGZam{}}\PYG{n}{gdriver}\PYG{p}{,}\PYG{o}{\PYGZam{}}\PYG{n}{gmode}\PYG{p}{,}\PYG{l+s}{\PYGZdq{}C:}\PYG{l+s+se}{\PYGZbs{}\PYGZbs{}}\PYG{l+s}{TC}\PYG{l+s+se}{\PYGZbs{}\PYGZbs{}}\PYG{l+s}{BGI\PYGZdq{}}\PYG{p}{);}
+	\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Enter the intial points: \PYGZdq{}}\PYG{p}{);}
+	\PYG{n}{scanf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d\PYGZdq{}}\PYG{p}{,}\PYG{o}{\PYGZam{}}\PYG{n}{x1}\PYG{p}{);}
+	\PYG{n}{scanf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d\PYGZdq{}}\PYG{p}{,}\PYG{o}{\PYGZam{}}\PYG{n}{y1}\PYG{p}{);}
+	\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Enter the ent points: \PYGZdq{}}\PYG{p}{);}
+	\PYG{n}{scanf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d\PYGZdq{}}\PYG{p}{,}\PYG{o}{\PYGZam{}}\PYG{n}{x2}\PYG{p}{);}
+	\PYG{n}{scanf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d\PYGZdq{}}\PYG{p}{,}\PYG{o}{\PYGZam{}}\PYG{n}{y2}\PYG{p}{);}
+	\PYG{c+c1}{// Рисуем начальную точку красным цветом}
+	\PYG{n}{putpixel}\PYG{p}{(}\PYG{n}{x1}\PYG{p}{,}\PYG{n}{y1}\PYG{p}{,}\PYG{n}{RED}\PYG{p}{);}
+	\PYG{c+c1}{// Вычисляем расстояние по Ox и Oy от начальной точки до конечной}
+	\PYG{n}{delx}\PYG{o}{=}\PYG{n}{fabs}\PYG{p}{(}\PYG{n}{x2}\PYG{o}{\PYGZhy{}}\PYG{n}{x1}\PYG{p}{);}
+	\PYG{n}{dely}\PYG{o}{=}\PYG{n}{fabs}\PYG{p}{(}\PYG{n}{y2}\PYG{o}{\PYGZhy{}}\PYG{n}{y1}\PYG{p}{);}
+	\PYG{c+c1}{// Вычисляем параметр решения}
+	\PYG{n}{p}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{delx}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{n}{dely}\PYG{p}{;}
+	\PYG{c+c1}{// Проходим по всем y от 0 до dely.}
+	\PYG{c+c1}{// Не по delx, потому что наклон |m|\PYGZgt{}1, то есть наклон крутой}
+	\PYG{k}{for}\PYG{p}{(}\PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{dely}\PYG{p}{;}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+		\PYG{c+c1}{// В зависимости от параметра p рисуем пиксель}
+		\PYG{c+c1}{// либо по Oy, либо еще со смещением по Ox}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{p}\PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{0}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{y1}\PYG{o}{=}\PYG{n}{y1}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{;}
+			\PYG{n}{putpixel}\PYG{p}{(}\PYG{n}{x1}\PYG{p}{,}\PYG{n}{y1}\PYG{p}{,}\PYG{n}{RED}\PYG{p}{);}
+			\PYG{n}{p}\PYG{o}{=}\PYG{n}{p}\PYG{o}{+}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{delx}\PYG{p}{);}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{else}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{x1}\PYG{o}{=}\PYG{n}{x1}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{;}
+			\PYG{n}{y1}\PYG{o}{=}\PYG{n}{y1}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{;}
+			\PYG{n}{putpixel}\PYG{p}{(}\PYG{n}{x1}\PYG{p}{,}\PYG{n}{y1}\PYG{p}{,}\PYG{n}{RED}\PYG{p}{);}
+			\PYG{n}{p}\PYG{o}{=}\PYG{n}{p}\PYG{o}{+}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{delx}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{dely}\PYG{p}{);}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{c+c1}{// Задержка графика}
+	\PYG{c+c1}{// График закроется нажатием любой клавиши}
+	\PYG{n}{getch}\PYG{p}{();}
+	\PYG{c+c1}{// Закрытие графика. Окончание программы}
+	\PYG{n}{closegraph}\PYG{p}{();}
+	\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

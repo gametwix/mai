@@ -1,0 +1,60 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}iostream\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}list\PYGZgt{}}
+
+\PYG{k}{using} \PYG{k}{namespace} \PYG{n}{std}\PYG{p}{;}
+
+\PYG{c+cp}{\PYGZsh{}define NUM\PYGZus{}V 4}
+
+\PYG{k+kt}{bool} \PYG{n+nf}{helper}\PYG{p}{(}\PYG{n}{list}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{o}{*}\PYG{n}{graph}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{,} \PYG{k+kt}{bool}\PYG{o}{*} \PYG{n}{visited}\PYG{p}{,} \PYG{k+kt}{bool}\PYG{o}{*} \PYG{n}{recStack}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{visited}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}\PYG{o}{=}\PYG{n+nb}{true}\PYG{p}{;}
+	\PYG{n}{recStack}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}\PYG{o}{=}\PYG{n+nb}{true}\PYG{p}{;}
+	\PYG{n}{list}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}::}\PYG{n}{iterator} \PYG{n}{i}\PYG{p}{;}
+	\PYG{k}{for}\PYG{p}{(}\PYG{n}{i} \PYG{o}{=} \PYG{n}{graph}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{begin}\PYG{p}{();}\PYG{n}{i}\PYG{o}{!=}\PYG{n}{graph}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{end}\PYG{p}{();}\PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{recStack}\PYG{p}{[}\PYG{o}{*}\PYG{n}{i}\PYG{p}{])}
+			\PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
+		\PYG{k}{else} \PYG{k}{if}\PYG{p}{(}\PYG{o}{*}\PYG{n}{i}\PYG{o}{==}\PYG{n}{u}\PYG{p}{)}
+			\PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
+		\PYG{k}{else} \PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{n}{visited}\PYG{p}{[}\PYG{o}{*}\PYG{n}{i}\PYG{p}{])}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k}{if}\PYG{p}{(}\PYG{n}{helper}\PYG{p}{(}\PYG{n}{graph}\PYG{p}{,} \PYG{o}{*}\PYG{n}{i}\PYG{p}{,} \PYG{n}{visited}\PYG{p}{,} \PYG{n}{recStack}\PYG{p}{))}
+			\PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{n}{recStack}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}\PYG{o}{=}\PYG{n+nb}{false}\PYG{p}{;}
+	\PYG{k}{return} \PYG{n+nb}{false}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{bool} \PYG{n+nf}{isCyclic}\PYG{p}{(}\PYG{n}{list}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{o}{*}\PYG{n}{graph}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{V}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{bool} \PYG{n}{visited}\PYG{p}{[}\PYG{n}{V}\PYG{p}{];}
+	\PYG{k+kt}{bool} \PYG{n}{recStack}\PYG{p}{[}\PYG{n}{V}\PYG{p}{];}
+	
+	\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{V}\PYG{p}{;}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+		\PYG{n}{visited}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{=}\PYG{n+nb}{false}\PYG{p}{,} \PYG{n}{recStack}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{=}\PYG{n+nb}{false}\PYG{p}{;}
+	\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{u} \PYG{o}{\PYGZlt{}} \PYG{n}{V}\PYG{p}{;} \PYG{n}{u}\PYG{o}{++}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{visited}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}\PYG{o}{==}\PYG{n+nb}{false}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k}{if}\PYG{p}{(}\PYG{n}{helper}\PYG{p}{(}\PYG{n}{graph}\PYG{p}{,} \PYG{n}{u}\PYG{p}{,} \PYG{n}{visited}\PYG{p}{,} \PYG{n}{recStack}\PYG{p}{))}
+			\PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{n+nb}{false}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{list}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}*} \PYG{n}{graph} \PYG{o}{=} \PYG{k}{new} \PYG{n}{list}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}}\PYG{p}{[}\PYG{n}{NUM\PYGZus{}V}\PYG{p}{];}
+	\PYG{n}{graph}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{].}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+	\PYG{n}{graph}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{].}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}
+	\PYG{n}{graph}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{].}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}
+	\PYG{n}{graph}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{].}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{);}
+	\PYG{n}{graph}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{].}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{);}
+	\PYG{n}{graph}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{].}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{);}
+	\PYG{k+kt}{bool} \PYG{n}{res} \PYG{o}{=} \PYG{n}{isCyclic}\PYG{p}{(}\PYG{n}{graph}\PYG{p}{,} \PYG{n}{NUM\PYGZus{}V}\PYG{p}{);}
+	\PYG{n}{cout}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{n}{res}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{n}{endl}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

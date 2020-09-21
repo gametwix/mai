@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Previous} \PYG{n+nl}{String}\PYG{p}{:} \PYG{n}{min}
+\PYG{n}{First} \PYG{n}{Letter} \PYG{n}{of} \PYG{n}{Previous} \PYG{n+nl}{String}\PYG{p}{:} \PYG{n}{m}\PYG{p}{(}\PYG{l+m+mi}{13}\PYG{p}{)}
+\PYG{n}{New} \PYG{n+nl}{Letter}\PYG{p}{:} \PYG{n}{s}\PYG{p}{(}\PYG{l+m+mi}{19}\PYG{p}{)}
+\PYG{n+nl}{NewString}\PYG{p}{:}\PYG{l+s}{\PYGZdq{}ins\PYGZdq{}}
+\PYG{l+m+mi}{1806} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{13} \PYG{o}{=} \PYG{l+m+mi}{1793}
+\PYG{l+m+mi}{1793} \PYG{o}{/} \PYG{l+m+mi}{11} \PYG{o}{=} \PYG{l+m+mi}{163}
+\PYG{l+m+mi}{163} \PYG{o}{+} \PYG{l+m+mi}{19} \PYG{n}{X} \PYG{l+m+mi}{11}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{2} \PYG{o}{=} \PYG{l+m+mi}{2462}
+\end{Verbatim}

@@ -1,0 +1,91 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{indentfirst}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[T2A]{fontenc}
+\usepackage[a5paper,left=1cm,right=1cm,top=1.5cm,bottom=1cm,bindingoffset=0cm,headsep=5mm,nofoot,footskip=0mm]{geometry}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[C]{МЕРА, ИЗМЕРИМЫЕ ФУНКЦИИ, ИНТЕГРАЛ}
+\fancyhead[R]{ГЛ. V}
+\fancyhead[L]{262}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot{}
+
+\fancypagestyle{firststyle}
+{
+\fancyhead[C]{МЕРА ПЛОСКИХ ВЕЩЕСТВ}
+\fancyhead[R]{261}
+\fancyhead[L]{\S 11}
+\renewcommand{\headrulewidth}{0pt}
+}
+
+\begin{document}
+\thispagestyle{firststyle}
+Т\,е\,о\,р\,е\,м\,а 8. \itshape Если \normalfont \{$A_n$\} --- \itshape последовательность попарно непересекающихся измеримых множеств и \normalfont $A=\bigcup\limits_{n} A_n$, \itshape то \normalfont
+
+$$\mu(A)=\sum\limits_n \mu (A_n).$$
+
+Д\,о\,к\,а\,з\,а\,т\,е\,л\,ь\,с\,т\,в\,о. В силу теоремы 6 при любом N
+
+$$\mu\Bigl(\bigcup\limits_{n=1}^N A_n\Bigr) = \sum\limits_{n=1}^N \mu (A_n) < \mu (A)$$
+
+\noindent Переходя к пределу при $N\rightarrow\infty$, получаем
+
+$$\mu(A)\geq\sum\limits_{n=1}^{\infty} \mu (A_n). \eqno(13)$$
+
+\noindentС другой стороны, согласно теореме 3
+
+$$\mu(A)\leq\sum\limits_{n=1}^{\infty} \mu(A_n) \eqno(14)$$
+
+\noindent Из (13) и (14) вытекает утверждение теоремы.
+
+Установленное в теореме 8 свойство меры было названо ее \itshape счетной аддитивностью \normalfont, или \itshape $\sigma$-аддитивностью.\normalfont Из $\sigma$-аддитивности вытекает следующее свойство меры, называемое \itshape непрерывностью. \normalfont
+
+Т\,е\,о\,р\,е\,м\,а 9. \itshape Если \normalfont $A_1\supset A_2\supset\ldots$ --- \itshape последовательность вложенных друг в друга измеримых множеств и \normalfont $A=\bigcup\limits_n A_n$, \itshape то \normalfont
+
+$$\mu(A)=\lim\limits_{n\rightarrow\infty}\mu (A_n).$$
+
+Д\,о\,к\,а\,з\,а\,т\,е\,л\,ь\,с\,т\,в\,о. Достаточно рассмотреть случай $A=\varnothing$; общий случай сводится к этому заменой $A_n$ на $A_n \setminus A$.
+
+\noindent Имеем
+
+$$A_1=(A_1\setminus A_2)\cup(A_2\setminus A_3)\cup\ldots,$$
+\noindent и 
+$$A_n=(A_n\setminus A_{n+1})\cup(A_{n+1}\setminus A_{n+2})\cup\ldots,$$
+\noindent причем слагаемые не пересекаются. Поэтому, в силу $\sigma$-аддитивности $\mu$
+
+$$\mu(A_1)=\sum\limits_{k=1}^{\infty} \mu (A_k \setminus A_{k+1}) \eqno(15)$$
+\noindent и
+$$\mu(A_n)=\sum\limits_{k=n}^{\infty}\mu(A_k\setminus A_{k+1}); \eqno(16)$$
+
+\noindent так как ряд (15) сходится, то его остаток (16) стремится к 0 при $\rightarrow\infty$. Таким образом, 
+
+ $$\mu (A_n)\rightarrow 0 \text{при}  n\rightarrow \infty$$
+
+\noindent что и требовалось доказать.
+
+С\,л\,е\,д\,с\,т\,в\,и\,е. \itshape Если \normalfont $A_1\supset A_2\supset\ldots$ --- \itshape возрастающая последовательность измеримых множеств и \normalfont
+
+$$A=\bigcup\limits_n A_n,$$
+
+\noindent \itshape то\normalfont
+
+$$\mu(A)=\lim\limits_{n\rightarrow\infty} \mu (A_n).$$
+
+Для доказательства достаточно перейти от множеств $A_n$ к их дополнениям и воспользоваться теоремой 9.
+
+Отметим в заключение еще одно очевидное, но важное обстоятельство. \itshapeВсякое множество \normalfont A, \itshapeвнешняя мера которого равна \normalfont0, \itshape измеримо.\normalfont Достаточно положить $B=\varnothing$; тогда
+
+$$\mu^{*}(A\triangle B)=\mu^{*}(A\triangle\varnothing)=\mu^{*}(A)=0<\varepsilon$$
+
+Итак, мы распространили меру с элементарных множеств на более широкий класс $\mathfrak{M}_E$, замкнутый относительно операций взятия счетных сумм и пересечений, т. е. представляющий собой $\sigma$-алгебру. Построенная мера $\sigma$-аддитивна на этом классе. Установленные выше теоремы позволяют составить следующее представление о совокупности измеримых по Лебегу множеств.
+
+Всякое открытое множеств, принадлежащее E, можно представить как объединение конечного или счетного числа открытых прямоугольников, т. е. измеримых множеств, и в силу теоремы 7 все открытые множества измеримы. Замкнутые множества суть дополнения открытых, следовательно, они тоже измеримы. Согласно теореме 7 измеримыми должны быть и все те множества, которые могут быть получены из открытых и замкнутых с попомощью конечного или счетного числа операций взятия счетных сумм и пересечений. Можно показать, онднако, что этими множествами все измеримые множества еще не исчерпываеются
+
+\bfseries3. Некоторые дополнения и обобщения. \normalfont Выше мы рассатриваои только те множества, которые содержатся в едином квадрате $E=\{0\leq x,y\leq 1\}$. Нетрудно освободиться от этого ограничения, например, следующим образом. Представив вс. прлоскость как сумму полуоткрытых квадратов $E_{nm}=\{n<x\leq n+1, m<y\leq m+1\}$ (n,m -- целые), мы будем говорить, что плоское множество А измеримо, если его пересечение $A_{nm}=A\cap E_{nm}$ с каждым из этих квадратов измеримо. При
+
+\end{document}

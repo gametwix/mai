@@ -1,0 +1,34 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{main}\PYG{p}{(}\PYG{n}{String}\PYG{o}{[]} \PYG{n}{args}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{n}{Scanner} \PYG{n}{sc} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Scanner}\PYG{p}{(}\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{in}\PYG{p}{);}	\PYG{c+c1}{// вводим массив}
+		\PYG{k+kt}{int} \PYG{n}{n} \PYG{o}{=} \PYG{n}{sc}\PYG{p}{.}\PYG{n+na}{nextInt}\PYG{p}{();}
+		\PYG{k+kt}{int}\PYG{o}{[]} \PYG{n}{ar} \PYG{o}{=} \PYG{k}{new} \PYG{k+kt}{int}\PYG{o}{[}\PYG{n}{n}\PYG{o}{]}\PYG{p}{;} \PYG{c+c1}{// объявляем обрабатываемый массив}
+		\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+			\PYG{n}{ar}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]} \PYG{o}{=} \PYG{n}{sc}\PYG{p}{.}\PYG{n+na}{nextInt}\PYG{p}{();} \PYG{c+c1}{// заполняем}
+		\PYG{n}{quickSort}\PYG{p}{(}\PYG{n}{ar}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{ar}\PYG{p}{.}\PYG{n+na}{length}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{quickSort}\PYG{p}{(}\PYG{k+kt}{int}\PYG{o}{[]} \PYG{n}{ar}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{low}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{high}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{low}\PYG{o}{\PYGZlt{}}\PYG{n}{high}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// если границы не сомкнулись}
+			\PYG{k+kt}{int} \PYG{n}{p} \PYG{o}{=} \PYG{n}{partition}\PYG{p}{(}\PYG{n}{ar}\PYG{p}{,} \PYG{n}{low}\PYG{p}{,} \PYG{n}{high}\PYG{p}{);} \PYG{c+c1}{// разбиваем с опорным элементом}
+			\PYG{n}{quickSort}\PYG{p}{(}\PYG{n}{ar}\PYG{p}{,} \PYG{l+m+mi}{0} \PYG{p}{,} \PYG{n}{p}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{);} \PYG{c+c1}{// обработка левой части}
+			\PYG{n}{quickSort}\PYG{p}{(}\PYG{n}{ar}\PYG{p}{,} \PYG{n}{p}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{high}\PYG{p}{);} \PYG{c+c1}{// правой части}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{int} \PYG{n+nf}{partition}\PYG{p}{(}\PYG{k+kt}{int}\PYG{o}{[]} \PYG{n}{ar}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{l}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{r}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{pivot} \PYG{o}{=} \PYG{n}{ar}\PYG{o}{[}\PYG{n}{r}\PYG{o}{]}\PYG{p}{;} \PYG{c+c1}{// опорный последний элемент}
+		\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{l}\PYG{p}{;}
+		\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j}\PYG{o}{=}\PYG{n}{l}\PYG{p}{;} \PYG{n}{j}\PYG{o}{\PYGZlt{}}\PYG{n}{r}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}	\PYG{c+c1}{// начиная слевой границы}
+			\PYG{k}{if}\PYG{p}{(}\PYG{n}{ar}\PYG{o}{[}\PYG{n}{j}\PYG{o}{]} \PYG{o}{\PYGZlt{}=} \PYG{n}{pivot}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// элемент меньше опорного}
+				\PYG{k+kt}{int} \PYG{n}{t} \PYG{o}{=} \PYG{n}{ar}\PYG{o}{[}\PYG{n}{j}\PYG{o}{]}\PYG{p}{;} \PYG{c+c1}{// меняем местами текущий с опорным}
+				\PYG{n}{ar}\PYG{o}{[}\PYG{n}{j}\PYG{o}{]} \PYG{o}{=} \PYG{n}{ar}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{p}{;}
+				\PYG{n}{ar}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]} \PYG{o}{=} \PYG{n}{t}\PYG{p}{;}
+				\PYG{n}{i}\PYG{o}{++}\PYG{p}{;} \PYG{c+c1}{// шаг для левой границы}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k+kt}{int} \PYG{n}{t} \PYG{o}{=} \PYG{n}{ar}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{p}{;} \PYG{c+c1}{// смена местами}
+		\PYG{n}{ar}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]} \PYG{o}{=} \PYG{n}{ar}\PYG{o}{[}\PYG{n}{r}\PYG{o}{]}\PYG{p}{;}
+		\PYG{n}{ar}\PYG{o}{[}\PYG{n}{r}\PYG{o}{]} \PYG{o}{=} \PYG{n}{t}\PYG{p}{;}
+	\PYG{k}{return} \PYG{n}{i}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

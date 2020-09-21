@@ -1,0 +1,24 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{p}\PYG{o}{\PYGZhy{}}\PYG{n}{merge}\PYG{o}{\PYGZhy{}}\PYG{n}{sort}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{n}{p}\PYG{p}{,}\PYG{n}{r}\PYG{p}{,}\PYG{n}{B}\PYG{p}{,}\PYG{n}{s}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}многопоточная сортировка подмассива}
+	\PYG{c+c1}{\PYGZsh{}находим длину подмассива}
+	\PYG{n}{n} \PYG{o}{=} \PYG{n}{r}\PYG{o}{\PYGZhy{}}\PYG{n}{p}\PYG{o}{+}\PYG{l+m+mi}{1}
+	\PYG{c+c1}{\PYGZsh{}если длина равна 1, то не сортируя помещаем элемент массива A в}
+	\PYG{c+c1}{\PYGZsh{}массив B На позицию s}
+	\PYG{k}{if} \PYG{n}{n}\PYG{o}{==}\PYG{l+m+mi}{1}
+		\PYG{n}{B}\PYG{p}{[}\PYG{n}{s}\PYG{p}{]} \PYG{o}{=} \PYG{n}{A}\PYG{p}{[}\PYG{n}{p}\PYG{p}{]}
+	\PYG{k}{else}
+		\PYG{c+c1}{\PYGZsh{}создаем массив T длины n}
+		\PYG{n}{T} \PYG{o}{=} \PYG{n}{new} \PYG{n}{Array}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)}
+		\PYG{c+c1}{\PYGZsh{}находим середину отрезка массива, округляя до целого числа}
+		\PYG{n}{q} \PYG{o}{=} \PYG{n}{floor}\PYG{p}{((}\PYG{n}{p}\PYG{o}{+}\PYG{n}{r}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{))}
+		\PYG{c+c1}{\PYGZsh{}находим длину половины отрезка}
+		\PYG{n}{q\PYGZus{}prime} \PYG{o}{=} \PYG{n}{q}\PYG{o}{\PYGZhy{}}\PYG{n}{p}\PYG{o}{+}\PYG{l+m+mi}{1}
+		\PYG{c+c1}{\PYGZsh{}запускаем параллельно сортировку двух половин массива,}
+		\PYG{c+c1}{\PYGZsh{}помещая результат в массив T}
+		\PYG{n}{spawn} \PYG{n}{p}\PYG{o}{\PYGZhy{}}\PYG{n}{merge}\PYG{o}{\PYGZhy{}}\PYG{n}{sort}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{n}{p}\PYG{p}{,}\PYG{n}{q}\PYG{p}{,}\PYG{n}{T}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
+		\PYG{n}{p}\PYG{o}{\PYGZhy{}}\PYG{n}{merge}\PYG{o}{\PYGZhy{}}\PYG{n}{sort}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{n}{q}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{r}\PYG{p}{,}\PYG{n}{T}\PYG{p}{,}\PYG{n}{q\PYGZus{}prime}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}
+		\PYG{n}{sync}
+		\PYG{c+c1}{\PYGZsh{}соединяем две отсортированные половины массива}
+		\PYG{n}{p}\PYG{o}{\PYGZhy{}}\PYG{n}{merge}\PYG{p}{(}\PYG{n}{T}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{q\PYGZus{}prime}\PYG{p}{,}\PYG{n}{q\PYGZus{}prime}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{n}\PYG{p}{,}\PYG{n}{B}\PYG{p}{,}\PYG{n}{s}\PYG{p}{)}
+\end{Verbatim}

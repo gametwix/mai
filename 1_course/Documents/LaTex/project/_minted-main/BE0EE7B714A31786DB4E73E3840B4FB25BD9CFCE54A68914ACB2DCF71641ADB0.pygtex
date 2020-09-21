@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{is\PYGZus{}BST}\PYG{p}{(}\PYG{n}{root}\PYG{p}{,} \PYG{n+nb}{min}\PYG{p}{,} \PYG{n+nb}{max}\PYG{p}{):}  \PYG{c+c1}{\PYGZsh{} является ли дерево бинарным в заданном диапазоне}
+\PYG{k}{if} \PYG{n}{root} \PYG{o}{==} \PYG{n}{NULL}	\PYG{c+c1}{\PYGZsh{} если пустое, то является}
+	\PYG{k}{return} \PYG{n}{true}
+
+\PYG{c+c1}{\PYGZsh{} узел выходит за диапазон?}
+\PYG{k}{if} \PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{key} \PYG{o}{\PYGZlt{}} \PYG{n+nb}{min} \PYG{o}{||} \PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{key} \PYG{o}{\PYGZgt{}}\PYG{n+nb}{max} \PYG{c+c1}{\PYGZsh{} если нет, то возвращаем ложь}
+	\PYG{k}{return} \PYG{n}{false}
+\PYG{c+c1}{\PYGZsh{} проверка, являются ли левое и правое поддерево BST на диапозоне}
+\PYG{k}{return} \PYG{n}{if\PYGZus{}BST}\PYG{p}{(}\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left}\PYG{p}{,}\PYG{n+nb}{min}\PYG{p}{,}\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{key}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{is\PYGZus{}BST}\PYG{p}{(}\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{p}{,}\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{key}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n+nb}{max}\PYG{p}{)}
+\end{Verbatim}

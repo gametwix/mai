@@ -1,0 +1,3944 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.5.13)  13 MAY 2020 15:40
+entering extended mode
+ \write18 enabled.
+ %&-line parsing enabled.
+**main.tex
+(./main.tex
+LaTeX2e <2019-10-01> patch level 1
+(./preambula.tex (/usr/share/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2019/08/27 v1.4j Standard LaTeX document class
+(/usr/share/texmf-dist/tex/latex/base/bk12.clo
+File: bk12.clo 2019/08/27 v1.4j Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@chapter=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\c@figure=\count87
+\c@table=\count88
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
+
+(/usr/share/texmf-dist/tex/latex/cyrillic/t2aenc.def
+File: t2aenc.def 2005/09/27 v1.0i Cyrillic encoding definition file
+Now handling font encoding T2A ...
+... processing UTF-8 mapping file for font encoding T2A
+
+(/usr/share/texmf-dist/tex/latex/base/t2aenc.dfu
+File: t2aenc.dfu 2019/07/11 v1.2j UTF-8 support for inputenc
+   defining Unicode char U+00A4 (decimal 164)
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00AB (decimal 171)
+   defining Unicode char U+00BB (decimal 187)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0237 (decimal 567)
+   defining Unicode char U+0400 (decimal 1024)
+   defining Unicode char U+0401 (decimal 1025)
+   defining Unicode char U+0402 (decimal 1026)
+   defining Unicode char U+0403 (decimal 1027)
+   defining Unicode char U+0404 (decimal 1028)
+   defining Unicode char U+0405 (decimal 1029)
+   defining Unicode char U+0406 (decimal 1030)
+   defining Unicode char U+0407 (decimal 1031)
+   defining Unicode char U+0408 (decimal 1032)
+   defining Unicode char U+0409 (decimal 1033)
+   defining Unicode char U+040A (decimal 1034)
+   defining Unicode char U+040B (decimal 1035)
+   defining Unicode char U+040C (decimal 1036)
+   defining Unicode char U+040D (decimal 1037)
+   defining Unicode char U+040E (decimal 1038)
+   defining Unicode char U+040F (decimal 1039)
+   defining Unicode char U+0410 (decimal 1040)
+   defining Unicode char U+0411 (decimal 1041)
+   defining Unicode char U+0412 (decimal 1042)
+   defining Unicode char U+0413 (decimal 1043)
+   defining Unicode char U+0414 (decimal 1044)
+   defining Unicode char U+0415 (decimal 1045)
+   defining Unicode char U+0416 (decimal 1046)
+   defining Unicode char U+0417 (decimal 1047)
+   defining Unicode char U+0418 (decimal 1048)
+   defining Unicode char U+0419 (decimal 1049)
+   defining Unicode char U+041A (decimal 1050)
+   defining Unicode char U+041B (decimal 1051)
+   defining Unicode char U+041C (decimal 1052)
+   defining Unicode char U+041D (decimal 1053)
+   defining Unicode char U+041E (decimal 1054)
+   defining Unicode char U+041F (decimal 1055)
+   defining Unicode char U+0420 (decimal 1056)
+   defining Unicode char U+0421 (decimal 1057)
+   defining Unicode char U+0422 (decimal 1058)
+   defining Unicode char U+0423 (decimal 1059)
+   defining Unicode char U+0424 (decimal 1060)
+   defining Unicode char U+0425 (decimal 1061)
+   defining Unicode char U+0426 (decimal 1062)
+   defining Unicode char U+0427 (decimal 1063)
+   defining Unicode char U+0428 (decimal 1064)
+   defining Unicode char U+0429 (decimal 1065)
+   defining Unicode char U+042A (decimal 1066)
+   defining Unicode char U+042B (decimal 1067)
+   defining Unicode char U+042C (decimal 1068)
+   defining Unicode char U+042D (decimal 1069)
+   defining Unicode char U+042E (decimal 1070)
+   defining Unicode char U+042F (decimal 1071)
+   defining Unicode char U+0430 (decimal 1072)
+   defining Unicode char U+0431 (decimal 1073)
+   defining Unicode char U+0432 (decimal 1074)
+   defining Unicode char U+0433 (decimal 1075)
+   defining Unicode char U+0434 (decimal 1076)
+   defining Unicode char U+0435 (decimal 1077)
+   defining Unicode char U+0436 (decimal 1078)
+   defining Unicode char U+0437 (decimal 1079)
+   defining Unicode char U+0438 (decimal 1080)
+   defining Unicode char U+0439 (decimal 1081)
+   defining Unicode char U+043A (decimal 1082)
+   defining Unicode char U+043B (decimal 1083)
+   defining Unicode char U+043C (decimal 1084)
+   defining Unicode char U+043D (decimal 1085)
+   defining Unicode char U+043E (decimal 1086)
+   defining Unicode char U+043F (decimal 1087)
+   defining Unicode char U+0440 (decimal 1088)
+   defining Unicode char U+0441 (decimal 1089)
+   defining Unicode char U+0442 (decimal 1090)
+   defining Unicode char U+0443 (decimal 1091)
+   defining Unicode char U+0444 (decimal 1092)
+   defining Unicode char U+0445 (decimal 1093)
+   defining Unicode char U+0446 (decimal 1094)
+   defining Unicode char U+0447 (decimal 1095)
+   defining Unicode char U+0448 (decimal 1096)
+   defining Unicode char U+0449 (decimal 1097)
+   defining Unicode char U+044A (decimal 1098)
+   defining Unicode char U+044B (decimal 1099)
+   defining Unicode char U+044C (decimal 1100)
+   defining Unicode char U+044D (decimal 1101)
+   defining Unicode char U+044E (decimal 1102)
+   defining Unicode char U+044F (decimal 1103)
+   defining Unicode char U+0450 (decimal 1104)
+   defining Unicode char U+0451 (decimal 1105)
+   defining Unicode char U+0452 (decimal 1106)
+   defining Unicode char U+0453 (decimal 1107)
+   defining Unicode char U+0454 (decimal 1108)
+   defining Unicode char U+0455 (decimal 1109)
+   defining Unicode char U+0456 (decimal 1110)
+   defining Unicode char U+0457 (decimal 1111)
+   defining Unicode char U+0458 (decimal 1112)
+   defining Unicode char U+0459 (decimal 1113)
+   defining Unicode char U+045A (decimal 1114)
+   defining Unicode char U+045B (decimal 1115)
+   defining Unicode char U+045C (decimal 1116)
+   defining Unicode char U+045D (decimal 1117)
+   defining Unicode char U+045E (decimal 1118)
+   defining Unicode char U+045F (decimal 1119)
+   defining Unicode char U+0490 (decimal 1168)
+   defining Unicode char U+0491 (decimal 1169)
+   defining Unicode char U+0492 (decimal 1170)
+   defining Unicode char U+0493 (decimal 1171)
+   defining Unicode char U+0496 (decimal 1174)
+   defining Unicode char U+0497 (decimal 1175)
+   defining Unicode char U+0498 (decimal 1176)
+   defining Unicode char U+0499 (decimal 1177)
+   defining Unicode char U+049A (decimal 1178)
+   defining Unicode char U+049B (decimal 1179)
+   defining Unicode char U+049C (decimal 1180)
+   defining Unicode char U+049D (decimal 1181)
+   defining Unicode char U+04A0 (decimal 1184)
+   defining Unicode char U+04A1 (decimal 1185)
+   defining Unicode char U+04A2 (decimal 1186)
+   defining Unicode char U+04A3 (decimal 1187)
+   defining Unicode char U+04A4 (decimal 1188)
+   defining Unicode char U+04A5 (decimal 1189)
+   defining Unicode char U+04AA (decimal 1194)
+   defining Unicode char U+04AB (decimal 1195)
+   defining Unicode char U+04AE (decimal 1198)
+   defining Unicode char U+04AF (decimal 1199)
+   defining Unicode char U+04B0 (decimal 1200)
+   defining Unicode char U+04B1 (decimal 1201)
+   defining Unicode char U+04B2 (decimal 1202)
+   defining Unicode char U+04B3 (decimal 1203)
+   defining Unicode char U+04B6 (decimal 1206)
+   defining Unicode char U+04B7 (decimal 1207)
+   defining Unicode char U+04B8 (decimal 1208)
+   defining Unicode char U+04B9 (decimal 1209)
+   defining Unicode char U+04BA (decimal 1210)
+   defining Unicode char U+04BB (decimal 1211)
+   defining Unicode char U+04C0 (decimal 1216)
+   defining Unicode char U+04C1 (decimal 1217)
+   defining Unicode char U+04C2 (decimal 1218)
+   defining Unicode char U+04D0 (decimal 1232)
+   defining Unicode char U+04D1 (decimal 1233)
+   defining Unicode char U+04D2 (decimal 1234)
+   defining Unicode char U+04D3 (decimal 1235)
+   defining Unicode char U+04D4 (decimal 1236)
+   defining Unicode char U+04D5 (decimal 1237)
+   defining Unicode char U+04D6 (decimal 1238)
+   defining Unicode char U+04D7 (decimal 1239)
+   defining Unicode char U+04D8 (decimal 1240)
+   defining Unicode char U+04D9 (decimal 1241)
+   defining Unicode char U+04DA (decimal 1242)
+   defining Unicode char U+04DB (decimal 1243)
+   defining Unicode char U+04DC (decimal 1244)
+   defining Unicode char U+04DD (decimal 1245)
+   defining Unicode char U+04DE (decimal 1246)
+   defining Unicode char U+04DF (decimal 1247)
+   defining Unicode char U+04E2 (decimal 1250)
+   defining Unicode char U+04E3 (decimal 1251)
+   defining Unicode char U+04E4 (decimal 1252)
+   defining Unicode char U+04E5 (decimal 1253)
+   defining Unicode char U+04E6 (decimal 1254)
+   defining Unicode char U+04E7 (decimal 1255)
+   defining Unicode char U+04E8 (decimal 1256)
+   defining Unicode char U+04E9 (decimal 1257)
+   defining Unicode char U+04EC (decimal 1260)
+   defining Unicode char U+04ED (decimal 1261)
+   defining Unicode char U+04EE (decimal 1262)
+   defining Unicode char U+04EF (decimal 1263)
+   defining Unicode char U+04F0 (decimal 1264)
+   defining Unicode char U+04F1 (decimal 1265)
+   defining Unicode char U+04F2 (decimal 1266)
+   defining Unicode char U+04F3 (decimal 1267)
+   defining Unicode char U+04F4 (decimal 1268)
+   defining Unicode char U+04F5 (decimal 1269)
+   defining Unicode char U+04F8 (decimal 1272)
+   defining Unicode char U+04F9 (decimal 1273)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+   defining Unicode char U+201E (decimal 8222)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+2116 (decimal 8470)
+   defining Unicode char U+2329 (decimal 9001)
+   defining Unicode char U+232A (decimal 9002)
+   defining Unicode char U+2423 (decimal 9251)
+   defining Unicode char U+27E8 (decimal 10216)
+   defining Unicode char U+27E9 (decimal 10217)
+   defining Unicode char U+FB00 (decimal 64256)
+   defining Unicode char U+FB01 (decimal 64257)
+   defining Unicode char U+FB02 (decimal 64258)
+   defining Unicode char U+FB03 (decimal 64259)
+   defining Unicode char U+FB04 (decimal 64260)
+   defining Unicode char U+FB05 (decimal 64261)
+   defining Unicode char U+FB06 (decimal 64262)
+))
+LaTeX Font Info:    Trying to load font information for T2A+cmr on input line 1
+05.
+
+(/usr/share/texmf-dist/tex/latex/cyrillic/t2acmr.fd
+File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
+))
+(/usr/share/texmf-dist/tex/latex/sectsty/sectsty.sty
+Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading sty
+les
+
+
+LaTeX Warning: Command \underbar  has changed.
+               Check if current package is valid.
+
+
+LaTeX Warning: Command \underline  has changed.
+               Check if current package is valid.
+
+) (/usr/share/texmf-dist/tex/latex/blindtext/blindtext.sty
+Package: blindtext 2012/01/06 V2.0 blindtext-Package
+
+(/usr/share/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+\c@blindtext=\count89
+\c@Blindtext=\count90
+\c@blind@countparstart=\count91
+\blind@countxx=\count92
+\blindtext@numBlindtext=\count93
+\blind@countyy=\count94
+\c@blindlist=\count95
+\c@blindlistlevel=\count96
+\c@blindlist@level=\count97
+\blind@listitem=\count98
+\c@blind@listcount=\count99
+\c@blind@levelcount=\count100
+\blind@mathformula=\count101
+\blind@Mathformula=\count102
+\c@blind@randomcount=\count103
+\c@blind@randommax=\count104
+\c@blind@pangramcount=\count105
+\c@blind@pangrammax=\count106
+)
+(/usr/share/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2019/10/15 3.35 The Babel package
+
+(/usr/share/texmf-dist/tex/generic/babel/switch.def
+File: switch.def 2019/10/15 3.35 Babel switching mechanism
+)
+(/usr/share/texmf-dist/tex/generic/babel-russian/russianb.ldf
+Language: russian 2017/08/12 1.3j Russian support for the Babel system
+
+(/usr/share/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2019/10/15 3.35 Babel common definitions
+\babel@savecnt=\count107
+\U@D=\dimen103
+
+(/usr/share/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@dirlevel=\count108
+)
+Package babel Info: Making " an active character on input line 120.
+Package babel Info: Default for \cyrdash is provided on input line 157.
+))
+(/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2018/04/16 v5.8 Page Geometry
+
+(/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+)
+(/usr/share/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count109
+\Gm@cntv=\count110
+\c@Gm@tempcnt=\count111
+\Gm@bindingoffset=\dimen104
+\Gm@wd@mp=\dimen105
+\Gm@odd@mp=\dimen106
+\Gm@even@mp=\dimen107
+\Gm@layoutwidth=\dimen108
+\Gm@layoutheight=\dimen109
+\Gm@layouthoffset=\dimen110
+\Gm@layoutvoffset=\dimen111
+\Gm@dimlist=\toks15
+)
+(/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+(/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+
+(/usr/share/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
+))
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+Package: tcolorbox 2019/09/19 version 4.21 text color boxes
+
+(/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks16
+\pgfutil@tempdima=\dimen112
+\pgfutil@tempdimb=\dimen113
+
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex))
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box27
+
+(/usr/share/texmf-dist/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2019/08/03 v3.1.4b (3.1.4b)
+))
+Package: pgf 2019/08/03 v3.1.4b (3.1.4b)
+
+(/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2019/10/08 v1.3c Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+)
+\Gin@req@height=\dimen114
+\Gin@req@width=\dimen115
+)
+(/usr/share/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2019/08/03 v3.1.4b (3.1.4b)
+
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks17
+\pgfkeys@temptoks=\toks18
+
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
+\pgfkeys@tmptoks=\toks19
+))
+\pgf@x=\dimen116
+\pgf@y=\dimen117
+\pgf@xa=\dimen118
+\pgf@ya=\dimen119
+\pgf@xb=\dimen120
+\pgf@yb=\dimen121
+\pgf@xc=\dimen122
+\pgf@yc=\dimen123
+\pgf@xd=\dimen124
+\pgf@yd=\dimen125
+\w@pgf@writea=\write3
+\r@pgf@reada=\read1
+\c@pgf@counta=\count112
+\c@pgf@countb=\count113
+\c@pgf@countc=\count114
+\c@pgf@countd=\count115
+\t@pgf@toka=\toks20
+\t@pgf@tokb=\toks21
+\t@pgf@tokc=\toks22
+\pgf@sys@id@count=\count116
+
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2019/08/03 v3.1.4b (3.1.4b)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2019/08/03 v3.1.4b (3.1.4b)
+
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2019/08/03 v3.1.4b (3.1.4b)
+)))
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfsyssoftpath@smallbuffer@items=\count117
+\pgfsyssoftpath@bigbuffer@items=\count118
+)
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+))
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2019/08/03 v3.1.4b (3.1.4b)
+
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen126
+\pgfmath@count=\count119
+\pgfmath@box=\box28
+\pgfmath@toks=\toks23
+\pgfmath@stack@operand=\toks24
+\pgfmath@stack@operation=\toks25
+)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code
+.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.te
+x) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics
+.code.tex))) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count120
+)) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@picminx=\dimen127
+\pgf@picmaxx=\dimen128
+\pgf@picminy=\dimen129
+\pgf@picmaxy=\dimen130
+\pgf@pathminx=\dimen131
+\pgf@pathmaxx=\dimen132
+\pgf@pathminy=\dimen133
+\pgf@pathmaxy=\dimen134
+\pgf@xx=\dimen135
+\pgf@xy=\dimen136
+\pgf@yx=\dimen137
+\pgf@yy=\dimen138
+\pgf@zx=\dimen139
+\pgf@zy=\dimen140
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@path@lastx=\dimen141
+\pgf@path@lasty=\dimen142
+) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@shorten@end@additional=\dimen143
+\pgf@shorten@start@additional=\dimen144
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfpic=\box29
+\pgf@hbox=\box30
+\pgf@layerbox@main=\box31
+\pgf@picture@serial@count=\count121
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgflinewidth=\dimen145
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.t
+ex
+File: pgfcoretransformations.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@pt@x=\dimen146
+\pgf@pt@y=\dimen147
+\pgf@pt@temp=\dimen148
+) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.te
+x
+File: pgfcorepathprocessing.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfarrowsep=\dimen149
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@max=\dimen150
+\pgf@sys@shading@range@num=\count122
+\pgf@shadingcount=\count123
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfexternal@startupbox=\box32
+))
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+)))
+(/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfnodeparttextbox=\box33
+)
+(/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+)
+(/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@nodesepstart=\dimen151
+\pgf@nodesepend=\dimen152
+)
+(/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2019/08/03 v3.1.4b (3.1.4b)
+))
+(/usr/share/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks26
+\verbatim@line=\toks27
+\verbatim@in@stream=\read2
+)
+(/usr/share/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+
+(/usr/share/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+)
+\@envbody=\toks28
+)
+(/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count124
+)
+\tcb@titlebox=\box34
+\tcb@upperbox=\box35
+\tcb@lowerbox=\box36
+\tcb@phantombox=\box37
+\c@tcbbreakpart=\count125
+\c@tcblayer=\count126
+\tcolorbox@number=\count127
+\tcb@temp=\box38
+\tcb@temp=\box39
+\tcb@temp=\box40
+\tcb@temp=\box41
+\tcb@out=\write4
+\tcb@record@out=\write5
+
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcbraster.code.tex
+Library (tcolorbox): 'tcbraster.code.tex' version '4.21'
+\c@tcbrastercolumn=\count128
+\c@tcbrasterrow=\count129
+\c@tcbraster=\count130
+) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
+Library (tcolorbox): 'tcbskins.code.tex' version '4.21'
+(/usr/share/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
+(/usr/share/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2019/08/03 v3.1.4b (3.1.4b)
+
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+\pgffor@iter=\dimen153
+\pgffor@skip=\dimen154
+\pgffor@stack=\toks29
+\pgffor@toks=\toks30
+))
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2019/08/03 v3.1.4b (3.1.4b)
+
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.te
+x
+File: pgflibraryplothandlers.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@plot@mark@count=\count131
+\pgfplotmarksize=\dimen155
+)
+\tikz@lastx=\dimen156
+\tikz@lasty=\dimen157
+\tikz@lastxsaved=\dimen158
+\tikz@lastysaved=\dimen159
+\tikz@lastmovetox=\dimen160
+\tikz@lastmovetoy=\dimen161
+\tikzleveldistance=\dimen162
+\tikzsiblingdistance=\dimen163
+\tikz@figbox=\box42
+\tikz@figbox@bg=\box43
+\tikz@tempbox=\box44
+\tikz@tempbox@bg=\box45
+\tikztreelevel=\count132
+\tikznumberofchildren=\count133
+\tikznumberofcurrentchild=\count134
+\tikz@fig@count=\count135
+ (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfmatrixcurrentrow=\count136
+\pgfmatrixcurrentcolumn=\count137
+\pgf@matrix@numberofcolumns=\count138
+)
+\tikz@expandcount=\count139
+
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+topaths.code.tex
+File: tikzlibrarytopaths.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+)))
+\tcb@waterbox=\box46
+
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '4.21'
+)) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
+Library (tcolorbox): 'tcbbreakable.code.tex' version '4.21'
+\tcb@testbox=\box47
+\tcb@totalupperbox=\box48
+\tcb@totallowerbox=\box49
+) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbhooks.code.tex
+Library (tcolorbox): 'tcbhooks.code.tex' version '4.21'
+) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
+Library (tcolorbox): 'tcbtheorems.code.tex' version '4.21'
+(/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2019/04/01 v2.17c AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks31
+\ex@=\dimen164
+))
+(/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen165
+)
+(/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count140
+LaTeX Info: Redefining \frac on input line 227.
+\uproot@=\count141
+\leftroot@=\count142
+LaTeX Info: Redefining \overline on input line 389.
+\classnum@=\count143
+\DOTSCASE@=\count144
+LaTeX Info: Redefining \ldots on input line 486.
+LaTeX Info: Redefining \dots on input line 489.
+LaTeX Info: Redefining \cdots on input line 610.
+\Mathstrutbox@=\box50
+\strutbox@=\box51
+\big@size=\dimen166
+LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
+\macc@depth=\count145
+\c@MaxMatrixCols=\count146
+\dotsspace@=\muskip10
+\c@parentequation=\count147
+\dspbrk@lvl=\count148
+\tag@help=\toks32
+\row@=\count149
+\column@=\count150
+\maxfields@=\count151
+\andhelp@=\toks33
+\eqnshift@=\dimen167
+\alignsep@=\dimen168
+\tagshift@=\dimen169
+\tagwidth@=\dimen170
+\totwidth@=\dimen171
+\lineht@=\dimen172
+\@envbody=\toks34
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks35
+LaTeX Info: Redefining \[ on input line 2855.
+LaTeX Info: Redefining \] on input line 2856.
+))
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcbfitting.code.tex
+Library (tcolorbox): 'tcbfitting.code.tex' version '4.21'
+\tcbfitdim=\dimen173
+\tcb@lowerfitdim=\dimen174
+\tcb@upperfitdim=\dimen175
+\tcb@cur@hbadness=\count152
+) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbxparse.code.tex
+Library (tcolorbox): 'tcbxparse.code.tex' version '4.21'
+(/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2019-10-28 L3 programming layer (loader) 
+
+(/usr/share/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+Package: expl3 2019-10-28 L3 programming layer (code)
+\c_max_int=\count153
+\l_tmpa_int=\count154
+\l_tmpb_int=\count155
+\g_tmpa_int=\count156
+\g_tmpb_int=\count157
+\l__seq_internal_a_int=\count158
+\l__seq_internal_b_int=\count159
+\g__kernel_prg_map_int=\count160
+\c__ior_term_noprompt_ior=\count161
+\c_log_iow=\count162
+\l_iow_line_count_int=\count163
+\l__iow_line_target_int=\count164
+\l__iow_one_indent_int=\count165
+\l__iow_indent_int=\count166
+\c_zero_dim=\dimen176
+\c_max_dim=\dimen177
+\l_tmpa_dim=\dimen178
+\l_tmpb_dim=\dimen179
+\g_tmpa_dim=\dimen180
+\g_tmpb_dim=\dimen181
+\c_zero_skip=\skip46
+\c_max_skip=\skip47
+\l_tmpa_skip=\skip48
+\l_tmpb_skip=\skip49
+\g_tmpa_skip=\skip50
+\g_tmpb_skip=\skip51
+\c_zero_muskip=\muskip11
+\c_max_muskip=\muskip12
+\l_tmpa_muskip=\muskip13
+\l_tmpb_muskip=\muskip14
+\g_tmpa_muskip=\muskip15
+\g_tmpb_muskip=\muskip16
+\l_keys_choice_int=\count167
+\l__intarray_loop_int=\count168
+\c__intarray_sp_dim=\dimen182
+\g__intarray_font_int=\count169
+\c__fp_leading_shift_int=\count170
+\c__fp_middle_shift_int=\count171
+\c__fp_trailing_shift_int=\count172
+\c__fp_big_leading_shift_int=\count173
+\c__fp_big_middle_shift_int=\count174
+\c__fp_big_trailing_shift_int=\count175
+\c__fp_Bigg_leading_shift_int=\count176
+\c__fp_Bigg_middle_shift_int=\count177
+\c__fp_Bigg_trailing_shift_int=\count178
+\c__kernel_randint_max_int=\count179
+\g__fp_array_int=\count180
+\l__fp_array_loop_int=\count181
+\l__sort_length_int=\count182
+\l__sort_min_int=\count183
+\l__sort_top_int=\count184
+\l__sort_max_int=\count185
+\l__sort_true_max_int=\count186
+\l__sort_block_int=\count187
+\l__sort_begin_int=\count188
+\l__sort_end_int=\count189
+\l__sort_A_int=\count190
+\l__sort_B_int=\count191
+\l__sort_C_int=\count192
+\l__str_internal_int=\count193
+\c__str_replacement_char_int=\count194
+\l__tl_analysis_normal_int=\count195
+\l__tl_analysis_index_int=\count196
+\l__tl_analysis_nesting_int=\count197
+\l__tl_analysis_type_int=\count198
+\l__regex_internal_a_int=\count199
+\l__regex_internal_b_int=\count266
+\l__regex_internal_c_int=\count267
+\l__regex_balance_int=\count268
+\l__regex_group_level_int=\count269
+\l__regex_mode_int=\count270
+\c__regex_cs_in_class_mode_int=\count271
+\c__regex_cs_mode_int=\count272
+\l__regex_catcodes_int=\count273
+\l__regex_default_catcodes_int=\count274
+\c__regex_catcode_D_int=\count275
+\c__regex_catcode_S_int=\count276
+\c__regex_catcode_L_int=\count277
+\c__regex_catcode_O_int=\count278
+\c__regex_catcode_A_int=\count279
+\c__regex_all_catcodes_int=\count280
+\l__regex_show_lines_int=\count281
+\l__regex_min_state_int=\count282
+\l__regex_max_state_int=\count283
+\l__regex_left_state_int=\count284
+\l__regex_right_state_int=\count285
+\l__regex_capturing_group_int=\count286
+\l__regex_min_pos_int=\count287
+\l__regex_max_pos_int=\count288
+\l__regex_curr_pos_int=\count289
+\l__regex_start_pos_int=\count290
+\l__regex_success_pos_int=\count291
+\l__regex_curr_char_int=\count292
+\l__regex_curr_catcode_int=\count293
+\l__regex_last_char_int=\count294
+\l__regex_case_changed_char_int=\count295
+\l__regex_curr_state_int=\count296
+\l__regex_step_int=\count297
+\l__regex_min_active_int=\count298
+\l__regex_max_active_int=\count299
+\l__regex_replacement_csnames_int=\count300
+\l__regex_match_count_int=\count301
+\l__regex_min_submatch_int=\count302
+\l__regex_submatch_int=\count303
+\l__regex_zeroth_submatch_int=\count304
+\g__regex_trace_regex_int=\count305
+\c_empty_box=\box52
+\l_tmpa_box=\box53
+\l_tmpb_box=\box54
+\g_tmpa_box=\box55
+\g_tmpb_box=\box56
+\l__box_top_dim=\dimen183
+\l__box_bottom_dim=\dimen184
+\l__box_left_dim=\dimen185
+\l__box_right_dim=\dimen186
+\l__box_top_new_dim=\dimen187
+\l__box_bottom_new_dim=\dimen188
+\l__box_left_new_dim=\dimen189
+\l__box_right_new_dim=\dimen190
+\l__box_internal_box=\box57
+\l__coffin_internal_box=\box58
+\l__coffin_internal_dim=\dimen191
+\l__coffin_offset_x_dim=\dimen192
+\l__coffin_offset_y_dim=\dimen193
+\l__coffin_x_dim=\dimen194
+\l__coffin_y_dim=\dimen195
+\l__coffin_x_prime_dim=\dimen196
+\l__coffin_y_prime_dim=\dimen197
+\c_empty_coffin=\box59
+\l__coffin_aligned_coffin=\box60
+\l__coffin_aligned_internal_coffin=\box61
+\l_tmpa_coffin=\box62
+\l_tmpb_coffin=\box63
+\g_tmpa_coffin=\box64
+\g_tmpb_coffin=\box65
+\l__coffin_bounding_shift_dim=\dimen198
+\l__coffin_left_corner_dim=\dimen199
+\l__coffin_right_corner_dim=\dimen256
+\l__coffin_bottom_corner_dim=\dimen257
+\l__coffin_top_corner_dim=\dimen258
+\l__coffin_scaled_total_height_dim=\dimen259
+\l__coffin_scaled_width_dim=\dimen260
+\c__coffin_empty_coffin=\box66
+\l__coffin_display_coffin=\box67
+\l__coffin_display_coord_coffin=\box68
+\l__coffin_display_pole_coffin=\box69
+\l__coffin_display_offset_dim=\dimen261
+\l__coffin_display_x_dim=\dimen262
+\l__coffin_display_y_dim=\dimen263
+\g__char_data_ior=\read3
+
+(/usr/share/texmf-dist/tex/latex/l3kernel/l3deprecation.def
+File: l3deprecation.def 2019-04-06 v L3 Deprecated functions
+))
+(/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
+File: l3backend-pdfmode.def 2019-04-06 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count306
+\l__pdf_internal_box=\box70
+))
+Package: xparse 2019-10-11 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count307
+\g__xparse_grabber_int=\count308
+\l__xparse_m_args_int=\count309
+\l__xparse_v_nesting_int=\count310
+))
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcblistingsutf8.code.tex
+Library (tcolorbox): 'tcblistingsutf8.code.tex' version '4.21'
+(/usr/share/texmf-dist/tex/latex/oberdiek/listingsutf8.sty
+Package: listingsutf8 2016/05/16 v1.3 Allow UTF-8 in listings input (HO)
+
+(/usr/share/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count311
+\lst@gtempboxa=\box71
+\lst@token=\toks36
+\lst@length=\count312
+\lst@currlwidth=\dimen264
+\lst@column=\count313
+\lst@pos=\count314
+\lst@lostspace=\dimen265
+\lst@width=\dimen266
+\lst@newlines=\count315
+\lst@lineno=\count316
+\lst@maxwidth=\dimen267
+
+(/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
+\c@lstnumber=\count317
+\lst@skipnumbers=\count318
+\lst@framebox=\box72
+)
+(/usr/share/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2019/09/10 1.8c listings configuration
+))
+Package: listings 2019/09/10 1.8c (Carsten Heinz)
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2019/07/25 v0.30 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/share/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/share/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texmf-dist/tex/generic/oberdiek/stringenc.sty
+Package: stringenc 2016/05/16 v1.11 Convert strings between diff. encodings (HO
+)
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/pdfescape.sty
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+)))
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcblistings.code.tex
+Library (tcolorbox): 'tcblistings.code.tex' version '4.21'
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcblistingscore.code.tex
+Library (tcolorbox): 'tcblistingscore.code.tex' version '4.21'
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcbprocessing.code.tex
+Library (tcolorbox): 'tcbprocessing.code.tex' version '4.21'
+(/usr/share/texmf-dist/tex/latex/tools/shellesc.sty
+Package: shellesc 2016/06/07 v0.02b unified shell escape interface for LaTeX
+Package shellesc Info: Unrestricted shell escape enabled on input line 70.
+))
+\c@tcblisting=\count319
+)))
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcbexternal.code.tex
+Library (tcolorbox): 'tcbexternal.code.tex' version '4.21'
+) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbmagazine.code.tex
+Library (tcolorbox): 'tcbmagazine.code.tex' version '4.21'
+) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbvignette.code.tex
+Library (tcolorbox): 'tcbvignette.code.tex' version '4.21'
+
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+fadings.code.tex
+File: tikzlibraryfadings.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code.tex
+File: pgflibraryfadings.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+)))
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcbposter.code.tex
+Library (tcolorbox): 'tcbposter.code.tex' version '4.21'
+)) (/usr/share/texmf-dist/tex/latex/minted/minted.sty
+Package: minted 2017/07/19 v2.5 Yet another Pygments shim for LaTeX
+
+(/usr/share/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+)))
+(/usr/share/texmf-dist/tex/latex/fvextra/fvextra.sty
+Package: fvextra 2019/02/04 v1.4 fvextra - extensions and patches for fancyvrb
+
+(/usr/share/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2019/10/22
+
+Style option: `fancyvrb' v3.3 <2019/10/22> (tvz)
+\FV@CodeLineNo=\count320
+\FV@InFile=\read4
+\FV@TabBox=\box73
+\c@FancyVerbLine=\count321
+\FV@StepNumber=\count322
+\FV@OutFile=\write6
+)
+(/usr/share/texmf-dist/tex/latex/upquote/upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
+tim
+
+(/usr/share/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2018/08/11 v2.0j Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
+
+(/usr/share/texmf-dist/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+Now handling font encoding TS1 ...
+... processing UTF-8 mapping file for font encoding TS1
+
+(/usr/share/texmf-dist/tex/latex/base/ts1enc.dfu
+File: ts1enc.dfu 2019/07/11 v1.2j UTF-8 support for inputenc
+   defining Unicode char U+00A2 (decimal 162)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00A4 (decimal 164)
+   defining Unicode char U+00A5 (decimal 165)
+   defining Unicode char U+00A6 (decimal 166)
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00A8 (decimal 168)
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AC (decimal 172)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00AF (decimal 175)
+   defining Unicode char U+00B0 (decimal 176)
+   defining Unicode char U+00B1 (decimal 177)
+   defining Unicode char U+00B2 (decimal 178)
+   defining Unicode char U+00B3 (decimal 179)
+   defining Unicode char U+00B4 (decimal 180)
+   defining Unicode char U+00B5 (decimal 181)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+00B9 (decimal 185)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+00BC (decimal 188)
+   defining Unicode char U+00BD (decimal 189)
+   defining Unicode char U+00BE (decimal 190)
+   defining Unicode char U+00D7 (decimal 215)
+   defining Unicode char U+00F7 (decimal 247)
+   defining Unicode char U+0192 (decimal 402)
+   defining Unicode char U+02C7 (decimal 711)
+   defining Unicode char U+02D8 (decimal 728)
+   defining Unicode char U+02DD (decimal 733)
+   defining Unicode char U+0E3F (decimal 3647)
+   defining Unicode char U+2016 (decimal 8214)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+203B (decimal 8251)
+   defining Unicode char U+203D (decimal 8253)
+   defining Unicode char U+2044 (decimal 8260)
+   defining Unicode char U+204E (decimal 8270)
+   defining Unicode char U+2052 (decimal 8274)
+   defining Unicode char U+20A1 (decimal 8353)
+   defining Unicode char U+20A4 (decimal 8356)
+   defining Unicode char U+20A6 (decimal 8358)
+   defining Unicode char U+20A9 (decimal 8361)
+   defining Unicode char U+20AB (decimal 8363)
+   defining Unicode char U+20AC (decimal 8364)
+   defining Unicode char U+20B1 (decimal 8369)
+   defining Unicode char U+2103 (decimal 8451)
+   defining Unicode char U+2116 (decimal 8470)
+   defining Unicode char U+2117 (decimal 8471)
+   defining Unicode char U+211E (decimal 8478)
+   defining Unicode char U+2120 (decimal 8480)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2126 (decimal 8486)
+   defining Unicode char U+2127 (decimal 8487)
+   defining Unicode char U+212E (decimal 8494)
+   defining Unicode char U+2190 (decimal 8592)
+   defining Unicode char U+2191 (decimal 8593)
+   defining Unicode char U+2192 (decimal 8594)
+   defining Unicode char U+2193 (decimal 8595)
+   defining Unicode char U+2329 (decimal 9001)
+   defining Unicode char U+232A (decimal 9002)
+   defining Unicode char U+2422 (decimal 9250)
+   defining Unicode char U+25E6 (decimal 9702)
+   defining Unicode char U+25EF (decimal 9711)
+   defining Unicode char U+266A (decimal 9834)
+   defining Unicode char U+27E8 (decimal 10216)
+   defining Unicode char U+27E9 (decimal 10217)
+   defining Unicode char U+FEFF (decimal 65279)
+))
+LaTeX Info: Redefining \oldstylenums on input line 334.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
+Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
+))
+(/usr/share/texmf-dist/tex/latex/lineno/lineno.sty
+Package: lineno 2005/11/02 line numbers on paragraphs v4.41
+\linenopenalty=\count323
+\output=\toks37
+\linenoprevgraf=\count324
+\linenumbersep=\dimen268
+\linenumberwidth=\dimen269
+\c@linenumber=\count325
+\c@pagewiselinenumber=\count326
+\c@LN@truepage=\count327
+\c@internallinenumber=\count328
+\c@internallinenumbers=\count329
+\quotelinenumbersep=\dimen270
+\bframerule=\dimen271
+\bframesep=\dimen272
+\bframebox=\box74
+LaTeX Info: Redefining \\ on input line 3056.
+)
+\c@FV@TrueTabGroupLevel=\count330
+\c@FV@TrueTabCounter=\count331
+\FV@TabBox@Group=\box75
+\FV@TmpLength=\skip52
+\c@FV@HighlightLinesStart=\count332
+\c@FV@HighlightLinesStop=\count333
+\FV@LoopCount=\count334
+\FV@NCharsBox=\box76
+\FV@BreakIndent=\dimen273
+\FV@BreakIndentNChars=\count335
+\FV@BreakSymbolSepLeft=\dimen274
+\FV@BreakSymbolSepLeftNChars=\count336
+\FV@BreakSymbolSepRight=\dimen275
+\FV@BreakSymbolSepRightNChars=\count337
+\FV@BreakSymbolIndentLeft=\dimen276
+\FV@BreakSymbolIndentLeftNChars=\count338
+\FV@BreakSymbolIndentRight=\dimen277
+\FV@BreakSymbolIndentRightNChars=\count339
+\c@FancyVerbLineBreakLast=\count340
+\FV@LineBox=\box77
+\FV@LineIndentBox=\box78
+\FV@LineWidth=\dimen278
+)
+(/usr/share/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count341
+\calc@Bcount=\count342
+\calc@Adimen=\dimen279
+\calc@Bdimen=\dimen280
+\calc@Askip=\skip53
+\calc@Bskip=\skip54
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count343
+\calc@Cskip=\skip55
+)
+(/usr/share/texmf-dist/tex/latex/ifplatform/ifplatform.sty
+Package: ifplatform 2017/10/13 v0.4a Testing for the operating system
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/catchfile.sty
+Package: catchfile 2016/05/16 v1.7 Catch the contents of a file (HO)
+)
+runsystem(uname -s > "main.w18")...executed.
+
+ (./main.w18)
+runsystem(rm -- "main.w18")...executed.
+
+)
+(/usr/share/texmf-dist/tex/generic/xstring/xstring.sty
+(/usr/share/texmf-dist/tex/generic/xstring/xstring.tex
+\integerpart=\count344
+\decimalpart=\count345
+)
+Package: xstring 2019/02/06 v1.83 String manipulations (CT)
+)
+(/usr/share/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip56
+\fb@frw=\dimen281
+\fb@frh=\dimen282
+\FrameRule=\dimen283
+\FrameSep=\dimen284
+)
+(/usr/share/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count346
+\float@exts=\toks38
+\float@box=\box79
+\@float@everytoks=\toks39
+\@floatcapt=\box80
+)
+\minted@appexistsfile=\read5
+\minted@bgbox=\box81
+\minted@code=\write7
+\c@minted@FancyVerbLineTemp=\count347
+\c@minted@pygmentizecounter=\count348
+\@float@every@listing=\toks40
+\c@listing=\count349
+)
+runsystem(mkdir -p _minted-main)...executed.
+
+
+(/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2019/09/28 v7.00a Hypertext links for LaTeX
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package hobsub Info: Skipping package `ifluatex' (already loaded).
+Package hobsub Info: Skipping package `ifvtex' (already loaded).
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package hobsub Info: Skipping package `etexcmds' (already loaded).
+Package hobsub Info: Skipping package `kvsetkeys' (already loaded).
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package hobsub Info: Skipping package `pdftexcmds' (already loaded).
+Package hobsub Info: Skipping package `pdfescape' (already loaded).
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+\@linkdim=\dimen285
+\Hy@linkcounter=\count350
+\Hy@pagecounter=\count351
+
+(/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2019/09/28 v7.00a Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+\Hy@SavedSpaceFactor=\count352
+Package hyperref Info: Option `unicode' set `true' on input line 3495.
+
+(/usr/share/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2019/09/28 v7.00a Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+(/usr/share/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4540.
+Package hyperref Info: Link nesting OFF on input line 4545.
+Package hyperref Info: Hyper index ON on input line 4548.
+Package hyperref Info: Plain pages OFF on input line 4555.
+Package hyperref Info: Backreferencing OFF on input line 4560.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4793.
+\c@Hy@tempcnt=\count353
+
+(/usr/share/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5152.
+\XeTeXLinkMargin=\dimen286
+\Fld@menulength=\count354
+\Field@Width=\dimen287
+\Fld@charsize=\dimen288
+Package hyperref Info: Hyper figures OFF on input line 6423.
+Package hyperref Info: Link nesting OFF on input line 6428.
+Package hyperref Info: Hyper index ON on input line 6431.
+Package hyperref Info: backreferencing OFF on input line 6438.
+Package hyperref Info: Link coloring OFF on input line 6443.
+Package hyperref Info: Link coloring with OCG OFF on input line 6448.
+Package hyperref Info: PDF/A mode OFF on input line 6453.
+LaTeX Info: Redefining \ref on input line 6493.
+LaTeX Info: Redefining \pageref on input line 6497.
+\Hy@abspage=\count355
+\c@Item=\count356
+\c@Hfootnote=\count357
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/usr/share/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2019/09/28 v7.00a Hyperref driver for pdfTeX
+\Fld@listcount=\count358
+\c@bookmark@seq@number=\count359
+
+(/usr/share/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip57
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 24.
+
+(/usr/share/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
+s
+\f@nch@headwidth=\skip58
+\f@nch@O@elh=\skip59
+\f@nch@O@erh=\skip60
+\f@nch@O@olh=\skip61
+\f@nch@O@orh=\skip62
+\f@nch@O@elf=\skip63
+\f@nch@O@erf=\skip64
+\f@nch@O@olf=\skip65
+\f@nch@O@orf=\skip66
+)
+(/usr/share/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2018/12/12 v1.0d Color table columns (DPC)
+
+(/usr/share/texmf-dist/tex/latex/tools/array.sty
+Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
+\col@sep=\dimen289
+\ar@mcellbox=\box82
+\extrarowheight=\dimen290
+\NC@list=\toks41
+\extratabsurround=\skip67
+\backup@length=\skip68
+\ar@cellbox=\box83
+)
+\everycr=\toks42
+\minrowclearance=\skip69
+)
+(/usr/share/texmf-dist/tex/latex/eurosym/eurosym.sty
+Package: eurosym 1998/08/06 v1.1 European currency symbol ``Euro''
+\@eurobox=\box84
+)
+(/usr/share/texmf-dist/tex/latex/incgraph/incgraph.sty
+Package: incgraph 2015/03/12 version 1.12 LaTeX special graphics inclusion
+
+(/usr/share/texmf-dist/tex/latex/oberdiek/bookmark.sty
+Package: bookmark 2019/06/04 v1.27 PDF bookmarks (HO)
+
+(/usr/share/texmf-dist/tex/latex/oberdiek/bkm-pdftex.def
+File: bkm-pdftex.def 2019/06/04 v1.27 bookmark driver for pdfTeX (HO)
+\BKM@id=\count360
+))
+\igrbox=\box85
+\igr@length=\dimen291
+\c@igrtarget=\count361
+)
+(/usr/share/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texmf-dist/tex/latex/graphics/rotating.sty
+Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
+\c@r@tfl@t=\count362
+\rotFPtop=\skip70
+\rotFPbot=\skip71
+\rot@float@box=\box86
+\rot@mess@toks=\toks43
+)
+(/usr/share/texmf-dist/tex/generic/systeme/systeme.sty
+(/usr/share/texmf-dist/tex/generic/systeme/systeme.tex
+\SYS_systemecode=\toks44
+\SYS_systempreamble=\toks45
+\SYSeqnum=\count363
+)
+Package: systeme 2019/01/13 v0.32 Mise en forme de systemes d'equations (CT)
+)
+(/usr/share/texmf-dist/tex/latex/comment/comment.sty
+\CommentStream=\write8
+
+Excluding comment 'comment')
+(/usr/share/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2019/10/16 v2.13 Sectioning titles
+\ttl@box=\box87
+\beforetitleunit=\skip72
+\aftertitleunit=\skip73
+\ttl@plus=\dimen292
+\ttl@minus=\dimen293
+\ttl@toksa=\toks46
+\titlewidth=\dimen294
+\titlewidthlast=\dimen295
+\titlewidthfirst=\dimen296
+)
+(/usr/share/texmf-dist/tex/latex/soul/soul.sty
+Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
+\SOUL@word=\toks47
+\SOUL@lasttoken=\toks48
+\SOUL@cmds=\toks49
+\SOUL@buffer=\toks50
+\SOUL@token=\toks51
+\SOUL@spaceskip=\skip74
+\SOUL@ttwidth=\dimen297
+\SOUL@uldp=\dimen298
+\SOUL@ulht=\dimen299
+)
+(/usr/share/texmf-dist/tex/latex/tocloft/tocloft.sty
+Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
+Package tocloft Info: The document has chapter divisions on input line 51.
+\cftparskip=\skip75
+\cftbeforetoctitleskip=\skip76
+\cftaftertoctitleskip=\skip77
+\cftbeforepartskip=\skip78
+\cftpartnumwidth=\skip79
+\cftpartindent=\skip80
+\cftbeforechapskip=\skip81
+\cftchapindent=\skip82
+\cftchapnumwidth=\skip83
+\cftbeforesecskip=\skip84
+\cftsecindent=\skip85
+\cftsecnumwidth=\skip86
+\cftbeforesubsecskip=\skip87
+\cftsubsecindent=\skip88
+\cftsubsecnumwidth=\skip89
+\cftbeforesubsubsecskip=\skip90
+\cftsubsubsecindent=\skip91
+\cftsubsubsecnumwidth=\skip92
+\cftbeforeparaskip=\skip93
+\cftparaindent=\skip94
+\cftparanumwidth=\skip95
+\cftbeforesubparaskip=\skip96
+\cftsubparaindent=\skip97
+\cftsubparanumwidth=\skip98
+\cftbeforeloftitleskip=\skip99
+\cftafterloftitleskip=\skip100
+\cftbeforefigskip=\skip101
+\cftfigindent=\skip102
+\cftfignumwidth=\skip103
+\c@lofdepth=\count364
+\c@lotdepth=\count365
+\cftbeforelottitleskip=\skip104
+\cftafterlottitleskip=\skip105
+\cftbeforetabskip=\skip106
+\cfttabindent=\skip107
+\cfttabnumwidth=\skip108
+))
+runsystem(which pygmentize && touch main.aex)...executed.
+
+runsystem(rm main.aex)...executed.
+
+ (./main.aux)
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 4.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 4
+.
+
+(/usr/share/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(42.67912pt, 512.14963pt, 42.67912pt)
+* v-part:(T,H,B)=(28.45274pt, 759.6886pt, 56.9055pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=512.14963pt
+* \textheight=759.6886pt
+* \oddsidemargin=-29.59087pt
+* \evensidemargin=-29.59087pt
+* \topmargin=-70.04361pt
+* \headheight=12.0pt
+* \headsep=14.22636pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=98.0pt
+* \marginparsep=7.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count366
+\scratchdimen=\dimen300
+\scratchbox=\box88
+\nofMPsegments=\count367
+\nofMParguments=\count368
+\everyMPshowfont=\toks52
+\MPscratchCnt=\count369
+\MPscratchDim=\dimen301
+\MPnumerator=\count370
+\makeMPintoPDFobject=\count371
+\everyMPtoPDFconversion=\toks53
+) (/usr/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/share/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+ABD: EveryShipout initializing macros
+\c@lstlisting=\count372
+
+(/usr/share/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2018/08/11 v1.3c Input encoding file
+\inpenc@prehook=\toks54
+\inpenc@posthook=\toks55
+)
+\AtBeginShipoutBox=\box89
+Package hyperref Info: Link coloring ON on input line 4.
+
+(/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count373
+)
+LaTeX Info: Redefining \ref on input line 4.
+LaTeX Info: Redefining \pageref on input line 4.
+LaTeX Info: Redefining \nameref on input line 4.
+<images/1_1.pdf, id=43, 597.50829pt x 845.0471pt>
+File: images/1_1.pdf Graphic file (type pdf)
+<use images/1_1.pdf>
+Package pdftex.def Info: images/1_1.pdf  used on input line 7.
+(pdftex.def)             Requested size: 597.50682pt x 845.08372pt.
+ [1
+
+ <./images/1_1.pdf>] (./main.toc
+LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
+ (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
+
+(/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [2{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [3] [4] [5])
+\tf@toc=\write9
+\openout9 = `main.toc'.
+
+ [6] (./release/6.tex [7
+
+])
+(./release/7-12.tex
+\openout6 = `main.pyg'.
+
+ (./_minted-main/default-pyg-prefix.pygstyle)
+(./_minted-main/emacs.pygstyle)
+(./_minted-main/CE47545E661D82A3744FCA01864493C02F427962ED4E6A717DE0D192A922302
+F.pygtex
+LaTeX Font Info:    Trying to load font information for T2A+cmtt on input line 
+1.
+ (/usr/share/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
+File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
+)) [8
+
+]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/932970828F18AE02501E39823DB352C52F427962ED4E6A717DE0D192A922302
+F.pygtex
+LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 2.
+)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/FB1A0E0841A75B6B3882C8910F6C02A32F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/EF3A3E0BF7339108F4F9DEFA0159D3242F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/0558CED535EFFB2324D219C2B1BBD7272F427962ED4E6A717DE0D192A922302
+F.pygtex) [9]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/C0230220DF58707695DA08A0753183EB2F427962ED4E6A717DE0D192A922302
+F.pygtex) [10]
+Underfull \hbox (badness 1924) in paragraph at lines 214--262
+[]\T2A/cmr/m/n/12 Если ал-го-ритм для вво-да n дан-ных тре-бу-ет $\OT1/cmr/m/n/
+12 42\OML/cmm/m/it/12 n[] \OT1/cmr/m/n/12 + 25\OML/cmm/m/it/12 n \OT1/cmr/m/n/1
+2 + [][]$ \T2A/cmr/m/n/12 опе-ра-ций для за-вер-ше-
+ []
+
+
+Underfull \hbox (badness 1014) in paragraph at lines 214--262
+\T2A/cmr/m/n/12 ния, мы го-во-рим, что это $\OML/cmm/m/it/12 O\OT1/cmr/m/n/12 (
+\OML/cmm/m/it/12 n[]\OT1/cmr/m/n/12 )$\T2A/cmr/m/n/12 , но так-же $\OML/cmm/m/i
+t/12 O\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n[]\OT1/cmr/m/n/12 )$ \T2A/cmr/m/n/12 и
+ $\OML/cmm/m/it/12 O\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n[]\OT1/cmr/m/n/12 )$\T2A
+/cmr/m/n/12 . Од-на-ко, это $\OT1/cmr/m/n/12 ^^B(\OML/cmm/m/it/12 n[]\OT1/cmr/m
+/n/12 )$\T2A/cmr/m/n/12 , а не
+ []
+
+
+Overfull \hbox (6189.02682pt too wide) in paragraph at lines 214--262
+[]\T2A/cmr/m/n/12 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 295--295
+[]|\T2A/cmtt/m/n/12 Формальное
+ []
+
+
+Underfull \hbox (badness 1024) in paragraph at lines 295--295
+\OML/cmm/m/it/12 c[] g\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n\OT1/cmr/m/n/12 ) \U/m
+sa/m/n/12 6 \OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n\OT1/cmr/m/n/1
+2 ) \U/msa/m/n/12 6
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 295--295
+[]|\T2A/cmtt/m/n/12 Аналогия между
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 295--295
+\T2A/cmtt/m/n/12 асимптотическим
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 295--295
+\T2A/cmtt/m/n/12 сравнением f, g
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 295--295
+\T2A/cmtt/m/n/12 и действительными
+ []
+
+<images/11_1.pdf, id=585, 331.2375pt x 220.825pt>
+File: images/11_1.pdf Graphic file (type pdf)
+<use images/11_1.pdf>
+Package pdftex.def Info: images/11_1.pdf  used on input line 299.
+(pdftex.def)             Requested size: 165.61833pt x 110.41222pt.
+<images/11_2.pdf, id=586, 331.2375pt x 200.75pt>
+File: images/11_2.pdf Graphic file (type pdf)
+<use images/11_2.pdf>
+Package pdftex.def Info: images/11_2.pdf  used on input line 300.
+(pdftex.def)             Requested size: 165.61833pt x 100.37474pt.
+<images/11_3.pdf, id=587, 331.2375pt x 225.84375pt>
+File: images/11_3.pdf Graphic file (type pdf)
+<use images/11_3.pdf>
+Package pdftex.def Info: images/11_3.pdf  used on input line 301.
+(pdftex.def)             Requested size: 165.61833pt x 112.92159pt.
+[11
+
+]
+<images/11_4.pdf, id=594, 501.875pt x 250.9375pt>
+File: images/11_4.pdf Graphic file (type pdf)
+<use images/11_4.pdf>
+Package pdftex.def Info: images/11_4.pdf  used on input line 304.
+(pdftex.def)             Requested size: 501.87376pt x 250.93687pt.
+ [12 <./images/11_1.pdf> <./images/11_2.pdf
+
+pdfTeX warning: pdflatex (file ./images/11_2.pdf): PDF inclusion: multiple pdfs
+ with page group included in a single page
+> <./images/11_3.pdf
+
+pdfTeX warning: pdflatex (file ./images/11_3.pdf): PDF inclusion: multiple pdfs
+ with page group included in a single page
+> <./images/11_4.pdf
+
+pdfTeX warning: pdflatex (file ./images/11_4.pdf): PDF inclusion: multiple pdfs
+ with page group included in a single page
+>]
+<images/12.pdf, id=618, 331.2375pt x 200.75pt>
+File: images/12.pdf Graphic file (type pdf)
+<use images/12.pdf>
+Package pdftex.def Info: images/12.pdf  used on input line 354.
+(pdftex.def)             Requested size: 331.23668pt x 200.7495pt.
+) (./release/13-18.tex [13 <./images/12.pdf>] [14
+
+]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/F34A395C0D17BEA8744BAF75E65432632F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/2D794C71143547E3A5BF9C4DC3E1CEC12F427962ED4E6A717DE0D192A922302
+F.pygtex) [15]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/A33E8AC09631905C109F01A1BCB0DB312F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/C37C521D973344AF9DC52BB96E498F722F427962ED4E6A717DE0D192A922302
+F.pygtex) [16]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/2160398B9571D986CE4EF055AE4DD4FC2F427962ED4E6A717DE0D192A922302
+F.pygtex)
+Underfull \hbox (badness 10000) in paragraph at lines 179--184
+
+ []
+
+[17]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/BFB3CFE34F484F234C41C93FD8D9972F2F427962ED4E6A717DE0D192A922302
+F.pygtex)
+Underfull \hbox (badness 10000) in paragraph at lines 250--251
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 253--254
+
+ []
+
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 256--257
+
+ []
+
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/9D25BA6856883397259C38131AA9D1922F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/D4EF5DBD94C038D23EB9D4BAA32CFFF85BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex) [19]) (./release/19-29.tex [20]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/04ED0FF35A570C5D638EBD00557A8CAB2F427962ED4E6A717DE0D192A922302
+F.pygtex) [21
+
+]
+<images/20.pdf, id=678, 663.47874pt x 500.87125pt>
+File: images/20.pdf Graphic file (type pdf)
+<use images/20.pdf>
+Package pdftex.def Info: images/20.pdf  used on input line 75.
+(pdftex.def)             Requested size: 464.43195pt x 350.60747pt.
+ [22 <./images/20.pdf>]
+<images/21_1.pdf, id=692, 233.87375pt x 146.5475pt>
+File: images/21_1.pdf Graphic file (type pdf)
+<use images/21_1.pdf>
+Package pdftex.def Info: images/21_1.pdf  used on input line 115.
+(pdftex.def)             Requested size: 233.87315pt x 146.54712pt.
+File: images/21_1.pdf Graphic file (type pdf)
+<use images/21_1.pdf>
+Package pdftex.def Info: images/21_1.pdf  used on input line 115.
+(pdftex.def)             Requested size: 233.87315pt x 146.54712pt.
+ [23 <./images/21_1.pdf>]
+<images/21_2.pdf, id=703, 192.72pt x 160.6pt>
+File: images/21_2.pdf Graphic file (type pdf)
+<use images/21_2.pdf>
+Package pdftex.def Info: images/21_2.pdf  used on input line 128.
+(pdftex.def)             Requested size: 192.71951pt x 160.5996pt.
+<images/21_3.pdf, id=704, 296.10625pt x 202.7575pt>
+File: images/21_3.pdf Graphic file (type pdf)
+<use images/21_3.pdf>
+Package pdftex.def Info: images/21_3.pdf  used on input line 128.
+(pdftex.def)             Requested size: 296.10551pt x 202.757pt.
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/A558BB011247B1EEC6BFD061C44228272F427962ED4E6A717DE0D192A922302
+F.pygtex) [24 <./images/21_2.pdf> <./images/21_3.pdf
+
+pdfTeX warning: pdflatex (file ./images/21_3.pdf): PDF inclusion: multiple pdfs
+ with page group included in a single page
+>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/0E7346B6C566F9121035DF23ADD542FE5BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex)
+<images/23.pdf, id=720, 457.71pt x 144.54pt>
+File: images/23.pdf Graphic file (type pdf)
+<use images/23.pdf>
+Package pdftex.def Info: images/23.pdf  used on input line 184.
+(pdftex.def)             Requested size: 366.1685pt x 115.63214pt.
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/A1B2BF588E255E05664583B2E2B777265BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex) [25
+
+ <./images/23.pdf>]
+<images/24_1.pdf, id=777, 442.65375pt x 181.67876pt>
+File: images/24_1.pdf Graphic file (type pdf)
+<use images/24_1.pdf>
+Package pdftex.def Info: images/24_1.pdf  used on input line 210.
+(pdftex.def)             Requested size: 354.12346pt x 145.34319pt.
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/5745B8AFBEDCEF483D1B5C757F8EBE125BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex)
+<images/24_2.pdf, id=778, 468.75125pt x 239.89626pt>
+File: images/24_2.pdf Graphic file (type pdf)
+<use images/24_2.pdf>
+Package pdftex.def Info: images/24_2.pdf  used on input line 225.
+(pdftex.def)             Requested size: 375.0015pt x 191.91725pt.
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/401706670BDB1D1AAE41FCE173F57BD15BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex)
+<images/25_1.pdf, id=779, 501.875pt x 301.125pt>
+File: images/25_1.pdf Graphic file (type pdf)
+<use images/25_1.pdf>
+Package pdftex.def Info: images/25_1.pdf  used on input line 244.
+(pdftex.def)             Requested size: 401.50053pt x 240.90031pt.
+ [26 <./images/24_1.pdf> <./images/24_2.pdf
+
+pdfTeX warning: pdflatex (file ./images/24_2.pdf): PDF inclusion: multiple pdfs
+ with page group included in a single page
+>]
+<images/25_2.pdf, id=1048, 2318.89948pt x 569.055pt>
+File: images/25_2.pdf Graphic file (type pdf)
+<use images/25_2.pdf>
+Package pdftex.def Info: images/25_2.pdf  used on input line 256.
+(pdftex.def)             Requested size: 463.77168pt x 113.80898pt.
+ [27 <./images/25_1.pdf> <./images/25_2.pdf
+
+pdfTeX warning: pdflatex (file ./images/25_2.pdf): PDF inclusion: multiple pdfs
+ with page group included in a single page
+>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/BCABAD8445EBCC98B2DA41952A31D0892F427962ED4E6A717DE0D192A922302
+F.pygtex) [28]
+File: images/25_2.pdf Graphic file (type pdf)
+<use images/25_2.pdf>
+Package pdftex.def Info: images/25_2.pdf  used on input line 342.
+(pdftex.def)             Requested size: 463.77168pt x 113.80898pt.
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/7301DCD3E5D601601D1E46E63D58057D2F427962ED4E6A717DE0D192A922302
+F.pygtex) [29]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/77158606E2638BFE0B39E8778E9857DA5BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex) [30]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/30D23176CF2AC8678F29BDCC1D42A33F5BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex) [31]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/4B8449DD5EBA759C7653661CFC43DA895BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/BE0EE7B714A31786DB4E73E3840B4FB25BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex) [32
+
+]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/2419965175E5ADD0218F6EFD129EC8E45BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex)) (./release/!30-39.tex
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\newline' on input line 3.
+
+<images/30_1.pdf, id=1216, 233.87375pt x 146.5475pt>
+File: images/30_1.pdf Graphic file (type pdf)
+<use images/30_1.pdf>
+Package pdftex.def Info: images/30_1.pdf  used on input line 12.
+(pdftex.def)             Requested size: 175.40486pt x 109.91034pt.
+<images/30_2.pdf, id=1217, 642.4pt x 260.975pt>
+File: images/30_2.pdf Graphic file (type pdf)
+<use images/30_2.pdf>
+Package pdftex.def Info: images/30_2.pdf  used on input line 22.
+(pdftex.def)             Requested size: 321.19922pt x 130.48718pt.
+[33 <./images/30_1.pdf> <./images/30_2.pdf
+
+pdfTeX warning: pdflatex (file ./images/30_2.pdf): PDF inclusion: multiple pdfs
+ with page group included in a single page
+>]
+<images/31.pdf, id=1300, 296.10625pt x 202.7575pt>
+File: images/31.pdf Graphic file (type pdf)
+<use images/31.pdf>
+Package pdftex.def Info: images/31.pdf  used on input line 36.
+(pdftex.def)             Requested size: 222.07913pt x 152.06775pt.
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/0A426D56C453CEA85D3B4223AF721C952F427962ED4E6A717DE0D192A922302
+F.pygtex) [34
+
+ <./images/31.pdf>]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\newline' on input line 117.
+
+File: images/31.pdf Graphic file (type pdf)
+<use images/31.pdf>
+Package pdftex.def Info: images/31.pdf  used on input line 120.
+(pdftex.def)             Requested size: 222.07913pt x 152.06775pt.
+[35] [36]
+File: images/30_1.pdf Graphic file (type pdf)
+<use images/30_1.pdf>
+Package pdftex.def Info: images/30_1.pdf  used on input line 155.
+(pdftex.def)             Requested size: 175.40486pt x 109.91034pt.
+ [37
+
+]
+<images/35.pdf, id=1334, 746.03719pt x 237.13594pt>
+File: images/35.pdf Graphic file (type pdf)
+<use images/35.pdf>
+Package pdftex.def Info: images/35.pdf  used on input line 193.
+(pdftex.def)             Requested size: 522.22246pt x 165.994pt.
+
+Overfull \hbox (10.07283pt too wide) in paragraph at lines 193--196
+[][]
+ []
+
+<images/36.pdf, id=1335, 903.375pt x 301.125pt>
+File: images/36.pdf Graphic file (type pdf)
+<use images/36.pdf>
+Package pdftex.def Info: images/36.pdf  used on input line 203.
+(pdftex.def)             Requested size: 496.85779pt x 165.61925pt.
+[38
+
+ <./images/35.pdf>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/DEF71CD9D857B3EB4B5512BB1A0197782F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/37743B8A2128E0848FE8D5C1A944CA482F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/51A32E94CADF0CD3E6E0B9C06DF18689FA84B28F38D7BF3203EC07B1FA14FFE
+7.pygtex) [39 <./images/36.pdf>]
+Underfull \vbox (badness 3635) has occurred while \output is active []
+
+ [40]
+Underfull \hbox (badness 10000) in paragraph at lines 348--349
+[]\T2A/cmr/m/n/12 Запускаем код: со-хра-ня-ем файл и ком-пи-ли-ру-ем, ис-поль-з
+уя javac
+ []
+
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/16C2D1CF298A0A154B676F7FC9DECB33FA84B28F38D7BF3203EC07B1FA14FFE
+7.pygtex) [41]
+<images/39.pdf, id=1396, 501.875pt x 351.3125pt>
+File: images/39.pdf Graphic file (type pdf)
+<use images/39.pdf>
+Package pdftex.def Info: images/39.pdf  used on input line 396.
+(pdftex.def)             Requested size: 351.31009pt x 245.91707pt.
+) (./release/!40-47.tex [42 <./images/39.pdf>]
+<images/40_1.pdf, id=1413, 481.8pt x 481.8pt>
+File: images/40_1.pdf Graphic file (type pdf)
+<use images/40_1.pdf>
+Package pdftex.def Info: images/40_1.pdf  used on input line 4.
+(pdftex.def)             Requested size: 433.61598pt x 433.61598pt.
+ [43 <./images/40_1.pdf>]
+<images/41_1.pdf, id=1430, 355.3275pt x 319.1925pt>
+File: images/41_1.pdf Graphic file (type pdf)
+<use images/41_1.pdf>
+Package pdftex.def Info: images/41_1.pdf  used on input line 39.
+(pdftex.def)             Requested size: 177.6633pt x 159.59586pt.
+<images/41_2.pdf, id=1431, 544.0325pt x 416.55624pt>
+File: images/41_2.pdf Graphic file (type pdf)
+<use images/41_2.pdf>
+Package pdftex.def Info: images/41_2.pdf  used on input line 53.
+(pdftex.def)             Requested size: 272.01558pt x 208.2776pt.
+ [44 <./images/41_1.pdf> <./images/41_2.pdf
+
+pdfTeX warning: pdflatex (file ./images/41_2.pdf): PDF inclusion: multiple pdfs
+ with page group included in a single page
+>]
+<images/42_1.pdf, id=1446, 1135.24126pt x 387.4475pt>
+File: images/42_1.pdf Graphic file (type pdf)
+<use images/42_1.pdf>
+Package pdftex.def Info: images/42_1.pdf  used on input line 77.
+(pdftex.def)             Requested size: 454.08846pt x 154.97624pt.
+<images/42_2.pdf, id=1448, 501.875pt x 401.5pt>
+File: images/42_2.pdf Graphic file (type pdf)
+<use images/42_2.pdf>
+Package pdftex.def Info: images/42_2.pdf  used on input line 100.
+(pdftex.def)             Requested size: 200.74643pt x 160.59715pt.
+<images/42_3.pdf, id=1449, 642.4pt x 301.125pt>
+File: images/42_3.pdf Graphic file (type pdf)
+<use images/42_3.pdf>
+Package pdftex.def Info: images/42_3.pdf  used on input line 101.
+(pdftex.def)             Requested size: 321.19922pt x 150.56212pt.
+
+Overfull \hbox (15.017pt too wide) in paragraph at lines 100--102
+[][]  []
+ []
+
+[45 <./images/42_1.pdf>]
+<images/43_1.pdf, id=1460, 468.74423pt x 406.51875pt>
+File: images/43_1.pdf Graphic file (type pdf)
+<use images/43_1.pdf>
+Package pdftex.def Info: images/43_1.pdf  used on input line 105.
+(pdftex.def)             Requested size: 281.2487pt x 243.91312pt.
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/CE55A8E60B9E57946179CCFD3549A0A82F427962ED4E6A717DE0D192A922302
+F.pygtex) [46 <./images/42_2.pdf> <./images/42_3.pdf
+
+pdfTeX warning: pdflatex (file ./images/42_3.pdf): PDF inclusion: multiple pdfs
+ with page group included in a single page
+> <./images/43_1.pdf
+
+pdfTeX warning: pdflatex (file ./images/43_1.pdf): PDF inclusion: multiple pdfs
+ with page group included in a single page
+>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/6DC9A21A4D1AF0EC3FFF22AD2379F6D02F427962ED4E6A717DE0D192A922302
+F.pygtex) [47]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/331B65C812B681FA5D09B79CBD598C388F486593A96B47FBC569AA596ACDDA5
+4.pygtex) [48]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [49]
+<images/46_1.pdf, id=1508, 272.19493pt x 185.9196pt>
+File: images/46_1.pdf Graphic file (type pdf)
+<use images/46_1.pdf>
+Package pdftex.def Info: images/46_1.pdf  used on input line 301.
+(pdftex.def)             Requested size: 136.09712pt x 92.95956pt.
+)
+(./release/48-53.tex [50 <./images/46_1.pdf>] [51]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/53464A18A872C8F52BC440986A3B9C452F427962ED4E6A717DE0D192A922302
+F.pygtex) [52
+
+]
+<images/49.pdf, id=1531, 763.50443pt x 225.84375pt>
+File: images/49.pdf Graphic file (type pdf)
+<use images/49.pdf>
+Package pdftex.def Info: images/49.pdf  used on input line 55.
+(pdftex.def)             Requested size: 229.05309pt x 67.75363pt.
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/B8FBED00D8D73A2BF9C1629C75BF72252F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/14F39CC3D8F78A17133D057419B8BD302F427962ED4E6A717DE0D192A922302
+F.pygtex) [53
+
+ <./images/49.pdf>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/6E7167EC3DD79F4753E17F3A2BEE698F2F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/88656B893B90BF86624FE0C43933A7A12F427962ED4E6A717DE0D192A922302
+F.pygtex)
+<images/50_1.pdf, id=1539, 377.41pt x 250.9375pt>
+File: images/50_1.pdf Graphic file (type pdf)
+<use images/50_1.pdf>
+Package pdftex.def Info: images/50_1.pdf  used on input line 105.
+(pdftex.def)             Requested size: 339.66585pt x 225.84164pt.
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/5D40B8441FDC6EFBE695E64ACB9DC8CD2F427962ED4E6A717DE0D192A922302
+F.pygtex) [54 <./images/50_1.pdf>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/B0521D970001BB8A3C3AA5FE698B2E952F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/DA10CA7FDDD7DCE58BA8D747229068B32F427962ED4E6A717DE0D192A922302
+F.pygtex)
+Underfull \vbox (badness 2261) has occurred while \output is active []
+
+ [55]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/35B605F2D4E8C3769C29FDC981B29228FA84B28F38D7BF3203EC07B1FA14FFE
+7.pygtex)
+Underfull \vbox (badness 1062) has occurred while \output is active []
+
+ [56]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [57]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/07A77D89BA52894E9AD563900AA3B0C62F427962ED4E6A717DE0D192A922302
+F.pygtex)
+Underfull \vbox (badness 1231) has occurred while \output is active []
+
+ [58])
+(./release/54-61.tex [59] [60
+
+]
+<images/55_1.pdf, id=1583, 606.0923pt x 606.04672pt>
+File: images/55_1.pdf Graphic file (type pdf)
+<use images/55_1.pdf>
+Package pdftex.def Info: images/55_1.pdf  used on input line 35.
+(pdftex.def)             Requested size: 515.1809pt x 515.14215pt.
+
+Overfull \hbox (3.03127pt too wide) in paragraph at lines 35--36
+[][]
+ []
+
+[61 <./images/55_1.pdf>]
+<images/56_1.pdf, id=1592, 303.04909pt x 303.02777pt>
+File: images/56_1.pdf Graphic file (type pdf)
+<use images/56_1.pdf>
+Package pdftex.def Info: images/56_1.pdf  used on input line 41.
+(pdftex.def)             Requested size: 303.04832pt x 303.02702pt.
+ [62 <./images/56_1.pdf>]
+<images/57_1.pdf, id=1604, 303.04909pt x 303.02777pt>
+File: images/57_1.pdf Graphic file (type pdf)
+<use images/57_1.pdf>
+Package pdftex.def Info: images/57_1.pdf  used on input line 86.
+(pdftex.def)             Requested size: 303.04832pt x 303.02702pt.
+ [63 <./images/57_1.pdf>]
+<images/58_1.pdf, id=1612, 303.04909pt x 303.02777pt>
+File: images/58_1.pdf Graphic file (type pdf)
+<use images/58_1.pdf>
+Package pdftex.def Info: images/58_1.pdf  used on input line 112.
+(pdftex.def)             Requested size: 303.04832pt x 303.02702pt.
+<images/58_2.pdf, id=1613, 303.04909pt x 303.02777pt>
+File: images/58_2.pdf Graphic file (type pdf)
+<use images/58_2.pdf>
+Package pdftex.def Info: images/58_2.pdf  used on input line 116.
+(pdftex.def)             Requested size: 303.04832pt x 303.02702pt.
+
+[64 <./images/58_1.pdf> <./images/58_2.pdf
+
+pdfTeX warning: pdflatex (file ./images/58_2.pdf): PDF inclusion: multiple pdfs
+ with page group included in a single page
+>]
+<images/59_1.pdf, id=1622, 303.04909pt x 303.02777pt>
+File: images/59_1.pdf Graphic file (type pdf)
+<use images/59_1.pdf>
+Package pdftex.def Info: images/59_1.pdf  used on input line 122.
+(pdftex.def)             Requested size: 303.04832pt x 303.02702pt.
+<images/59_2.pdf, id=1623, 303.04909pt x 303.02777pt>
+File: images/59_2.pdf Graphic file (type pdf)
+<use images/59_2.pdf>
+Package pdftex.def Info: images/59_2.pdf  used on input line 126.
+(pdftex.def)             Requested size: 303.04832pt x 303.02702pt.
+ [65 <./images/59_1.pdf> <./images/59_2.pdf
+
+pdfTeX warning: pdflatex (file ./images/59_2.pdf): PDF inclusion: multiple pdfs
+ with page group included in a single page
+>]
+<images/60_1.pdf, id=1633, 303.04909pt x 303.02777pt>
+File: images/60_1.pdf Graphic file (type pdf)
+<use images/60_1.pdf>
+Package pdftex.def Info: images/60_1.pdf  used on input line 132.
+(pdftex.def)             Requested size: 303.04832pt x 303.02702pt.
+<images/60_2.pdf, id=1634, 303.04909pt x 303.02777pt>
+File: images/60_2.pdf Graphic file (type pdf)
+<use images/60_2.pdf>
+Package pdftex.def Info: images/60_2.pdf  used on input line 136.
+(pdftex.def)             Requested size: 303.04832pt x 303.02702pt.
+ [66 <./images/60_1.pdf> <./images/60_2.pdf
+
+pdfTeX warning: pdflatex (file ./images/60_2.pdf): PDF inclusion: multiple pdfs
+ with page group included in a single page
+>]) (./release/61-63.tex
+<images/61_1.pdf, id=1643, 303.04909pt x 303.02777pt>
+File: images/61_1.pdf Graphic file (type pdf)
+<use images/61_1.pdf>
+Package pdftex.def Info: images/61_1.pdf  used on input line 2.
+(pdftex.def)             Requested size: 303.04832pt x 303.02702pt.
+ Excluding 'comment' comment.
+<images/61_22.pdf, id=1644, 158.84344pt x 158.84344pt>
+File: images/61_22.pdf Graphic file (type pdf)
+<use images/61_22.pdf>
+Package pdftex.def Info: images/61_22.pdf  used on input line 23.
+(pdftex.def)             Requested size: 158.84305pt x 158.84305pt.
+ [67 <./images/61_1.pdf> <./images/61_22.pdf
+
+pdfTeX warning: pdflatex (file ./images/61_22.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>] [68]) (./release/64-71.tex [69]
+<images/64_1.pdf, id=1664, 606.0923pt x 606.04672pt>
+File: images/64_1.pdf Graphic file (type pdf)
+<use images/64_1.pdf>
+Package pdftex.def Info: images/64_1.pdf  used on input line 11.
+(pdftex.def)             Requested size: 454.56812pt x 454.53392pt.
+<images/65_1.pdf, id=1665, 401.5pt x 401.5pt>
+File: images/65_1.pdf Graphic file (type pdf)
+<use images/65_1.pdf>
+Package pdftex.def Info: images/65_1.pdf  used on input line 17.
+(pdftex.def)             Requested size: 321.20042pt x 321.20042pt.
+ [70
+
+ <./images/64_1.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 26--28
+[]\T2A/cmr/m/n/12 Чтобы вы-чис-лить эти эв-ри-сти-ки, мы ис-поль-зу-ем сле-ду-ю
+-щую фор-му-лу:
+ []
+
+
+Underfull \hbox (badness 1132) in paragraph at lines 43--45
+[]\T2A/cmr/m/n/12 Отлично! У нас есть зна-че-ние: 1. Те-перь да-вай-те по-про-б
+у-ем вы-чис-лить зна-че-ние ѕhї:
+ []
+
+[71 <./images/65_1.pdf>]
+<images/66_1.pdf, id=1687, 401.5pt x 401.5pt>
+File: images/66_1.pdf Graphic file (type pdf)
+<use images/66_1.pdf>
+Package pdftex.def Info: images/66_1.pdf  used on input line 64.
+(pdftex.def)             Requested size: 321.20042pt x 321.20042pt.
+<images/67_1.pdf, id=1688, 401.5pt x 401.5pt>
+File: images/67_1.pdf Graphic file (type pdf)
+<use images/67_1.pdf>
+Package pdftex.def Info: images/67_1.pdf  used on input line 90.
+(pdftex.def)             Requested size: 321.20042pt x 321.20042pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [72 <./images/66_1.pdf>]
+<images/67_2.pdf, id=1699, 401.5pt x 401.5pt>
+File: images/67_2.pdf Graphic file (type pdf)
+<use images/67_2.pdf>
+Package pdftex.def Info: images/67_2.pdf  used on input line 96.
+(pdftex.def)             Requested size: 321.20042pt x 321.20042pt.
+<images/68_1.pdf, id=1700, 401.5pt x 401.5pt>
+File: images/68_1.pdf Graphic file (type pdf)
+<use images/68_1.pdf>
+Package pdftex.def Info: images/68_1.pdf  used on input line 102.
+(pdftex.def)             Requested size: 321.20042pt x 321.20042pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [73 <./images/67_1.pdf> <./images/67_2.pdf
+
+pdfTeX warning: pdflatex (file ./images/67_2.pdf): PDF inclusion: multiple pdfs
+ with page group included in a single page
+>]
+<images/68_2.pdf, id=1716, 401.5pt x 401.5pt>
+File: images/68_2.pdf Graphic file (type pdf)
+<use images/68_2.pdf>
+Package pdftex.def Info: images/68_2.pdf  used on input line 108.
+(pdftex.def)             Requested size: 321.20042pt x 321.20042pt.
+<images/69_1.pdf, id=1717, 401.5pt x 401.5pt>
+File: images/69_1.pdf Graphic file (type pdf)
+<use images/69_1.pdf>
+Package pdftex.def Info: images/69_1.pdf  used on input line 114.
+(pdftex.def)             Requested size: 321.20042pt x 321.20042pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [74 <./images/68_1.pdf> <./images/68_2.pdf
+
+pdfTeX warning: pdflatex (file ./images/68_2.pdf): PDF inclusion: multiple pdfs
+ with page group included in a single page
+>]
+<images/69_2.pdf, id=1732, 401.5pt x 401.5pt>
+File: images/69_2.pdf Graphic file (type pdf)
+<use images/69_2.pdf>
+Package pdftex.def Info: images/69_2.pdf  used on input line 120.
+(pdftex.def)             Requested size: 321.20042pt x 321.20042pt.
+<images/70_1.pdf, id=1733, 401.5pt x 401.5pt>
+File: images/70_1.pdf Graphic file (type pdf)
+<use images/70_1.pdf>
+Package pdftex.def Info: images/70_1.pdf  used on input line 126.
+(pdftex.def)             Requested size: 321.20042pt x 321.20042pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [75 <./images/69_1.pdf> <./images/69_2.pdf
+
+pdfTeX warning: pdflatex (file ./images/69_2.pdf): PDF inclusion: multiple pdfs
+ with page group included in a single page
+>] [76 <./images/70_1.pdf>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/69FA21ED1860B4F226EA1A2E8169598196F4A172713D9CAFDFB180198F2E831
+C.pygtex) [77
+
+]) (./release/72-77.tex [78]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/AF284E29FB38C359C54D505D43A18701FA84B28F38D7BF3203EC07B1FA14FFE
+7.pygtex) [79] [80]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/793FC9F4D4186ADF9B96AA285A8D5BBBFA84B28F38D7BF3203EC07B1FA14FFE
+7.pygtex) [81]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/C773BD29751FDF7AFDBEF65F51EA472EFA84B28F38D7BF3203EC07B1FA14FFE
+7.pygtex) [82]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/39415D0B2740043E0BBEBE0C4F4C0B22FA84B28F38D7BF3203EC07B1FA14FFE
+7.pygtex) [83]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/14389C622AC953622E9483ECBA23E6635BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/735A479D83E05AE54AAAAE43C7897F822F427962ED4E6A717DE0D192A922302
+F.pygtex) [84]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/35A5DF4E2D38B0C5AF81CA8B7BEF162AFA84B28F38D7BF3203EC07B1FA14FFE
+7.pygtex)) (./release/78-84.tex [85]
+<images/78.pdf, id=1809, 702.625pt x 301.125pt>
+File: images/78.pdf Graphic file (type pdf)
+<use images/78.pdf>
+Package pdftex.def Info: images/78.pdf  used on input line 19.
+(pdftex.def)             Requested size: 491.83414pt x 210.78606pt.
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/B22CA885D71BC9F64BF8EBE5E21013145BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex) [86
+
+ <./images/78.pdf>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/0E082329B17D8E9B9D2676D6D4F5D0FE5BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/031E3BB979E22F8F71D363F22EFAAE235BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex) [87]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/0844F23F473F7631823EE34A1EDBD6865BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex) [88]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/C12761BB595B510671336830ED91A9355BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/36A36509F35D7F1BA6CB4FF46216CA605BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex) [89
+
+]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/52E6C2226F6514B407512BDDEB8F2C295BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/0C69B2E77859D709F66FB4000EEEA1A45BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/B5409BD60D27D31C9024BA014FEC648F5BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex)
+Underfull \vbox (badness 1648) has occurred while \output is active []
+
+ [90]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/0F72B4E0E7AB2A3991315470BE40B5F45BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex) [91]
+<images/84.pdf, id=1921, 1104.125pt x 501.875pt>
+File: images/84.pdf Graphic file (type pdf)
+<use images/84.pdf>
+Package pdftex.def Info: images/84.pdf  used on input line 311.
+(pdftex.def)             Requested size: 441.64218pt x 200.74643pt.
+ [92
+
+ <./images/84.pdf>]) (./release/85-90.tex [93]
+<images/86.pdf, id=2133, 893.33755pt x 615.29875pt>
+File: images/86.pdf Graphic file (type pdf)
+<use images/86.pdf>
+Package pdftex.def Info: images/86.pdf  used on input line 32.
+(pdftex.def)             Requested size: 509.2077pt x 350.72392pt.
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/0384AAB3EDB7A940F65F187568C8E0D74FBEEAFC55D0059826E664B9BBCF372
+1.pygtex) [94 <./images/86.pdf>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/21CDE4A202349233C6333388F87B16974FBEEAFC55D0059826E664B9BBCF372
+1.pygtex
+LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 
+11.
+ (/usr/share/texmf-dist/tex/latex/base/ts1cmtt.fd
+File: ts1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)) [95] [96] [97]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/CC0DF8F4BE5B454D4E5AE9CB0E23FCD2140DF21E4A778EBF7A54122167324FD
+8.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/76A65D8DCBF065E72CD81DDB20AAA188140DF21E4A778EBF7A54122167324FD
+8.pygtex) [98]) (./release/!91-102.tex [99] [100
+
+]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/4D7B3FE1B5A7A8559CD2AADD9519543D8F486593A96B47FBC569AA596ACDDA5
+4.pygtex) [101] [102]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/3B6E9B1AD14478BC8D9F64C88EEA5F628F486593A96B47FBC569AA596ACDDA5
+4.pygtex) [103]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/7E6BEBB55B73CE3A8C1D29C6513CBF4E8F486593A96B47FBC569AA596ACDDA5
+4.pygtex) [104]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/083D254AC62FE4F386662613E91430508F486593A96B47FBC569AA596ACDDA5
+4.pygtex) [105] [106]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/60CD3207F69D9F53846B21EE43048D388F486593A96B47FBC569AA596ACDDA5
+4.pygtex) [107]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/8A3C2170440580B6FB84536F5139755B8F486593A96B47FBC569AA596ACDDA5
+4.pygtex) [108]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [109]
+[110]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/78F40A1F995B6D518F8FD24C4F02C43C8F486593A96B47FBC569AA596ACDDA5
+4.pygtex)
+Underfull \vbox (badness 1024) has occurred while \output is active []
+
+ [111]
+[112] [113]
+<images/102_1.pdf, id=3359, 933.4875pt x 401.5pt>
+File: images/102_1.pdf Graphic file (type pdf)
+<use images/102_1.pdf>
+Package pdftex.def Info: images/102_1.pdf  used on input line 814.
+(pdftex.def)             Requested size: 504.07574pt x 216.80676pt.
+) (./release/!103-110.tex
+<images/103_1.pdf, id=3360, 933.4875pt x 150.5625pt>
+File: images/103_1.pdf Graphic file (type pdf)
+<use images/103_1.pdf>
+Package pdftex.def Info: images/103_1.pdf  used on input line 3.
+(pdftex.def)             Requested size: 504.07574pt x 81.30252pt.
+<images/103_2.pdf, id=3361, 933.4875pt x 100.375pt>
+File: images/103_2.pdf Graphic file (type pdf)
+<use images/103_2.pdf>
+Package pdftex.def Info: images/103_2.pdf  used on input line 9.
+(pdftex.def)             Requested size: 504.07574pt x 54.20168pt.
+<images/103_3.pdf, id=3362, 933.4875pt x 200.75pt>
+File: images/103_3.pdf Graphic file (type pdf)
+<use images/103_3.pdf>
+Package pdftex.def Info: images/103_3.pdf  used on input line 15.
+(pdftex.def)             Requested size: 504.07574pt x 108.40337pt.
+ [114 <./images/102_1.pdf> <./images/103_1.pdf
+
+pdfTeX warning: pdflatex (file ./images/103_1.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+> <./images/103_2.pdf
+
+pdfTeX warning: pdflatex (file ./images/103_2.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/0B81143DEE9425F38ECE7A559F9A9CD48F486593A96B47FBC569AA596ACDDA5
+4.pygtex) [115 <./images/103_3.pdf>]
+Underfull \hbox (badness 4569) in paragraph at lines 95--96
+[]\T2A/cmr/m/n/12 Задача $\OML/cmm/m/it/12 i[]$ \T2A/cmr/m/n/12 су-ще-ству-ет и
+ за-кан-чи-ва-ет-ся до $\OML/cmm/m/it/12 j[]$ \T2A/cmr/m/n/12 (са-мое ран-нее в
+ы-пол-не-ние). Но
+ []
+
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/12B202E016A0686B4B1F1EEF10D17A51FA84B28F38D7BF3203EC07B1FA14FFE
+7.pygtex) [116] [117] [118]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/1EC19B3E922DBC6ABEBD4F964D8F00328F486593A96B47FBC569AA596ACDDA5
+4.pygtex) [119]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/8070ACD1F09D50732A5F23738D3267578F486593A96B47FBC569AA596ACDDA5
+4.pygtex) [120] [121]
+<images/110.pdf, id=3450, 602.25pt x 421.575pt>
+File: images/110.pdf Graphic file (type pdf)
+<use images/110.pdf>
+Package pdftex.def Info: images/110.pdf  used on input line 378.
+(pdftex.def)             Requested size: 421.57211pt x 295.10048pt.
+ [122
+
+ <./images/110.pdf>]) (./release/!111-121.tex
+<images/111_1.pdf, id=3465, 602.25pt x 421.575pt>
+File: images/111_1.pdf Graphic file (type pdf)
+<use images/111_1.pdf>
+Package pdftex.def Info: images/111_1.pdf  used on input line 4.
+(pdftex.def)             Requested size: 451.68639pt x 316.18047pt.
+
+[123 <./images/111_1.pdf>]
+<images/111_2.pdf, id=3476, 491.8375pt x 349.305pt>
+File: images/111_2.pdf Graphic file (type pdf)
+<use images/111_2.pdf>
+Package pdftex.def Info: images/111_2.pdf  used on input line 12.
+(pdftex.def)             Requested size: 418.06384pt x 296.91064pt.
+<images/112_1.pdf, id=3477, 602.25pt x 421.575pt>
+File: images/112_1.pdf Graphic file (type pdf)
+<use images/112_1.pdf>
+Package pdftex.def Info: images/112_1.pdf  used on input line 18.
+(pdftex.def)             Requested size: 451.68639pt x 316.18047pt.
+<images/112_2.pdf, id=3478, 602.25pt x 421.575pt>
+File: images/112_2.pdf Graphic file (type pdf)
+<use images/112_2.pdf>
+Package pdftex.def Info: images/112_2.pdf  used on input line 24.
+(pdftex.def)             Requested size: 451.68639pt x 316.18047pt.
+ [124 <./images/111_2.pdf> <./images/112_1.pdf
+
+pdfTeX warning: pdflatex (file ./images/112_1.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>]
+<images/113_1.pdf, id=3494, 602.25pt x 421.575pt>
+File: images/113_1.pdf Graphic file (type pdf)
+<use images/113_1.pdf>
+Package pdftex.def Info: images/113_1.pdf  used on input line 30.
+(pdftex.def)             Requested size: 451.68639pt x 316.18047pt.
+<images/113_2.pdf, id=3495, 602.25pt x 421.575pt>
+File: images/113_2.pdf Graphic file (type pdf)
+<use images/113_2.pdf>
+Package pdftex.def Info: images/113_2.pdf  used on input line 36.
+(pdftex.def)             Requested size: 451.68639pt x 316.18047pt.
+ [125 <./images/112_2.pdf> <./images/113_1.pdf
+
+pdfTeX warning: pdflatex (file ./images/113_1.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/9B242900F00853C24DF281B759440AFA2F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/F4F05F3F6172D30D654CD4D2D9F0A9542F427962ED4E6A717DE0D192A922302
+F.pygtex) [126 <./images/113_2.pdf>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/809084A1DC3E36E8664B895EA0543349FA84B28F38D7BF3203EC07B1FA14FFE
+7.pygtex) [127] [128]
+Underfull \hbox (badness 10000) in paragraph at lines 233--259
+
+ []
+
+[129] [130]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/57C3060023D160FBD763DCA66B5BA7438F486593A96B47FBC569AA596ACDDA5
+4.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/D08B3A531576AE7E17BC34C18AF39C4B8F486593A96B47FBC569AA596ACDDA5
+4.pygtex) [131
+
+]
+<images/118_1.pdf, id=3548, 562.1pt x 271.0125pt>
+File: images/118_1.pdf Graphic file (type pdf)
+<use images/118_1.pdf>
+Package pdftex.def Info: images/118_1.pdf  used on input line 303.
+(pdftex.def)             Requested size: 421.57397pt x 203.25887pt.
+<images/119_1.pdf, id=3549, 652.4375pt x 334.24875pt>
+File: images/119_1.pdf Graphic file (type pdf)
+<use images/119_1.pdf>
+Package pdftex.def Info: images/119_1.pdf  used on input line 347.
+(pdftex.def)             Requested size: 489.32692pt x 250.68594pt.
+ [132 <./images/118_1.pdf>]
+<images/120_1.pdf, id=3732, 652.4375pt x 334.24875pt>
+File: images/120_1.pdf Graphic file (type pdf)
+<use images/120_1.pdf>
+Package pdftex.def Info: images/120_1.pdf  used on input line 364.
+(pdftex.def)             Requested size: 489.32692pt x 250.68594pt.
+<images/120_2.pdf, id=3733, 652.4375pt x 334.24875pt>
+File: images/120_2.pdf Graphic file (type pdf)
+<use images/120_2.pdf>
+Package pdftex.def Info: images/120_2.pdf  used on input line 370.
+(pdftex.def)             Requested size: 489.32692pt x 250.68594pt.
+ [133 <./images/119_1.pdf> <./images/120_1.pdf
+
+pdfTeX warning: pdflatex (file ./images/120_1.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/B4F129B5A9794DECE81B6063EE3F24C52F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/91E0C98C9FFE1076F2B1F448B7BB8A6C2F427962ED4E6A717DE0D192A922302
+F.pygtex) [134 <./images/120_2.pdf>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/2AC57F619D626FCC570B88838304188E2F427962ED4E6A717DE0D192A922302
+F.pygtex)) (./release/122-128.tex
+Underfull \hbox (badness 1472) in paragraph at lines 5--6
+\T2A/cmr/m/n/12 Чтобы по-нять этот при-мер, ре-ко-мен-ду-ет-ся иметь крат-кое п
+ред-став-ле-ние об ал-го-рит-ме
+ []
+
+[135]
+<images/122_1.pdf, id=4440, 331.51291pt x 254.59395pt>
+File: images/122_1.pdf Graphic file (type pdf)
+<use images/122_1.pdf>
+Package pdftex.def Info: images/122_1.pdf  used on input line 19.
+(pdftex.def)             Requested size: 248.63406pt x 190.94499pt.
+<images/122_2.pdf, id=4441, 331.51291pt x 275.86154pt>
+File: images/122_2.pdf Graphic file (type pdf)
+<use images/122_2.pdf>
+Package pdftex.def Info: images/122_2.pdf  used on input line 24.
+(pdftex.def)             Requested size: 248.63406pt x 206.89563pt.
+
+Underfull \vbox (badness 2005) has occurred while \output is active []
+
+ [136 <./images/122_1.pdf> <./images/122_2.pdf
+
+pdfTeX warning: pdflatex (file ./images/122_2.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/07E199952F96DD4F38AC407E26DC35CD4FBEEAFC55D0059826E664B9BBCF372
+1.pygtex)
+Underfull \hbox (badness 1472) in paragraph at lines 83--84
+\T2A/cmr/m/n/12 Чтобы по-нять этот при-мер, ре-ко-мен-ду-ет-ся иметь крат-кое п
+ред-став-ле-ние об ал-го-рит-ме
+ []
+
+[137]
+<images/123_1.pdf, id=4733, 458.70183pt x 82.11716pt>
+File: images/123_1.pdf Graphic file (type pdf)
+<use images/123_1.pdf>
+Package pdftex.def Info: images/123_1.pdf  used on input line 97.
+(pdftex.def)             Requested size: 366.96196pt x 65.6938pt.
+<images/124_1.pdf, id=4734, 458.70183pt x 82.11716pt>
+File: images/124_1.pdf Graphic file (type pdf)
+<use images/124_1.pdf>
+Package pdftex.def Info: images/124_1.pdf  used on input line 128.
+(pdftex.def)             Requested size: 366.96196pt x 65.6938pt.
+<images/124_2.pdf, id=4735, 459.70558pt x 82.11716pt>
+File: images/124_2.pdf Graphic file (type pdf)
+<use images/124_2.pdf>
+Package pdftex.def Info: images/124_2.pdf  used on input line 140.
+(pdftex.def)             Requested size: 367.76495pt x 65.6938pt.
+ [138 <./images/123_1.pdf> <./images/124_1.pdf
+
+pdfTeX warning: pdflatex (file ./images/124_1.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+> <./images/124_2.pdf
+
+pdfTeX warning: pdflatex (file ./images/124_2.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>]
+<images/124_3.pdf, id=4932, 458.21184pt x 82.11716pt>
+File: images/124_3.pdf Graphic file (type pdf)
+<use images/124_3.pdf>
+Package pdftex.def Info: images/124_3.pdf  used on input line 152.
+(pdftex.def)             Requested size: 366.56998pt x 65.6938pt.
+ [139 <./images/124_3.pdf>] [140
+
+]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/D4AFC0B880F99FC96E0A40EF814DCCE42F427962ED4E6A717DE0D192A922302
+F.pygtex)
+Underfull \vbox (badness 5667) has occurred while \output is active []
+
+ [141]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/E598C7E291BF6A6881022EB77E6705B12F427962ED4E6A717DE0D192A922302
+F.pygtex) [142]) (./release/!129-133.tex [143]
+<images/129_1.pdf, id=4983, 526.96875pt x 326.21875pt>
+File: images/129_1.pdf Graphic file (type pdf)
+<use images/129_1.pdf>
+Package pdftex.def Info: images/129_1.pdf  used on input line 12.
+(pdftex.def)             Requested size: 341.47226pt x 211.38759pt.
+ [144
+
+ <./images/129_1.pdf>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/12EDD4AE2B4BFF7B196A8405B8106C2ECA64E4B4A12BAA9F938D4A7B9802BCA
+5.pygtex) [145]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/56C44CBAD26ACE80C20AD690B2FB789ACA64E4B4A12BAA9F938D4A7B9802BCA
+5.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/7D17BA0D7D1E1F4B1550C56E23548C564FBEEAFC55D0059826E664B9BBCF372
+1.pygtex) [146] [147]
+<images/132-1.pdf, id=5020, 837.1275pt x 421.575pt>
+File: images/132-1.pdf Graphic file (type pdf)
+<use images/132-1.pdf>
+Package pdftex.def Info: images/132-1.pdf  used on input line 168.
+(pdftex.def)             Requested size: 502.28038pt x 252.94695pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [148
+
+])
+(./release/134-140.tex [149 <./images/132-1.pdf>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/649D7EA4FE24B991E4421635AC43DEB34FBEEAFC55D0059826E664B9BBCF372
+1.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/A21A7B526F74F16C84B325D3EAFD4B914FBEEAFC55D0059826E664B9BBCF372
+1.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/291FB09A8720F44103B811C5ACE789F24FBEEAFC55D0059826E664B9BBCF372
+1.pygtex) [150
+
+]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/614F931C383F1B1EFC1EBE985B3972ED4FBEEAFC55D0059826E664B9BBCF372
+1.pygtex) [151]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/195092B1C38E7A7B1F1FD5BD4512EA144FBEEAFC55D0059826E664B9BBCF372
+1.pygtex) [152] [153
+
+]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/A2A7AABDB00CEA83FFDDF8BC91646E9596F4A172713D9CAFDFB180198F2E831
+C.pygtex)
+Underfull \vbox (badness 8189) has occurred while \output is active []
+
+ [154]
+[155] [156
+
+]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/34CA69E27DD75E9CA4D3F9B5B1CEFEC02F427962ED4E6A717DE0D192A922302
+F.pygtex) [157]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/F05952785C29330FDE5744EDBBDD626796F4A172713D9CAFDFB180198F2E831
+C.pygtex)) (./release/141-145.tex [158] [159
+
+] [160] [161]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/7CB46794D2417FE7F3819BCB6EB019C38F486593A96B47FBC569AA596ACDDA5
+4.pygtex) [162] [163]) (./release/146-151.tex [164] [165] [166]
+Underfull \hbox (badness 10000) in paragraph at lines 88--88
+[]|\T2A/cmtt/m/n/12 Устойчивость
+ []
+
+
+Underfull \hbox (badness 1436) in paragraph at lines 88--88
+[]|\T2A/cmr/m/n/12 Алгоритм сор-ти-ров-ки на-зы-ва-ет-ся \T2A/cmr/bx/n/12 устой
+-чи-вым (ста-биль-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 90--90
+[]|\T2A/cmtt/m/n/12 Сортировка на
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 92--92
+[]|\T2A/cmtt/m/n/12 Минимальная
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--96
+[]|\T2A/cmtt/m/n/12 Максимальная
+ []
+
+[167
+
+] [168]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/95CEB8A89FD88EC05E65E11B08C903A98F486593A96B47FBC569AA596ACDDA5
+4.pygtex) [169
+
+]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/91EC6DC7EDA0520804AA5AB583678FBE2F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/4F79A92FC53A92B6319D5EF6B348F92D2F427962ED4E6A717DE0D192A922302
+F.pygtex)
+Underfull \vbox (badness 2310) has occurred while \output is active []
+
+ [170]
+<images/151_1.pdf, id=5173, 639.38875pt x 282.05376pt>
+File: images/151_1.pdf Graphic file (type pdf)
+<use images/151_1.pdf>
+Package pdftex.def Info: images/151_1.pdf  used on input line 307.
+(pdftex.def)             Requested size: 511.51169pt x 225.6433pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 307--308
+[][]
+ []
+
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/825960503213F5C627667E17EE76EE688F486593A96B47FBC569AA596ACDDA5
+4.pygtex) [171 <./images/151_1.pdf>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/602B4D136851DFBF49C1A7665D98B7A85BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex)) (./release/152-166.tex
+\openout6 = `main.pyg'.
+
+ (./_minted-main/vs.pygstyle)
+(./_minted-main/1075D151DE2D45FE1C308A003125715A96F4A172713D9CAFDFB180198F2E831
+C.pygtex) [172]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/BBFEB0C3C053597D566E0E478846BEB396F4A172713D9CAFDFB180198F2E831
+C.pygtex) [173]
+<images/154_1.pdf, id=5194, 609.05037pt x 588.57385pt>
+File: images/154_1.pdf Graphic file (type pdf)
+<use images/154_1.pdf>
+Package pdftex.def Info: images/154_1.pdf  used on input line 81.
+(pdftex.def)             Requested size: 426.33235pt x 411.99889pt.
+
+Overfull \hbox (1.30522pt too wide) in paragraph at lines 89--89
+[]\T2A/cmr/m/n/12 O(n) 
+ []
+
+[174
+
+ <./images/154_1.pdf>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/3C894BF748BF6CDAAA83012320D167D6D21355610C298AC62A32E6326989B0D
+B.pygtex) [175]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 160.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 160.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 160.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 160.
+
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/39DE3A9D91F8D8ACC7AAF329A99E76B0042D2615758B6C3F03C186B02CFC62B
+2.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/4981FA2281CD613B727F5495203358F49289EA7C6515AF18390A872102ADB8B
+E.pygtex)
+Underfull \hbox (badness 10000) in paragraph at lines 203--259
+
+ []
+
+[176]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/F45428D8E13976122D2D65ADF02AF55596F4A172713D9CAFDFB180198F2E831
+C.pygtex)
+Underfull \hbox (badness 10000) in paragraph at lines 261--308
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [177]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/A1ABCE5ECC335F182958FC4A7AF5AA004FBEEAFC55D0059826E664B9BBCF372
+1.pygtex)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [178]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/663BA19F56B1B421FD45F7FE2B85E8D496F4A172713D9CAFDFB180198F2E831
+C.pygtex) [179] [180]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/31730F4180B1A1A23961EC4BE3307123588CD8F5C5CC70B683BCB45F5C1DE98
+9.pygtex) [181
+
+]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 427.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 427.
+
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/4AC32A33BBB9881BF5334A3BF4496A3E9289EA7C6515AF18390A872102ADB8B
+E.pygtex) [182
+
+]
+<images/164_1.pdf, id=5249, 430.96782pt x 569.62813pt>
+File: images/164_1.pdf Graphic file (type pdf)
+<use images/164_1.pdf>
+Package pdftex.def Info: images/164_1.pdf  used on input line 524.
+(pdftex.def)             Requested size: 344.7747pt x 455.70313pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [183
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 535--540
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 557--564
+
+ []
+
+[184 <./images/164_1.pdf>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/A26ADD4E7274DB5BA0F0A7E1BD3590014FBEEAFC55D0059826E664B9BBCF372
+1.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/1FE2770E54B3E9DDC31970DEAEDC53F296F4A172713D9CAFDFB180198F2E831
+C.pygtex) [185]) (./release/!167-178.tex [186]
+<images/167_1.pdf, id=5438, 441.90094pt x 184.43906pt>
+File: images/167_1.pdf Graphic file (type pdf)
+<use images/167_1.pdf>
+Package pdftex.def Info: images/167_1.pdf  used on input line 26.
+(pdftex.def)             Requested size: 441.89986pt x 184.4386pt.
+ [187
+
+ <./images/167_1.pdf>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/135EDD6D6945722D8D8758F89F144ED92F427962ED4E6A717DE0D192A922302
+F.pygtex) [188]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/59A0B13F95F84AAA499141A84A7914542F427962ED4E6A717DE0D192A922302
+F.pygtex)
+Underfull \vbox (badness 4168) has occurred while \output is active []
+
+ [189
+
+]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/178453373B7EB2ACF19C1AF4C95411AE2F427962ED4E6A717DE0D192A922302
+F.pygtex)
+<images/170_1.pdf, id=5467, 742.775pt x 351.71902pt>
+File: images/170_1.pdf Graphic file (type pdf)
+<use images/170_1.pdf>
+Package pdftex.def Info: images/170_1.pdf  used on input line 152.
+(pdftex.def)             Requested size: 445.66843pt x 211.03304pt.
+ [190 <./images/170_1.pdf>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/4714EFDCEE6DB10A322FD8004E5C185D2F427962ED4E6A717DE0D192A922302
+F.pygtex) [191
+
+]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/661348B69C4918348D5D12842507A8562F427962ED4E6A717DE0D192A922302
+F.pygtex) [192
+
+]
+<images/173_1.pdf, id=5490, 391.24434pt x 481.15361pt>
+File: images/173_1.pdf Graphic file (type pdf)
+<use images/173_1.pdf>
+Package pdftex.def Info: images/173_1.pdf  used on input line 229.
+(pdftex.def)             Requested size: 391.24338pt x 481.15244pt.
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/F79428FFCD03EB213AAB7D1CDA41A6B0687188114E128320A86860FA650EEE8
+D.pygtex) [193 <./images/173_1.pdf>] [194]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/69EC109EF5BDFCC0668CC8E19B1909EE2F427962ED4E6A717DE0D192A922302
+F.pygtex) [195
+
+]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/6536816657FBE1C814416FFA7EEAA18E2F427962ED4E6A717DE0D192A922302
+F.pygtex) [196]
+<images/177_1.pdf, id=5518, 385.44pt x 644.4075pt>
+File: images/177_1.pdf Graphic file (type pdf)
+<use images/177_1.pdf>
+Package pdftex.def Info: images/177_1.pdf  used on input line 365.
+(pdftex.def)             Requested size: 385.43906pt x 644.40593pt.
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/EF6758E0261942826B0E033EC6ED0FF9687188114E128320A86860FA650EEE8
+D.pygtex) [197 <./images/177_1.pdf>]) (./release/179-184.tex [198]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/25776A45AEE93F0B63A30C827F0FEF1C2F427962ED4E6A717DE0D192A922302
+F.pygtex [199
+
+]) [200]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/0E6DD255246842B9447E99B5E1B9654C2F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/AF8CD78BB40A460CFEF71DF0024521D32F427962ED4E6A717DE0D192A922302
+F.pygtex [201]) [202]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/E013E8C3D4C553DA2EB05DE8B80596612F427962ED4E6A717DE0D192A922302
+F.pygtex) [203] [204]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/A9297CC21FBAFC344C6C086A8882846C2F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/1E59D44CCDE3E0824DB990A9B602DAF22F427962ED4E6A717DE0D192A922302
+F.pygtex [205])
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/E04566D8548D59D04295BACC777D4E3F5BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex)) (./release/!185-190.tex [206] [207
+
+] [208]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/489CA50C69F51BEFAC574B010C412A7D2F427962ED4E6A717DE0D192A922302
+F.pygtex) [209]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/2563FE6CBD063B9FFAD5B72A51B39CD92F427962ED4E6A717DE0D192A922302
+F.pygtex) [210] [211]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/4F1C98EF769C11708A0D542179168F082F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/5FCE4DA2CC4E3B682E11F71C81C4867F2F427962ED4E6A717DE0D192A922302
+F.pygtex) [212]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/92551FA409ABFEE8C7D2C642C1F272382F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/E8A99525E50A86BF96CA83701812FC772F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/D28AF947795E0CC244D27D2BDEA291352F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/1F67D591AFFD990EE71214B9C27DE2772F427962ED4E6A717DE0D192A922302
+F.pygtex) [213]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/1E7D553562A58AAB67B6C6A8EA174E182F427962ED4E6A717DE0D192A922302
+F.pygtex)) (./release/!191-201.tex
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/81D49AA6C10853A837A95FB9A9C21E4F5BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex) [214]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/7928F54F7877DEDF5085C5A5F3933FB72F427962ED4E6A717DE0D192A922302
+F.pygtex) [215]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/FAD8C5EE02025B7F62C8BE4310D1FBC12F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/D69A42DDA72A4D59154C72E8D69749DC2F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/AA7869C9023D03115BBA4D129CDF7CA12F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/3399DFD6EA4887A09B9194BD6E8F008D2F427962ED4E6A717DE0D192A922302
+F.pygtex) [216] [217]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/C736B495735B08B58F08662A6743A56D042D2615758B6C3F03C186B02CFC62B
+2.pygtex) [218]
+<images/195_1.pdf, id=5653, 453.19313pt x 385.44pt>
+File: images/195_1.pdf Graphic file (type pdf)
+<use images/195_1.pdf>
+Package pdftex.def Info: images/195_1.pdf  used on input line 266.
+(pdftex.def)             Requested size: 317.23302pt x 269.80615pt.
+<images/196_1.pdf, id=5654, 453.19313pt x 385.44pt>
+File: images/196_1.pdf Graphic file (type pdf)
+<use images/196_1.pdf>
+Package pdftex.def Info: images/196_1.pdf  used on input line 272.
+(pdftex.def)             Requested size: 317.23302pt x 269.80615pt.
+ [219
+
+ <./images/195_1.pdf>]
+<images/197_1.pdf, id=5668, 453.19313pt x 385.44pt>
+File: images/197_1.pdf Graphic file (type pdf)
+<use images/197_1.pdf>
+Package pdftex.def Info: images/197_1.pdf  used on input line 278.
+(pdftex.def)             Requested size: 317.23302pt x 269.80615pt.
+ [220 <./images/196_1.pdf> <./images/197_1.pdf
+
+pdfTeX warning: pdflatex (file ./images/197_1.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>]
+<images/198_1.pdf, id=5681, 453.19313pt x 385.44pt>
+File: images/198_1.pdf Graphic file (type pdf)
+<use images/198_1.pdf>
+Package pdftex.def Info: images/198_1.pdf  used on input line 288.
+(pdftex.def)             Requested size: 317.23302pt x 269.80615pt.
+<images/199_1.pdf, id=5682, 453.19313pt x 385.44pt>
+File: images/199_1.pdf Graphic file (type pdf)
+<use images/199_1.pdf>
+Package pdftex.def Info: images/199_1.pdf  used on input line 294.
+(pdftex.def)             Requested size: 317.23302pt x 269.80615pt.
+ [221 <./images/198_1.pdf> <./images/199_1.pdf
+
+pdfTeX warning: pdflatex (file ./images/199_1.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/EBEDBAB87EDA296A92B9D1CC93FEF1C62F427962ED4E6A717DE0D192A922302
+F.pygtex) [222]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/7F06FA07EFD3352AD9D5A5061C040F012F427962ED4E6A717DE0D192A922302
+F.pygtex) [223]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/846BA778922239826E3B1E68C2A11B262F427962ED4E6A717DE0D192A922302
+F.pygtex)) (./release/!202-214.tex [224]
+<images/202_1.pdf, id=5712, 270.25969pt x 220.57407pt>
+File: images/202_1.pdf Graphic file (type pdf)
+<use images/202_1.pdf>
+Package pdftex.def Info: images/202_1.pdf  used on input line 18.
+(pdftex.def)             Requested size: 216.20804pt x 176.45947pt.
+<images/203_1.pdf, id=5713, 270.25969pt x 220.57407pt>
+File: images/203_1.pdf Graphic file (type pdf)
+<use images/203_1.pdf>
+Package pdftex.def Info: images/203_1.pdf  used on input line 29.
+(pdftex.def)             Requested size: 216.20804pt x 176.45947pt.
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/FCEFD06EA8B6B3832F56FE20E384FCA92F427962ED4E6A717DE0D192A922302
+F.pygtex) [225 <./images/202_1.pdf> <./images/203_1.pdf
+
+pdfTeX warning: pdflatex (file ./images/203_1.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/23288605D81BB3CF708DF66CFF94DE0D2F427962ED4E6A717DE0D192A922302
+F.pygtex) [226] [227]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/1759020612E22DAE136A124E3078CC462F427962ED4E6A717DE0D192A922302
+F.pygtex)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [228]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/6EAFCA09241876FF6A37EBA668C2B0C72F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/B2B361CECC1EE65F13963150819B0EA92F427962ED4E6A717DE0D192A922302
+F.pygtex) [229]
+<images/207_1.pdf, id=5751, 401.5pt x 401.5pt>
+File: images/207_1.pdf Graphic file (type pdf)
+<use images/207_1.pdf>
+Package pdftex.def Info: images/207_1.pdf  used on input line 246.
+(pdftex.def)             Requested size: 200.7495pt x 200.7495pt.
+<images/208_1.pdf, id=5752, 803.0pt x 371.3875pt>
+File: images/208_1.pdf Graphic file (type pdf)
+<use images/208_1.pdf>
+Package pdftex.def Info: images/208_1.pdf  used on input line 262.
+(pdftex.def)             Requested size: 521.94382pt x 241.399pt.
+
+Overfull \hbox (9.79419pt too wide) in paragraph at lines 262--262
+ [] 
+ []
+
+[230
+
+ <./images/207_1.pdf>]
+<images/208_2.pdf, id=5763, 803.0pt x 371.3875pt>
+File: images/208_2.pdf Graphic file (type pdf)
+<use images/208_2.pdf>
+Package pdftex.def Info: images/208_2.pdf  used on input line 263.
+(pdftex.def)             Requested size: 521.94382pt x 241.399pt.
+
+Overfull \hbox (9.79419pt too wide) in paragraph at lines 263--263
+ [][] 
+ []
+
+[231 <./images/208_1.pdf> <./images/208_2.pdf
+
+pdfTeX warning: pdflatex (file ./images/208_2.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>]
+<images/209_1.pdf, id=5778, 803.0pt x 371.3875pt>
+File: images/209_1.pdf Graphic file (type pdf)
+<use images/209_1.pdf>
+Package pdftex.def Info: images/209_1.pdf  used on input line 265.
+(pdftex.def)             Requested size: 521.94382pt x 241.399pt.
+
+Overfull \hbox (9.79419pt too wide) in paragraph at lines 265--265
+ [][] 
+ []
+
+<images/209_2.pdf, id=5779, 803.0pt x 371.3875pt>
+File: images/209_2.pdf Graphic file (type pdf)
+<use images/209_2.pdf>
+Package pdftex.def Info: images/209_2.pdf  used on input line 266.
+(pdftex.def)             Requested size: 521.94382pt x 241.399pt.
+
+Overfull \hbox (9.79419pt too wide) in paragraph at lines 266--266
+ [][] 
+ []
+
+[232 <./images/209_1.pdf> <./images/209_2.pdf
+
+pdfTeX warning: pdflatex (file ./images/209_2.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>]
+<images/210_1.pdf, id=5794, 803.0pt x 371.3875pt>
+File: images/210_1.pdf Graphic file (type pdf)
+<use images/210_1.pdf>
+Package pdftex.def Info: images/210_1.pdf  used on input line 268.
+(pdftex.def)             Requested size: 521.94382pt x 241.399pt.
+
+Overfull \hbox (9.79419pt too wide) in paragraph at lines 268--268
+ [][] 
+ []
+
+<images/210_2.pdf, id=5795, 401.5pt x 371.3875pt>
+File: images/210_2.pdf Graphic file (type pdf)
+<use images/210_2.pdf>
+Package pdftex.def Info: images/210_2.pdf  used on input line 271.
+(pdftex.def)             Requested size: 260.9719pt x 241.399pt.
+[233 <./images/210_1.pdf> <./images/210_2.pdf
+
+pdfTeX warning: pdflatex (file ./images/210_2.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/421F7D0560B4D2A91D016A8A8DAE32422F427962ED4E6A717DE0D192A922302
+F.pygtex) [234]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/38C60E41C3CBC01B7DB3549056CC93192F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/1645A879F234A73C93FD7320F60DB1872F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/05AD1A7064E7BE88093B2ABE13663A7B2F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/D074B6A424AF27460125CB3E3199E88A2F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/4B4A8EFDE88D175E62E093B8B2B3851F2F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/6D1B0FC7C4DC5F84652571C040BD0A692F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/D2C2F30CBF2A6C93E3959E0378F66A802F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/2CFEAC03CA91886E628D8AB805B879E28F486593A96B47FBC569AA596ACDDA5
+4.pygtex) [235
+
+]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/653A580081E92552C570539124B824202F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/C0E32E6AC817289EEC9B1A27543E45B92F427962ED4E6A717DE0D192A922302
+F.pygtex) [236]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [237])
+(./release/215-219.tex [238]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/BED618847BD06139521108AEED74A1135BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex) [239
+
+]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/6B042446621BE6DD4DC04346254FF83A8F486593A96B47FBC569AA596ACDDA5
+4.pygtex) [240] [241]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/79A6FCA0B2D42801251310BD060998FA5BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/CAA6701F8792250466906C7F99F3333D5BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex) [242
+
+]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/6D1AA14B418352B190AE494E132BCD609289EA7C6515AF18390A872102ADB8B
+E.pygtex) [243] [244]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/7E131C927FA225643C33405F63DE3C0F2F427962ED4E6A717DE0D192A922302
+F.pygtex) [245
+
+]) (./release/!220-234.tex
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/003E67BACAD3A5536BDCE8ECF317380F2F427962ED4E6A717DE0D192A922302
+F.pygtex)
+Underfull \vbox (badness 1824) has occurred while \output is active []
+
+ [246]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/B5E3A49A38D85E64DD4A782C35726E322F427962ED4E6A717DE0D192A922302
+F.pygtex) [247]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [248]
+[249] [250] [251] [252
+
+] [253]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/805BD95BC2858FDDFF3AD6AD7B7D70112F427962ED4E6A717DE0D192A922302
+F.pygtex) [254]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/F5327EC3D19CABE52610D651EDC3B0662F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/F8782014906C42CE92A536DF5EBD261C2F427962ED4E6A717DE0D192A922302
+F.pygtex) [255]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/0ED9C132BCAE2F760DD33E6EEB39FF912F427962ED4E6A717DE0D192A922302
+F.pygtex) [256] [257] [258
+
+]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/27381576B464A7CC69C691EAF7CAE7B62F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/4C8466149EF7BE95AC3BD2F11C2776EA2F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/07A38584F4A552EA5C5CCCFAC64D54812F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/D5B530C1115446B6B0512C542FCB19262F427962ED4E6A717DE0D192A922302
+F.pygtex) [259]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/D511C3F548984B56CEBCCFD38CF13A502F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/BEB4A858EAB953BA3A498B03A518E9C32F427962ED4E6A717DE0D192A922302
+F.pygtex) [260] [261]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/4446D7399C563DDBD9D12B8E3AE2504E5BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/172308AFD98A090EEA82154955C305362F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/F24E692947474221C3772C01B63972F82F427962ED4E6A717DE0D192A922302
+F.pygtex) [262
+
+]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/7BBC2C6DEE8F98E96418C586AC5640262F427962ED4E6A717DE0D192A922302
+F.pygtex) [263]) (./release/235-241.tex [264]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/5707DDD57444DA0A0307035747202A8D2F427962ED4E6A717DE0D192A922302
+F.pygtex) [265
+
+]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/0D7ADBB9DB0775A256BC2D21DC60B3145BD9CFCE54A68914ACB2DCF71641ADB
+0.pygtex) [266
+
+] [267] [268
+
+] [269] [270]
+Underfull \hbox (badness 10000) in paragraph at lines 298--303
+
+ []
+
+[271]) (./release/!242-251.tex [272]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/DF30CE13226867D4821F8536A78590D22F427962ED4E6A717DE0D192A922302
+F.pygtex) [273
+
+]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/03F46EB1DCC580D3159952D3CA49D38D2F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/688E422991211DBF237C125AB43A0E0C2F427962ED4E6A717DE0D192A922302
+F.pygtex) [274
+
+]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/0D424FB4D334FEC6EC45992C3031F1B52F427962ED4E6A717DE0D192A922302
+F.pygtex) [275]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/96A4EDFE0437E74411746DABA367EBC12F427962ED4E6A717DE0D192A922302
+F.pygtex)
+<images/245.pdf, id=6080, 747.79375pt x 364.36125pt>
+File: images/245.pdf Graphic file (type pdf)
+<use images/245.pdf>
+Package pdftex.def Info: images/245.pdf  used on input line 243.
+(pdftex.def)             Requested size: 560.84393pt x 273.27026pt.
+
+Overfull \hbox (48.6943pt too wide) in paragraph at lines 243--244
+[][]
+ []
+
+[276]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/B767A265F2A1587E33CAFA117551C9FC2F427962ED4E6A717DE0D192A922302
+F.pygtex) [277 <./images/245.pdf>] [278]
+<images/247.pdf, id=6108, 1599.9775pt x 839.135pt>
+File: images/247.pdf Graphic file (type pdf)
+<use images/247.pdf>
+Package pdftex.def Info: images/247.pdf  used on input line 301.
+(pdftex.def)             Requested size: 512.00327pt x 268.52867pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 301--302
+[][]
+ []
+
+[279
+
+ <./images/247.pdf>]
+<images/248.pdf, id=6132, 893.3375pt x 451.6875pt>
+File: images/248.pdf Graphic file (type pdf)
+<use images/248.pdf>
+Package pdftex.def Info: images/248.pdf  used on input line 309.
+(pdftex.def)             Requested size: 670.00148pt x 338.76479pt.
+
+Overfull \hbox (157.85185pt too wide) in paragraph at lines 309--310
+[][]
+ []
+
+[280 <./images/248.pdf>]
+<images/249.pdf, id=6143, 2067.725pt x 1144.275pt>
+File: images/249.pdf Graphic file (type pdf)
+<use images/249.pdf>
+Package pdftex.def Info: images/249.pdf  used on input line 327.
+(pdftex.def)             Requested size: 496.26414pt x 274.6316pt.
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/E8FECECDB07C8D4883E638737DBC63052F427962ED4E6A717DE0D192A922302
+F.pygtex) [281 <./images/249.pdf>] [282] [283]) (./release/!252-256.tex
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\newline' on input line 4.
+
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/3605AADE3BE8AD7E4139D8334339D1482F427962ED4E6A717DE0D192A922302
+F.pygtex) [284] [285]
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/4305ECBB74F3AFB1E8603BE3D42F9ABA2F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/3A71F565BFAEAFEEC6082DC37D4122ED2F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/F689C269EE30BBB56B458D9E4C6E50D02F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/4DE1047398E8B98319D8EF72853FFDE92F427962ED4E6A717DE0D192A922302
+F.pygtex)
+\openout6 = `main.pyg'.
+
+
+(./_minted-main/AB92F9AC1572A5FDD98D4F7CF91C77942F427962ED4E6A717DE0D192A922302
+F.pygtex) [286
+
+] [287
+
+])
+<images/257_1.png, id=6287, 597.73312pt x 845.40843pt>
+File: images/257_1.png Graphic file (type png)
+<use images/257_1.png>
+Package pdftex.def Info: images/257_1.png  used on input line 48.
+(pdftex.def)             Requested size: 597.54924pt x 845.07095pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [288]
+[289 <./images/257_1.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 50.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 50.
+ (./main.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 50.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 50.
+runsystem(rm main.pyg)...executed.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 46444 strings out of 492167
+ 935668 string characters out of 6131558
+ 1032062 words of memory out of 5000000
+ 48750 multiletter control sequences out of 15000+600000
+ 553102 words of font info for 75 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 71i,13n,105p,2059b,1084s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/
+texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmbx8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb>
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17
+.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/font
+s/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy8.pfb></usr/share/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb></usr/sha
+re/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-
+dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type
+1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-sup
+er/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfit1200.pfb
+></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/te
+xmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf-dist/fonts/
+type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm
+-super/sfti1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200
+.pfb>
+Output written on main.pdf (289 pages, 8293939 bytes).
+PDF statistics:
+ 7083 PDF objects out of 7423 (max. 8388607)
+ 5027 compressed objects within 51 object streams
+ 628 named destinations out of 1000 (max. 500000)
+ 2141 words of extra memory for PDF output out of 10000 (max. 10000000)
+

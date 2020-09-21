@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{pre\PYGZus{}order\PYGZus{}print}\PYG{p}{(}\PYG{n}{root}\PYG{p}{):} \PYG{c+c1}{\PYGZsh{} префиксный вывод дерева}
+	\PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{root}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} пустой ли корень}
+		\PYG{k}{return}
+	\PYG{n+nb}{print} \PYG{n}{root}\PYG{o}{.}\PYG{n}{data} \PYG{c+c1}{\PYGZsh{} выводим данные}
+	\PYG{n}{pre\PYGZus{}order\PYGZus{}print}\PYG{p}{(}\PYG{n}{root}\PYG{o}{.}\PYG{n}{l\PYGZus{}child}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} рекурсивно вызываем функцию}
+								 \PYG{c+c1}{\PYGZsh{} с левым ребенком}
+	\PYG{n}{pre\PYGZus{}order\PYGZus{}print}\PYG{p}{(}\PYG{n}{root}\PYG{o}{.}\PYG{n}{r\PYGZus{}child}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} рекурсивно вызываем функцию}
+								 \PYG{c+c1}{\PYGZsh{} с правым ребенком}
+\end{Verbatim}

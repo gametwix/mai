@@ -1,0 +1,48 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{Node}\PYG{p}{(}\PYG{n+nb}{object}\PYG{p}{):} \PYG{c+c1}{\PYGZsh{} узел двоичного дерева}
+	\PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{val}\PYG{p}{):}
+		\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{l\PYGZus{}child} \PYG{o}{=} \PYG{k+kc}{None} \PYG{c+c1}{\PYGZsh{} Указатель на левое поддерево}
+		\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{r\PYGZus{}child} \PYG{o}{=} \PYG{k+kc}{None} \PYG{c+c1}{\PYGZsh{} Указатель на правое поддерево}
+		\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{val} \PYG{o}{=} \PYG{n}{val} \PYG{c+c1}{\PYGZsh{} Значение}
+
+\PYG{k}{class} \PYG{n+nc}{BinarySearchTree}\PYG{p}{(}\PYG{n+nb}{object}\PYG{p}{):} \PYG{c+c1}{\PYGZsh{} Функция поиска в бинарном дереве}
+	\PYG{k}{def} \PYG{n+nf}{insert}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{root}\PYG{p}{,} \PYG{n}{node}\PYG{p}{):}
+		\PYG{k}{if} \PYG{n}{root} \PYG{o+ow}{is} \PYG{k+kc}{None}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} если корень пустой, то корень равен узлу}
+			\PYG{k}{return} \PYG{n}{node}
+		\PYG{k}{if} \PYG{n}{root}\PYG{o}{.}\PYG{n}{val} \PYG{o}{\PYGZlt{}} \PYG{n}{node}\PYG{o}{.}\PYG{n}{val} \PYG{c+c1}{\PYGZsh{} если значение узла больше узла корня}
+			\PYG{n}{root}\PYG{o}{.}\PYG{n}{r\PYGZus{}child} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{n}{root}\PYG{o}{.}\PYG{n}{r\PYGZus{}child}\PYG{p}{,} \PYG{n}{node}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} ищем в правом поддереве}
+		\PYG{k}{else}\PYG{p}{:}	\PYG{c+c1}{\PYGZsh{} если меньше}
+			\PYG{n}{root}\PYG{o}{.}\PYG{n}{l\PYGZus{}child} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{n}{root}\PYG{o}{.}\PYG{n}{l\PYGZus{}child}\PYG{p}{,} \PYG{n}{node}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} ищем в левом поддереве}
+		\PYG{k}{return} \PYG{n}{root}
+
+	\PYG{k}{def} \PYG{n+nf}{in\PYGZus{}order\PYGZus{}place}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{root}\PYG{p}{):} \PYG{c+c1}{\PYGZsh{} вывод в инфиксной форме}
+		\PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{root}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} пустой ли корень}
+			\PYG{k}{return} \PYG{k+kc}{None}
+		\PYG{k}{else}\PYG{p}{:}
+			\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{in\PYGZus{}order\PYGZus{}place}\PYG{p}{(}\PYG{n}{root}\PYG{o}{.}\PYG{n}{l\PYGZus{}child}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} рекурсивно вызываем функцию}
+											  \PYG{c+c1}{\PYGZsh{} с левым ребенком}
+			\PYG{n+nb}{print} \PYG{n}{root}\PYG{o}{.}\PYG{n}{val} \PYG{c+c1}{\PYGZsh{} выводим данные}
+			\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{in\PYGZus{}order\PYGZus{}place}\PYG{p}{(}\PYG{n}{root}\PYG{o}{.}\PYG{n}{r\PYGZus{}child}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} рекурсивно вызываем функцию}
+											  \PYG{c+c1}{\PYGZsh{} с правым ребенком}
+
+	\PYG{k}{def} \PYG{n+nf}{pre\PYGZus{}order\PYGZus{}place}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{root}\PYG{p}{):}	\PYG{c+c1}{\PYGZsh{} вывод в префиксной форме}
+		\PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{root}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} пустой ли корень}
+			\PYG{k}{return} \PYG{k+kc}{None}
+		\PYG{k}{else}\PYG{p}{:}
+			\PYG{n+nb}{print} \PYG{n}{root}\PYG{o}{.}\PYG{n}{val} \PYG{c+c1}{\PYGZsh{} выводим данные}
+			\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{pre\PYGZus{}order\PYGZus{}place}\PYG{p}{(}\PYG{n}{root}\PYG{o}{.}\PYG{n}{l\PYGZus{}child}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} рекурсивно вызываем функцию}
+											   \PYG{c+c1}{\PYGZsh{} с левым ребенком}
+			\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{pre\PYGZus{}order\PYGZus{}place}\PYG{p}{(}\PYG{n}{root}\PYG{o}{.}\PYG{n}{r\PYGZus{}child}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} рекурсивно вызываем функцию}
+											   \PYG{c+c1}{\PYGZsh{} с правым ребенком}
+
+
+\PYG{k}{def} \PYG{n+nf}{post\PYGZus{}order\PYGZus{}place}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{root}\PYG{p}{):}	\PYG{c+c1}{\PYGZsh{} вывод в постфиксной форме}
+		\PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{root}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} пустой ли корень}
+			\PYG{k}{return} \PYG{k+kc}{None}
+		\PYG{k}{else}\PYG{p}{:}
+			\PYG{n+nb}{print} \PYG{n}{root}\PYG{o}{.}\PYG{n}{val} \PYG{c+c1}{\PYGZsh{} выводим данные}
+			\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{pre\PYGZus{}order\PYGZus{}place}\PYG{p}{(}\PYG{n}{root}\PYG{o}{.}\PYG{n}{l\PYGZus{}child}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} рекурсивно вызываем функцию}
+											   \PYG{c+c1}{\PYGZsh{} с левым ребенком}
+			\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{pre\PYGZus{}order\PYGZus{}place}\PYG{p}{(}\PYG{n}{root}\PYG{o}{.}\PYG{n}{r\PYGZus{}child}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} рекурсивно вызываем функцию}
+											   \PYG{c+c1}{\PYGZsh{} с правым ребенком}
+\end{Verbatim}

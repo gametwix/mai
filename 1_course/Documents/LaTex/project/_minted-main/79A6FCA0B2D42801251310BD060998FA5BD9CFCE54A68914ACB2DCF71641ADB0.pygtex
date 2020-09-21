@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{n}{j} \PYG{k+kn}{from} \PYG{l+m+mi}{0} \PYG{n}{to} \PYG{n}{W} \PYG{n}{do}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} Прямой ход}
+	\PYG{n}{m}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{j}\PYG{p}{]} \PYG{o}{:=} \PYG{l+m+mi}{0} \PYG{c+c1}{\PYGZsh{} Все предметы не лежат в рюкзаке}
+\PYG{k}{for} \PYG{n}{i} \PYG{k+kn}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{n} \PYG{n}{do}\PYG{p}{:}
+	\PYG{k}{for} \PYG{n}{j} \PYG{k+kn}{from} \PYG{l+m+mi}{0} \PYG{n}{to} \PYG{n}{W} \PYG{n}{do}\PYG{p}{:}
+		\PYG{k}{if} \PYG{n}{w}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{j} \PYG{n}{then}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} Если вес предмета больше ограничения по весу}
+			\PYG{n}{m}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{]} \PYG{o}{:=} \PYG{n}{m}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{j}\PYG{p}{]} \PYG{c+c1}{\PYGZsh{} Решение задачи с i предметом}
+			\PYG{c+c1}{\PYGZsh{} сводится к решению задачи с i\PYGZhy{}1 предметом}
+		\PYG{k}{else}\PYG{p}{:}
+			\PYG{n}{m}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{]} \PYG{o}{:=} \PYG{n+nb}{max}\PYG{p}{(}\PYG{n}{m}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{j}\PYG{p}{],} \PYG{n}{m}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{n}{w}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]]} \PYG{o}{+} \PYG{n}{v}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])}
+			\PYG{c+c1}{\PYGZsh{} Стоимости выборки присваивается максимальное значение}
+\end{Verbatim}

@@ -1,0 +1,47 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public} \PYG{k+kd}{class} \PYG{n+nc}{EditDistance} \PYG{p}{\PYGZob{}}	
+	\PYG{c+c1}{// первая запускаемая функция}
+	\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{main}\PYG{p}{(}\PYG{n}{String}\PYG{o}{[]} \PYG{n}{args}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{n}{String} \PYG{n}{str1} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}march\PYGZdq{}}\PYG{p}{;}
+		\PYG{n}{String} \PYG{n}{str2} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}cart\PYGZdq{}}\PYG{p}{;}
+		\PYG{n}{EditDistance} \PYG{n}{ed} \PYG{o}{=} \PYG{k}{new} \PYG{n}{EditDistance}\PYG{p}{();}
+		\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{n}{ed}\PYG{p}{.}\PYG{n+na}{getMinConversions}\PYG{p}{(}\PYG{n}{str1}\PYG{p}{,} \PYG{n}{str2}\PYG{p}{));}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{c+c1}{// функция, возвращающая минимальное расстояние Левенштейна между двумя}
+	\PYG{c+c1}{// строками}
+	\PYG{k+kd}{public} \PYG{k+kt}{int} \PYG{n+nf}{getMinConversions}\PYG{p}{(}\PYG{n}{String} \PYG{n}{str1}\PYG{p}{,} \PYG{n}{String} \PYG{n}{str2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{c+c1}{// dp[i][j] \PYGZhy{} минимальное расстояние Левенштейна между срезом первой}
+		\PYG{c+c1}{// строки до}
+		\PYG{c+c1}{//i и срезом второй строки до j}
+		\PYG{k+kt}{int} \PYG{n}{dp}\PYG{o}{[][]} \PYG{o}{=} \PYG{k}{new} \PYG{k+kt}{int}\PYG{o}{[}\PYG{n}{str1}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{()} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{o}{][}\PYG{n}{str2}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{()} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{;}
+		\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{str1}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{();} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+			\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}=} \PYG{n}{str2}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{();} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+				\PYG{c+c1}{// если длина первой строки 0, тогда нам нужно скопировать все}
+				\PYG{c+c1}{//символы из второй строки (их j)}
+				\PYG{k}{if} \PYG{p}{(}\PYG{n}{i} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+					\PYG{n}{dp}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]} \PYG{o}{=} \PYG{n}{j}\PYG{p}{;}
+				\PYG{p}{\PYGZcb{}}
+				\PYG{c+c1}{// если длина второй строки 0, тогда нам нужно скопировать все}
+				\PYG{c+c1}{//символы из первой строки (их i)}
+				\PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{j} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+					\PYG{n}{dp}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
+				\PYG{p}{\PYGZcb{}}
+				\PYG{c+c1}{// если последние символы двух строк совпадают,}
+				\PYG{c+c1}{//тогда общее кол\PYGZhy{}во операций не меняется}
+				\PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{str1}\PYG{p}{.}\PYG{n+na}{charAt}\PYG{p}{(}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{==} \PYG{n}{str2}\PYG{p}{.}\PYG{n+na}{charAt}\PYG{p}{(}\PYG{n}{j} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{))} \PYG{p}{\PYGZob{}}
+					\PYG{n}{dp}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]} \PYG{o}{=} \PYG{n}{dp}\PYG{o}{[}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{o}{][}\PYG{n}{j} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{;}
+				\PYG{p}{\PYGZcb{}}
+				\PYG{c+c1}{// минимум из 3\PYGZhy{}х случаев: дописать/удалить символ к первому срезу,}
+				\PYG{c+c1}{//ко второму и заменить последний символ одного среза на другой}
+				\PYG{k}{else} \PYG{p}{\PYGZob{}}
+					\PYG{n}{dp}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{o}{+} \PYG{n}{Math}\PYG{p}{.}\PYG{n+na}{min}\PYG{p}{(}\PYG{n}{dp}\PYG{o}{[}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]}\PYG{p}{,} \PYG{n}{Math}\PYG{p}{.}\PYG{n+na}{min}\PYG{p}{(}\PYG{n}{dp}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{,}
+					\PYG{n}{dp}\PYG{o}{[}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{o}{][}\PYG{n}{j} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{));}
+				\PYG{p}{\PYGZcb{}}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{c+c1}{// ответ лежит в срезе первой строки до её длины, и срезе второй строки до}
+		\PYG{c+c1}{//её длины}
+		\PYG{k}{return} \PYG{n}{dp}\PYG{o}{[}\PYG{n}{str1}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{()}\PYG{o}{][}\PYG{n}{str2}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{()}\PYG{o}{]}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

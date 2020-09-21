@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{boolean} \PYG{n+nf}{isConnected}\PYG{p}{(}\PYG{n}{Graph} \PYG{n}{g}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{BFS}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{allVisited}\PYG{p}{(}\PYG{n}{g}\PYG{p}{))}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{else} \PYG{k}{return} \PYG{n+nb}{false}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

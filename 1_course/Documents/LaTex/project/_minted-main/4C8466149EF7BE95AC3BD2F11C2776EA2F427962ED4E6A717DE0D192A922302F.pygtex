@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{put} \PYG{n}{a}
+\PYG{k}{while} \PYG{n}{A}\PYG{p}{(}\PYG{n}{m}\PYG{p}{)} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1} \PYG{k}{do}
+	\PYG{n}{i} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n}{m} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}
+	\PYG{k}{while} \PYG{n}{not}\PYG{p}{(}\PYG{n}{ai} \PYG{o}{\PYGZlt{}} \PYG{n}{am} \PYG{n}{and} \PYG{n}{A}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)}\PYG{o}{=} \PYG{n}{A}\PYG{p}{(}\PYG{n}{m}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{k}{do}
+	\PYG{n}{i} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}
+	\PYG{n}{end} \PYG{k}{while}
+	\PYG{n}{m} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n}{i}
+	\PYG{n}{put} \PYG{n}{a}
+\PYG{n}{end} \PYG{k}{while}
+\end{Verbatim}

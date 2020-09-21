@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void} \PYG{n+nf}{listConnectedComponents}\PYG{p}{(}\PYG{k+kt}{char} \PYG{o}{**}\PYG{n}{graph}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{noOfVertices}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{;}
+	\PYG{k}{for} \PYG{p}{(}\PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{noOfVertices}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{visited}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{l+s+sc}{\PYGZsq{}N\PYGZsq{}}\PYG{p}{)}
+			\PYG{n}{BFS}\PYG{p}{(}\PYG{n}{graph}\PYG{p}{,} \PYG{n}{i}\PYG{p}{,} \PYG{n}{noOfVertices}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{fibonacci}\PYG{p}{(}\PYG{n}{n}\PYG{p}{):}
+\PYG{c+c1}{\PYGZsh{} создадим массив и добавим в него два первых числа}
+	\PYG{n}{memo} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{c+c1}{\PYGZsh{} f(0) = 1, f(1) = 1}
+	\PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{n}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{):}
+		 \PYG{n}{memo}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{memo}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+} \PYG{n}{memo}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{])} \PYG{c+c1}{\PYGZsh{} циклично вычисляем значения чисел}
+											\PYG{c+c1}{\PYGZsh{} фибоначчи и добавляем их в массив}
+	\PYG{k}{return} \PYG{n}{memo}\PYG{p}{[}\PYG{n}{n}\PYG{p}{]} \PYG{c+c1}{\PYGZsh{} возвращаем искомое число}
+\end{Verbatim}

@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Procedure} \PYG{n}{MSTPrim}\PYG{p}{(}\PYG{n}{Graph}\PYG{p}{,} \PYG{n}{source}\PYG{p}{)}\PYG{o}{:}
+\PYG{k}{for} \PYG{n}{each} \PYG{n}{u} \PYG{n}{in} \PYG{n}{V}
+	\PYG{n}{key}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{:=} \PYG{n}{inf}
+	\PYG{n}{parent}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{:=} \PYG{n+nb}{NULL}
+\PYG{n}{end} \PYG{k}{for}
+\PYG{n}{key}\PYG{p}{[}\PYG{n}{source}\PYG{p}{]} \PYG{o}{:=} \PYG{l+m+mi}{0}
+\PYG{n}{Q} \PYG{o}{=} \PYG{n}{Priority\PYGZus{}Queue}\PYG{p}{()}
+\PYG{n}{Q} \PYG{o}{=} \PYG{n}{V}
+\PYG{k}{while} \PYG{n}{Q} \PYG{n}{is} \PYG{n}{not} \PYG{n}{empty}
+	\PYG{n}{u} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{Q}\PYG{p}{.}\PYG{n}{pop}
+	\PYG{k}{for} \PYG{n}{each} \PYG{n}{v} \PYG{n}{adjacent} \PYG{n}{to} \PYG{n}{i}
+		\PYG{k}{if} \PYG{n}{v} \PYG{n}{belongs} \PYG{n}{to} \PYG{n}{Q} \PYG{n}{and} \PYG{n}{Edge}\PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{n}{key}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]}
+			\PYG{n}{parent}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{:=} \PYG{n}{u}
+			\PYG{n}{key}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{:=} \PYG{n}{Edge}\PYG{p}{(}\PYG{n}{u}\PYG{p}{,} \PYG{n}{v}\PYG{p}{)}
+		\PYG{n}{end} \PYG{k}{if}
+	\PYG{n}{end} \PYG{k}{for}
+\PYG{n}{end} \PYG{k}{while}
+\end{Verbatim}

@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Procedure} \PYG{n}{String}\PYG{o}{\PYGZhy{}}\PYG{n}{Match}\PYG{p}{(}\PYG{n}{Text}\PYG{p}{,} \PYG{n}{Pattern}\PYG{p}{,} \PYG{n}{m}\PYG{p}{)}\PYG{o}{:}
+\PYG{k}{for} \PYG{n}{i} \PYG{n}{from} \PYG{n}{m} \PYG{n}{to} \PYG{n}{Pattern}\PYG{o}{\PYGZhy{}}\PYG{n}{length} \PYG{o}{+} \PYG{n}{m} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+	\PYG{k}{if} \PYG{n}{Text}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{n}{is} \PYG{n}{not} \PYG{n}{equal} \PYG{n}{to} \PYG{n}{Pattern}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}
+		\PYG{n}{Return} \PYG{n+nb}{false}
+	\PYG{n}{end} \PYG{k}{if}
+\PYG{n}{end} \PYG{k}{for}
+\PYG{n}{Return} \PYG{n+nb}{true}
+\end{Verbatim}

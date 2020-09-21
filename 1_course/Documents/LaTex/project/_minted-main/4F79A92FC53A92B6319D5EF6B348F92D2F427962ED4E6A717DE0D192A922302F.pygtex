@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void} \PYG{n+nf}{pointer\PYGZus{}bubble\PYGZus{}sort}\PYG{p}{(}\PYG{k+kt}{long} \PYG{o}{*} \PYG{n}{list}\PYG{p}{,} \PYG{k+kt}{long} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{c+cm}{/*на вход поступает список типа}
+\PYG{c+cm}{long и его длина*/}
+	\PYG{k+kt}{long} \PYG{n}{c}\PYG{p}{,} \PYG{n}{d}\PYG{p}{,} \PYG{n}{t}\PYG{p}{;}
+
+	\PYG{k}{for} \PYG{p}{(}\PYG{n}{c} \PYG{o}{=} \PYG{l+m+mi}{0} \PYG{p}{;} \PYG{n}{c} \PYG{o}{\PYGZlt{}} \PYG{p}{(} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1} \PYG{p}{);} \PYG{n}{c}\PYG{o}{++}\PYG{p}{)}  \PYG{p}{\PYGZob{}}
+		\PYG{k}{for} \PYG{p}{(}\PYG{n}{d} \PYG{o}{=} \PYG{l+m+mi}{0} \PYG{p}{;} \PYG{n}{d} \PYG{o}{\PYGZlt{}} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{n}{c} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{d}\PYG{o}{++}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k}{if} \PYG{p}{(} \PYG{o}{*} \PYG{p}{(}\PYG{n}{list} \PYG{o}{+} \PYG{n}{d} \PYG{p}{)} \PYG{o}{\PYGZgt{}} \PYG{o}{*}\PYG{p}{(}\PYG{n}{list}\PYG{o}{+}\PYG{n}{d}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{))}\PYG{c+c1}{//}
+			\PYG{p}{\PYGZob{}}
+				\PYG{c+cm}{/* Перестановка с помощью указателей*/}
+
+				\PYG{n}{t}  \PYG{o}{=} \PYG{o}{*} \PYG{p}{(}\PYG{n}{list} \PYG{o}{+} \PYG{n}{d} \PYG{p}{);}\PYG{c+c1}{//}
+				\PYG{o}{*} \PYG{p}{(}\PYG{n}{list} \PYG{o}{+} \PYG{n}{d} \PYG{p}{)}   \PYG{o}{=} \PYG{o}{*} \PYG{p}{(}\PYG{n}{list} \PYG{o}{+} \PYG{n}{d} \PYG{o}{+} \PYG{l+m+mi}{1} \PYG{p}{);}
+				\PYG{o}{*} \PYG{p}{(}\PYG{n}{list} \PYG{o}{+} \PYG{n}{d} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{=} \PYG{n}{t}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+ \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

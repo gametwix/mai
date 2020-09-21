@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{n}{num} \PYG{n}{in} \PYG{n}{number} \PYG{p}{\PYGZob{}}
+	\PYG{k}{if} \PYG{n}{num} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{3} \PYG{o}{==} \PYG{l+m+mi}{0} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{num} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{5} \PYG{o}{==} \PYG{l+m+mi}{0} \PYG{p}{\PYGZob{}}\PYG{c+cm}{/*если число делится без остатка и на 5,}
+\PYG{c+cm}{	и на 3 */}
+		\PYG{n}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}(num) fizz buzz\PYGZdq{}}\PYG{p}{)}
+	\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{k}{if} \PYG{n}{num} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{3} \PYG{o}{==} \PYG{l+m+mi}{0} \PYG{p}{\PYGZob{}}
+		\PYG{n}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}(num) fizz\PYGZdq{}}\PYG{p}{)}
+	\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{k}{if} \PYG{n}{num} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{5} \PYG{o}{==} \PYG{l+m+mi}{0} \PYG{p}{\PYGZob{}}
+		\PYG{n}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}(num) buzz\PYGZdq{}}\PYG{p}{)}
+	\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+		\PYG{n}{print}\PYG{p}{(}\PYG{n}{num}\PYG{p}{)}
+	\PYG{p}{\PYGZcb{}}
+ \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

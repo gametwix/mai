@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//int перед названием ф\PYGZhy{}ии означает, что ф\PYGZhy{}ия возвращает значение типа int}
+
+\PYG{k+kt}{int} \PYG{n+nf}{find\PYGZus{}max}\PYG{p}{(}\PYG{k}{const} \PYG{k+kt}{int} \PYG{o}{*}\PYG{n}{array}\PYG{p}{,} \PYG{k+kt}{size\PYGZus{}t} \PYG{n}{len}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//создание функции find\PYGZus{}max,которая находит максимальный элемент в массиве}
+	\PYG{c+c1}{//array длины len}
+	\PYG{k+kt}{int} \PYG{n}{max} \PYG{o}{=} \PYG{n}{INT\PYGZus{}MIN}\PYG{p}{;} \PYG{c+c1}{//переменной max задаётся минимально возможное значение,}
+	\PYG{c+c1}{//сама переменная будет содержать макс эл\PYGZhy{}т в конце выполнения ф\PYGZhy{}ии}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{size\PYGZus{}t} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{len}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{c+c1}{//проходим по массиву сравнивая эл\PYGZhy{}ты с максимальным}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{max} \PYG{o}{\PYGZlt{}} \PYG{n}{array}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+		\PYG{n}{max} \PYG{o}{=} \PYG{n}{array}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+	  \PYG{c+c1}{//присваиваем max значение больших эл\PYGZhy{}ов тем самым находим максимальный эл\PYGZhy{}т}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{n}{max}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

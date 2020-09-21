@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Procedure} \PYG{n}{Adjacency}\PYG{o}{\PYGZhy{}}\PYG{n}{List}\PYG{p}{(}\PYG{n}{maxN}\PYG{p}{,} \PYG{n}{E}\PYG{p}{)}\PYG{o}{:}
+\PYG{n}{edge}\PYG{p}{[}\PYG{n}{maxN}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Vector}\PYG{p}{()}
+\PYG{k}{for} \PYG{n}{i} \PYG{n}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{E}
+	\PYG{n}{input} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{x}\PYG{p}{,} \PYG{n}{y}
+	\PYG{n}{edge}\PYG{p}{[}\PYG{n}{x}\PYG{p}{].}\PYG{n}{push}\PYG{p}{(}\PYG{n}{y}\PYG{p}{)}
+	\PYG{n}{edge}\PYG{p}{[}\PYG{n}{y}\PYG{p}{].}\PYG{n}{push}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}
+\PYG{n}{end} \PYG{k}{for}
+\PYG{n}{Return} \PYG{n}{edge}
+\end{Verbatim}

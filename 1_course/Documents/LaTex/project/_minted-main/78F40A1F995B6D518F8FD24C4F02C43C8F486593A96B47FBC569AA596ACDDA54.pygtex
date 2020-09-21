@@ -1,0 +1,96 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}iostream\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}vector\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}string\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}algorithm\PYGZgt{}}
+
+\PYG{k}{using} \PYG{k}{namespace} \PYG{n}{std}\PYG{p}{;}
+
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{unsigned} \PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{readInCoinValues}\PYG{p}{();}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{unsigned} \PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{coinValues}\PYG{p}{;}
+	\PYG{k+kt}{int} \PYG{n}{ticketPrice}\PYG{p}{;}
+	\PYG{k+kt}{int} \PYG{n}{paidMoney}\PYG{p}{;}
+	
+	\PYG{n}{coinValues} \PYG{o}{=} \PYG{n}{readInCoinValues}\PYG{p}{();}
+	
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}ticket price: \PYGZdq{}}\PYG{p}{;}
+	\PYG{n}{cin} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{ticketPrice}\PYG{p}{;}
+	
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}money paid: \PYGZdq{}}\PYG{p}{;}
+	\PYG{n}{cin} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{paidMoney}\PYG{p}{;}
+	
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{paidMoney} \PYG{o}{\PYGZlt{}=} \PYG{n}{ticketPrice}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}No exchange money\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+		\PYG{k}{return} \PYG{l+m+mi}{1}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{k+kt}{int} \PYG{n}{diffValue} \PYG{o}{=} \PYG{n}{paidMoney} \PYG{o}{\PYGZhy{}} \PYG{n}{ticketPrice}\PYG{p}{;}
+	
+	\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{unsigned} \PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{coinCount}\PYG{p}{;}
+	
+	\PYG{k}{for}\PYG{p}{(}\PYG{k}{auto} \PYG{n}{coinValue} \PYG{o}{=} \PYG{n}{coinValues}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{();}
+		\PYG{n}{coinValue} \PYG{o}{!=} \PYG{n}{coinValues}\PYG{p}{.}\PYG{n}{end}\PYG{p}{();} \PYG{o}{++}\PYG{n}{coinValue}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{countCoins} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+		\PYG{k}{while} \PYG{p}{(}\PYG{n}{diffValue} \PYG{o}{\PYGZgt{}=} \PYG{o}{*}\PYG{n}{coinValue}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{diffValue} \PYG{o}{\PYGZhy{}=} \PYG{o}{*}\PYG{n}{coinValue}\PYG{p}{;}
+			\PYG{n}{countCoins}\PYG{o}{++}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{n}{coinCount}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{countCoins}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}the difference \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{paidMoney} \PYG{o}{\PYGZhy{}} \PYG{n}{ticketPrice}
+		\PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} is paid with: \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+	\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{unsigned} \PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{coinValues}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{coinCount}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{)}
+			\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{coinCount}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} coins with value \PYGZdq{}}
+				\PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{coinValues}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{unsigned} \PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{readInCoinValues}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{unsigned} \PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{coinValues}\PYG{p}{;}
+	
+	\PYG{n}{coinValues}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+	
+	\PYG{k}{while}\PYG{p}{(}\PYG{n+nb}{true}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		
+		\PYG{k+kt}{int} \PYG{n}{coinValue}\PYG{p}{;}
+		
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Coin value (\PYGZlt{}1 to stop): \PYGZdq{}}\PYG{p}{;}
+		\PYG{n}{cin} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{coinValue}\PYG{p}{;}
+		
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{coinValue} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{)}
+			\PYG{n}{coinValues}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{coinValue}\PYG{p}{);}
+		
+		\PYG{k}{else}
+		\PYG{k}{break}\PYG{p}{;}
+	
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{n}{sort}\PYG{p}{(}\PYG{n}{coinValues}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(),} \PYG{n}{coinValues}\PYG{p}{.}\PYG{n}{end}\PYG{p}{(),} \PYG{n}{std}\PYG{o}{::}\PYG{n}{greater}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}}\PYG{p}{());}
+	
+	\PYG{k}{auto} \PYG{n}{last} \PYG{o}{=} \PYG{n}{std}\PYG{o}{::}\PYG{n}{unique}\PYG{p}{(}\PYG{n}{coinValues}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(),} \PYG{n}{coinValues}\PYG{p}{.}\PYG{n}{end}\PYG{p}{());}
+	\PYG{n}{coinValues}\PYG{p}{.}\PYG{n}{erase}\PYG{p}{(}\PYG{n}{last}\PYG{p}{,} \PYG{n}{coinValues}\PYG{p}{.}\PYG{n}{end}\PYG{p}{());}
+	
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Coin values: \PYGZdq{}}\PYG{p}{;}
+	
+	\PYG{k}{for}\PYG{p}{(}\PYG{k}{auto} \PYG{n+nl}{i} \PYG{p}{:} \PYG{n}{coinValues}\PYG{p}{)}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{i} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{;}
+	
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+	
+	\PYG{k}{return} \PYG{n}{coinValues}\PYG{p}{;}
+
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

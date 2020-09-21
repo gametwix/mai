@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{fibonacci}\PYG{p}{(}\PYG{n}{n}\PYG{p}{):}	   \PYG{c+c1}{\PYGZsh{} функция по вычислению числа фибоначчи}
+	\PYG{k}{if} \PYG{n}{n} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{2}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} для чисел из заданного промежутка возможен только один результат}
+	\PYG{k}{return} \PYG{l+m+mi}{1}	
+\PYG{k}{return} \PYG{n}{fibonacci}\PYG{p}{(}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{+} \PYG{n}{fibonacci}\PYG{p}{(}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} рекурсивный вызов функции}
+\end{Verbatim}

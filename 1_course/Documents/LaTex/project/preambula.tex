@@ -1,0 +1,142 @@
+% !TeX spellcheck = russian-aot
+\documentclass[12pt,openany]{book}
+\usepackage[T2A]{fontenc}
+\usepackage{sectsty}
+%\usepackage{berasans}
+%\renewcommand{\sfdefault}{berasans}
+%\renewcommand{\familydefault}{\sfdefault}
+\usepackage{blindtext}
+
+
+
+\usepackage[russian]{babel}
+\usepackage[a4paper,left=1.5cm,right=1.5cm,top=1cm,bottom=2cm,bindingoffset=0cm,headsep=5mm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[most]{tcolorbox} % для управления цветом фона
+
+\usepackage{minted} % подсветка синтаксиса
+\usemintedstyle{emacs}
+%\usemintedtabsize{5}
+
+\usepackage{hyperref}
+\definecolor{urlcolor}{HTML}{7a328b} % цвет гиперссылок b262c6
+\definecolor{linkcolor}{HTML}{7a328b} % цвет ссылок
+\hypersetup{pdfstartview={ FitH}, linkcolor=linkcolor, urlcolor=urlcolor, colorlinks=true}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt} % убираем разделительную линию
+\renewcommand{\footrulewidth}{1pt}
+\fancyhead{}
+\fancyfoot{}
+\futurelet\TMPfootrule\def\footrule{{\color{Purple}\TMPfootrule}} % закрашиваем линию
+\fancyfoot[R]{\textcolor{Purple}{\thepage}} % закрашиваем номера страниц
+\fancyfoot[L]{\href{https://goalkicker.com/}{GoalKicker.com - Алгоритмы. Заметки для Профессионалов}} % создаем гиперссылку
+
+\fancypagestyle{plain} % настройка контитула страниц с chapter-ом 
+
+\usepackage{colortbl}
+\usepackage{eurosym}
+\usepackage{incgraph}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\usepackage{rotating}
+\usepackage{systeme}
+
+\usepackage{comment}
+
+
+\usepackage{sectsty}
+\chapterfont{\vspace{-2cm}\color{Purple}}  % sets colour of chapters
+\sectionfont{\vspace{-0.5cm}\color{Purple}}  % sets colour of sections
+
+
+\graphicspath{ {./images/} } 
+
+\setlength{\parindent}{0em}
+
+\newcommand{\pline}[3][0mm] % розовая линия с жирным текстом сбоку
+{
+\vspace{#1}
+~~~~
+\begin{minipage}{0.02\linewidth}
+    \begin{tikzpicture}
+        \draw[line width=0.5mm,Purple](0,0)--(0,#2); 
+    \end{tikzpicture}
+\end{minipage}
+\begin{minipage}{0.94\linewidth}
+    {#3} 
+\end{minipage}\hfill
+\vspace{0mm}
+}
+
+\newcommand{\includeimage}[3][3mm]{
+\vspace{#1}
+\includegraphics[scale=#2]{#3}
+\vspace{#1}
+}
+
+\newcommand{\p}[1]{\textcolor{Purple}{#1}}
+
+\tikzset
+{
+    x=2cm,% default value is 1cm.
+    y=3cm,% default value is 1cm.
+}
+
+
+
+\tcbset{colback=gray!5!white, enhanced jigsaw, breakable, boxrule=0mm, arc=3mm, top=2mm, left=1.5mm, bottom=1mm} % параметры серого прямоугольника
+
+
+\usepackage{minted}
+\usemintedstyle{emacs}
+
+%\pagestyle{empty} % нумерация выкл.
+\setcounter{page}{1}
+\pagestyle{fancy} % нумерация вкл.
+
+\let\oldchapter\chapter
+\let\oldsection\section
+%
+\usepackage{titlesec}
+\titlespacing*{\oldchapter}{0pt}{-60pt}{20pt}
+
+
+\usepackage{soul}
+\renewcommand{\chapter}[2]{
+\oldchapter#1{#2}\vspace{-0.5cm}
+\addcontentsline{toc}{chapter}{\texorpdfstring{\underline{#2}}{#2}}
+}
+
+\renewcommand{\section}[2]{\oldsection#1{#2}
+\addcontentsline{toc}{section}{\texorpdfstring{\underline{#2}}{#2}}
+}
+\usepackage{tocloft}
+\renewcommand\cftchapdotsep{\cftdot}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftchapdotsep}}
+\renewcommand\cftsecdotsep{\cftdot}
+\renewcommand{\cftchapfont}{\bfseries}
+\renewcommand{\cfttoctitlefont}{\Huge\bfseries\color{Purple}}
+\renewcommand{\cftchappagefont}{\normalfont}
+%
+
+\setminted[python]{obeytabs=true,tabsize=3}
+\setminted[Python]{obeytabs=true,tabsize=3}
+\setminted[java]{obeytabs=true,tabsize=3}
+\setminted[Java]{obeytabs=true,tabsize=3}
+\setminted[C]{obeytabs=true,tabsize=3}
+\setminted[c]{obeytabs=true,tabsize=3}
+\setminted[C++]{obeytabs=true,tabsize=3}
+\setminted[c++]{obeytabs=true,tabsize=3}
+\setminted[csharp]{obeytabs=true,tabsize=3}
+\setminted[Csharp]{obeytabs=true,tabsize=3}
+\setminted[CSharp]{obeytabs=true,tabsize=3}
+\setminted[OCaml]{obeytabs=true,tabsize=3}
+\setminted[ocaml]{obeytabs=true,tabsize=3}
+\setminted[Pascal]{obeytabs=true,tabsize=3}
+\setminted[pascal]{obeytabs=true,tabsize=3}
+

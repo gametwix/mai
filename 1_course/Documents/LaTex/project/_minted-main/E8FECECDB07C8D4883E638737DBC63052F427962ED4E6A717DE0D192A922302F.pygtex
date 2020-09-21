@@ -1,0 +1,122 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}math.h\PYGZgt{}}
+
+\PYG{c+cp}{\PYGZsh{}define PI 3.1415926535897932384626433832795}
+\PYG{c+cp}{\PYGZsh{}define TWOPI 6.283185307179586476925286766559}
+\PYG{c+cp}{\PYGZsh{}define Deg2Rad 0.017453292519943295769236907684886}
+\PYG{c+cp}{\PYGZsh{}define Rad2Deg 57.295779513082320876798154814105}
+\PYG{c+cp}{\PYGZsh{}define log10\PYGZus{}2 0.30102999566398119521373889472449 }\PYG{c+c1}{// Log10 of 2}
+\PYG{c+cp}{\PYGZsh{}define log10\PYGZus{}2\PYGZus{}INV 3.3219280948873623478703194294948 }\PYG{c+c1}{// 1/Log10(2)}
+
+\PYG{k}{struct} \PYG{n}{complex}
+\PYG{p}{\PYGZob{}}
+\PYG{n+nl}{public}\PYG{p}{:}
+	\PYG{k+kt}{double} \PYG{n}{Re}\PYG{p}{,} \PYG{n}{Im}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+\PYG{k+kt}{bool} \PYG{n+nf}{isPwrTwo}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{N}\PYG{p}{,} \PYG{k+kt}{int} \PYG{o}{*}\PYG{n}{M}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{o}{*}\PYG{n}{M} \PYG{o}{=} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{ceil}\PYG{p}{(}\PYG{n}{log10}\PYG{p}{((}\PYG{k+kt}{double}\PYG{p}{)}\PYG{n}{N}\PYG{p}{)} \PYG{o}{*} \PYG{n}{log10\PYGZus{}2\PYGZus{}INV}\PYG{p}{);}
+	\PYG{k+kt}{int} \PYG{n}{NN} \PYG{o}{=} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{pow}\PYG{p}{(}\PYG{l+m+mf}{2.0}\PYG{p}{,} \PYG{o}{*}\PYG{n}{M}\PYG{p}{);}
+	\PYG{k}{if} \PYG{p}{((}\PYG{n}{NN} \PYG{o}{!=} \PYG{n}{N}\PYG{p}{)} \PYG{o}{||} \PYG{p}{(}\PYG{n}{NN} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{))}
+		\PYG{k}{return} \PYG{n+nb}{false}\PYG{p}{;}
+	\PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n+nf}{rad2FFT}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{N}\PYG{p}{,} \PYG{n}{complex} \PYG{o}{*}\PYG{n}{x}\PYG{p}{,} \PYG{n}{complex} \PYG{o}{*}\PYG{n}{DFT}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{M} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{isPwrTwo}\PYG{p}{(}\PYG{n}{N}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{M}\PYG{p}{))}
+		\PYG{n}{throw} \PYG{l+s}{\PYGZdq{}Rad2FFT(): N must be a power of 2 for Radix FFT\PYGZdq{}}\PYG{p}{;}
+		
+	\PYG{k+kt}{int} \PYG{n}{BSep}\PYG{p}{;}
+	\PYG{k+kt}{int} \PYG{n}{BWidth}\PYG{p}{;}
+	\PYG{k+kt}{int} \PYG{n}{P}\PYG{p}{;}
+	\PYG{k+kt}{int} \PYG{n}{j}\PYG{p}{;}
+	\PYG{k+kt}{int} \PYG{n}{stage} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+	\PYG{k+kt}{int} \PYG{n}{HiIndex}\PYG{p}{;}
+	\PYG{k+kt}{unsigned} \PYG{k+kt}{int} \PYG{n}{iaddr}\PYG{p}{;}
+	\PYG{k+kt}{int} \PYG{n}{ii}\PYG{p}{;}
+	\PYG{k+kt}{int} \PYG{n}{MM1} \PYG{o}{=} \PYG{n}{M} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;}
+	
+	\PYG{k+kt}{unsigned} \PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{;}
+	\PYG{k+kt}{int} \PYG{n}{l}\PYG{p}{;}
+	\PYG{k+kt}{unsigned} \PYG{k+kt}{int} \PYG{n}{nMax} \PYG{o}{=} \PYG{p}{(}\PYG{k+kt}{unsigned} \PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{N}\PYG{p}{;}
+	
+	\PYG{k+kt}{double} \PYG{n}{TwoPi\PYGZus{}N} \PYG{o}{=} \PYG{n}{TWOPI} \PYG{o}{/} \PYG{p}{(}\PYG{k+kt}{double}\PYG{p}{)}\PYG{n}{N}\PYG{p}{;}
+	\PYG{k+kt}{double} \PYG{n}{TwoPi\PYGZus{}NP}\PYG{p}{;}
+	
+	\PYG{n}{complex} \PYG{n}{WN}\PYG{p}{;}
+	\PYG{n}{complex} \PYG{n}{TEMP}\PYG{p}{;}
+	\PYG{n}{complex} \PYG{o}{*}\PYG{n}{pDFT} \PYG{o}{=} \PYG{n}{DFT}\PYG{p}{;}
+	\PYG{n}{complex} \PYG{o}{*}\PYG{n}{pLo}\PYG{p}{;}
+	\PYG{n}{complex} \PYG{o}{*}\PYG{n}{pHi}\PYG{p}{;}
+	\PYG{n}{complex} \PYG{o}{*}\PYG{n}{pX}\PYG{p}{;}
+	
+	\PYG{k}{for} \PYG{p}{(}\PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{nMax}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{,} \PYG{n}{DFT}\PYG{o}{++}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{pX} \PYG{o}{=} \PYG{n}{x} \PYG{o}{+} \PYG{n}{i}\PYG{p}{;}
+		\PYG{n}{ii} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+		\PYG{n}{iaddr} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
+		\PYG{k}{for} \PYG{p}{(}\PYG{n}{l} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{l} \PYG{o}{\PYGZlt{}} \PYG{n}{M}\PYG{p}{;} \PYG{n}{l}\PYG{o}{++}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k}{if} \PYG{p}{(}\PYG{n}{iaddr} \PYG{o}{\PYGZam{}} \PYG{l+m+mh}{0x01}\PYG{p}{)}
+				\PYG{n}{ii} \PYG{o}{+=} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{p}{(}\PYG{n}{MM1} \PYG{o}{\PYGZhy{}} \PYG{n}{l}\PYG{p}{));}
+			\PYG{n}{iaddr} \PYG{o}{\PYGZgt{}\PYGZgt{}=} \PYG{l+m+mi}{1}\PYG{p}{;}
+			\PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{iaddr}\PYG{p}{)}
+				\PYG{k}{break}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{n}{DFT} \PYG{o}{=} \PYG{n}{pDFT} \PYG{o}{+} \PYG{n}{ii}\PYG{p}{;}
+		\PYG{n}{DFT}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Re} \PYG{o}{=} \PYG{n}{pX}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Re}\PYG{p}{;}
+		\PYG{n}{DFT}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Im} \PYG{o}{=} \PYG{n}{pX}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Im}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{for} \PYG{p}{(}\PYG{n}{stage} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{stage} \PYG{o}{\PYGZlt{}=} \PYG{n}{M}\PYG{p}{;} \PYG{n}{stage}\PYG{o}{++}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{BSep} \PYG{o}{=} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)(}\PYG{n}{pow}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{stage}\PYG{p}{));}
+		\PYG{n}{P} \PYG{o}{=} \PYG{n}{N} \PYG{o}{/} \PYG{n}{BSep}\PYG{p}{;}
+		\PYG{n}{BWidth} \PYG{o}{=} \PYG{n}{BSep} \PYG{o}{/} \PYG{l+m+mi}{2}\PYG{p}{;}
+		\PYG{n}{TwoPi\PYGZus{}NP} \PYG{o}{=} \PYG{n}{TwoPi\PYGZus{}N}\PYG{o}{*}\PYG{n}{P}\PYG{p}{;}
+		
+		\PYG{k}{for} \PYG{p}{(}\PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{BWidth}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k}{if} \PYG{p}{(}\PYG{n}{j} \PYG{o}{!=} \PYG{l+m+mi}{0}\PYG{p}{)}
+			\PYG{p}{\PYGZob{}}
+				\PYG{n}{WN}\PYG{p}{.}\PYG{n}{Re} \PYG{o}{=} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{TwoPi\PYGZus{}N}\PYG{o}{*}\PYG{n}{P}\PYG{o}{*}\PYG{n}{j}\PYG{p}{);}
+				\PYG{n}{WN}\PYG{p}{.}\PYG{n}{Im} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{TwoPi\PYGZus{}N}\PYG{o}{*}\PYG{n}{P}\PYG{o}{*}\PYG{n}{j}\PYG{p}{);}
+			\PYG{p}{\PYGZcb{}}
+			\PYG{k}{for} \PYG{p}{(}\PYG{n}{HiIndex} \PYG{o}{=} \PYG{n}{j}\PYG{p}{;} \PYG{n}{HiIndex} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{;} \PYG{n}{HiIndex} \PYG{o}{+=} \PYG{n}{BSep}\PYG{p}{)}
+			\PYG{p}{\PYGZob{}}
+				\PYG{n}{pHi} \PYG{o}{=} \PYG{n}{pDFT} \PYG{o}{+} \PYG{n}{HiIndex}\PYG{p}{;}
+				\PYG{n}{pLo} \PYG{o}{=} \PYG{n}{pHi} \PYG{o}{+} \PYG{n}{BWidth}\PYG{p}{;}
+				
+				\PYG{k}{if} \PYG{p}{(}\PYG{n}{j} \PYG{o}{!=} \PYG{l+m+mi}{0}\PYG{p}{)}
+				\PYG{p}{\PYGZob{}}
+					\PYG{n}{TEMP}\PYG{p}{.}\PYG{n}{Re} \PYG{o}{=} \PYG{p}{(}\PYG{n}{pLo}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Re} \PYG{o}{*} \PYG{n}{WN}\PYG{p}{.}\PYG{n}{Re}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{n}{pLo}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Im} \PYG{o}{*} \PYG{n}{WN}\PYG{p}{.}\PYG{n}{Im}\PYG{p}{);}
+					\PYG{n}{TEMP}\PYG{p}{.}\PYG{n}{Im} \PYG{o}{=} \PYG{p}{(}\PYG{n}{pLo}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Re} \PYG{o}{*} \PYG{n}{WN}\PYG{p}{.}\PYG{n}{Im}\PYG{p}{)} \PYG{o}{+} \PYG{p}{(}\PYG{n}{pLo}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Im} \PYG{o}{*} \PYG{n}{WN}\PYG{p}{.}\PYG{n}{Re}\PYG{p}{);}
+					
+					\PYG{n}{pLo}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Re} \PYG{o}{=} \PYG{n}{pHi}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Re} \PYG{o}{\PYGZhy{}} \PYG{n}{TEMP}\PYG{p}{.}\PYG{n}{Re}\PYG{p}{;}
+					\PYG{n}{pLo}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Im} \PYG{o}{=} \PYG{n}{pHi}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Im} \PYG{o}{\PYGZhy{}} \PYG{n}{TEMP}\PYG{p}{.}\PYG{n}{Im}\PYG{p}{;}
+					
+					\PYG{n}{pHi}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Re} \PYG{o}{=} \PYG{p}{(}\PYG{n}{pHi}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Re} \PYG{o}{+} \PYG{n}{TEMP}\PYG{p}{.}\PYG{n}{Re}\PYG{p}{);}
+					\PYG{n}{pHi}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Im} \PYG{o}{=} \PYG{p}{(}\PYG{n}{pHi}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Im} \PYG{o}{+} \PYG{n}{TEMP}\PYG{p}{.}\PYG{n}{Im}\PYG{p}{);}
+				\PYG{p}{\PYGZcb{}}
+				\PYG{k}{else}
+				\PYG{p}{\PYGZob{}}
+					\PYG{n}{TEMP}\PYG{p}{.}\PYG{n}{Re} \PYG{o}{=} \PYG{n}{pLo}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Re}\PYG{p}{;}
+					\PYG{n}{TEMP}\PYG{p}{.}\PYG{n}{Im} \PYG{o}{=} \PYG{n}{pLo}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Im}\PYG{p}{;}
+					
+					\PYG{n}{pLo}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Re} \PYG{o}{=} \PYG{n}{pHi}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Re} \PYG{o}{\PYGZhy{}} \PYG{n}{TEMP}\PYG{p}{.}\PYG{n}{Re}\PYG{p}{;}
+					\PYG{n}{pLo}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Im} \PYG{o}{=} \PYG{n}{pHi}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Im} \PYG{o}{\PYGZhy{}} \PYG{n}{TEMP}\PYG{p}{.}\PYG{n}{Im}\PYG{p}{;}
+					
+					\PYG{n}{pHi}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Re} \PYG{o}{=} \PYG{p}{(}\PYG{n}{pHi}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Re} \PYG{o}{+} \PYG{n}{TEMP}\PYG{p}{.}\PYG{n}{Re}\PYG{p}{);}
+					\PYG{n}{pHi}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Im} \PYG{o}{=} \PYG{p}{(}\PYG{n}{pHi}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Im} \PYG{o}{+} \PYG{n}{TEMP}\PYG{p}{.}\PYG{n}{Im}\PYG{p}{);}
+				\PYG{p}{\PYGZcb{}}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{n}{pLo} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{n}{pHi} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{n}{pDFT} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{n}{DFT} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{n}{pX} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

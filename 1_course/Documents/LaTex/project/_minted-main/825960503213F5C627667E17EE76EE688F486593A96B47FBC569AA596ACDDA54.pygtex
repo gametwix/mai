@@ -1,0 +1,29 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{public} \PYG{k}{class} \PYG{n+nc}{BubbleSort} \PYG{p}{\PYGZob{}}
+	\PYG{k}{public} \PYG{k}{static} \PYG{k+kt}{void} \PYG{n}{SortBubble}\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{[]} \PYG{n}{input}\PYG{p}{)}\PYG{c+c1}{//поступает массив}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{for} \PYG{p}{(}\PYG{n}{var} \PYG{n}{i} \PYG{o}{=} \PYG{n}{input}\PYG{p}{.}\PYG{n}{Length} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)}\PYG{c+cm}{/*повторять на 1 раз меньше}
+\PYG{c+cm}{		размера массива*/}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k}{for} \PYG{p}{(}\PYG{n}{var} \PYG{n}{j} \PYG{o}{=} \PYG{n}{input}\PYG{p}{.}\PYG{n}{Length} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)}\PYG{c+cm}{/*от первого элемента}
+\PYG{c+cm}{			до (размер массива\PYGZhy{}1)\PYGZhy{}го элемента*/}
+			\PYG{p}{\PYGZob{}}
+				\PYG{k}{if} \PYG{p}{(}\PYG{n}{input}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{\PYGZlt{}=} \PYG{n}{input}\PYG{p}{[}\PYG{n}{j} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{])} \PYG{k}{continue}\PYG{p}{;}\PYG{c+cm}{/*если значение}
+\PYG{c+cm}{				последующего элемента больше*/}
+				\PYG{n}{var} \PYG{n}{temp} \PYG{o}{=} \PYG{n}{input}\PYG{p}{[}\PYG{n}{j} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{];}\PYG{c+cm}{/*запоминаем значение}
+\PYG{c+cm}{				последующего элемента*/}
+				\PYG{c+c1}{//заменяем}
+				\PYG{n}{input}\PYG{p}{[}\PYG{n}{j} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{input}\PYG{p}{[}\PYG{n}{j}\PYG{p}{];}
+				\PYG{n}{input}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{temp}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+
+	\PYG{k}{public} \PYG{k}{static} \PYG{k+kt}{int}\PYG{p}{[]} \PYG{n}{Main}\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{[]} \PYG{n}{input}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{c+c1}{//вызов функции}
+		\PYG{n}{SortBubble}\PYG{p}{(}\PYG{n}{input}\PYG{p}{);}
+		\PYG{k}{return} \PYG{n}{input}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+ \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

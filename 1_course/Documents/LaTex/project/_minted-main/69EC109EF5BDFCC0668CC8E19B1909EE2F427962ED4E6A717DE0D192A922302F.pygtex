@@ -1,0 +1,35 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{defmodule} \PYG{n}{Selection} \PYG{k}{do}
+
+	\PYG{n}{def} \PYG{n}{sort}\PYG{p}{(}\PYG{n}{list}\PYG{p}{)} \PYG{n}{when} \PYG{n}{is\PYGZus{}list}\PYG{p}{(}\PYG{n}{list}\PYG{p}{)} \PYG{k}{do}
+		\PYG{n}{do\PYGZus{}selection}\PYG{p}{(}\PYG{n}{list}\PYG{p}{,} \PYG{p}{[])}
+	\PYG{n}{end}
+	
+	\PYG{n}{def} \PYG{n}{do\PYGZus{}selection}\PYG{p}{([}\PYG{n}{head}\PYG{o}{|}\PYG{p}{[]],} \PYG{n}{acc}\PYG{p}{)} \PYG{k}{do}
+		\PYG{n}{acc} \PYG{o}{++} \PYG{p}{[}\PYG{n}{head}\PYG{p}{]}
+	\PYG{n}{end}
+	
+	\PYG{n}{def} \PYG{n}{do\PYGZus{}selection}\PYG{p}{(}\PYG{n}{list}\PYG{p}{,} \PYG{n}{acc}\PYG{p}{)} \PYG{k}{do}
+		\PYG{n}{min} \PYG{o}{=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{list}\PYG{p}{)}
+		\PYG{n}{do\PYGZus{}selection}\PYG{p}{(}\PYG{o}{:}\PYG{n}{lists}\PYG{p}{.}\PYG{n}{delete}\PYG{p}{(}\PYG{n}{min}\PYG{p}{,} \PYG{n}{list}\PYG{p}{),} \PYG{n}{acc} \PYG{o}{++} \PYG{p}{[}\PYG{n}{min}\PYG{p}{])}
+	\PYG{n}{end}
+	
+	\PYG{n}{defp} \PYG{n}{min}\PYG{p}{([}\PYG{n}{first}\PYG{o}{|}\PYG{p}{[}\PYG{n}{second}\PYG{o}{|}\PYG{p}{[]]])} \PYG{k}{do}
+		\PYG{n}{smaller}\PYG{p}{(}\PYG{n}{first}\PYG{p}{,} \PYG{n}{second}\PYG{p}{)}
+	\PYG{n}{end}
+	
+	\PYG{n}{defp} \PYG{n}{min}\PYG{p}{([}\PYG{n}{first}\PYG{o}{|}\PYG{p}{[}\PYG{n}{second}\PYG{o}{|}\PYG{n}{tail}\PYG{p}{]])} \PYG{k}{do}
+		\PYG{n}{min}\PYG{p}{([}\PYG{n}{smaller}\PYG{p}{(}\PYG{n}{first}\PYG{p}{,} \PYG{n}{second}\PYG{p}{)}\PYG{o}{|}\PYG{n}{tail}\PYG{p}{])}
+	\PYG{n}{end}
+	
+	\PYG{n}{defp} \PYG{n}{smaller}\PYG{p}{(}\PYG{n}{e1}\PYG{p}{,} \PYG{n}{e2}\PYG{p}{)} \PYG{k}{do}
+		\PYG{k}{if} \PYG{n}{e1} \PYG{o}{\PYGZlt{}=} \PYG{n}{e2} \PYG{k}{do}
+		  \PYG{n}{e1}
+		\PYG{k}{else}
+		  \PYG{n}{e2}
+		\PYG{n}{end}
+	\PYG{n}{end}
+\PYG{n}{end}
+\PYG{n}{Selection}\PYG{p}{.}\PYG{n}{sort}\PYG{p}{([}\PYG{l+m+mi}{100}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{l+m+mi}{9}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{])}
+\PYG{o}{|\PYGZgt{}} \PYG{n}{IO}\PYG{p}{.}\PYG{n}{inspect}
+\end{Verbatim}

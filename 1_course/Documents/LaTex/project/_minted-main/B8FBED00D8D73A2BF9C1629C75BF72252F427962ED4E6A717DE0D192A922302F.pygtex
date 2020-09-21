@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{d}\PYG{p}{[}\PYG{n}{A}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{10}
+\PYG{n}{d}\PYG{p}{[}\PYG{n}{B}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{25}
+\end{Verbatim}

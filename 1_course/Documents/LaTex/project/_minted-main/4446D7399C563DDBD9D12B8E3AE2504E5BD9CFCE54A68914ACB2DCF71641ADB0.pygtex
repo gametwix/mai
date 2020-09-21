@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{let} \PYG{n}{str1} \PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}stackoverflow\PYGZsq{}}\PYG{p}{;}
+\PYG{n}{let} \PYG{n}{str2} \PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}flowerovstack\PYGZsq{}}\PYG{p}{;}
+\end{Verbatim}

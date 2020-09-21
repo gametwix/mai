@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+ch}{\PYGZsh{}!/usr/bin/python}
+
+\PYG{n}{input\PYGZus{}list} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{11}\PYG{p}{]}\PYG{c+c1}{\PYGZsh{}создание массива}
+
+\PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{input\PYGZus{}list}\PYG{p}{)):}\PYG{c+c1}{\PYGZsh{}повторять n раз, где n \PYGZhy{} кол\PYGZhy{}во элементов}
+	\PYG{c+c1}{\PYGZsh{}в массиве}
+	\PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{i}\PYG{p}{):}\PYG{c+c1}{\PYGZsh{}для всех всех элементов}
+		\PYG{k}{if} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{input\PYGZus{}list}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])} \PYG{o}{\PYGZgt{}} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{input\PYGZus{}list}\PYG{p}{[}\PYG{n}{j}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]):}\PYG{c+c1}{\PYGZsh{}если значение последующего}
+			\PYG{c+c1}{\PYGZsh{}элемента больше перестановка значений местами}
+			\PYG{n}{input\PYGZus{}list}\PYG{p}{[}\PYG{n}{j}\PYG{p}{],}\PYG{n}{input\PYGZus{}list}\PYG{p}{[}\PYG{n}{j}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{input\PYGZus{}list}\PYG{p}{[}\PYG{n}{j}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{],}\PYG{n}{input\PYGZus{}list}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}
+
+\PYG{n+nb}{print} \PYG{n}{input\PYGZus{}list} \PYG{c+c1}{\PYGZsh{}вывод отсортированного массива}
+\end{Verbatim}

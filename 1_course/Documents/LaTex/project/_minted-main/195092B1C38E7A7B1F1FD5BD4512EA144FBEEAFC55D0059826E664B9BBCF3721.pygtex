@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{dichotomic}\PYG{o}{\PYGZhy{}}\PYG{n}{search}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{T}\PYG{p}{,}\PYG{n}{p}\PYG{p}{,}\PYG{n}{r}\PYG{p}{)}
+	\PYG{c+c1}{\PYGZsh{}позиция наименьшего элемента массива}
+	\PYG{n}{inf} \PYG{o}{=} \PYG{n}{p}
+	\PYG{c+c1}{\PYGZsh{}позиция наименьшего элемента массива}
+	\PYG{n}{sup} \PYG{o}{=} \PYG{n+nb}{max}\PYG{p}{(}\PYG{n}{p}\PYG{p}{,}\PYG{n}{r}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}
+	\PYG{c+c1}{\PYGZsh{}пока позиция наименьшего элемента меньше позиции наибольшего}
+	\PYG{k}{while} \PYG{n}{inf}\PYG{o}{\PYGZlt{}}\PYG{n}{sup}
+		\PYG{c+c1}{\PYGZsh{}находим середину отрезка между наименьшим и наибольшим элементом}
+		\PYG{n}{half} \PYG{o}{=} \PYG{n}{floor}\PYG{p}{((}\PYG{n}{inf}\PYG{o}{+}\PYG{n}{sup}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{)}
+		\PYG{c+c1}{\PYGZsh{}если ключ поиска меньше или равен значению середины отрезка}
+		\PYG{k}{if} \PYG{n}{x}\PYG{o}{\PYGZlt{}=}\PYG{n}{T}\PYG{p}{[}\PYG{n}{half}\PYG{p}{]}
+			\PYG{c+c1}{\PYGZsh{}приравниваем супремум положению среднего лимента}
+			\PYG{n}{sup} \PYG{o}{=} \PYG{n}{half}
+		\PYG{k}{else}
+			\PYG{c+c1}{\PYGZsh{}иначе, приравниваем инфимум положению среднего элемента}
+			\PYG{n}{inf} \PYG{o}{=} \PYG{n}{half}\PYG{o}{+}\PYG{l+m+mi}{1}
+	\PYG{k}{return} \PYG{n}{sup}
+\end{Verbatim}

@@ -1,0 +1,56 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include}\PYG{c+cpf}{\PYGZlt{}iostream\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{c+cpf}{\PYGZlt{}queue\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{c+cpf}{\PYGZlt{}malloc.h\PYGZgt{}}
+\PYG{n}{using} \PYG{n}{namespace} \PYG{n}{std}\PYG{p}{;}
+\PYG{k}{struct} \PYG{n}{node}\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{data}\PYG{p}{;}
+	\PYG{n}{node} \PYG{o}{*}\PYG{n}{left}\PYG{p}{;}
+	\PYG{n}{node} \PYG{o}{*}\PYG{n}{right}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+\PYG{k+kt}{void} \PYG{n+nf}{levelOrder}\PYG{p}{(}\PYG{k}{struct} \PYG{n}{node} \PYG{o}{*}\PYG{n}{root}\PYG{p}{)\PYGZob{}}
+
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{root} \PYG{o}{==} \PYG{n+nb}{NULL}\PYG{p}{)} \PYG{k}{return}\PYG{p}{;}
+
+	\PYG{n}{queue}\PYG{o}{\PYGZlt{}}\PYG{n}{node} \PYG{o}{*\PYGZgt{}} \PYG{n}{Q}\PYG{p}{;}
+	\PYG{n}{Q}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{root}\PYG{p}{);}
+
+	\PYG{k}{while}\PYG{p}{(}\PYG{o}{!}\PYG{n}{Q}\PYG{p}{.}\PYG{n}{empty}\PYG{p}{())\PYGZob{}}
+		\PYG{k}{struct} \PYG{n}{node}\PYG{o}{*} \PYG{n}{curr} \PYG{o}{=} \PYG{n}{Q}\PYG{p}{.}\PYG{n}{front}\PYG{p}{();}
+		\PYG{n}{cout}\PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{curr}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data} \PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{;}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{curr}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left} \PYG{o}{!=} \PYG{n+nb}{NULL}\PYG{p}{)} \PYG{n}{Q}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{curr}\PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{left}\PYG{p}{);}
+			\PYG{k}{if}\PYG{p}{(}\PYG{n}{curr}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right} \PYG{o}{!=} \PYG{n+nb}{NULL}\PYG{p}{)} \PYG{n}{Q}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{curr}\PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{right}\PYG{p}{);}
+				\PYG{n}{Q}\PYG{p}{.}\PYG{n}{pop}\PYG{p}{();}
+
+
+		\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{k}{struct} \PYG{n}{node}\PYG{o}{*} \PYG{n+nf}{newNode}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{data}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{struct} \PYG{n}{node}\PYG{o}{*} \PYG{n}{node} \PYG{o}{=} \PYG{p}{(}\PYG{k}{struct} \PYG{n}{node}\PYG{o}{*}\PYG{p}{)}
+						\PYG{n}{malloc}\PYG{p}{(}\PYG{k}{sizeof}\PYG{p}{(}\PYG{k}{struct} \PYG{n}{node}\PYG{p}{));}
+	\PYG{n}{node}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data} \PYG{o}{=} \PYG{n}{data}\PYG{p}{;}
+	\PYG{n}{node}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left} \PYG{o}{=} \PYG{n+nb}{NULL}\PYG{p}{;}
+	\PYG{n}{node}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right} \PYG{o}{=} \PYG{n+nb}{NULL}\PYG{p}{;}
+
+	\PYG{k}{return}\PYG{p}{(}\PYG{n}{node}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()\PYGZob{}}
+
+	\PYG{k}{struct} \PYG{n}{node} \PYG{o}{*}\PYG{n}{root} \PYG{o}{=} \PYG{n}{newNode}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+	\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left} \PYG{o}{=} \PYG{n}{newNode}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}
+	\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right} \PYG{o}{=} \PYG{n}{newNode}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{);}
+	\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left} \PYG{o}{=} \PYG{n}{newNode}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{);}
+	\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right} \PYG{o}{=} \PYG{n}{newNode}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{);}
+	\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left} \PYG{o}{=} \PYG{n}{newNode}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{);}
+	\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right} \PYG{o}{=} \PYG{n}{newNode}\PYG{p}{(}\PYG{l+m+mi}{7}\PYG{p}{);}
+	
+	
+	\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Level Order traversal of binary tree is }\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{);}
+	\PYG{n}{levelOrder}\PYG{p}{(}\PYG{n}{root}\PYG{p}{);}
+
+	\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,584 @@
+% Моисеенков
+
+Как мы уже обсуждали ранее, BFS работает только для невзвешенных графов. Для взвешенных графов нам понадобится алгоритм Дейкстры. Для циклов с отрицательным ребром нам нужен алгоритм Беллмана-Форда. Опять же, этот алгоритм является алгоритмом кратчайшего пути из одного источника. Если нам нужно узнать расстояние от каждого узла до всех других узлов, нам понадобится алгоритм Флойда-Уоршелла.
+
+\section*{Раздел 41.3: Связные компоненты неориентированного графа с использованием BFS}
+
+\textbf{BFS} может использоваться для поиска связных компонент \href{https://mathinsight.org/definition/undirected_graph}{\underline{неориентированного графа}}. Мы также можем определить, связан ли данный граф или нет. Наше последующее обсуждение предполагает, что мы имеем дело с неориентированными графами. Определение связного графа:
+
+\vspace{\baselineskip}
+
+\pline{0.4}{Граф связен, если между каждой парой вершин есть путь.}
+
+\vspace{\baselineskip}
+
+Ниже приведен \textbf{связный граф}.
+
+\begin{center}
+    \includeimage{0.8}{images/202_1.pdf}
+\end{center}
+
+Следующий граф не связан и имеет 2 компоненты связности:
+
+\begin{enumerate}
+    \item Компонента связности 1: {a, b, c, d, e}
+    \item Компонента связности 2: {f}
+\end{enumerate}
+
+\begin{center}
+    \includeimage{0.8}{images/203_1.pdf}
+\end{center}
+
+BFS - это алгоритм обхода графа. Таким образом, начиная со случайного исходного узла, если по завершении алгоритма все узлы посещены, то граф связен, в противном случае он не связен.
+
+\vspace{\baselineskip}
+
+Псевдокод для алгоритма.
+
+\begin{tcolorbox}
+\begin{minted}{C}
+boolean isConnected(Graph g)
+{
+    BFS(v)
+    if(allVisited(g))
+    {
+        return true;
+    }
+    else return false;
+}
+\end{minted}
+\end{tcolorbox}
+
+Реализация на С для определения того, связан ли ненаправленный граф или нет:
+
+\begin{tcolorbox}
+\begin{minted}{C}
+#include <stdio.h>
+#include <stdlib.h>
+#define MAXVERTICES 100
+
+void enqueue(int);
+int deque();
+int isConnected(char **graph, int noOfVertices);
+void BFS(char **graph, int vertex, int noOfVertices);
+int count = 0;
+
+struct node
+{
+    int v;
+    struct node *next;
+};
+
+typedef struct node Node;
+typedef struct node *Nodeptr;
+
+Nodeptr Qfront = NULL;
+Nodeptr Qrear = NULL;
+char *visited;
+
+int main()
+{
+    int n, e;
+    int i, j;
+    char **graph;
+    
+    printf("Enter number of vertices:");
+    scanf("%d", &n);
+    
+    if (n < 0 || n > MAXVERTICES)
+    {
+        fprintf(stderr, "Please enter a valid positive integer 
+                            from 1 to %d", MAXVERTICES);
+        return -1;
+    }
+    
+    graph = malloc(n * sizeof(char *));
+    visited = malloc(n * sizeof(char));
+    
+    for (i = 0; i < n; ++i)
+    {
+        graph[i] = malloc(n * sizeof(int));
+        visited[i] = 'N';
+        for (j = 0; j < n; ++j)
+            graph[i][j] = 0;
+    }
+    
+    printf("enter number of edges and then enter them in pairs:");
+    scanf("%d", &e);
+    
+    for (i = 0; i < e; ++i)
+    {
+        int u, v;
+        scanf("%d%d", &u, &v);
+        graph[u - 1][v - 1] = 1;
+        graph[v - 1][u - 1] = 1;
+    }
+    
+    if (isConnected(graph, n))
+        printf("The graph is connected");
+    else printf("The graph is NOT connected\n");
+}
+
+void enqueue(int vertex)
+{
+    if (Qfront == NULL)
+    {
+        Qfront = malloc(sizeof(Node));
+        Qfront->v = vertex;
+        Qfront->next = NULL;
+        Qrear = Qfront;
+    }
+    else
+    {
+        Nodeptr newNode = malloc(sizeof(Node));
+        newNode->v = vertex;
+        newNode->next = NULL;
+        Qrear->next = newNode;
+        Qrear = newNode;
+    }
+}
+
+int deque()
+{
+    if (Qfront == NULL)
+    {
+        printf("Q is empty, returning -1\n");
+        return -1;
+    }
+    else
+    {
+        int v = Qfront->v;
+        Nodeptr temp = Qfront;
+        if (Qfront == Qrear)
+        {
+            Qfront = Qfront->next;
+            Qrear = NULL;
+        }
+        else
+            Qfront = Qfront->next;
+        free(temp);
+        return v;
+    }
+}
+
+int isConnected(char **graph, int noOfVertices)
+{
+    int i;
+    
+    BFS(graph, 0, noOfVertices);
+    
+    for (i = 0; i < noOfVertices; ++i)
+        if (visited[i] == 'N')
+            return 0;
+    
+    return 1;
+}
+
+void BFS(char **graph, int v, int noOfVertices)
+{
+    int i, vertex;
+    visited[v] = 'Y';
+    enqueue(v);
+    while ((vertex = deque()) != -1)
+    {
+        for (i = 0; i < noOfVertices; ++i)
+            if (graph[vertex][i] == 1 && visites[i] == 'N')
+            {
+                enqueue(i);
+                visited[i] = 'Y';
+            }
+    }
+}
+\end{minted}
+\end{tcolorbox}
+
+Чтобы найти все связные компоненты неориентированного графа, нам нужно всего лишь добавить 2 строки кода в функцию BFS. Идея состоит в том, чтобы вызывать функцию BFS, пока все вершины не будут посещены.
+
+\vspace{\baselineskip}
+
+Строки, которые будут добавлены:
+
+\begin{tcolorbox}
+\begin{minted}{C}
+printf("\nConnected component %d\n", ++count);
+\end{minted}
+\end{tcolorbox}
+
+А также
+
+\begin{tcolorbox}
+\begin{minted}{C}
+printf("%d ", vertex + 1);
+add this as first line of while loop in BFS
+\end{minted}
+\end{tcolorbox}
+
+и еще мы определяем следующую функцию:
+
+\begin{tcolorbox}
+\begin{minted}{C}
+void listConnectedComponents(char **graph, int noOfVertices)
+{
+    int i;
+    for (i = 0; i < noOfVertices; ++i)
+    {
+        if (visited[i] == 'N')
+            BFS(graph, i, noOfVertices);
+    }
+}
+\end{minted}
+\end{tcolorbox}
+
+\chapter*{Глава 42: Поиск в глубину}
+\section*{Раздел 42.1: Введение в “поиск в глубину”}
+
+\href{https://vk.cc/9qUJs2}{\underline{Поиск в глубину}} - это алгоритм обхода или поиска структур данных дерева или графа. Каждый обход начинается с корня и исследует как можно дальше вдоль каждой ветви перед возвратом. Алгоритм поиска в глубину был исследован французским математиком 19-го века Шарлем Пьером Тремо как стратегия решения лабиринтов.
+
+\vspace{\baselineskip}
+
+Поиск в глубину - это систематический способ найти все вершины, достижимые из исходной вершины. Как и поиск в ширину, DFS (DFS - Поиск в глубину) пересекает связную компоненту данного графа и определяет остовное дерево. Основная идея поиска в глубину заключается в методическом исследовании каждого ребра. Мы начинаем с разных вершин по мере необходимости. Как только мы обнаруживаем вершину, DFS начинает исследовать ее (в отличие от BFS, которая помещает вершину в очередь, чтобы потом ее исследовать).
+
+\vspace{\baselineskip}
+
+Давайте посмотрим на пример. Мы пройдемся по этому графу:
+
+\begin{center}
+    \includeimage{0.5}{images/207_1.pdf}
+\end{center}
+
+Мы пройдемся по графу, следуя этим правилам:
+
+\begin{itemize}
+    \item Начнем с исходной вершины.
+    \item Ни один узел не будет посещен дважды.
+    \item Узлы, которые мы еще не посетили, будут окрашены в белый цвет.
+    \item Узел, который мы посетили, но не посетили все его дочерние узлы, будет окрашен в серый цвет.
+    \item Полностью пройденные узлы будут окрашены в черный цвет.
+\end{itemize}
+
+Давайте посмотрим на это шаг за шагом:
+
+\begin{center}
+\includeimage{0.65}{images/208_1.pdf} \\
+\includeimage{0.65}{images/208_2.pdf} \\
+\newpage
+\includeimage{0.65}{images/209_1.pdf} \\
+\includeimage{0.65}{images/209_2.pdf} \\
+\newpage
+\includeimage{0.65}{images/210_1.pdf} \\
+\end{center}
+
+\includeimage{0.65}{images/210_2.pdf}
+
+Мы видим одно важное и ключевое понятие - \textbf{обратное ребро}. Вы можете увидеть это. \textbf{5-1} называется обратным ребром. Это потому, что мы еще не закончили с \textbf{узлом-1}, поэтому переход от другого узла к \textbf{узлу-1} означает, что в графе есть цикл. В DFS, если мы можем перейти от одного серого узла к другому, мы можем быть уверены, что у графа есть цикл. Это один из способов обнаружения цикла в графе. В зависимости от \textbf{исходного} узла и порядка посещаемых нами узлов, мы можем найти все те ребра, которые являются \textbf{обратными}. Например: если бы мы сначала пошли в \textbf{5} из \textbf{1}, мы бы увидели, что \textbf{2-1} это обратное ребро.
+
+\vspace{\baselineskip}
+
+Ребро, которое мы берем, чтобы перейти от серого узла к белому узлу, называется \textbf{ребром дерева}. Если мы оставим только \textbf{ребра дерева} и удалим остальные, мы получим \textbf{DFS дерево}.
+
+\vspace{\baselineskip}
+
+В неориентированном графе, если мы можем посетить уже посещенный узел, это должно быть \textbf{обратное ребро}. Но для ориентированных графов мы должны проверить цвета. \textit{Если и только если мы можем перейти от одного серого узла к другому серому узлу, то это ребро называется обратным ребром.}
+
+\vspace{\baselineskip}
+
+В DFS мы также можем хранить временные метки для каждого узла, которые могут использоваться разными способами (например топологическая сортировка).
+
+\begin{enumerate}
+    \item Когда узел \textbf{v} меняется с белого на серый, время записывается в \textbf{d[v]}.
+    \item Когда узел \textbf{v} изменяется с серого на черный, время записывается в \textbf{f[v]}.
+\end{enumerate}
+
+\vspace{\baselineskip}
+
+Здесь \textbf{d[]} означает \textit{время обнаружения}, а \textbf{f[]} означает \textit{время окончания}. Наш псевдокод будет выглядеть так:
+
+\begin{tcolorbox}
+\begin{minted}{C}
+Procedure DFS(G):
+for each node u in V[G]
+    color[u] := white
+    parent[u] := NULL
+end for
+time := 0
+for each node u in V[G]
+    if color[u] == white
+        DFS-Visit(u)
+    end if
+end for
+
+Procedure DFS-Visit(u):
+color[u] := gray
+time := time + 1
+d[u] := time
+for each node v adjacent to u
+    if color[v] == white
+        parent[v] := u
+        DFS-Visit(v)
+    end if
+end for
+color[u] := black
+time := time + 1
+f[u] := time
+\end{minted}
+\end{tcolorbox}
+
+\textbf{Сложность}:
+
+\vspace{\baselineskip}
+
+Каждый узел и ребро посещаются один раз. Таким образом, сложность DFS составляет \textbf{O(V + E)}, где \textbf{V} обозначает количество узлов, а \textbf{E} обозначает количество ребер.
+
+\vspace{\baselineskip}
+
+Применение поиска в глубину:
+
+\begin{itemize}
+    \item Нахождение кратчайших путей между всеми вершинами неориентированного графа.
+    \item Обнаружение цикла в графе.
+    \item Нахождение пути.
+    \item Топологическая сортировка.
+    \item Проверка, является ли граф двудольным.
+    \item Нахождение компоненты сильной связности.
+    \item Решение головоломок с одним решением.
+\end{itemize}
+
+\chapter*{Глава 43: Хеш-функции}
+\section*{Раздел 43.1: Хеш-коды для общих типов в C\#}
+
+Хеш-коды, созданные методом {\usefont{T2A}{cmtt}{m}{n} GetHashCode()} для \href{https://vk.cc/atP5zf}{\underline{встроенных}} и общих типов C\# из пространства имен {\usefont{T2A}{cmtt}{m}{n} \textcolor{Blue}{System}}, показаны ниже.
+
+\vspace{\baselineskip}
+
+\href{https://vk.cc/atQsfj}{\underline{\textbf{Boolean}}}
+
+\vspace{\baselineskip}
+
+1, если значение истинно, в противном случае 0.
+
+\vspace{\baselineskip}
+
+\href{https://vk.cc/atQsma}{\underline{\textbf{Byte}}}, \href{https://vk.cc/atQsrb}{\underline{\textbf{UInt16}}}, \href{https://vk.cc/atQsuT}{\underline{\textbf{Int32}}}, \href{https://vk.cc/atQsxE}{\underline{\textbf{UInt32}}}, \href{https://vk.cc/atQsAL}{\underline{\textbf{Single}}}
+
+\vspace{\baselineskip}
+
+Значение (при необходимости приведено к Int32).
+
+\vspace{\baselineskip}
+
+\href{https://vk.cc/atQt16}{\underline{\textbf{SByte}}}
+
+\begin{tcolorbox}
+\begin{minted}{C}
+((int)m_value ^ (int)m_value << 8);
+\end{minted}
+\end{tcolorbox}
+
+\href{https://vk.cc/atQtak}{\underline{\textbf{Char}}}
+
+\begin{tcolorbox}
+\begin{minted}{C}
+((int)m_value ^ (int)m_value << 16);
+\end{minted}
+\end{tcolorbox}
+
+\href{https://vk.cc/atQte7}{\underline{\textbf{Int16}}}
+
+\begin{tcolorbox}
+\begin{minted}{C}
+((int)((ushort)m_value) ^ (((int)m_value << 16));
+\end{minted}
+\end{tcolorbox}
+
+\href{https://vk.cc/atQtNM}{\underline{\textbf{Int64}}}, \href{https://vk.cc/atQtRv}{\underline{\textbf{Double}}}
+
+\vspace{\baselineskip}
+
+Cложение по модулю 2 между нижними и верхними 32 битами 64-битного числа
+
+\begin{tcolorbox}
+\begin{minted}{C}
+(unchecked((int)((long)m_value)) ^ (int)(m_value >> 32));
+\end{minted}
+\end{tcolorbox}
+
+\href{https://vk.cc/atQu4j}{\underline{\textbf{UInt64}}}, \href{https://vk.cc/atQu6V}{\underline{\textbf{DateTime}}}, \href{https://vk.cc/atQua1}{\underline{\textbf{TimeSpan}}}
+
+\begin{tcolorbox}
+\begin{minted}{C}
+((int)m_value) ^ (int)(m_value >> 32);
+\end{minted}
+\end{tcolorbox}
+
+\href{https://vk.cc/atQugO}{\underline{\textbf{Decimal}}}
+
+\begin{tcolorbox}
+\begin{minted}{C}
+((((int *)&dbl([0]) & 0xFFFFFFF0) ^ ((int *)&dbl)[1];
+\end{minted}
+\end{tcolorbox}
+
+\href{https://vk.cc/atQuuJ}{\underline{\textbf{Object}}}
+
+\begin{tcolorbox}
+\begin{minted}{C}
+RuntimeHelpers.GetHashCode(this);
+\end{minted}
+\end{tcolorbox}
+
+В реализации по умолчанию используется \href{https://vk.cc/atQuBF}{\underline{\textbf{индекс блока синхронизации}}}.
+
+\vspace{\baselineskip}
+
+\href{https://vk.cc/atQuHi}{\underline{\textbf{String}}}
+
+\vspace{\baselineskip}
+
+Вычисление хеш-кода зависит от типа платформы (Win32 или Win64), возможности использования рандомизированного хеширования строк, режима отладки/выпуска. В случае платформы Win64:
+
+\begin{tcolorbox}
+\begin{minted}{C++}
+int hash1 = 5381;
+int hash2 = hash1;
+int c;
+char *s = src;
+while ((c = s[0]) != 0) {
+    hash1 = ((hash << 5) + hash1) ^ c;
+    c = s[1];
+    if (c == 0)
+        break;
+    hash2 = ((hash2 << 5) + hash2) ^ c;
+    s += 2;
+}
+return hash1 + (hash2 * 1566083941);
+\end{minted}
+\end{tcolorbox}
+
+\href{https://vk.cc/atQv0t}{\underline{\textbf{ValueType}}}
+
+\vspace{\baselineskip}
+
+Первое нестатическое поле ищет и получает хеш-код. Если тип не имеет нестатических полей, возвращается хеш-код типа. Хеш-код статического члена не может быть взят, потому что, если этот член имеет тот же тип, что и исходный тип, вычисление заканчивается бесконечным циклом.
+
+\vspace{\baselineskip}
+
+\href{https://vk.cc/atQv6U}{\underline{\textbf{Nullable<T>}}}
+
+\begin{tcolorbox}
+\begin{minted}{C}
+return hasValue ? value.GetHashCode() : 0;
+\end{minted}
+\end{tcolorbox}
+
+\href{https://vk.cc/atQvdQ}{\underline{\textbf{Array}}}
+
+\begin{tcolorbox}
+\begin{minted}{C}
+int ret = 0;
+for (int i = (Length >= 8 ? Length - 8 : 0); i < Length; i++)
+{
+    ret = ((ret << 5) + ret) ^ comparer.GetHashCode(GetValue(i));
+}
+\end{minted}
+\end{tcolorbox}
+
+\textbf{Ссылки}:
+
+\begin{itemize}
+    \item \href{https://vk.cc/atQvs1}{\underline{GitHub .Net Core CLR}}
+\end{itemize}
+
+\section*{Раздел 43.2: Введение в хеш-функции}
+
+Хэш-функция {\usefont{T2A}{cmtt}{m}{n} h()} - это произвольная функция, которая отображает данные {\usefont{T2A}{cmtt}{m}{n} x$\in$X} произвольного размера в значения {\usefont{T2A}{cmtt}{m}{n} y$\in$Y} фиксированного размера: {\usefont{T2A}{cmtt}{m}{n} y = h(x)}. Хорошие хэш-функции имеют следующие ограничения:
+
+\begin{itemize}
+    \item хеш-функции ведут себя как равномерное распределение
+    \item хеш-функции являются детерминированными. {\usefont{T2A}{cmtt}{m}{n} h(x)} всегда должен возвращать одно и то же значение для данного {\usefont{T2A}{cmtt}{m}{n} x}.
+    \item быстрый расчет (время выполнения O(1))
+\end{itemize}
+
+В общем случае размер хеш-функции меньше размера входных данных: {\usefont{T2A}{cmtt}{m}{n} |y| < |x|}. Хеш-функции необратимы или, другими словами, они могут привести к коллизии: $\exists x1,x2\in X, x1 \neq x2: h(x1) = h(x2)$. {\usefont{T2A}{cmtt}{m}{n} X} может быть конечным или бесконечным множеством, а {\usefont{T2A}{cmtt}{m}{n} Y} - конечным множеством.
+
+\vspace{\baselineskip}
+
+Хеш-функции используются во многих областях информатики, например, в разработке программного обеспечения, криптографии, базах данных, сетях, машинном обучении и так далее. Существует много различных типов хеш-функций с различными специфическими для домена свойствами.
+
+\vspace{\baselineskip}
+
+Часто хеш является целочисленным значением. В языках программирования существуют специальные методы для вычисления хеша. Например, в {\usefont{T2A}{cmtt}{m}{n}C\#} метод {\usefont{T2A}{cmtt}{m}{n} GetHashCode()} для всех типов возвращает значение {\usefont{T2A}{cmtt}{m}{n}Int32} (32-разрядное целое число). В {\usefont{T2A}{cmtt}{m}{n}Java} каждый класс предоставляет метод {\usefont{T2A}{cmtt}{m}{n}hashCode()}, который возвращает {\usefont{T2A}{cmtt}{m}{n} \textcolor{blue}{int}}. Каждый тип данных имеет собственные или определенные пользователем реализации.
+
+\vspace{\baselineskip}
+
+\textbf{Методы хеширования}
+
+\vspace{\baselineskip}
+
+Существует несколько подходов для определения хеш-функции. Без потери общности, пусть $x \in X = \{z \in Z : z \geq \textcolor{Purple}{0}\}$ - положительные целые числа. Часто {\usefont{T2A}{cmtt}{m}{n} m} - простое число (не слишком близкое к точной степени 2).
+
+\vspace{\baselineskip}
+
+\begin{tabular}{ll}
+\hspace{1cm} \textbf{Метод} & \hspace{3cm}\textbf{Хеш-функция} \\
+Метод деления & h(x) = x mod m \\
+Метод умножения & h(x) = \lfloor m (xA \: mod \: \textcolor{Purple}{1}) \rfloor, A \in \{z \in R: \textcolor{Purple}{0} < z < \textcolor{Purple}{1}\}
+\end{tabular}
+
+\vspace{\baselineskip}
+
+\textbf{Хеш-таблица}
+
+\vspace{\baselineskip}
+
+Хеш-функции, используемые в хеш-таблицах, используются для вычисления индекса в массиве слотов. Хеш-таблица - это структура данных для реализации словарей (структура ключ-значение). Хорошо реализованные хеш-таблицы имеют время O(1) для следующих операций: вставка, поиск и удаление данных по ключу. Несколько ключей могут хешироваться в одном и том же слоте. Есть два способа разрешения коллизии:
+
+\begin{enumerate}
+    \item Цепочка хешей: связанный список используется для хранения элементов с одинаковым значением хеша в слоте
+    \item Открытая адресация: в каждом слоте хранится ноль элементов или один элемент
+\end{enumerate}
+
+Следующие методы используются для вычисления последовательностей, необходимых для открытой адресации
+
+\vspace{\baselineskip}
+
+\begin{tabular}{ll}
+\hspace{2cm}\textbf{Метод} & \hspace{2cm}\textbf{Формула} \\
+Линейное зондирование & $h(x, i) = (h^{'}(x) + i) mod \: m$ \\
+Квадратичное зондирование & $h(x, i) = (h^{'}(x) + c1*i + c2*i^{ \wedge} 2) mod \: m$ \\
+Двойное хэширование & $h(x, i) = (h1(x) + i*h2(x)) mod \: m$
+\end{tabular}
+
+Где $i \in \{0, 1, \dots, m-1\}, h^{'}(x), h1(x), h2(x)$ - вспомогательные хеш-функции, c1, c2 - положительные вспомогательные постоянные.
+
+\textbf{Примеры}
+
+Пусть $x \in U\{1, 1000\}$, h = x mod m. В следующей таблице показаны значения хэша в составном и простом случаях. Текст, выделенный жирным шрифтом, указывает на те же значения хеша.
+
+\begin{tabular}{ccc}
+\textbf{x} & \textbf{m = 100 (составное)} & \textbf{m = 101 (простое)} \\
+723 & 23 & 16 \\
+103 & 3 & 2 \\
+738 & 38 & 31 \\
+292 & 92 & 90 \\
+61 & 61 & 61 \\
+87 & 87 & 87 \\
+995 & 95 & 86 \\
+549 & 49 & 44 \\
+991 & 91 & 82 \\
+757 & \textbf{57} & 50 \\
+920 & 20 & 11 \\
+626 & 26 & 20 \\
+557 & \textbf{57} & 52 \\
+831 & 31 & 23 \\
+619 & 19 & 13 \\
+\end{tabular}
+
+\vspace{\baselineskip}
+
+\textbf{Ссылки}:
+
+\begin{itemize}
+    \item Томас Х. Кормен, Чарльз Лейзерсон, Рональд Л. Ривест, Клиффорд Штайн. Введение в алгоритмы
+    \item \href{https://courses.csail.mit.edu/6.006/spring11/rec/rec05.pdf}{\underline{Обзор хэш-таблиц}}
+    \item \href{https://mathworld.wolfram.com/HashFunction.html}{\underline{Wolfram MathWorld - Хеш-функция}}
+\end{itemize}

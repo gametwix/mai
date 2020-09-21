@@ -1,0 +1,38 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{public} \PYG{k}{class} \PYG{n+nc}{BucketSort} \PYG{p}{\PYGZob{}}
+	\PYG{k}{public} \PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{SortBucket}\PYG{p}{(}\PYG{k}{ref} \PYG{k+kt}{int}\PYG{p}{[]} \PYG{n}{input}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{minValue} \PYG{p}{=} \PYG{n}{input}\PYG{p}{[}\PYG{l+m}{0}\PYG{p}{];} \PYG{c+c1}{// начальные пограничные значения}
+		\PYG{k+kt}{int} \PYG{n}{maxValue} \PYG{p}{=} \PYG{n}{input}\PYG{p}{[}\PYG{l+m}{0}\PYG{p}{];}
+		\PYG{k+kt}{int} \PYG{n}{k} \PYG{p}{=} \PYG{l+m}{0}\PYG{p}{;}
+		 \PYG{c+c1}{// обратный цикл по массиву}
+		\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{n}{input}\PYG{p}{.}\PYG{n}{Length} \PYG{p}{\PYGZhy{}} \PYG{l+m}{1}\PYG{p}{;} \PYG{n}{i} \PYG{p}{\PYGZgt{}=} \PYG{l+m}{1}\PYG{p}{;} \PYG{n}{i}\PYG{p}{\PYGZhy{}\PYGZhy{})} \PYG{p}{\PYGZob{}}
+			 \PYG{c+c1}{// поиск максимального и минимального значения}
+			\PYG{k}{if} \PYG{p}{(}\PYG{n}{input}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{\PYGZgt{}} \PYG{n}{maxValue}\PYG{p}{)}
+				\PYG{n}{maxValue} \PYG{p}{=} \PYG{n}{input}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+			\PYG{k}{if} \PYG{p}{(}\PYG{n}{input}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{\PYGZlt{}} \PYG{n}{minValue}\PYG{p}{)}
+				\PYG{n}{minValue} \PYG{p}{=} \PYG{n}{input}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+		\PYG{p}{\PYGZcb{}}
+		 \PYG{c+c1}{// объявление двойного массива индексов значений}
+		\PYG{n}{List}\PYG{p}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{p}{\PYGZgt{}[]} \PYG{n}{bucket} \PYG{p}{=} \PYG{k}{new} \PYG{n}{List}\PYG{p}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{p}{\PYGZgt{}[}\PYG{n}{maxValue} \PYG{p}{\PYGZhy{}} \PYG{n}{minValue} \PYG{p}{+} \PYG{l+m}{1}\PYG{p}{];}
+		\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{n}{bucket}\PYG{p}{.}\PYG{n}{Length} \PYG{p}{\PYGZhy{}} \PYG{l+m}{1}\PYG{p}{;} \PYG{n}{i} \PYG{p}{\PYGZgt{}=} \PYG{l+m}{0}\PYG{p}{;} \PYG{n}{i}\PYG{p}{\PYGZhy{}\PYGZhy{})} \PYG{p}{\PYGZob{}}
+			\PYG{n}{bucket}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{=} \PYG{k}{new} \PYG{n}{List}\PYG{p}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{p}{\PYGZgt{}();} \PYG{c+c1}{// объявление для индексов чисел}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{foreach} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{k}{in} \PYG{n}{input}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+			\PYG{n}{bucket}\PYG{p}{[}\PYG{n}{i} \PYG{p}{\PYGZhy{}} \PYG{n}{minValue}\PYG{p}{].}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{i}\PYG{p}{);} \PYG{c+c1}{// добавляем индексы ключа\PYGZhy{}значения}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{foreach} \PYG{p}{(}\PYG{n}{List}\PYG{p}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{p}{\PYGZgt{}} \PYG{n}{b} \PYG{k}{in} \PYG{n}{bucket}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+			\PYG{k}{if} \PYG{p}{(}\PYG{n}{b}\PYG{p}{.}\PYG{n}{Count} \PYG{p}{\PYGZgt{}} \PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+				 \PYG{c+c1}{// если элемент присутствует в подмассиве индексов}
+				\PYG{k}{foreach} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{t} \PYG{k}{in} \PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+					\PYG{n}{input}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{p}{=} \PYG{n}{b}\PYG{p}{[}\PYG{n}{t}\PYG{p}{];}	\PYG{c+c1}{// заполняем значениями в выходной массив}
+					\PYG{n}{k}\PYG{p}{++;}
+				\PYG{p}{\PYGZcb{}}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{public} \PYG{k}{static} \PYG{k+kt}{int}\PYG{p}{[]} \PYG{n+nf}{Main}\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{[]} \PYG{n}{input}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{n}{SortBucket}\PYG{p}{(}\PYG{k}{ref} \PYG{n}{input}\PYG{p}{);}	\PYG{c+c1}{// в функцию указатель на исходный массив}
+		\PYG{k}{return} \PYG{n}{input}\PYG{p}{;} \PYG{c+c1}{// значение изменилось на результат}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

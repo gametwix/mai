@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{function} \PYG{n+nf}{bubbleSort}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{k+kd}{var} \PYG{n}{swapped}\PYG{p}{;} \PYG{c+c1}{// флаг произошедшей рокировки}
+	\PYG{k}{do} \PYG{p}{\PYGZob{}}
+		\PYG{n}{swapped} \PYG{o}{=} \PYG{k+kc}{false}\PYG{p}{;} \PYG{c+c1}{// обнуление флага}
+		\PYG{k}{for} \PYG{p}{(}\PYG{k+kd}{var} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{a}\PYG{p}{.}\PYG{n+na}{length}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// проход по всему массиву}
+			\PYG{k}{if} \PYG{p}{(}\PYG{n}{a}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{a}\PYG{o}{[}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// если соседние элементы не по порядку}
+				\PYG{k+kd}{var} \PYG{n}{temp} \PYG{o}{=} \PYG{n}{a}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{p}{;} \PYG{c+c1}{// записываем элемент во временную переменную}
+				\PYG{n}{a}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]} \PYG{o}{=} \PYG{n}{a}\PYG{o}{[}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{;} \PYG{c+c1}{// меняем значения переменных местами}
+				\PYG{n}{a}\PYG{o}{[}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{o}{]} \PYG{o}{=} \PYG{n}{temp}\PYG{p}{;}
+				\PYG{n}{swapped} \PYG{o}{=} \PYG{k+kc}{true}\PYG{p}{;} \PYG{c+c1}{// рокировка произошла}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}} \PYG{k}{while} \PYG{p}{(}\PYG{n}{swapped}\PYG{p}{);} \PYG{c+c1}{// пока все элементы не по порядку}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kd}{var} \PYG{n}{a} \PYG{o}{=} \PYG{o}{[}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{203}\PYG{p}{,} \PYG{l+m+mi}{34}\PYG{p}{,} \PYG{l+m+mi}{746}\PYG{p}{,} \PYG{l+m+mi}{200}\PYG{p}{,} \PYG{l+m+mi}{984}\PYG{p}{,} \PYG{l+m+mi}{198}\PYG{p}{,} \PYG{l+m+mi}{764}\PYG{p}{,} \PYG{l+m+mi}{9}\PYG{o}{]}\PYG{p}{;} \PYG{c+c1}{// тестовый набор}
+\PYG{n}{bubbleSort}\PYG{p}{(}\PYG{n}{a}\PYG{p}{);}
+\PYG{c+c1}{// результат}
+\PYG{n}{console}\PYG{p}{.}\PYG{n+na}{log}\PYG{p}{(}\PYG{n}{a}\PYG{p}{);} \PYG{c+c1}{//logs [ 3, 9, 34, 198, 200, 203, 746, 764, 984 ]}
+\end{Verbatim}

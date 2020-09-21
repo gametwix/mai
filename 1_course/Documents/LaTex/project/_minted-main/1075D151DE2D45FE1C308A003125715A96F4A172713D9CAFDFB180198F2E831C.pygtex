@@ -1,0 +1,44 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public} \PYG{k+kd}{class} \PYG{n+nc}{MyBubbleSort} \PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{// функция сортировки пузырьком}
+	\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{bubble\PYGZus{}srt}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{array}\PYG{o}{[]}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{n} \PYG{o}{=} \PYG{n}{array}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{;} \PYG{c+c1}{// количество элементов}
+		\PYG{k+kt}{int} \PYG{n}{k}\PYG{p}{;}
+		\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{m} \PYG{o}{=} \PYG{n}{n}\PYG{p}{;} \PYG{n}{m} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{m}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// обратная итерация по массиву}
+			\PYG{c+c1}{// прямая итерация, без последнего элемента}
+			\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+				\PYG{c+c1}{// перебор по индексу k + i}
+				\PYG{n}{k} \PYG{o}{=} \PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;}
+				\PYG{c+c1}{// если соседние элементы не по порядку}
+				\PYG{k}{if} \PYG{p}{(}\PYG{n}{array}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{array}\PYG{o}{[}\PYG{n}{k}\PYG{o}{]}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+					\PYG{c+c1}{// меняем местами}
+					\PYG{n}{swapNumbers}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,} \PYG{n}{k}\PYG{p}{,} \PYG{n}{array}\PYG{p}{);}
+				\PYG{p}{\PYGZcb{}}
+			\PYG{p}{\PYGZcb{}}
+			\PYG{c+c1}{// выводим}
+			\PYG{n}{printNumbers}\PYG{p}{(}\PYG{n}{array}\PYG{p}{);}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{c+c1}{// функция перестановки двух чисел в массиве}
+	\PYG{k+kd}{private} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{swapNumbers}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{j}\PYG{p}{,} \PYG{k+kt}{int}\PYG{o}{[]} \PYG{n}{array}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{temp}\PYG{p}{;} \PYG{c+c1}{// буфер для временного значения}
+		\PYG{n}{temp} \PYG{o}{=} \PYG{n}{array}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{p}{;}
+		\PYG{n}{array}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]} \PYG{o}{=} \PYG{n}{array}\PYG{o}{[}\PYG{n}{j}\PYG{o}{]}\PYG{p}{;}
+		\PYG{n}{array}\PYG{o}{[}\PYG{n}{j}\PYG{o}{]} \PYG{o}{=} \PYG{n}{temp}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{c+c1}{// функция вывода массива}
+	\PYG{k+kd}{private} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{printNumbers}\PYG{p}{(}\PYG{k+kt}{int}\PYG{o}{[]} \PYG{n}{input}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{c+c1}{// итерация по всему массиву}
+		\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{input}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+			\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{n}{input}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]} \PYG{o}{+} \PYG{l+s}{\PYGZdq{}, \PYGZdq{}}\PYG{p}{);} \PYG{c+c1}{// вывод по элементно}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{main}\PYG{p}{(}\PYG{n}{String}\PYG{o}{[]} \PYG{n}{args}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{c+c1}{// тестовые данные	}
+		\PYG{k+kt}{int}\PYG{o}{[]} \PYG{n}{input} \PYG{o}{=} \PYG{p}{\PYGZob{}} \PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{9}\PYG{p}{,} \PYG{l+m+mi}{6}\PYG{p}{,} \PYG{l+m+mi}{23}\PYG{p}{,} \PYG{l+m+mi}{12}\PYG{p}{,} \PYG{l+m+mi}{34}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1} \PYG{p}{\PYGZcb{};}
+		\PYG{c+c1}{// заход в главную функцию}
+		\PYG{n}{bubble\PYGZus{}srt}\PYG{p}{(}\PYG{n}{input}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

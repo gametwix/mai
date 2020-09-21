@@ -1,0 +1,583 @@
+%Чернобаев
+
+\section*{Раздел 29.5: Реализация на Java}
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3,style = vs]{java}
+public class MyBubbleSort {
+  // функция сортировки пузырьком
+  public static void bubble_srt(int array[]) {
+    int n = array.length; // количество элементов
+    int k;
+    for (int m = n; m >= 0; m--) { // обратная итерация по массиву
+      // прямая итерация, без последнего элемента
+      for (int i = 0; i < n - 1; i++) {
+        // перебор по индексу k + i
+        k = i + 1;
+        // если соседние элементы не по порядку
+        if (array[i] > array[k]) {
+          // меняем местами
+          swapNumbers(i, k, array);
+        }
+      }
+      // выводим
+      printNumbers(array);
+    }
+  }
+  // функция перестановки двух чисел в массиве
+  private static void swapNumbers(int i, int j, int[] array) {
+    int temp; // буфер для временного значения
+    temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  // функция вывода массива
+  private static void printNumbers(int[] input) {
+    // итерация по всему массиву
+    for (int i = 0; i < input.length; i++) {
+      System.out.print(input[i] + ", "); // вывод по элементно
+    }
+    System.out.println("\n");
+  }
+  public static void main(String[] args) {
+    // тестовые данные  
+    int[] input = { 4, 2, 9, 6, 23, 12, 34, 0, 1 };
+    // заход в главную функцию
+    bubble_srt(input);
+  }
+}
+\end{minted}
+\end{tcolorbox}
+\section*{Раздел 29.6: Реализация на Javascript}
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3,style = vs]{java}
+function bubbleSort(a) {
+  var swapped; // флаг произошедшей рокировки
+  do {
+    swapped = false; // обнуление флага
+    for (var i=0; i < a.length-1; i++) { // проход по всему массиву
+      if (a[i] > a[i+1]) { // если соседние элементы не по порядку
+        var temp = a[i]; // записываем элемент во временную переменную
+        a[i] = a[i+1]; // меняем значения переменных местами
+        a[i+1] = temp;
+        swapped = true; // рокировка произошла
+      }
+    }
+  } while (swapped); // пока все элементы не по порядку
+}
+var a = [3, 203, 34, 746, 200, 984, 198, 764, 9]; // тестовый набор
+bubbleSort(a);
+// результат
+console.log(a); //logs [ 3, 9, 34, 198, 200, 203, 746, 764, 984 ]
+\end{minted}
+\end{tcolorbox}
+\newpage
+\chapter*{Глава 30: Сортировка слиянием}
+%\vspace{-1.1cm}
+\section*{Раздел 30.1: Основы сортировки слиянием}
+Сортировка слиянием - это алгоритм типа «разделяй и властвуй». Он делит входной список длиной n пополам до тех пор, пока не будет n списков размером 1. Затем пары списков объединяются вместе с меньшим первым элементом из пары списков, добавленных на каждом шагу. Посредством последовательного слияния и сравнения первых элементов создается отсортированный список.\\
+\textbf{Пример:}\\
+\\
+\includeimage{0.7}{images/154_1.pdf}\\
+\textbf{Временная сложность:}
+\colorbox{gray!6!white}{ \parbox{10em}{$T(n)= 2T(n/2) + \Theta(n)$}}\\
+\\
+Вышеуказанная рекуррентность может быть решена с использованием метода дерева рекурсивных вызовов или метода рекуррентных соотношений. Это относится к случаю II метода рекуррентных соотношений, и решение получается за $\theta(nLogn)$. Временная сложность сортировки слиянием составляет $\theta(nLogn)$ во всех 3 случаях (наихудший, средний и лучший), поскольку сортировка слиянием всегда делит массив на две половины и требует линейного времени для объединения двух половин.
+\\
+\textbf{Вспомогательное пространство:} \colorbox{gray!6!white}{ \parbox{2em}{O(n)}}\\
+\\
+\textbf{Алгоритмическая парадигма:} Разделяй и властвуй\\
+\\
+\textbf{Сортировка на месте:} Нетипичная реализация\\
+\\
+\textbf{Стабильно:} Да\\
+\section*{Раздел 30.2: Реализация сортировки слиянием на Go}
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3,style = vs]{go}
+package main
+import "fmt"
+func mergeSort(a []int) []int {
+  // базовый случай - один элемент в массиве - конечный результат
+  if len(a) < 2 {
+    return a
+  }
+  // медианный индекс
+  m := (len(a)) / 2
+  // левая часть массива
+  f := mergeSort(a[:m])
+  // правая часть
+  s := mergeSort(a[m:])
+  // возвращаем через рекурсию более мелкие части массива до 1 элемента
+  return merge(f, s)
+}
+func merge(f []int, s []int) []int {
+  var i, j int
+  // сумма сравниваемых частей массива
+  size := len(f) + len(s)
+  // выделяем память под результирующий массив
+  a := make([]int, size, size)
+  // итерация по всему массиву
+  for z := 0; z < size; z++ {
+    lenF := len(f) // длина первой части
+    lenS := len(s) // длина второй части
+    if i > lenF-1 && j <= lenS-1 { // элементов второго массива больше
+      a[z] = s[j] // присваиваем недостающий элемент
+      j++ 
+    } else if j > lenS-1 && i <= lenF-1 { // первый массив больше
+      a[z] = f[i] // присваиваем недостающий элемент
+      i++ 
+    } else if f[i] < s[j] { // элемент второго массива больше
+      a[z] = f[i] // присваиваем элемент первого
+      i++ // элемент первого массива больше
+    } else { 
+      a[z] = s[j] // присваиваем элемент второго
+      j++
+    }
+  }
+  return a // возвращаем результатирующий массив
+}
+func main() {
+  // тестовые 
+  a := []int{75, 12, 34, 45, 0, 123, 32, 56, 32, 99, 123, 11, 86, 33}
+  // вывод исходных данных
+  fmt.Println(a)
+  // вывод результата
+  fmt.Println(mergeSort(a))
+}
+\end{minted}
+\end{tcolorbox}
+\section*{Раздел 30.3: Реализация сортировки слиянием на C $\&$ C$\#$}
+\textbf{Сортировка слиянием на C}\\
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3,style = vs]{c}
+int merge(int arr[],int l,int m,int h) {
+  // Два временных массива для объединения
+  int arr1[10],arr2[10];   
+  int n1,n2,i,j,k;
+  n1=m-l+1; // длина левой части
+  n2=h-m; // длина правой части
+  for(i=0; i<n1; i++) // записываем в буфер левую часть
+    arr1[i]=arr[l+i];
+  for(j=0; j<n2; j++)
+    arr2[j]=arr[m+j+1]; // записываем в буфер правую часть
+  arr1[i]=9999; // отметить конец каждого временного массива
+  arr2[j]=9999;
+  i=0;pulseaudio -k && sudo alsa force-reload
+  j=0;
+  for(k=l; k<=h; k++) { // объединение двух отсортированных массивов
+    if(arr1[i]<=arr2[j]) // меньший элемент присваиваем результату
+      arr[k]=arr1[i++];
+    else
+      arr[k]=arr2[j++];
+  }
+  return 0;
+}
+int merge_sort(int arr[],int low,int high) {
+  int mid;
+  if(low<high) {
+    mid=(low+high)/2; // медианный индекс
+    // Разделение 
+    merge_sort(arr,low,mid); // на левую
+    merge_sort(arr,mid+1,high); // на правую
+    merge(arr,low,mid,high); // слияние 
+  }
+  return 0;
+}
+\end{minted}
+\end{tcolorbox}
+\\
+Сортировка Слиянием на C$\#$ \\
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3,style = vs]{csharp}
+public class MergeSort {
+  static void Merge(int[] input, int l, int m, int r) {
+    int i, j;
+    var n1 = m - l + 1; // длина левой части
+    var n2 = r - m; // длина правой части
+    var left = new int[n1]; // выделяем память под два массива
+    var right = new int[n2];
+    for (i = 0; i < n1; i++) {
+      left[i] = input[l + i]; // заполняем левыми элементами
+    }
+    for (j = 0; j < n2; j++) {
+      right[j] = input[m + j + 1]; // заполняем правыми элементами
+    }
+    i = 0;
+    j = 0;
+    var k = l;
+    while (i < n1 && j < n2) {
+      if (left[i] <= right[j]) { // элемент левого массива меньше
+        input[k] = left[i]; // заполняем им
+        i++;
+      }
+      else {
+        input[k] = right[j]; // иначе элемент правого массива
+        j++;
+      }
+      k++;
+    }
+     // один из следующих циклов будет пропущен
+    while (i < n1) { // остается добавить либо левую часть
+      input[k] = left[i];
+      i++;
+      k++;
+    }
+    while (j < n2) { // либо правую
+      input[k] = right[j];
+      j++;
+      k++;
+    }
+  }
+  static void SortMerge(int[] input, int l, int r) {
+    if (l < r) {
+      int m = l + (r - l) / 2; // медианный индекс
+      SortMerge(input, l, m); // рекурсивно разбиваем правую часть
+      SortMerge(input, m + 1, r); // рекурсивно разбиваем левую часть
+      Merge(input, l, m, r); // сливаем части
+    }
+  }
+  public static int[] Main(int[] input) {
+    SortMerge(input, 0, input.Length - 1);  // начало сортировки
+    return input;
+  }
+}
+\end{minted}
+\end{tcolorbox}
+\section*{Раздел 30.4: Реализация сортировки слиянием на Java}
+Ниже приводится реализация на Java с использованием обобщенного программирования. Это тот же алгоритм, который представлен выше.\\
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3,style = vs]{java}
+
+public interface InPlaceSort<T extends Comparable<T>> {
+  void sort(final T[] elements); // шаблон элементов массива
+}
+public class MergeSort < T extends Comparable < T >> implements InPlaceSort < T > {
+
+  @Override
+  public void sort(T[] elements) {
+     // объявляем сравниваемый массив
+    T[] arr = (T[]) new Comparable[elements.length];
+    // начинаем сортировку
+    sort(elements, arr, 0, elements.length - 1);
+  }
+  // Мы проверяем обе наши стороны и затем объединяем их
+  private void sort(T[] elements, T[] arr, int low, int high) {
+    if (low >= high) return; // в случае пустого массива
+    int mid = low + (high - low) / 2; // медианный элемент
+    sort(elements, arr, low, mid); // рекурсия левой части
+    sort(elements, arr, mid + 1, high); // рекурсия правой части
+    merge(elements, arr, low, high, mid); // слияние
+  }
+  private void merge(T[] a, T[] b, int low, int high, int mid) {
+    int i = low; // начало левого массива
+    int j = mid + 1; // начало правого массива
+    // выбираем самый меньший элемент из двух, помещаем в массив
+    for (int k = low; k <= high; k++) {
+      if (i <= mid && j <= high) {
+        if (a[i].compareTo(a[j]) >= 0) { // вычитание правого из левого
+          b[k] = a[j++];
+        } else { // иначе, левый элемент больше
+          b[k] = a[i++];
+        }
+      } else if (j > high && i <= mid) { // один из массивов закончился 
+        b[k] = a[i++];
+      } else if (i > mid && j <= high) {
+        b[k] = a[j++];
+      }
+    }
+    for (int n = low; n <= high; n++) {
+    a[n] = b[n]; // запись результата в первый массив 
+    }
+  }
+}
+\end{minted}
+\end{tcolorbox}
+\section*{Раздел 30.5: Реализация сортировки слиянием на Python}
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3,style = emacs]{python}
+def merge(X, Y):
+  " слияние двух отсортированных массивов "
+  p1 = p2 = 0
+  out = [] # конечный массив
+  while p1 < len(X) and p2 < len(Y):
+    if X[p1] < Y[p2]:
+      out.append(X[p1]) # записываем меньшие элементы из двух исходных
+      p1 += 1 # инкремент индекса
+    else:
+      out.append(Y[p2])
+      p2 += 1 # инкремент второго индекса
+  out += X[p1:] + Y[p2:] # запись остатка
+  return out
+def mergeSort(A):
+  if len(A) <= 1: # базовые случаи
+    return A
+  if len(A) == 2:
+    return sorted(A)
+  mid = len(A) / 2 # медианное значение
+  return merge(mergeSort(A[:mid]), mergeSort(A[mid:])) # рекурсия
+if __name__ == "__main__":
+   # генерируем 20 элементов тестовых данных
+  A = [randint(1, 100) for i in xrange(20)]  print mergeSort(A)
+\end{minted}
+\end{tcolorbox}
+\section*{Раздел 30.6: Реализация на Java метода восходящего слияния} 
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3,style = vs]{java}
+public class MergeSortBU {
+  // тестовые данные
+  private static Integer[] array = { 
+    4, 3, 1, 8, 9, 15, 20, 2, 5, 6, 30, 70,60,80,0,9,67,54,51,52,24,54,7     };
+  public MergeSortBU() {
+  }
+  private static void merge(Comparable[] arrayToSort, Comparable[] aux,     int lo,int mid, int hi) {
+   // делаем копию
+  for (int index = 0; index < arrayToSort.length; index++) {
+    aux[index] = arrayToSort[index];
+  }
+  int i = lo; // нижний индекс
+  int j = mid + 1; // медиана
+  for (int k = lo; k <= hi; k++) {
+    if (i > mid) // когда дошли до середины идним из массивов
+      arrayToSort[k] = aux[j++];
+    else if (j > hi)
+      arrayToSort[k] = aux[i++];
+     // выполняется сначала нижняя часть составных условий
+    else if (isLess(aux[i], aux[j])) {
+      // присваиваем меньший элемент, увеличиваем счетчик
+
+      arrayToSort[k] = aux[i++];
+    } else {
+      arrayToSort[k] = aux[j++];
+    }
+  }
+}
+public static void sort(Comparable[] arrayToSort, Comparable[] aux, int lo, int hi) {
+  int N = arrayToSort.length; // количество элементов
+   // цикл с шагом в два раза большим предыдущего
+  for (int sz = 1; sz < N; sz = sz + sz) {
+     // шаг больше на величину индекса, прошлого элемента
+    for (int low = 0; low < N; low = low + sz + sz) {
+      System.out.println("Size:"+ sz); // вывод размера
+       // слияние непересекающихся частей
+      merge(arrayToSort, aux, low, low + sz -1, Math.min(low + sz + sz - 1, N - 1));
+      print(arrayToSort); // вывод результата
+    }
+  }
+}
+public static boolean isLess(Comparable a, Comparable b) {
+  return a.compareTo(b) <= 0; // истина, если первый элемент меньше
+}
+private static void print(Comparable[] array) {
+  StringBuffer buffer = new StringBuffer(); // объявляем для копии
+    for (Comparable value : array) { // заполняем с пробелами
+      buffer.append(value);
+      buffer.append(' ');
+    }
+    System.out.println(buffer); // выводим копию
+  }
+  public static void main(String[] args) {
+     // объявляем обрабатываемый массив
+    Comparable[] aux = new Comparable[array.length];
+    print(array);
+    MergeSortBU.sort(array, aux, 0, array.length - 1);
+  }
+}
+\end{minted}
+\end{tcolorbox}
+\newpage
+\chapter*{Глава 31: Сортировка вставками } 
+%\vspace{-1.1cm}
+\section*{Раздел 31.1: Реализация на Haskell}
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3,style = emacs]{haskell}
+  -- делаем копию массива
+insertSort :: Ord a => [a] -> [a]
+insertSort [] = []
+-- перебор по исходному с присваиванием
+insertSort (x:xs) = insert x (insertSort xs)
+-- начало условия включения
+insert :: Ord a => a-> [a] -> [a]
+-- включить остаток массива
+insert n [] = [n]
+-- который меньше чем текущий
+insert n (x:xs) | n <= x = (n:x:xs)
+                -- иначе обратная часть
+                | otherwise = x:insert n xs
+\end{minted}
+\end{tcolorbox}
+
+
+\newpage
+\chapter*{Глава 32: Блочная сортировка} 
+%\vspace{-1.1cm}
+\section*{Раздел 32.1: Реализация на C$\#$}
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3,style = vs]{csharp}
+public class BucketSort {
+  public static void SortBucket(ref int[] input) {
+    int minValue = input[0]; // начальные пограничные значения
+    int maxValue = input[0];
+    int k = 0;
+     // обратный цикл по массиву
+    for (int i = input.Length - 1; i >= 1; i--) {
+       // поиск максимального и минимального значения
+      if (input[i] > maxValue) 
+        maxValue = input[i];
+      if (input[i] < minValue) 
+        minValue = input[i];
+    }
+     // объявление двойного массива индексов значений
+    List<int>[] bucket = new List<int>[maxValue - minValue + 1];
+    for (int i = bucket.Length - 1; i >= 0; i--) {
+      bucket[i] = new List<int>(); // объявление для индексов чисел
+    }
+    foreach (int i in input) {
+      bucket[i - minValue].Add(i); // добавляем индексы ключа-значения
+    }
+    foreach (List<int> b in bucket) {
+      if (b.Count > 0) {
+         // если элемент присутствует в подмассиве индексов
+        foreach (int t in b) {
+          input[k] = b[t];  // заполняем значениями в выходной массив
+          k++;
+        }
+      }
+    }
+  }
+  public static int[] Main(int[] input) {
+    SortBucket(ref input);  // в функцию указатель на исходный массив
+    return input; // значение изменилось на результат
+  }
+}
+\end{minted}
+\end{tcolorbox}
+
+\newpage
+\chapter*{Глава 33: Быстрая сортировка}
+%\vspace{-1.5cm}
+\section*{Раздел 33.1: Основы быстрой сортировки}
+%\vspace{-1cm}
+\href{https://en.wikipedia.org/wiki/Quicksort}{\underline{{Быстрая сортировка}}} - это алгоритм сортировки, который выбирает элемент («опорный элемент») и переупорядочивает массив, образуя два разбиения, так что все элементы, меньше опорного, идут перед ним, а все элементы с большим значением идут после него. Затем алгоритм рекурсивно применяется к разбиениям до тех пор, пока список не будет отсортирован.\\
+\\
+\textbf{1. Механизм схемы разбиения Ломуто:}\\
+\\
+Эта схема выбирает опорный элемент, который обычно является последним элементом в массиве. Алгоритм сохраняет индекс, чтобы поместить опорный элемент в переменную i, и каждый раз, когда он находит элемент, меньший или равный опорному элементу, этот индекс увеличивается, и этот элемент будет помещен перед опорным.
+\begin{tcolorbox}[breakable,enhanced,before upper={\parindent10pt}]
+\noindent partition(A, low, high) is\\
+pivot := A[high] // опорный элемент\\
+i := low // индекс начала\\
+for j := low to high - 1 do\\
+\indent if A[j] <= pivot then // если текущий элемент меньше опорного\\
+\indent\indent swap A[i] with A[j] // меняем их местами\\
+\indent\indent i := i + 1 // смещаем индекс начала\\
+swap A[i] with A[high]  // меняем последний элемент с обрабатываемым\\
+return i // возвращаем индекс обрабатываемого элемента\\
+\end{tcolorbox}
+\\
+Механизм быстрой сортировки:
+\begin{tcolorbox}[breakable,enhanced,before upper={\parindent10pt}]
+\noindent quicksort(A, low, high) is\\
+if low < high then // обработка в заданном диапазоне\\
+\indent p := partition(A, low, high) \\
+\indent quicksort(A, low, p - 1) // рекурсивный обход с левой частью\\
+\indent quicksort(A, p + 1, high) // с правой частью\\
+\end{tcolorbox}
+\\
+\textbf{Пример быстрой сортировки:}\\
+\includeimage{0.8}{images/164_1.pdf}\\
+\\
+\textbf{2. Схема разбиения Хоара:}\\
+\\
+Она использует два индекса, которые начинаются на концах разбиваемого массива, а затем движутся навстречу друг другу, пока не обнаружат инверсию: пара элементов, один из которых больше или равен опорному, другой меньше или равен опорному, и эта пара неправильно упорядочена относительно друг друга. Затем инвертированные элементы меняются местами. Когда индексы встречаются, алгоритм останавливается и возвращает конечный индекс. Схема Хоара более эффективна, чем схема разбиения Ломуто, потому что она делает в среднем в три раза меньше перестановок и создает эффективные разбиения, даже если все значения равны.\\
+\begin{tcolorbox}[breakable,enhanced,before upper={\parindent10pt}]
+\noindent quicksort(A, lo, hi) is\\
+if lo < hi then// обработка в заданном диапазоне\\
+\indent p := partition(A, lo, hi)\\
+\indent quicksort(A, lo, p) // рекурсивный обход с левой частью\\
+\indent quicksort(A, p + 1, hi) // с правой частью\\
+\end{tcolorbox}
+\\
+Разбиение :\\
+\\
+\begin{tcolorbox}[breakable,enhanced,before upper={\parindent10pt}]
+\noindent partition(A, lo, hi) is\\
+pivot := A[lo] // опорный первый элемент\\
+i := lo - 1\\
+j := hi + 1\\
+loop forever do:\\
+\indent i := i + 1 // прямой перебор, сдвигаем левую границу вправо\\
+\indent while A[i] < pivot do:  // пока меньше опорного\\
+\indent\indent j := j - 1 // сдвигаем правую границу влево\\
+\indent while A[j] > pivot do: // пока правый граничный больше опорного \\
+\indent\indent if i >= j then // если границы сомкнулись\\
+\indent\indent\indent return j // возвращаем граничный индекс элемента\\
+\indent swap A[i] with A[j] // меняем местами\\
+\end{tcolorbox}
+
+\section*{33.2: Реализация быстрой сортировки на Python}
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3,style = emacs]{python}
+def quicksort(arr):
+  if len(arr) <= 1: # базовый случай
+    return arr
+  pivot = arr[len(arr) / 2] # опорный элемент посередине
+  left = [x for x in arr if x < pivot] # все элементы, меньшие опорного
+  middle = [x for x in arr if x == pivot] # все равные опорному
+  right = [x for x in arr if x > pivot]  # все большие опорного
+  # рекурсивно обрабатываются две части
+  return quicksort(left) + middle + quicksort(right)
+
+print quicksort([3,6,8,10,1,2,1])
+\end{minted}
+\end{tcolorbox}
+\textbf{Печатает "[1, 1, 2, 3, 6, 8, 10]"}
+\section*{Раздел 33.3: Реализация разбиения Ломуто на Java}
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3,style = vs]{java}
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);  // вводим массив
+    int n = sc.nextInt();
+    int[] ar = new int[n]; // объявляем обрабатываемый массив
+    for(int i=0; i<n; i++)
+      ar[i] = sc.nextInt(); // заполняем
+    quickSort(ar, 0, ar.length-1);
+  }
+  public static void quickSort(int[] ar, int low, int high) {
+    if(low<high) { // если границы не сомкнулись
+      int p = partition(ar, low, high); // разбиваем с опорным элементом
+      quickSort(ar, 0 , p-1); // обработка левой части
+      quickSort(ar, p+1, high); // правой части
+    }
+  }
+  public static int partition(int[] ar, int l, int r) {
+    int pivot = ar[r]; // опорный последний элемент
+    int i = l;
+    for(int j=l; j<r; j++) {  // начиная слевой границы
+      if(ar[j] <= pivot) { // элемент меньше опорного
+        int t = ar[j]; // меняем местами текущий с опорным
+        ar[j] = ar[i];
+        ar[i] = t;
+        i++; // шаг для левой границы
+      }
+    }
+    int t = ar[i]; // смена местами
+    ar[i] = ar[r];
+    ar[r] = t;
+  return i;
+  }
+}
+\end{minted}
+\end{tcolorbox}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

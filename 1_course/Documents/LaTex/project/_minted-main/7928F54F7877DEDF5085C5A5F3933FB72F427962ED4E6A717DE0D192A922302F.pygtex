@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{txt}\PYG{p}{[]} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}THIS IS A TEST TEXT\PYGZdq{}}
+\PYG{n}{pat}\PYG{p}{[]} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}TEST\PYGZdq{}}
+\end{Verbatim}

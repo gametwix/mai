@@ -1,0 +1,22 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Procedure} \PYG{n}{Bellman}\PYG{o}{\PYGZhy{}}\PYG{n}{Ford}\PYG{p}{(}\PYG{n}{Graph}\PYG{p}{,} \PYG{n}{source}\PYG{p}{)}\PYG{o}{:}
+\PYG{n+nl}{n} \PYG{p}{:}\PYG{o}{=} \PYG{n}{number} \PYG{n}{of} \PYG{n}{vertices} \PYG{n}{in} \PYG{n}{Graph}
+\PYG{k}{for} \PYG{n}{i} \PYG{n}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{n}
+	\PYG{n}{d}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{:=} \PYG{n}{infinity}
+	\PYG{n}{parent}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{:=} \PYG{n+nb}{NULL}
+\PYG{n}{end} \PYG{k}{for}
+\PYG{n}{d}\PYG{p}{[}\PYG{n}{source}\PYG{p}{]} \PYG{o}{:=} \PYG{l+m+mi}{0}
+\PYG{k}{for} \PYG{n}{i} \PYG{n}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+	\PYG{n+nl}{flag} \PYG{p}{:}\PYG{o}{=} \PYG{n+nb}{false}
+	\PYG{k}{for} \PYG{n}{all} \PYG{n}{edges} \PYG{n}{from} \PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)} \PYG{n}{in} \PYG{n}{Graph}
+		\PYG{k}{if} \PYG{n}{d}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{+} \PYG{n}{cost}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{v}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{n}{d}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]}
+			\PYG{n}{d}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{:=} \PYG{n}{d}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{+} \PYG{n}{cost}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{v}\PYG{p}{]}
+			\PYG{n}{parent}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{:=} \PYG{n}{u}
+			\PYG{n+nl}{flag} \PYG{p}{:}\PYG{o}{=} \PYG{n+nb}{true}
+		\PYG{n}{end} \PYG{k}{if}
+	\PYG{n}{end} \PYG{k}{for}
+	\PYG{k}{if} \PYG{n}{flag} \PYG{o}{==} \PYG{n+nb}{false}
+		\PYG{k}{break}
+\PYG{n}{end} \PYG{k}{for}
+\PYG{n}{Return} \PYG{n}{d}
+\end{Verbatim}

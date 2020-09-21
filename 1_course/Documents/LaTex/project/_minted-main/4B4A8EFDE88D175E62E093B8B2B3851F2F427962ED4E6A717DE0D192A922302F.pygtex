@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{((}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{m\PYGZus{}value}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)(}\PYG{n}{m\PYGZus{}value} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{l+m+mi}{32}\PYG{p}{);}
+\end{Verbatim}

@@ -1,0 +1,68 @@
+\section*{Задание 1}
+Определить для орграфа, заданного матрицей смежности:
+\begin{enumerate}
+\item[a)]Матрицу односторонней связности;
+\item[б)]Матрицу сильной связности;
+\item[в)]Компоненты сильной связности;
+\item[г)]Матрицу контуров.
+\end{enumerate}
+
+$A = \begin{pmatrix}0 & 0 & 0 & 1 \\1 & 0 & 1 & 1\\0 & 0 & 0 & 1\\0 & 0 & 1 & 0\end{pmatrix}$
+
+\vspace{\baselineskip}
+
+{\large\textbf{Решение:}}
+
+\vspace{\baselineskip}
+
+а) Найдем матрицу односторонней связности по формуле: $T=E\vee A \vee A^2 \vee A^3$.
+
+\begin{enumerate}
+\item[1)]$A^2 = \begin{pmatrix}0 & 0 & 0 & 1 \\1 & 0 & 1 & 1\\0 & 0 & 0 & 1\\0 & 0 & 1 & 0\end{pmatrix}*\begin{pmatrix}0 & 0 & 0 & 1 \\1 & 0 & 1 & 1\\0 & 0 & 0 & 1\\0 & 0 & 1 & 0\end{pmatrix} = \begin{pmatrix}0 & 0 & 1 & 0 \\0 & 0 & 1 & 1\\0 & 0 & 1 & 0\\0 & 0 & 0 & 1\end{pmatrix}$
+
+\item[2)]$A^3 = \begin{pmatrix}0 & 0 & 1 & 0 \\0 & 0 & 1 & 1\\0 & 0 & 1 & 0\\0 & 0 & 0 & 1\end{pmatrix}*\begin{pmatrix}0 & 0 & 0 & 1 \\1 & 0 & 1 & 1\\0 & 0 & 0 & 1\\0 & 0 & 1 & 0\end{pmatrix} = \begin{pmatrix}0 & 0 & 0 & 1 \\0 & 0 & 1 & 1\\0 & 0 & 0 & 1\\0 & 0 & 1 & 0\end{pmatrix}$
+
+\item[3)]$T=E\vee A \vee A^2 \vee A^3=\begin{pmatrix}1 & 0 & 0 & 0 \\0 & 1 & 0 & 0\\0 & 0 & 1 & 0\\0 & 0 & 0 & 1\end{pmatrix} \vee \begin{pmatrix}0 & 0 & 0 & 1 \\1 & 0 & 1 & 1\\0 & 0 & 0 & 1\\0 & 0 & 1 & 0\end{pmatrix} \vee \begin{pmatrix}0 & 0 & 1 & 0 \\0 & 0 & 1 & 1\\0 & 0 & 1 & 0\\0 & 0 & 0 & 1\end{pmatrix} \vee \begin{pmatrix}0 & 0 & 0 & 1 \\0 & 0 & 1 & 1\\0 & 0 & 0 & 1\\0 & 0 & 1 & 0\end{pmatrix} = \newline=\begin{pmatrix}1 & 0 & 1 & 1 \\1 & 1 & 1 & 1\\0 & 0 & 1 & 1\\0 & 0 & 1 & 1\end{pmatrix} = T \text{ -- матрица односторонней связности}$ 
+\end{enumerate}
+
+б) Матрица сильной связности: $\overline{S} = T\&T^{T}$
+
+\vspace{\baselineskip}
+
+$\overline{S} = T\&T^{T} = \begin{pmatrix}1 & 0 & 1 & 1 \\1 & 1 & 1 & 1\\0 & 0 & 1 & 1\\0 & 0 & 1 & 1\end{pmatrix} \& \begin{pmatrix}1 & 1 & 0 & 0 \\0 & 1 & 0 & 0\\1 & 1 & 1 & 1\\1 & 1 & 1 & 1\end{pmatrix} = \begin{pmatrix}1 & 0 & 0 & 0 \\0 & 1 & 0 & 0\\0 & 0 & 1 & 1\\0 & 0 & 1 & 1\end{pmatrix}$
+
+\vspace{\baselineskip}
+
+в) Компоненты сильной связности
+
+Выбираем первую строку, как ненулевую в матрице сильной связности
+
+\vspace{\baselineskip}
+
+$\overline{S} = \begin{pmatrix}1 & 0 & 0 & 0 \\0 & 1 & 0 & 0\\0 & 0 & 1 & 1\\0 & 0 & 1 & 1\end{pmatrix}$
+
+\vspace{\baselineskip}
+
+Номера вершин первой компоненты сильной связности соответствуют номерам столбцов матрицы $\overline{S}$, в которых в первой строке стоят единицы: $\{\mathcal{V}_1\}$.
+
+\begin{enumerate}
+\item Обнуляем первый столбец матрицы $\overline{S}$. Получаем матрицу
+
+$\overline{S_1} = \begin{pmatrix}0 & 0 & 0 & 0 \\0 & 1 & 0 & 0\\0 & 0 & 1 & 1\\0 & 0 & 1 & 1\end{pmatrix}$
+
+\item Ищем ненулевую строку матрицы ${S_1}$: это вторая строка. Единица одна -- во втором столбце. Следовательно, вторая компонента сильной связности: $\{\mathcal{V}_2\}$.
+
+\item Обнуляем первый столбец матрицы $\overline{S_1}$. Получаем матрицу
+
+$\overline{S_2} = \begin{pmatrix}0 & 0 & 0 & 0 \\0 & 0 & 0 & 0\\0 & 0 & 1 & 1\\0 & 0 & 1 & 1\end{pmatrix}$
+
+\item Ищем ненулевую строку матрицы ${S_2}$: это третья строка. Единицы две -- в третьем и четвертом столбце. Следовательно, третья компонента сильной связности: $\{\mathcal{V}_3 , \mathcal{V}_4\}$.
+\end{enumerate}
+
+г) Матрица контуров: $K = \overline{S}\&A$.
+
+$$K = \begin{pmatrix}1 & 0 & 0 & 0 \\0 & 1 & 0 & 0\\0 & 0 & 1 & 1\\0 & 0 & 1 & 1\end{pmatrix}\&\begin{pmatrix}0 & 0 & 0 & 1 \\1 & 0 & 1 & 1\\0 & 0 & 0 & 1\\0 & 0 & 1 & 0\end{pmatrix} = \begin{pmatrix}0 & 0 & 0 & 0 \\0 & 0 & 0 & 0\\0 & 0 & 0 & 1\\0 & 0 & 1 & 0\end{pmatrix}$$
+
+Cлудовательно, дуги $<\mathcal{V}_3,\mathcal{V}_4>$,$<\mathcal{V}_4,\mathcal{V}_3>$ принадлежат контуру графа.
+
+\newpage

@@ -1,0 +1,26 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// сортировка по времени окончания в неубывающем порядке}
+\PYG{c+c1}{// первый цикл начиная с 2 элемента, второй \PYGZhy{}\PYGZhy{}\PYGZhy{} с 1 элемента}
+\PYG{k}{for} \PYG{n}{i} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{l+m+mi}{2} \PYG{n}{to} \PYG{n}{n}
+	\PYG{k}{for} \PYG{n}{j} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+		\PYG{c+c1}{// Если окончание работы раньше чем начало следующей}
+		\PYG{k}{if} \PYG{n}{Job}\PYG{o}{[}\PYG{n}{j}\PYG{o}{]}\PYG{p}{.}\PYG{n+na}{finish\PYGZus{}time} \PYG{o}{\PYGZlt{}=} \PYG{n}{Job}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{p}{.}\PYG{n+na}{start\PYGZus{}time}
+			\PYG{c+c1}{// и если накопленная выгода больше текущей, то}
+			\PYG{k}{if} \PYG{n}{Acc\PYGZus{}Prof}\PYG{o}{[}\PYG{n}{j}\PYG{o}{]} \PYG{o}{+} \PYG{n}{Profit}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{Acc\PYGZus{}Prof}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}
+				\PYG{c+c1}{// Изменяем текущую выгоду на накопленную}
+				\PYG{n}{Acc\PYGZus{}Prof}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]} \PYG{o}{=} \PYG{n}{Acc\PYGZus{}Prof}\PYG{o}{[}\PYG{n}{j}\PYG{o}{]} \PYG{o}{+} \PYG{n}{Profit}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}
+			\PYG{n}{endif}
+		\PYG{n}{endif}
+	\PYG{n}{endfor}
+\PYG{n}{endfor}
+
+\PYG{c+c1}{// ищем максимальную выгоду}
+\PYG{n}{maxProfit} \PYG{o}{=} \PYG{l+m+mi}{0}
+\PYG{k}{for} \PYG{n}{i} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{n}
+	\PYG{k}{if} \PYG{n}{maxProfit} \PYG{o}{\PYGZlt{}} \PYG{n}{Acc\PYGZus{}Prof}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}
+		\PYG{n}{maxProfit} \PYG{o}{=} \PYG{n}{Acc\PYGZus{}Prof}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}
+	\PYG{n}{endif}
+\PYG{n}{endfor}
+\PYG{c+c1}{// возвращаем максимальную выгоду}
+\PYG{k}{return} \PYG{n}{maxProfit}
+\end{Verbatim}

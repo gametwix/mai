@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// Depth\PYGZhy{}first search \PYGZhy{} поиск в глубину}
+\PYG{k+kt}{void} \PYG{n+nf}{dfs}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{node}\PYG{p}{,} \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}\PYGZgt{}*} \PYG{n}{graph}\PYG{p}{,} \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{bool}\PYG{o}{\PYGZgt{}*} \PYG{n}{visited}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{// проверить, был ли узел посещен ранее}
+	\PYG{k}{if}\PYG{p}{((}\PYG{o}{*}\PYG{n}{visited}\PYG{p}{)[}\PYG{n}{node}\PYG{p}{])}
+		\PYG{k}{return}\PYG{p}{;}
+
+	\PYG{c+cm}{/* установить как посещенный, чтобы избежать посещения одного и того же}
+\PYG{c+cm}{	узла дважды*/}
+	\PYG{p}{(}\PYG{o}{*}\PYG{n}{visited}\PYG{p}{)[}\PYG{n}{node}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
+
+	\PYG{c+c1}{// выполнить какое\PYGZhy{}то действие здесь}
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{node}\PYG{p}{;}
+
+	\PYG{c+c1}{// перейти к соседним узлам в глубину рекурсивно}
+	\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{o}{*}\PYG{n}{graph}\PYG{p}{)[}\PYG{n}{node}\PYG{p}{].}\PYG{n}{size}\PYG{p}{();} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+		\PYG{c+c1}{// запускаем рекурсивно для каждого узла}
+		\PYG{n}{dfs}\PYG{p}{((}\PYG{o}{*}\PYG{n}{graph}\PYG{p}{)[}\PYG{n}{node}\PYG{p}{][}\PYG{n}{i}\PYG{p}{],} \PYG{n}{graph}\PYG{p}{,} \PYG{n}{visited}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

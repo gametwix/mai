@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{algorithm} \PYG{n}{kruskalMST}\PYG{p}{(}\PYG{n}{G}\PYG{p}{:} \PYG{n}{a} \PYG{n}{graph}\PYG{p}{)}
+	\PYG{n}{sort} \PYG{n}{Gs} \PYG{n}{edges} \PYG{n}{by} \PYG{n}{their} \PYG{n}{value} \PYG{c+c1}{\PYGZsh{} отсортируем Gs ребра  по их значению}
+	\PYG{n}{MST} \PYG{o}{=} \PYG{n}{an} \PYG{n}{empty} \PYG{n}{graph} \PYG{c+c1}{\PYGZsh{} MST = пустой граф}
+	\PYG{k}{for} \PYG{n}{each} \PYG{n}{edge} \PYG{n}{e} \PYG{o+ow}{in} \PYG{n}{G}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} для каждого ребра в G:}
+		\PYG{k}{if} \PYG{n}{adding} \PYG{n}{e} \PYG{n}{to} \PYG{n}{MST} \PYG{n}{does} \PYG{o+ow}{not} \PYG{n}{create} \PYG{n}{a} \PYG{n}{cycle}\PYG{p}{:}
+\PYG{c+c1}{\PYGZsh{} если добавление e в MST не создает цикл:}
+			\PYG{n}{add} \PYG{n}{e} \PYG{n}{to} \PYG{n}{MST} \PYG{c+c1}{\PYGZsh{} добавим е к MST}
+    \PYG{k}{return} \PYG{n}{MST}
+\end{Verbatim}

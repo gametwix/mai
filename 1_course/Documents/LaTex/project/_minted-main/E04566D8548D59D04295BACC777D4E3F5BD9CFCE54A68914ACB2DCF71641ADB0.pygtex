@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} searchable\PYGZus{}list \PYGZhy{} поисковый список,}
+\PYG{c+c1}{\PYGZsh{} query \PYGZhy{} искомый элемент}
+\PYG{c+c1}{\PYGZsh{} Возвращает True, если элемент в списке есть, иначе False}
+\PYG{k}{def} \PYG{n+nf}{linear\PYGZus{}search}\PYG{p}{(}\PYG{n}{searchable\PYGZus{}list}\PYG{p}{,} \PYG{n}{query}\PYG{p}{):}
+\PYG{k}{for} \PYG{n}{x} \PYG{o+ow}{in} \PYG{n}{searchable\PYGZus{}list}\PYG{p}{:}
+\PYG{k}{if} \PYG{n}{query} \PYG{o}{==} \PYG{n}{x}\PYG{p}{:}
+\PYG{k}{return} \PYG{k+kc}{True}
+\PYG{k}{return} \PYG{k+kc}{False}
+\PYG{n}{linear\PYGZus{}search}\PYG{p}{([}\PYG{l+s+s1}{\PYGZsq{}apple\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}banana\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}carrot\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}fig\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}garlic\PYGZsq{}}\PYG{p}{],} \PYG{l+s+s1}{\PYGZsq{}fig\PYGZsq{}}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{}возвращает True}
+\end{Verbatim}

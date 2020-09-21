@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{\PYGZus{}Bool} \PYG{n+nf}{contains\PYGZus{}duplicates}\PYG{p}{(}\PYG{k}{const} \PYG{k+kt}{int} \PYG{o}{*}\PYG{n}{array}\PYG{p}{,} \PYG{k+kt}{size\PYGZus{}t} \PYG{n}{len}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{// \PYGZus{}Bool \PYGZhy{} возвращаемый тип функции}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{len} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{len}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+			\PYG{c+c1}{// цикл по очереди сравнивает каждый элемент кроме последнего}
+			\PYG{c+c1}{// со всеми эл\PYGZhy{}ами}
+			\PYG{k}{if} \PYG{p}{(}\PYG{n}{i} \PYG{o}{!=} \PYG{n}{j} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{array}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{n}{array}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+				\PYG{k}{return} \PYG{l+m+mi}{1}\PYG{p}{;}
+				\PYG{c+c1}{// возвращает 1, если вдруг находит равные элементы из}
+				\PYG{c+c1}{// разных ячеек массива}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

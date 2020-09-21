@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Procedure} \PYG{n}{LCSlength}\PYG{p}{(}\PYG{n}{s1}\PYG{p}{,} \PYG{n}{s2}\PYG{p}{)}\PYG{o}{:}
+\PYG{n}{Table}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{=}\PYG{l+m+mi}{0}
+\PYG{k}{for} \PYG{n}{i} \PYG{n}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{s1}\PYG{p}{.}\PYG{n}{length}
+	\PYG{n}{Table}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{n}{i}\PYG{p}{]}\PYG{o}{=}\PYG{l+m+mi}{0}
+\PYG{n}{endfor}
+\PYG{k}{for} \PYG{n}{i} \PYG{n}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{s2}\PYG{p}{.}\PYG{n}{length}
+	\PYG{n}{Table}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{=}\PYG{l+m+mi}{0}
+\PYG{n}{endfor}
+\PYG{k}{for} \PYG{n}{i} \PYG{n}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{s2}\PYG{p}{.}\PYG{n}{length}
+	\PYG{k}{for} \PYG{n}{j} \PYG{n}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{s1}\PYG{p}{.}\PYG{n}{length}
+		\PYG{k}{if} \PYG{n}{s2}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{n}{equals} \PYG{n}{to} \PYG{n}{s1}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}
+			\PYG{n}{Table}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]}\PYG{o}{=} \PYG{n}{Table}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{][}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{+}\PYG{l+m+mi}{1}
+		\PYG{k}{else}
+			\PYG{n}{Table}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]}\PYG{o}{=} \PYG{n}{max}\PYG{p}{(}\PYG{n}{Table}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{][}\PYG{n}{j}\PYG{p}{],} \PYG{n}{Table}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{])}
+		\PYG{n}{endif}
+	\PYG{n}{endfor}
+\PYG{n}{endfor}
+\PYG{n}{Return} \PYG{n}{Table}\PYG{p}{[}\PYG{n}{s2}\PYG{p}{.}\PYG{n}{length}\PYG{p}{][}\PYG{n}{s1}\PYG{p}{.}\PYG{n}{length}\PYG{p}{]}
+\end{Verbatim}

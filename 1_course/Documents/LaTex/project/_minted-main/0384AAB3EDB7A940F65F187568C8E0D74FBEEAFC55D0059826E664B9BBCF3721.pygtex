@@ -1,0 +1,22 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} C \PYGZhy{} это набор из n символов и соответствующей информации \PYGZsh{}}
+\PYG{n}{Procedure} \PYG{n}{Huffman}\PYG{p}{(}\PYG{n}{C}\PYG{p}{):}
+	\PYG{n}{n} \PYG{o}{=} \PYG{n}{C}\PYG{o}{.}\PYG{n}{size}
+	\PYG{n}{Q} \PYG{o}{=} \PYG{n}{priority\PYGZus{}queue}\PYG{p}{()}
+	\PYG{k}{for} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{n}
+		\PYG{n}{n} \PYG{o}{=} \PYG{n}{node}\PYG{p}{(}\PYG{n}{C}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])}
+		\PYG{n}{Q}\PYG{o}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)}
+	\PYG{n}{end} \PYG{k}{for}
+	\PYG{c+c1}{\PYGZsh{} пока размер информации не равен 1}
+	\PYG{k}{while} \PYG{n}{Q}\PYG{o}{.}\PYG{n}{size}\PYG{p}{()} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{n}{equal} \PYG{n}{to} \PYG{l+m+mi}{1}
+		\PYG{c+c1}{\PYGZsh{} создаем новый внутренний узел}
+	\PYG{n}{Z} \PYG{o}{=} \PYG{n}{new} \PYG{n}{node}\PYG{p}{()}
+	\PYG{c+c1}{\PYGZsh{} устанавливаем узлы в качестве потомков}
+	\PYG{n}{Z}\PYG{o}{.}\PYG{n}{left} \PYG{o}{=} \PYG{n}{x} \PYG{o}{=} \PYG{n}{Q}\PYG{o}{.}\PYG{n}{pop}
+	\PYG{n}{Z}\PYG{o}{.}\PYG{n}{right} \PYG{o}{=} \PYG{n}{y} \PYG{o}{=} \PYG{n}{Q}\PYG{o}{.}\PYG{n}{pop}
+	\PYG{c+c1}{\PYGZsh{} частота, равная сумме частот двух узлов}
+	\PYG{n}{Z}\PYG{o}{.}\PYG{n}{frequency} \PYG{o}{=} \PYG{n}{x}\PYG{o}{.}\PYG{n}{frequency} \PYG{o}{+} \PYG{n}{y}\PYG{o}{.}\PYG{n}{frequency}
+	\PYG{n}{Q}\PYG{o}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{Z}\PYG{p}{)}
+\PYG{n}{end} \PYG{k}{while}
+\PYG{n}{Return} \PYG{n}{Q}
+\end{Verbatim}

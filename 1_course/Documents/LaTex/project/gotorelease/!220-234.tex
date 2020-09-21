@@ -1,0 +1,913 @@
+%Арапов
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}     
+     while(!rootFound){
+        for(i=0; i<n; i++){        
+            Nx[i]=b[i];
+            
+            for(j=0; j<n; j++){
+                if(i!=j) Nx[i]= Nx[i]-a[i][j]*Nx[j];
+            }
+            x[i]= Nx[i]/ a[i][i];
+        }
+        
+        rootFound=1;                
+        for(i=0; i<n; i++){
+            if(!((Nx[i]-x[i])/x[i]>-0.000001&&(Nx[i]-x[i])/x[i]<0.000001)){
+                rootFound=0;
+                break;
+            }
+        }
+        
+        for(i=0; i<n; i++){        
+            x[i]=Nx[i];
+        }
+    }
+    
+    return ;
+}
+
+
+void print(int n, double x[n]){
+    int i;
+    for(i=0; i<n; i++){
+        rintf("%lf, ", x[i]);
+    }
+    printf("\n\n");
+    
+    return ;
+}
+
+int main(){
+    
+    int n=3;            
+    double x[n];        
+    double b[n],        
+        [n][n];         
+        
+    [0][0]=8; a[0][1]=2; a[0][2]=-2; b[0]=8;        //8x₁+2x₂-2x₃+8=0
+    a[1][0]=1; a[1][1]=-8; a[1][2]=3; b[1]=-4;      //x₁-8x₂+3x₃-4=0
+    a[2][0]=2; a[2][1]=1; a[2][2]=9; b[2]=12;       //2x₁+x₂+9x₃+12=0
+    
+    int i;
+    
+    for(i=0; i<n; i++){     
+        x[i]=0;
+    }
+    cobisMethod(n, x, b, a);
+    print(n, x);
+
+    for(i=0; i<n; i++){    
+        x[i]=0;
+    }
+    GaussSeidalMethod(n, x, b, a);
+    print(n, x);
+    
+    return 0;
+}
+
+\end{minted}
+\end{tcolorbox}
+\vspace{\baselineskip}
+\section*{Раздел 46.2: Нелинейное уравнение}
+Уравнение типа \tcbox[nobeforeafter, tcbox raise base]{f(x) = \p{0}} является алгебраическим или трансцендентным. Эти
+виды уравнений могут быть решены с использованием двух типов метода:
+\begin{enumerate}
+    \item \textbf{Прямой метод}: этот метод дает точное значение всех корней
+непосредственно за конечное число шагов.
+    \item \textbf{Косвенный или итерационный метод}: итерационный метод лучше всего
+подходит для компьютерных программ для решения уравнения. Он основан
+на концепции последовательного приближения. В итеративном методе есть
+два способа решить уравнение:
+    \begin{itemize}
+        \item[\circ]\textbf{Метод скобок}: мы берем две начальные точки такие, что корень лежит
+между ними. Например- биективный метод, метод ложного
+позиционирования.
+        \item[\circ]\textbf{Открытый метод}: мы берем одно или два начальных значения, что корень
+может быть где угодно. Например - метода Ньютона-Рафсона, метод
+последовательных приближений, метод секущих.
+    \end{itemize}
+\end{enumerate}
+\vspace{\baselineskip}
+Реализация в C:
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}     
+#define f(x) ( ((x)*(x)*(x)) - (x) - 2 )
+#define f2(x) ( (3*(x)*(x)) - 1 )
+#define g(x) ( cbrt( (x) + 2 ) )
+
+double BisectionMethod(){
+    double root=0;
+    
+    double a=1, b=2;
+    double c=0;
+
+    int loopCounter=0;
+    if(f(a)*f(b)<0){
+        while(1){
+            loopCounter++;
+            c=(a+b)/2;
+            
+            if(f(c)<0.00001 && f(c)>-0.00001){
+                root=c;
+                break;
+            }
+
+            if((f(a))*(f(c))<0){
+                b=c;
+            }else{
+                a=c;
+            }
+        }
+    }
+    printf("It took %d loops.\n", loopCounter);
+    
+    return root;
+}
+
+double FalsePosition(){
+    double root=0;
+    
+    double a=1, b=2;
+    double c=0;
+    
+    int loopCounter=0;
+    if(f(a)*f(b)<0){
+        while(1){
+            loopCounter++;
+            
+            c=(a*f(b)- b*f(a))/(f(b)- f(a));
+            
+            /*/printf("%lf\t %lf \n", c, f(c));/**////tes
+            if(f(c)<0.00001 && f(c)>-0.00001){
+                root=c;
+                break;
+            }
+
+            if((f(a))*(f(c))<0){
+                b=c;
+            }else{
+                a=c;
+            }
+        }
+    }
+    printf("It took %d loops.\n", loopCounter);
+    
+    return root;
+}
+
+double NewtonRaphson(){
+    double root=0;
+    
+    double x1=1;
+    double x2=0;
+    
+    int loopCounter=0;
+    while(1){
+        loopCounter++;
+        
+        x2 = x1 -(f(x1)/f2(x1));
+        /*/printf("%lf \t %lf \n", x2, f(x2));/**////test
+        
+        if(f(x2)<0.00001 && f(x2)>-0.00001){
+            root=x2;
+            break;
+        }
+        
+        x1=x2;
+    }
+    printf("It took %d loops.\n", loopCounter);
+    
+    return root;
+}
+
+double FixedPoint(){
+    double root=0;
+    double x=1;
+    
+    int loopCounter=0;
+    while(1){
+        loopCounter++;
+        
+        if((x-g(x))<0.00001 && (x-g(x))>-0.00001){
+            root = x;
+            break;
+        }
+        
+        /*/printf("%lf \t %lf \n", g(x), x-(g(x)));/**////test
+        
+        x=g(x);
+        
+        }
+        printf("It took %d loops.\n", loopCounter);
+        
+        return root;
+    }
+
+double Secant(){
+    double root=0;
+    
+    double x0=1;
+    double x1=2;
+    double x2=0;
+    
+    int loopCounter=0;
+    while(1){
+            loopCounter++;
+            
+            /*/printf("%lf \t %lf \t %lf \n", x0, x1, f(x1));/**////test
+            
+            if(f(x1)<0.00001 && f(x1)>-0.00001){
+                root=x1;
+                break;
+            }
+            
+            x2 =((x0*f(x1))-(x1*f(x0)))/(f(x1)-f(x0));
+            
+           x0=x1;
+           x1=x2;
+        }
+        printf("It took %d loops.\n", loopCounter);
+        
+        return root;
+    }
+    
+    int main(){
+    double root;
+    
+    root = BisectionMethod();
+    printf("Using Bisection Method the root is: %lf \n\n", root);
+    
+    root = FalsePosition();
+    printf("Using False Position Method the root is: %lf \n\n", root);
+    
+    root = NewtonRaphson();
+    printf("Using Newton-Raphson Method the root is: %lf \n\n", root);
+    
+    root = FixedPoint();
+    printf("Using Fixed Point Method the root is: %lf \n\n", root);
+    
+    root = Secant();
+    printf("Using Secant Method the root is: %lf \n\n", root);
+    return 0;
+}
+\end{minted}
+\end{tcolorbox}
+\vspace{\baselineskip}
+
+\newpage
+\chapter*{Глава 47: Самая длинная общая подпоследовательность}
+\section*{Раздел 47.1: Объяснение самой длинной общей подпоследовательности}
+Одной из наиболее важных реализаций динамического программирования
+является поиск\\ \href{https://en.wikipedia.org/wiki/Longest_common_subsequence_problem}{\underline{самой длинной общей подпоследовательности}}. Давайте
+сначала определим некоторые основные термины.
+\vspace{\baselineskip}
+
+\textbf{Подпоследовательности}:
+\vspace{\baselineskip}
+
+Подпоследовательность - это последовательность, которая может быть
+получена из другой последовательности путем удаления некоторых
+символов без изменения порядка оставшихся символов. Допустим, у нас есть
+строка \textbf{ABC}. Если мы сотрем ноль, один или более чем один символ из этой
+строки, мы получаем подпоследовательность этой строки. Таким образом,
+подпоследовательностями строки \textbf{ABC} будут \{"\textbf{A}", "\textbf{B}", "\textbf{C}", "\textbf{AB}", "\textbf{AC}", "\textbf{BC}", "\textbf{ABC}", "\textbf{ }"\}. Даже если мы удалим все символы, пустая строка также будет
+подпоследовательностью. Чтобы обнаружить подпоследовательность, для
+каждого символа в строке у нас есть два варианта - либо мы берем символ, либо нет.
+Поэтому, если длина строки равна \textbf{n}, есть \textbf{2n} 
+подпоследовательностей этой строки.
+\vspace{\baselineskip}
+
+\textbf{Самая длинная общая подпоследовательность:}
+\vspace{\baselineskip}
+
+Как следует из названия, из всех общих подпоследовательностей между
+двумя строками самая длинная общая подпоследовательность (LCS) - та,
+которая имеет максимальную длину. Например: общие
+подпоследовательности между \textbf{"HELLOM"} и \textbf{"HMLD"} – это \textbf{"H"}, \textbf{"HL"}, \textbf{"HM"} и т.
+д. Здесь \textbf{"HLL"} - самая длинная общая подпоследовательность, которая имеет
+длину \textbf{3}.
+\vspace{\baselineskip}
+
+\textbf{Метод полного перебора}:
+\vspace{\baselineskip}
+
+Мы можем сгенерировать все подпоследовательности двух строк, используя
+поиск с возвратом. Тогда мы можем сравнить их, чтобы узнать общие
+подпоследовательности. После мы должны найти ту, что имеет
+максимальную длину. Мы уже сталкивались с этим ранее, здесь \textbf{2n}
+подпоследовательности строки длины \textbf{n}. Потребовались бы годы, чтобы
+решить проблему, если бы наши \textbf{n} пересекали \textbf{20-25}.
+\vspace{\baselineskip}
+
+\textbf{Метод динамического программирования}:
+\vspace{\baselineskip}
+
+Давайте изучим данный метод на примере. Предположим, что у нас есть две
+строки \textbf{abcdaf} и \textbf{acbcf}. Обозначим их \textbf{s1} и \textbf{s2}. Таким образом, самая длинная
+общая подпоследовательность этих двух строк будет \textbf{"abcf"}, которая имеет
+длину \textbf{4}. Напомню, что подпоследовательности не должны быть
+непрерывными в строке. Чтобы построить \textbf{"abcf"}, мы проигнорировали \textbf{"da"}
+в \textbf{s1} и \textbf{"c"} в \textbf{s2}. Как мы узнаем это с помощью динамического
+программирования?
+\vspace{\baselineskip}
+
+Мы начнем с таблицы (двумерный массив), содержащей все символы \textbf{s1} в
+строке и все символы \textbf{s2} в столбце. Здесь таблица имеет индекс \textbf{0}, и мы
+помещаем символы от \textbf{1} и далее. Мы пройдем по таблице слева направо для
+каждого ряда. Наша таблица будет выглядеть так:
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{verbatim}
+              0     1     2     3     4     5     6
++-----+-----+-----+-----+-----+-----+-----+-----+
+| chʳ |     |  a  |  b  |  c  |  d  |  a  |  f  |
++-----+-----+-----+-----+-----+-----+-----+-----+
+0  |     |     |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+1  |  a  |     |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+2  |  c  |     |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+3  |  b  |     |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+4  |  c  |     |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+5  |  f  |     |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+\end{verbatim}
+\end{tcolorbox}
+\vspace{\baselineskip}
+Здесь каждая строка и столбец представляют длину самой длинной общей
+подпоследовательности между двумя строками, если мы возьмем символы
+этой строки и столбца и добавим к префиксу перед ним. Например: \textbf{Таблица[2][3]} представляет длину самой длинной общей подпоследовательности
+между \textbf{"ac"} и \textbf{"abc"}.
+0-й столбец представляет пустую подпоследовательность \textbf{s1}. Аналогично, 0-я
+строка представляет пустую подпоследовательность \textbf{s2}. Если мы возьмем
+пустую подпоследовательность строки и попытаемся сопоставить ее с другой
+строкой, неважно, какова длина второй подстроки, общая
+подпоследовательность будет иметь длину \textbf{0}. Таким образом, мы можем
+заполнить 0-е строки и 0-е столбцы с 0. Мы получили:
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{verbatim}
+              0     1     2     3     4     5     6
++-----+-----+-----+-----+-----+-----+-----+-----+
+| chʳ |     |  a  |  b  |  c  |  d  |  a  |  f  |
++-----+-----+-----+-----+-----+-----+-----+-----+
+0  |     |  0  |  0  |  0  |  0  |  0  |  0  |  0  |
++-----+-----+-----+-----+-----+-----+-----+-----+
+1  |  a  |  0  |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+2  |  c  |  0  |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+3  |  b  |  0  |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+4  |  c  |  0  |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+5  |  f  |  0  |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+\end{verbatim}
+\end{tcolorbox}
+\vspace{\baselineskip}
+Давайте начнем. Когда мы заполняем \textbf{таблицу[1][1]}, мы спрашиваем
+себя,если бы у нас была только строка а и другая строка а, что будет самой
+длинной общей подпоследовательностью? Длина LCS здесь будет \textbf{1}. Теперь
+давайте посмотрим на \textbf{таблицу[1][2]}. У нас есть строка \textbf{ab} и строка \textbf{a}. Длина
+LCS будет равна \textbf{1}. Как видите, остальные значения также будут равны \textbf{1} для
+первой строки, так как она рассматривает только строку \textbf{a} с \textbf{abcd}, \textbf{abcda},
+\textbf{abcdaf}. Так будет выглядеть наша таблица:
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{verbatim}
+              0     1     2     3     4     5     6
++-----+-----+-----+-----+-----+-----+-----+-----+
+| chʳ |     |  a  |  b  |  c  |  d  |  a  |  f  |
++-----+-----+-----+-----+-----+-----+-----+-----+
+0  |     |  0  |  0  |  0  |  0  |  0  |  0  |  0  |
++-----+-----+-----+-----+-----+-----+-----+-----+
+1  |  a  |  0  |  1  |  1  |  1  |  1  |  1  |  1  |
++-----+-----+-----+-----+-----+-----+-----+-----+
+2  |  c  |  0  |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+3  |  b  |  0  |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+4  |  c  |  0  |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+5  |  f  |  0  |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+\end{verbatim}
+\end{tcolorbox}
+\vspace{\baselineskip}
+Для строки 2, которая теперь будет включать c. Для Таблицы [2] [1] у нас есть
+ac с одной стороны и a с другой стороны. Так что длина LCS - 1. Откуда мы
+взяли эту 1? Сверху, которая обозначает что LCS a между двумя подстроками.
+
+И что мы говорим, что если \textbf{s1[2]} и \textbf{s2[1]} не совпадают, то длина LCS будет
+максимальной из длины LCS сверху или слева. Взятие длины LCS сверху означает, что мы не берем
+текущий символ из \textbf{s2}. Точно также, принимая длину LCS слева, мы не берем
+текущий символ из \textbf{s1} для создания LCS. Мы получили:
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{verbatim}
+              0     1     2     3     4     5     6
++-----+-----+-----+-----+-----+-----+-----+-----+
+| chʳ |     |  a  |  b  |  c  |  d  |  a  |  f  |
++-----+-----+-----+-----+-----+-----+-----+-----+
+0  |     |  0  |  0  |  0  |  0  |  0  |  0  |  0  |
++-----+-----+-----+-----+-----+-----+-----+-----+
+1  |  a  |  0  |  1  |  1  |  1  |  1  |  1  |  1  |
++-----+-----+-----+-----+-----+-----+-----+-----+
+2  |  c  |  0  |  1  |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+3  |  b  |  0  |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+4  |  c  |  0  |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+5  |  f  |  0  |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+\end{verbatim}
+\end{tcolorbox}
+\vspace{\baselineskip}
+Итак, наша первая формула будет:
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}     
+if s2[i] is not equal to s1[j]
+    Table[i][j]= max(Table[i-1][j], Table[i][j-1]
+endif
+\end{minted}
+\end{tcolorbox}
+\vspace{\baselineskip}
+Двигаясь дальше, для \textbf{Таблицы[2][2]} мы имеем строку \textbf{ab} и \textbf{ac}. Поскольку \textbf{c} и
+\textbf{b} не совпадают, мы ставим максимум вершины или оставляем здесь. В
+данном случае это снова \textbf{1}. После этого для \textbf{Таблицы[2][3]} у нас есть строки
+\textbf{abc} и \textbf{ac}. На этот раз текущие значения и строки и столбца одинаковы. Теперь
+длина LCS будет равна максимальной длине LCS + 1. Как мы можем получить
+максимальную длину LCS до сих пор? Мы проверяем диагональное
+значение, которое представляет лучшее соответствие между \textbf{ab} и \textbf{a}. Из этого
+состояния для текущих значений мы добавляем еще один символ к \textbf{s1} и \textbf{s2}, с
+которыми случилось то же самое. Так что длина LCS, конечно, увеличится.
+Мы положим \textbf{1 + 1 = 2} в \textbf{таблице[2][3]}. Мы получили:
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{verbatim}
+              0     1     2     3     4     5     6
++-----+-----+-----+-----+-----+-----+-----+-----+
+| chʳ |     |  a  |  b  |  c  |  d  |  a  |  f  |
++-----+-----+-----+-----+-----+-----+-----+-----+
+0  |     |  0  |  0  |  0  |  0  |  0  |  0  |  0  |
++-----+-----+-----+-----+-----+-----+-----+-----+
+1  |  a  |  0  |  1  |  1  |  1  |  1  |  1  |  1  |
++-----+-----+-----+-----+-----+-----+-----+-----+
+2  |  c  |  0  |  1  |  1  |  2  |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+3  |  b  |  0  |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+4  |  c  |  0  |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+5  |  f  |  0  |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+\end{verbatim}
+\end{tcolorbox}
+\vspace{\baselineskip}
+Итак, наша вторая формула будет:
+\begin{tcolorbox}
+\begin{minted}{C}     
+if s2[i] equals to s1[j]
+    Table[i][j]= Table[i-1][j-1]+1
+endif
+\end{minted}
+\end{tcolorbox}
+\vspace{\baselineskip}
+Мы определили оба случая. Используя эти две формулы, мы можем
+заполнить всю таблицу. После заполнения таблица будет выглядеть так:
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{verbatim}
+              0     1     2     3     4     5     6
++-----+-----+-----+-----+-----+-----+-----+-----+
+| chʳ |     |  a  |  b  |  c  |  d  |  a  |  f  |
++-----+-----+-----+-----+-----+-----+-----+-----+
+0  |     |  0  |  0  |  0  |  0  |  0  |  0  |  0  |
++-----+-----+-----+-----+-----+-----+-----+-----+
+1  |  a  |  0  |  1  |  1  |  1  |  1  |  1  |  1  |
++-----+-----+-----+-----+-----+-----+-----+-----+
+2  |  c  |  0  |  1  |  1  |  2  |  2  |  2  |  2  |
++-----+-----+-----+-----+-----+-----+-----+-----+
+3  |  b  |  0  |  1  |  2  |  2  |  2  |  2  |  2  |
++-----+-----+-----+-----+-----+-----+-----+-----+
+4  |  c  |  0  |  1  |  2  |  3  |  3  |  3  |  3  |
++-----+-----+-----+-----+-----+-----+-----+-----+
+5  |  f  |  0  |  1  |  2  |  3  |  3  |  3  |  4  |
++-----+-----+-----+-----+-----+-----+-----+-----+
+\end{verbatim}
+\end{tcolorbox}
+\vspace{\baselineskip}
+Длина LCS между \textbf{s1} и \textbf{s2} будет \textbf{Таблицей[5][6] = 4}. Здесь 5 и 6 - длина \textbf{s2} и \textbf{s1}
+соответственно. Наш псевдокод будет выглядеть так:
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}     
+Procedure LCSlength(s1, s2):
+Table[0][0]=0
+for i from 1 to s1.length
+    Table[0][i]=0
+endfor
+for i from 1 to s2.length
+    Table[i][0]=0
+endfor
+for i from 1 to s2.length
+    for j from 1 to s1.length
+        if s2[i] equals to s1[j]
+            Table[i][j]= Table[i-1][j-1]+1
+        else
+            Table[i][j]= max(Table[i-1][j], Table[i][j-1])
+        endif
+    endfor
+endfor
+Return Table[s2.length][s1.length]
+\end{minted}
+\end{tcolorbox}
+\vspace{\baselineskip}
+Временная сложность для этого алгоритма: \textbf{O (mn)}, где \textbf{m} и \textbf{n} обозначают
+длину каждой строки.
+\vspace{\baselineskip}
+
+Как мы узнаем самую длинную общую подпоследовательность? Начнем с
+правого нижнего угла. Мы будем проверять, откуда приходит значение. Если
+значение приходит из диагонали, то есть если \textbf{Таблица[i-1][j-1]} равна
+\textbf{Таблице[i][j] - 1}, мы вставляем либо \textbf{s2[i]}, либо \textbf{s1[j]} (оба одинаковые) и
+движемся по диагонали. Если значение приходит сверху, это означает, что
+если \textbf{Таблица[i-1][j]} равна \textbf{Таблице[i][j]}, мы переходим к вершине. Если значение
+идет слева, значит, что если Таблица \textbf{[i][j-1]} равна \textbf{Таблице[i][j]}, мы
+двигаемся влево. Когда мы достигаем крайнего левого или верхнего столбца,
+наш поиск заканчивается. Затем мы извлекаем значения из стека и печатаем
+их. Псевдокод:
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}     
+Procedure PrintLCS(LCSlength, s1, s2)
+temp := LCSlength
+S = stack()
+i := s2.length
+j := s1.length
+while i is not equal to 0 and j is not equal to 0
+        if Table[i-1][j-1]== Table[i][j]-1 and s1[j]==s2[i]
+        S.push(s1[j]) 
+        i := i -1        
+        j := j -1
+    elseif Table[i-1][j]== Table[i][j]
+        i := i-1
+    else
+        j := j-1
+   endif
+endwhile
+while S is not empty
+    print(S.pop)
+endwhile
+\end{minted}
+\end{tcolorbox}
+\vspace{\baselineskip}
+Следует отметить: если \textbf{Таблица[i-1][j]} и \textbf{Таблица[i][j-1]} равны \textbf{Таблице[i][j]}
+и \textbf{Таблица[i-1][j-1]} не равна \textbf{Таблице [i][j] - 1}, то может быть две LCS. Этот
+псевдокод не учитывает такую ситуацию. Вы должны будете решить эту
+проблему рекурсивно, чтобы найти несколько LCS
+\vspace{\baselineskip}
+.
+Временная сложность для этого алгоритма: \textbf{O (max (m, n))}.
+
+\newpage
+\chapter*{Глава 48: Cамая длинная возрастающая подпоследовательность}
+\section*{Раздел 48.1: Самая длинная возрастающая подпоследовательность. Базовая
+информация}
+Проблема \href{https://en.wikipedia.org/wiki/Longest_increasing_subsequence}{\underline{самой длинной возрастающей подпоследовательности}} состоит в
+том, чтобы найти подпоследовательность из заданной входной
+последовательности, в которой элементы подпоследовательности
+сортируются в порядке убывания. Все подпоследовательности не являются
+смежными или уникальными.
+\vspace{\baselineskip}
+
+\textbf{Применение самой длинной возрастающей подпоследовательности}:
+\vspace{\baselineskip}
+
+Такие алгоритмы как: самая длинная возрастающая подпоследовательность,
+самая длинная общая подпоследовательность используются в управлении
+версиями таких систем как Git и т. д.
+\vspace{\baselineskip}
+
+\textbf{Простая форма алгоритма:}
+\vspace{\baselineskip}
+\begin{enumerate}
+    \item Найти уникальные строки, которые являются общими для обоих
+документов.
+    \item Взять все такие строки из первого документа и упорядочить их в
+соответствии с их появлением во втором документе.
+    \item Вычислить LIS полученной последовательности (выполнив Терпеливую
+сортировку), получив самую длинную подходящую последовательность
+строк - соответствие между строками двух документов.
+    \item Повторяйте алгоритм на каждом диапазоне линий между уже
+подобранными.
+\end{enumerate}
+Теперь давайте рассмотрим более простой пример проблемы LCS. Здесь
+вход представляет собой только одну последовательность различных целых
+чисел \tcbox[nobeforeafter, tcbox raise base]{a1, a2, ..., an.}, и мы хотим найти самую длинную возрастающую
+подпоследовательность в ней. Например, если входным значением будут
+\textbf{7,3,8,4,2,6} тогда самая длинная возрастающая подпоследовательность
+составляет \textbf{3,4,6}.
+\vspace{\baselineskip}
+
+Самый простой подход заключается в сортировке входных элементов в
+порядке возрастания и применении алгоритма LCS к исходной и
+отсортированной последовательности. Однако, если вы посмотрите на
+результирующий массив, вы заметите, что многие значения одинаковы, и
+массив выглядит повторяющимся. Это говорит о том, что проблема LIS (самая
+длинная возрастающая подпоследовательность) может быть решена с
+применением алгоритма динамического программирования, использующим
+только одномерный массив.
+\vspace{\baselineskip}
+
+\textbf{Псевдокод}:
+\begin{enumerate}
+    \item Описать массив значений, которые мы хотим вычислить.\\
+Для \tcbox[nobeforeafter, tcbox raise base]{\p{1} <= i <= n} пусть \textbf{A(i)} будет длиной самой длинной увеличивающейся
+последовательности ввода. Обратите внимание, что длина ,которая в
+конечном итоге нас\\ интересует - \tcbox[nobeforeafter, tcbox raise base]{ max \{A (i) | \p{1} ≤ i ≤ n\} }.
+    \item Задать рекуррентность.\\
+Для \tcbox[nobeforeafter, tcbox raise base]{\p{1}<= i <= n, A(i)=\p{1}+ max\{A(j)|\p{1} ≤ j < i and input(j)< input(i)\}}.
+    \item Вычислить значения А.
+    \item Найти оптимальное решение.
+\end{enumerate}
+\vspace{\baselineskip}
+Следующая программа использует A для вычисления оптимального
+решения. Первая часть вычисляет значение m так, что \textbf{A(m)} - длина
+оптимальной возрастающей подпоследовательности ввода. Вторая часть
+вычисляет оптимальное увеличение подпоследовательности, для удобства
+выводим её в обратном порядке. Эта программа выполняется за время O(n),
+поэтому весь алгоритм работает за время O($n^2$).
+\vspace{\baselineskip}
+
+\textbf{Часть 1:}
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}     
+m <- 1
+for i :2..n
+    if A(i) > A(m) then
+        m <- i    
+    end if
+end for
+\end{minted}
+\end{tcolorbox}
+\vspace{\baselineskip}
+\textbf{Часть 2:}
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}     
+put a
+while A(m) > 1 do
+    i <- m - 1
+    while not(ai < am and A(i)= A(m) - 1) do
+    i <- i - 1
+    end while
+    m <- i
+    put a 
+end while
+\end{minted}
+\end{tcolorbox}
+\vspace{\baselineskip}
+\textbf{Рекурсивное решение:}
+\vspace{\baselineskip}
+
+\textbf{Подход 1:}
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}     
+LIS(A[1..n]):
+    if(n =0) then return 0
+    m = LIS(A[1..(n - 1)])
+    B is subsequence of A[1..(n - 1)] with only elements less than a[n]
+    (* let h be size of B, h <= n-1*)
+    m = max(m, 1+ LIS(B[1..h]))
+    Output m
+\end{minted}
+\end{tcolorbox}
+\vspace{\baselineskip}
+\textbf{Временная сложность в подходе 1:} O($n^2$)
+\vspace{\baselineskip}
+
+\textbf{Подход 2:}
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}     
+LIS(A[1..n], x):
+    if(n = 0) then return 0
+    m = LIS(A[1..(n - 1)], x)
+    if(A[n]< x) then
+        m = max(m, 1+ LIS(A[1..(n - 1)], A[n]))
+    Output m
+    
+MAIN(A[1..n]):
+    return LIS(A[1..n], infinity)
+\end{minted}
+\end{tcolorbox}
+\vspace{\baselineskip}
+
+\textbf{Временная сложность в подходе 2:} O($n^2$)
+\vspace{\baselineskip}
+
+\textbf{Подход 3:}
+\vspace{\baselineskip}
+\begin{minted}{C}     
+LIS(A[1..n]):
+    if(n = 0) return 0
+    m = 1 
+    for i = 1 to n-1 do
+        if(A[i]< A[n]) then
+            m = max(m, 1+ LIS(A[1..i]))
+    return m
+MAIN(A[1..n]):
+    return LIS(A[1..i])
+\end{minted}
+\vspace{\baselineskip}
+
+\textbf{Временная сложность в подходе 3:} O($n^2$)
+\vspace{\baselineskip}
+
+\textbf{Итерационный алгоритм:}
+\vspace{\baselineskip}
+
+Вычисляет значения итеративно снизу вверх.
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}
+LIS(A[1..n]):
+    Array L[1..n]
+    (* L[i]= value of LIS ending(A[1..i])*)
+    for i =1 to n do
+        L[i]=1
+        for j =1 to i-1 do
+            if(A[j]< A[i]) do
+                L[i]= max(L[i], 1+ L[j])
+    return L
+    
+MAIN(A[1..n]):
+    L = LIS(A[1..n])
+        return the maximum value in L
+\end{minted}
+\end{tcolorbox}
+\vspace{\baselineskip}
+
+\textbf{Временная сложность в итерационном подходе:} O($n^2$)
+\vspace{\baselineskip}
+
+\textbf{Вспомогательное пространство:} O(n)
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+\\
+Давайте возьмем \textbf{\{0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15\}} в качестве
+входных данных. Итак, самая длинная возрастающая подпоследовательность
+для данного входа - \textbf{\{0, 2, 6, 9, 11, 15\}}.
+
+\newpage
+\chapter*{Глава 49: Проверка двух строк на анаграмму}
+Две строки с одинаковым набором символов называются анаграммой. Здесь
+я использовал javascript.
+\vspace{\baselineskip}
+
+Мы создадим хэш str1 и увеличим количество + 1. Мы сделаем цикл на 2-й
+строке и проверим, все ли символы есть в хэше, и уменьшим значения хэш-
+ключа. Проверьте, если все значения хэш-ключа равны нулю, тогда будет
+анаграмма.
+\section*{Раздел 49.1: Ввод и вывод образцов}
+Пример 1:
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{Python}     
+let str1 ='stackoverflow';
+let str2 ='flowerovstack';
+\end{minted}
+\end{tcolorbox}
+\vspace{\baselineskip}
+Эти строки - анаграммы.
+\vspace{\baselineskip}
+
+// Создайте хэш из str1 и увеличьте один счетчик.
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}     
+hashMap ={
+    s :1,    
+    t :1,    
+    a :1,    
+    c :1,   
+    k :1,
+    o :2,
+    v :1,
+    e :1,
+    r :1,
+    f :1,
+    l :1, 
+    w :1
+}
+\end{minted}
+\end{tcolorbox}
+\vspace{\baselineskip}
+Вы можете видеть, что хэш-ключ 'o' содержит значение 2, потому что o
+встречается 2 раза в строке.
+\vspace{\baselineskip}
+
+Теперь зациклите str2 и проверьте, чтобы каждый символ присутствовал в
+hashMap, если да, уменьшите значение ключа hashMap, иначе верните
+Ложь(false) (что указывает на то, что это не анаграмма).
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}     
+hashMap ={
+    s :0,
+    t :0, 
+    a :0,  
+    c :0,  
+    k :0,  
+    o :0,  
+    v :0, 
+    e :0,  
+    r :0,   
+    f :0,   
+    l :0,  
+    w :0
+}
+\end{minted}
+\end{tcolorbox}
+\vspace{\baselineskip}
+Теперь зациклите объект hashMap и проверьте, что все значения равны нулю
+в ключе hashMap.
+\vspace{\baselineskip}
+
+В нашем случае все значения равны нулю, так что это анаграмма.
+\section*{Раздел 49.2: Общий код для анаграмм}
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}     
+(function(){
+
+    var hashMap ={};
+    
+    function isAnagram (str1, str2){
+    
+        if(str1.length!== str2.length){
+            return false;
+        }
+        
+        value one (+1).
+        createStr1HashMap(str1);
+
+        var valueExist = createStr2HashMap(str2);
+
+        return isStringsAnagram(valueExist);
+    }
+    
+    function createStr1HashMap (str1){
+        [].map.call(str1, function(value, index, array){
+            hashMap[value]= value in hashMap ?(hashMap[value]+1):1;
+            return value;
+        });
+    }
+    
+    function createStr2HashMap (str2){
+        var valueExist =[].every.call(str2, function(value, index, array){
+            if(value in hashMap){
+                hashMap[value]= hashMap[value]-1;
+            }
+            return value in hashMap;
+        });
+        return valueExist;
+    }
+    
+    function isStringsAnagram (valueExist){
+        if(!valueExist){
+            return valueExist;
+            }else{
+                var isAnagram;
+                for(var i in hashMap){
+                    if(hashMap[i]!==0){
+                        isAnagram =false;
+                        break;
+                        }else{
+                            isAnagram =true;
+                        }
+                    }
+                    return isAnagram;
+                }
+        }
+        
+    isAnagram("stackoverflow", "flowerovstack");
+    isAnagram("stackoverflow", "flowervvstack");
+
+\end{minted}
+\end{tcolorbox}
+\vspace{\baselineskip}

@@ -1,0 +1,40 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// Задача о рюкзаке}
+\PYG{k}{public} \PYG{k}{class} \PYG{n+nc}{KnapsackProblem}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{private} \PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{Knapsack}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{w}\PYG{p}{,} \PYG{k+kt}{int}\PYG{p}{[]} \PYG{n}{weight}\PYG{p}{,} \PYG{k+kt}{int}\PYG{p}{[]} \PYG{k}{value}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{;}
+		\PYG{k+kt}{int}\PYG{p}{[,]} \PYG{n}{k} \PYG{p}{=} \PYG{k}{new} \PYG{k+kt}{int}\PYG{p}{[}\PYG{n}{n} \PYG{p}{+} \PYG{l+m}{1}\PYG{p}{,} \PYG{n}{w} \PYG{p}{+} \PYG{l+m}{1}\PYG{p}{];}
+		\PYG{k}{for} \PYG{p}{(}\PYG{n}{i} \PYG{p}{=} \PYG{l+m}{0}\PYG{p}{;} \PYG{n}{i} \PYG{p}{\PYGZlt{}=} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{p}{++)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k+kt}{int} \PYG{n}{b}\PYG{p}{;}
+			\PYG{k}{for} \PYG{p}{(}\PYG{n}{b} \PYG{p}{=} \PYG{l+m}{0}\PYG{p}{;} \PYG{n}{b} \PYG{p}{\PYGZlt{}=} \PYG{n}{w}\PYG{p}{;} \PYG{n}{b}\PYG{p}{++)}
+			\PYG{p}{\PYGZob{}}
+				\PYG{k}{if} \PYG{p}{(}\PYG{n}{i}\PYG{p}{==}\PYG{l+m}{0} \PYG{p}{||} \PYG{n}{b}\PYG{p}{==}\PYG{l+m}{0}\PYG{p}{)}
+				\PYG{p}{\PYGZob{}}
+					\PYG{n}{k}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{n}{b}\PYG{p}{]} \PYG{p}{=} \PYG{l+m}{0}\PYG{p}{;} \PYG{c+c1}{// Все предметы не лежат в рюкзаке}
+				\PYG{p}{\PYGZcb{}}
+				\PYG{k}{else} \PYG{n+nf}{if} \PYG{p}{(}\PYG{n}{weight}\PYG{p}{[}\PYG{n}{i} \PYG{p}{\PYGZhy{}} \PYG{l+m}{1}\PYG{p}{]} \PYG{p}{\PYGZlt{}=} \PYG{n}{b}\PYG{p}{)} \PYG{c+c1}{// Вес i\PYGZhy{}1 предмета меньше вместимости}
+				                            \PYG{c+c1}{// рюкзака}
+				\PYG{p}{\PYGZob{}}
+					\PYG{n}{k}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{n}{b}\PYG{p}{]} \PYG{p}{=} \PYG{n}{Math}\PYG{p}{.}\PYG{n}{Max}\PYG{p}{(}\PYG{k}{value}\PYG{p}{[}\PYG{n}{i} \PYG{p}{\PYGZhy{}} \PYG{l+m}{1}\PYG{p}{]} \PYG{p}{+} \PYG{n}{k}\PYG{p}{[}\PYG{n}{i} \PYG{p}{\PYGZhy{}} \PYG{l+m}{1}\PYG{p}{,} \PYG{n}{b} \PYG{p}{\PYGZhy{}} \PYG{n}{weight}\PYG{p}{[}\PYG{n}{i} \PYG{p}{\PYGZhy{}} \PYG{l+m}{1}\PYG{p}{]],}
+					\PYG{n}{k}\PYG{p}{[}\PYG{n}{i} \PYG{p}{\PYGZhy{}} \PYG{l+m}{1}\PYG{p}{,} \PYG{n}{b}\PYG{p}{]);} \PYG{c+c1}{// Выбираем предмет наибольшей стоимости}
+				\PYG{p}{\PYGZcb{}}
+				\PYG{k}{else} \PYG{c+c1}{// Не берем предмет с номером i}
+				\PYG{p}{\PYGZob{}}
+					\PYG{n}{k}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{n}{b}\PYG{p}{]} \PYG{p}{=} \PYG{n}{k}\PYG{p}{[}\PYG{n}{i} \PYG{p}{\PYGZhy{}} \PYG{l+m}{1}\PYG{p}{,} \PYG{n}{b}\PYG{p}{];}
+				\PYG{p}{\PYGZcb{}}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{return} \PYG{n}{k}\PYG{p}{[}\PYG{n}{n}\PYG{p}{,} \PYG{n}{w}\PYG{p}{];} \PYG{c+c1}{// Выводим максимальную стоимость предметов,}
+		                \PYG{c+c1}{// которые мы кладем в рюкзак}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{public} \PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{Main}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{nItems}\PYG{p}{,} \PYG{k+kt}{int}\PYG{p}{[]} \PYG{n}{weights}\PYG{p}{,} \PYG{k+kt}{int}\PYG{p}{[]} \PYG{n}{values}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{n} \PYG{p}{=} \PYG{n}{values}\PYG{p}{.}\PYG{n}{Length}\PYG{p}{;} \PYG{c+c1}{// Количество предметов}
+		\PYG{k}{return} \PYG{n+nf}{Knapsack}\PYG{p}{(}\PYG{n}{nItems}\PYG{p}{,} \PYG{n}{weights}\PYG{p}{,} \PYG{n}{values}\PYG{p}{,} \PYG{n}{n}\PYG{p}{);} \PYG{c+c1}{// Вывод ответа к задаче}
+
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,38 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{,} \PYG{n}{space}\PYG{p}{,} \PYG{n}{rows}\PYG{p}{,} \PYG{n}{k}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{count} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{count1} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{c+cm}{/*rows \PYGZhy{} кол\PYGZhy{}во строк,}
+\PYG{c+cm}{//space \PYGZhy{} кол\PYGZhy{}во отступов, count \PYGZhy{} кол\PYGZhy{}во чисел до \PYGZdq{}середины строки\PYGZdq{},}
+\PYG{c+cm}{//k (count1) \PYGZhy{} число, на которое числа увеличиваются(уменьшаются)*/}
+\PYG{n}{rows}\PYG{o}{=}\PYG{l+m+mi}{5}\PYG{p}{;}
+
+\PYG{c+c1}{//вывод треугольника Паскаля}
+ \PYG{k}{for}\PYG{p}{(}\PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}=}\PYG{n}{rows}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}\PYG{c+c1}{//подсчет выведенных строк}
+ \PYG{p}{\PYGZob{}}
+	\PYG{k}{for}\PYG{p}{(}\PYG{n}{space}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{space} \PYG{o}{\PYGZlt{}=} \PYG{n}{rows}\PYG{o}{\PYGZhy{}}\PYG{n}{i}\PYG{p}{;} \PYG{o}{++}\PYG{n}{space}\PYG{p}{)}\PYG{c+cm}{/*создание отступов для выравнивания}
+\PYG{c+cm}{	//треугольника. количество отступов соответствует (число строк \PYGZhy{} номер}
+\PYG{c+cm}{	//строки)*/}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}  \PYGZdq{}}\PYG{p}{);}
+		\PYG{o}{++}\PYG{n}{count}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{while}\PYG{p}{(}\PYG{n}{k} \PYG{o}{!=} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{c+c1}{//количество чисел в строке}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{count} \PYG{o}{\PYGZlt{}=} \PYG{n}{rows}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{c+cm}{/*вывод первой половины строки. первое число \PYGZhy{}}
+\PYG{c+cm}{		//номер строки,}
+\PYG{c+cm}{		//последующие \PYGZhy{} увеличиваются на единицу.}
+\PYG{c+cm}{		//максимальное число \PYGZhy{} середина строки \PYGZhy{} с номером rows по счету*/}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d \PYGZdq{}}\PYG{p}{,} \PYG{n}{i}\PYG{o}{+}\PYG{n}{k}\PYG{p}{);}
+			\PYG{o}{++}\PYG{n}{count}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{else}\PYG{c+cm}{/*вывод второй половины строки. каждое последующее число уменьшается}
+\PYG{c+cm}{		//на единицу*/}
+		\PYG{p}{\PYGZob{}}
+			\PYG{o}{++}\PYG{n}{count1}\PYG{p}{;}
+			\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d \PYGZdq{}}\PYG{p}{,} \PYG{p}{(}\PYG{n}{i}\PYG{o}{+}\PYG{n}{k}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{count1}\PYG{p}{));}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{o}{++}\PYG{n}{k}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{n}{count1} \PYG{o}{=} \PYG{n}{count} \PYG{o}{=} \PYG{n}{k} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{);}\PYG{c+c1}{//переход к новой строке}
+ \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

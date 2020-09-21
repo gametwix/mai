@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{memo} \PYG{o}{=} \PYG{p}{[]}  \PYG{c+c1}{\PYGZsh{} создадим массив для записи в него вычисляемых чисел фибоначчи}
+\PYG{c+c1}{\PYGZsh{} добавим в массив два первых числа, необходимых для вычисления последующих}
+\PYG{n}{memo}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} f(1) = 1}
+\PYG{n}{memo}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} f(2) = 1}
+\PYG{k}{def} \PYG{n+nf}{fibonacci}\PYG{p}{(}\PYG{n}{n}\PYG{p}{):}
+	\PYG{k}{if} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{memo}\PYG{p}{)} \PYG{o}{\PYGZgt{}} \PYG{n}{n}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} проверим не находили ли мы значение данного числа ранее}
+		\PYG{k}{return} \PYG{n}{memo}\PYG{p}{[}\PYG{n}{n}\PYG{p}{]} \PYG{c+c1}{\PYGZsh{} если мы уже находили значение текущего числа, то просто}
+					   \PYG{c+c1}{\PYGZsh{} выводим его}
+	\PYG{n}{result} \PYG{o}{=} \PYG{n}{fibonacci}\PYG{p}{(}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{+} \PYG{n}{fibonacci}\PYG{p}{(}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} вычисляем результат и записываем}
+	\PYG{c+c1}{\PYGZsh{} значение в массив для уменьшения количества вычислений в будущем}
+	\PYG{n}{memo}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{result}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} f(n) = f(n\PYGZhy{}1) + f(n\PYGZhy{}2)}
+	\PYG{k}{return} \PYG{n}{result}
+\end{Verbatim}

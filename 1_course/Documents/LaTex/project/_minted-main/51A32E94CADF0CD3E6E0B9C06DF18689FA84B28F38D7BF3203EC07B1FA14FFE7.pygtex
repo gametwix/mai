@@ -1,0 +1,84 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{java.util.Scanner}\PYG{p}{;}
+
+\PYG{k+kd}{public} \PYG{k+kd}{class} \PYG{n+nc}{Represent\PYGZus{}Graph\PYGZus{}Adjacency\PYGZus{}Matrix}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kd}{private} \PYG{k+kd}{final} \PYG{k+kt}{int} \PYG{n}{vertices}\PYG{p}{;}
+	\PYG{k+kd}{private} \PYG{k+kt}{int}\PYG{o}{[][]} \PYG{n}{adjacency\PYGZus{}matrix}\PYG{p}{;}
+	
+	\PYG{k+kd}{public} \PYG{n+nf}{Represent\PYGZus{}Graph\PYGZus{}Adjacency\PYGZus{}Matrix}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{v}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{vertices} \PYG{o}{=} \PYG{n}{v}\PYG{p}{;}
+		\PYG{n}{adjacency\PYGZus{}matrix} \PYG{o}{=} \PYG{k}{new} \PYG{k+kt}{int}\PYG{o}{[}\PYG{n}{vertices} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{o}{][}\PYG{n}{vertices} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k+kd}{public} \PYG{k+kt}{void} \PYG{n+nf}{makeEdge}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{to}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{from}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{edge}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{try}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{adjacency\PYGZus{}matrix}\PYG{o}{[}\PYG{n}{to}\PYG{o}{][}\PYG{n}{from}\PYG{o}{]} \PYG{o}{=} \PYG{n}{edge}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{catch} \PYG{p}{(}\PYG{n}{ArrayIndexOutOfBoundsException} \PYG{n}{index}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}The vertices does not exists\PYGZdq{}}\PYG{p}{);}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{k+kd}{public} \PYG{k+kt}{int} \PYG{n+nf}{getEdge}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{to}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{from}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{try}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k}{return} \PYG{n}{adjacency\PYGZus{}matrix}\PYG{o}{[}\PYG{n}{to}\PYG{o}{][}\PYG{n}{from}\PYG{o}{]}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{catch} \PYG{p}{(}\PYG{n}{ArrayIndexOutOfBoundsException} \PYG{n}{index}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}The vertices does not exists\PYGZdq{}}\PYG{p}{);}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{return} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{main}\PYG{p}{(}\PYG{n}{String} \PYG{n}{args}\PYG{o}{[]}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{v}\PYG{p}{,} \PYG{n}{e}\PYG{p}{,} \PYG{n}{count} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{to} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{from} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+		\PYG{n}{Scanner} \PYG{n}{sc} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Scanner}\PYG{p}{(}\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{in}\PYG{p}{);}
+		\PYG{n}{Represent\PYGZus{}Graph\PYGZus{}Adjacency\PYGZus{}Matrix} \PYG{n}{graph}\PYG{p}{;}
+		\PYG{k}{try}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Enter the number of vertices: \PYGZdq{}}\PYG{p}{);}
+			\PYG{n}{v} \PYG{o}{=} \PYG{n}{sc}\PYG{p}{.}\PYG{n+na}{nextInt}\PYG{p}{();}
+			\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Enter the number of edges: \PYGZdq{}}\PYG{p}{);}
+			\PYG{n}{e} \PYG{o}{=} \PYG{n}{sc}\PYG{p}{.}\PYG{n+na}{nextInt}\PYG{p}{();}
+			
+			\PYG{n}{graph} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Represent\PYGZus{}Graph\PYGZus{}Adjacency\PYGZus{}Matrix}\PYG{p}{(}\PYG{n}{v}\PYG{p}{);}
+			
+			\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Enter the edges: \PYGZlt{}to\PYGZgt{} \PYGZlt{}from\PYGZgt{}\PYGZdq{}}\PYG{p}{);}
+			\PYG{k}{while} \PYG{p}{(}\PYG{n}{count} \PYG{o}{\PYGZlt{}=} \PYG{n}{e}\PYG{p}{)}
+			\PYG{p}{\PYGZob{}}
+				\PYG{n}{to} \PYG{o}{=} \PYG{n}{sc}\PYG{p}{.}\PYG{n+na}{nextInt}\PYG{p}{();}
+				\PYG{n}{from} \PYG{o}{=} \PYG{n}{sc}\PYG{p}{.}\PYG{n+na}{nextInt}\PYG{p}{();}
+				
+				\PYG{n}{graph}\PYG{p}{.}\PYG{n+na}{makeEdge}\PYG{p}{(}\PYG{n}{to}\PYG{p}{,} \PYG{n}{from}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{);}
+				\PYG{n}{count}\PYG{o}{++}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}
+			
+			\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}The adjacency matrix for the given graph is: \PYGZdq{}}\PYG{p}{);}
+			\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{);}
+			\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{v}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+				\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{n}{i} \PYG{o}{+} \PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{);}
+			\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{();}
+			\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{v}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+			\PYG{p}{\PYGZob{}}
+				\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{n}{i} \PYG{o}{+} \PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{);}
+				\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}=} \PYG{n}{v}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)}
+					\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{n}{graph}\PYG{p}{.}\PYG{n+na}{getEdge}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{)} \PYG{o}{+} \PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{);}
+				\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{();}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{catch} \PYG{p}{(}\PYG{n}{Exception} \PYG{n}{E}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Somthing went wrong\PYGZdq{}}\PYG{p}{);}
+		\PYG{p}{\PYGZcb{}}
+		
+		\PYG{n}{sc}\PYG{p}{.}\PYG{n+na}{close}\PYG{p}{();}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

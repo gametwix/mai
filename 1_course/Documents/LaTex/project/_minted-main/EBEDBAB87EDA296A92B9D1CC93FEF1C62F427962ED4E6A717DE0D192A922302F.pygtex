@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Procedure} \PYG{n+nf}{BFS}\PYG{p}{(}\PYG{n}{Graph}\PYG{p}{,} \PYG{n}{source}\PYG{p}{)}\PYG{o}{:}
+\PYG{n}{Q} \PYG{o}{=} \PYG{n}{queue}\PYG{p}{();}
+\PYG{n}{level}\PYG{p}{[]} \PYG{o}{=} \PYG{n}{infinity}
+\PYG{n}{level}\PYG{p}{[}\PYG{n}{source}\PYG{p}{]} \PYG{o}{:=} \PYG{l+m+mi}{0}
+\PYG{n}{Q}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{source}\PYG{p}{)}
+\PYG{k}{while} \PYG{n}{Q} \PYG{n}{is} \PYG{n}{not} \PYG{n}{empty}
+	\PYG{n}{u} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{Q}\PYG{p}{.}\PYG{n}{pop}\PYG{p}{()}
+	\PYG{k}{for} \PYG{n}{all} \PYG{n}{edges} \PYG{n}{from} \PYG{n}{u} \PYG{n}{to} \PYG{n}{v} \PYG{n}{in} \PYG{n}{Adjacency} \PYG{n}{list}
+		\PYG{k}{if} \PYG{n}{level}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{==} \PYG{n}{infinity}
+			\PYG{n}{level}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{:=} \PYG{n}{level}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mi}{1}
+			\PYG{n}{Q}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}
+		\PYG{n}{end} \PYG{k}{if}
+	\PYG{n}{end} \PYG{k}{for}
+\PYG{n}{end} \PYG{k}{while}
+\PYG{n}{Return} \PYG{n}{level}
+\end{Verbatim}

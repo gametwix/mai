@@ -1,0 +1,100 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{java.util.*}\PYG{p}{;}
+
+\PYG{k+kd}{public} \PYG{k+kd}{class} \PYG{n+nc}{Graph}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kd}{private} \PYG{k+kd}{static} \PYG{k+kt}{int} \PYG{n}{infinite} \PYG{o}{=} \PYG{l+m+mi}{9999999}\PYG{p}{;}
+	\PYG{k+kt}{int}\PYG{o}{[][]} \PYG{n}{LinkCost}\PYG{p}{;}
+	\PYG{k+kt}{int} \PYG{n}{NNodes}\PYG{p}{;}
+	\PYG{n}{Graph}\PYG{p}{(}\PYG{k+kt}{int}\PYG{o}{[][]} \PYG{n}{mat}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{;}
+		\PYG{n}{NNodes} \PYG{o}{=} \PYG{n}{mat}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{;}
+		\PYG{n}{LinkCost} \PYG{o}{=} \PYG{k}{new} \PYG{k+kt}{int}\PYG{o}{[}\PYG{n}{NNodes}\PYG{o}{][}\PYG{n}{NNodes}\PYG{o}{]}\PYG{p}{;}
+		\PYG{k}{for} \PYG{p}{(} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{NNodes}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k}{for} \PYG{p}{(} \PYG{n}{j}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{NNodes}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)}
+			\PYG{p}{\PYGZob{}}
+				\PYG{n}{LinkCost}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]} \PYG{o}{=} \PYG{n}{mat}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]}\PYG{p}{;}
+				\PYG{k}{if} \PYG{p}{(}\PYG{n}{LinkCost}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)}
+				\PYG{p}{\PYGZob{}}
+					\PYG{n}{LinkCost}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]} \PYG{o}{=} \PYG{n}{infinite}\PYG{p}{;}
+				\PYG{p}{\PYGZcb{}}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{k}{for} \PYG{p}{(} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{NNodes}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k}{for} \PYG{p}{(}\PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{NNodes}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)}
+				\PYG{k}{if} \PYG{p}{(}\PYG{n}{LinkCost}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]} \PYG{o}{\PYGZlt{}}\PYG{n}{infinite}\PYG{p}{)}
+					\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(} \PYG{l+s}{\PYGZdq{} \PYGZdq{}} \PYG{o}{+} \PYG{n}{LinkCost}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]} \PYG{o}{+} \PYG{l+s}{\PYGZdq{} \PYGZdq{}} \PYG{p}{);}
+				\PYG{k}{else}
+					   \PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} * \PYGZdq{}} \PYG{p}{);}
+				\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{();}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k+kd}{public} \PYG{k+kt}{int} \PYG{n+nf}{unReached}\PYG{p}{(}\PYG{k+kt}{boolean}\PYG{o}{[]} \PYG{n}{r}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{boolean} \PYG{n}{done} \PYG{o}{=} \PYG{k+kc}{true}\PYG{p}{;}
+		\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{r}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+			\PYG{k}{if} \PYG{p}{(}\PYG{n}{r}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]} \PYG{o}{==} \PYG{k+kc}{false}\PYG{p}{)}
+				\PYG{k}{return} \PYG{n}{i}\PYG{p}{;}
+		\PYG{k}{return} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k+kd}{public} \PYG{k+kt}{void} \PYG{n+nf}{Prim}\PYG{p}{(} \PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{,} \PYG{n}{k}\PYG{p}{,} \PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{;}
+		\PYG{k+kt}{boolean}\PYG{o}{[]} \PYG{n}{Reached} \PYG{o}{=} \PYG{k}{new} \PYG{k+kt}{boolean}\PYG{o}{[}\PYG{n}{NNoodes}\PYG{o}{]}\PYG{p}{;}
+		\PYG{n}{Reached}\PYG{o}{[}\PYG{l+m+mi}{0}\PYG{o}{]} \PYG{o}{=} \PYG{k+kc}{true}\PYG{p}{;}
+		\PYG{k}{for} \PYG{p}{(}\PYG{n}{k} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{k} \PYG{o}{\PYGZlt{}} \PYG{n}{NNoodes}\PYG{p}{;} \PYG{n}{k}\PYG{o}{++} \PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{Reached}\PYG{o}{[}\PYG{n}{k}\PYG{o}{]} \PYG{o}{=} \PYG{k+kc}{false}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{n}{predNode}\PYG{o}{[}\PYG{l+m+mi}{0}\PYG{o}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+		\PYG{n}{printReachSet}\PYG{p}{(} \PYG{n}{Reached}\PYG{p}{);}
+		\PYG{k}{for}\PYG{p}{(}\PYG{n}{k}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{k} \PYG{o}{\PYGZlt{}} \PYG{n}{NNodes}\PYG{p}{;} \PYG{n}{k}\PYG{o}{++}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{x}\PYG{o}{=} \PYG{n}{y}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+			\PYG{k}{for}\PYG{p}{(} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}} \PYG{n}{NNodes}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+				\PYG{k}{for}\PYG{p}{(} \PYG{n}{j}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j}\PYG{o}{\PYGZlt{}} \PYG{n}{NNodes}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)}
+				\PYG{p}{\PYGZob{}}
+					\PYG{k}{if} \PYG{p}{(}\PYG{n}{Reached}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]} \PYG{o}{\PYGZam{}\PYGZam{}!}\PYG{n}{Reached}\PYG{o}{[}\PYG{n}{j}\PYG{o}{]} \PYG{o}{\PYGZam{}\PYGZam{}}
+						 \PYG{n}{LinkCost}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]} \PYG{o}{\PYGZlt{}} \PYG{n}{LinkCost}\PYG{o}{[}\PYG{n}{x}\PYG{o}{][}\PYG{n}{y}\PYG{o}{]}\PYG{p}{)}
+					\PYG{p}{\PYGZob{}}
+						\PYG{n}{x}\PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
+						\PYG{n}{y}\PYG{o}{=} \PYG{n}{j}\PYG{p}{;}
+					\PYG{p}{\PYGZcb{}}
+				\PYG{p}{\PYGZcb{}}
+			\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Min cost edge:}
+\PYG{l+s}{						(\PYGZdq{}}\PYG{o}{+} \PYG{n}{x} \PYG{o}{+} \PYG{l+s}{\PYGZdq{},\PYGZdq{}} \PYG{o}{+} \PYG{n}{y} \PYG{o}{+} \PYG{l+s}{\PYGZdq{})\PYGZdq{}} \PYG{o}{+} \PYG{l+s}{\PYGZdq{}cost =  \PYGZdq{}} \PYG{o}{+} \PYG{n}{LinkCost}\PYG{o}{[}\PYG{n}{x}\PYG{o}{][}\PYG{n}{y}\PYG{o}{]}\PYG{p}{);}
+			\PYG{n}{predNode}\PYG{o}{[}\PYG{n}{y}\PYG{o}{]=} \PYG{n}{x}\PYG{p}{;}
+			\PYG{n}{Reached}\PYG{o}{[}\PYG{n}{y}\PYG{o}{]=} \PYG{k+kc}{true}\PYG{p}{;}
+			\PYG{n}{printReachSet}\PYG{p}{(} \PYG{n}{Reached}\PYG{p}{);}
+			\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{();}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k+kt}{int}\PYG{o}{[]} \PYG{n}{a}\PYG{o}{=} \PYG{n}{predNode}\PYG{p}{;}
+	\PYG{k}{for}\PYG{p}{(} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{NNodes}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+		\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(} \PYG{n}{a}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]+} \PYG{l+s}{\PYGZdq{} \PYGZhy{}\PYGZhy{}\PYGZgt{} \PYGZdq{}}\PYG{o}{+} \PYG{n}{i}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k+kt}{void} \PYG{n+nf}{printReachSet}\PYG{p}{(}\PYG{k+kt}{boolean}\PYG{o}{[]} \PYG{n}{Reached}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}ReachSet = \PYGZdq{}}\PYG{p}{);}
+		\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}} \PYG{n}{Reached}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+			\PYG{k}{if}\PYG{p}{(} \PYG{n}{Reached}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{p}{)}
+				\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(} \PYG{n}{i}\PYG{o}{+} \PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{main}\PYG{p}{(}\PYG{n}{String}\PYG{o}{[]} \PYG{n}{args}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int}\PYG{o}{[][]} \PYG{n}{conn}\PYG{o}{=}\PYG{p}{\PYGZob{}\PYGZob{}}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{\PYGZcb{},} \PYG{c+c1}{// 0}
+					   \PYG{p}{\PYGZob{}}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{\PYGZcb{},} \PYG{c+c1}{// 1}
+					   \PYG{p}{\PYGZob{}}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{\PYGZcb{},} \PYG{c+c1}{// 2}
+					   \PYG{p}{\PYGZob{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{\PYGZcb{},} \PYG{c+c1}{// 3}
+					   \PYG{p}{\PYGZob{}}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{8}\PYG{p}{\PYGZcb{},} \PYG{c+c1}{// 4}
+					   \PYG{p}{\PYGZob{}}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{8}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{\PYGZcb{},} \PYG{c+c1}{// 5}
+					   \PYG{p}{\PYGZob{}}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{8}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{\PYGZcb{},} \PYG{c+c1}{// 6}
+					   \PYG{p}{\PYGZob{}}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{\PYGZcb{},} \PYG{c+c1}{// 7}
+					   \PYG{p}{\PYGZob{}}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{8}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{\PYGZcb{}} \PYG{c+c1}{// 8}
+					 \PYG{p}{\PYGZcb{};}
+		\PYG{n}{Graph} \PYG{n}{G}\PYG{o}{=} \PYG{k}{new} \PYG{n}{Graph}\PYG{p}{(}\PYG{n}{conn}\PYG{p}{);}
+		\PYG{n}{G}\PYG{p}{.}\PYG{n+na}{Prim}\PYG{p}{();}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

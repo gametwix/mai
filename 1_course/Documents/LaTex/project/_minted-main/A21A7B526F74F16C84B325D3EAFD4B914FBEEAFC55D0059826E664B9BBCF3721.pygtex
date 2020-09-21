@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{matrix}\PYG{o}{\PYGZhy{}}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{n}{x}\PYG{p}{)}
+	\PYG{c+c1}{\PYGZsh{}создаем переменную количества строк матрицы}
+	\PYG{n}{n} \PYG{o}{=} \PYG{n}{A}\PYG{o}{.}\PYG{n}{lines}
+	\PYG{n}{y} \PYG{o}{=} \PYG{n}{Vector}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{}создаем вектор длины n}
+	\PYG{c+c1}{\PYGZsh{}запускаем параллельно n итераций цикла}
+	\PYG{n}{parallel} \PYG{k}{for} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{n}
+		\PYG{c+c1}{\PYGZsh{}обнуляем все элементы вектора}
+		\PYG{n}{y}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}
+	\PYG{c+c1}{\PYGZsh{}запускаем параллельно n итераций цикла}
+	\PYG{n}{parallel} \PYG{k}{for} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{n}
+		\PYG{c+c1}{\PYGZsh{}в каждом из них запускаем цикл от 1 до n проходящий по строке i}
+		\PYG{k}{for} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{n}
+			\PYG{c+c1}{\PYGZsh{}в каждой итерации прибавляем к элементу  вектора y произведение}
+			\PYG{c+c1}{\PYGZsh{}элемента i строки,  j столбца и j элемента вектора x}
+			\PYG{n}{y}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{y}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{+} \PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]}\PYG{o}{*}\PYG{n}{x}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}
+\PYG{c+c1}{\PYGZsh{}возвращаем вектор y}
+\PYG{k}{return} \PYG{n}{y}
+\end{Verbatim}

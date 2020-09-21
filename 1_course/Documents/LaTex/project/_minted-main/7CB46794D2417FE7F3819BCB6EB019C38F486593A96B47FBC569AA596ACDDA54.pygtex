@@ -1,0 +1,30 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{FWF} \PYG{o}{:} \PYG{k}{public} \PYG{n}{Strategy} \PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+	\PYG{n}{FWF}\PYG{p}{()} \PYG{o}{:} \PYG{n}{Strategy}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}FWF\PYGZdq{}}\PYG{p}{)} \PYG{c+c1}{//вызов конструктора класса Strategy}
+	\PYG{p}{\PYGZob{}}
+	\PYG{p}{\PYGZcb{}}
+\PYG{c+cm}{/*возвращение индекса кэша, с какого можно вставлять элементы*/}
+	\PYG{k+kt}{int} \PYG{n}{apply}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{requestIndex}\PYG{p}{)} \PYG{k}{override}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{cacheSize}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k}{if}\PYG{p}{(}\PYG{n}{cache}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{n}{request}\PYG{p}{[}\PYG{n}{requestIndex}\PYG{p}{])}
+				\PYG{k}{return} \PYG{n}{i}\PYG{p}{;}
+  \PYG{c+c1}{// после первой пустой страницы, все остальные тоже должны быть пусты}
+			\PYG{k}{else} \PYG{n+nf}{if}\PYG{p}{(}\PYG{n}{cache}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{n}{emptyPage}\PYG{p}{)}
+				\PYG{k}{return} \PYG{n}{i}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{c+c1}{// нет пустых страниц}
+		\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k+kt}{void} \PYG{n}{update}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{cachePos}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{requestIndex}\PYG{p}{,} \PYG{k+kt}{bool} \PYG{n}{cacheMiss}\PYG{p}{)} \PYG{k}{override}	\PYG{p}{\PYGZob{}}
+		\PYG{c+c1}{// нет пустых страниц \PYGZhy{}\PYGZgt{} пропустить \PYGZhy{}\PYGZgt{} очистить кэш}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{cacheMiss} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{cachePos} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{cacheSize}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+				\PYG{n}{cache}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{emptyPage}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+ \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

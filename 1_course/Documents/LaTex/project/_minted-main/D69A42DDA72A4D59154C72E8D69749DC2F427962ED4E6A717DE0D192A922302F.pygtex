@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{txt}\PYG{p}{[]} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}AABAACAADAABAAABAA\PYGZdq{}}
+\PYG{n}{pat}\PYG{p}{[]} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}AABA\PYGZdq{}}
+\end{Verbatim}

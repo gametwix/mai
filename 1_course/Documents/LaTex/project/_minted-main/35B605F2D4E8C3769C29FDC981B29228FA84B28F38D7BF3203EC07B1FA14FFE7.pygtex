@@ -1,0 +1,97 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{java.util.*}\PYG{p}{;}
+\PYG{k+kn}{import} \PYG{n+nn}{java.lang.*}\PYG{p}{;}
+\PYG{k+kn}{import} \PYG{n+nn}{java.io.*}\PYG{p}{;}
+
+\PYG{k+kd}{class} \PYG{n+nc}{ShortestPath}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{// количество вершин  \PYGZlt{}\PYGZhy{}\PYGZgt{} размерность матрицы}
+	\PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{k+kt}{int} \PYG{n}{V}\PYG{o}{=}\PYG{l+m+mi}{9}\PYG{p}{;}
+
+	\PYG{k+kt}{int} \PYG{n+nf}{minDistance}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{dist}\PYG{o}{[]}\PYG{p}{,} \PYG{n}{Boolean} \PYG{n}{sptSet}\PYG{o}{[]}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{c+cm}{/* ищем минимальное расстояние до непомеченных вершин */}
+		\PYG{c+c1}{// ставим планку для сравниваемого значения и индекса}
+		\PYG{k+kt}{int} \PYG{n}{min} \PYG{o}{=} \PYG{n}{Integer}\PYG{p}{.}\PYG{n+na}{MAX\PYGZus{}VALUE}\PYG{p}{,} \PYG{n}{min\PYGZus{}index}\PYG{o}{=\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+		
+		\PYG{c+c1}{// проход по строкам матрицы}
+		\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{v} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{v} \PYG{o}{\PYGZlt{}} \PYG{n}{V}\PYG{p}{;} \PYG{n}{v}\PYG{o}{++}\PYG{p}{)}
+			\PYG{c+c1}{// если ребро не учтено и минимально на текущий момент}
+			\PYG{k}{if} \PYG{p}{(}\PYG{n}{sptSet}\PYG{o}{[}\PYG{n}{v}\PYG{o}{]} \PYG{o}{==} \PYG{k+kc}{false} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{dist}\PYG{o}{[}\PYG{n}{v}\PYG{o}{]} \PYG{o}{\PYGZlt{}=} \PYG{n}{min}\PYG{p}{)}
+			\PYG{p}{\PYGZob{}}
+				\PYG{c+c1}{// устанавливаем новую планку}
+				\PYG{n}{min} \PYG{o}{=} \PYG{n}{dist}\PYG{o}{[}\PYG{n}{v}\PYG{o}{]}\PYG{p}{;}
+				\PYG{n}{min\PYGZus{}index} \PYG{o}{=} \PYG{n}{v}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{c+c1}{// возвращаем индекс самого малого веса ребра}
+		\PYG{k}{return} \PYG{n}{min\PYGZus{}index}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+
+
+	\PYG{k+kt}{void} \PYG{n+nf}{printSolution}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{dist}\PYG{o}{[]}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{c+cm}{/* вывод результата в виде списка */}
+		\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Vertex Distance from Source\PYGZdq{}}\PYG{p}{);}
+
+		\PYG{c+c1}{// первый столбец \PYGZhy{} индекс вершины; второй \PYGZhy{} минимальной дистанции}
+		\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{V}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+			\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{n}{i}\PYG{o}{+}\PYG{l+s}{\PYGZdq{} \PYGZbs{}t\PYGZbs{}t \PYGZdq{}}\PYG{o}{+}\PYG{n}{dist}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+
+
+	\PYG{k+kt}{void} \PYG{n+nf}{dijkstra}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{graph}\PYG{o}{[][]}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{src}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{c+c1}{// инициализация булева массива по количеству вершин}
+		\PYG{n}{Boolean} \PYG{n}{sptSet}\PYG{o}{[]} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Boolean}\PYG{o}{[}\PYG{n}{V}\PYG{o}{]}\PYG{p}{;}
+
+			\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{V}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+			\PYG{p}{\PYGZob{}}
+				\PYG{c+c1}{// присваиваем каждому ребру максимальный вес и ставим флаг}
+				\PYG{n}{dist}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]} \PYG{o}{=} \PYG{n}{Integer}\PYG{p}{.}\PYG{n+na}{MAX\PYGZus{}VALUE}\PYG{p}{;}
+				\PYG{c+c1}{// “непосещение” текущего ребра}
+				\PYG{n}{sptSet}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]} \PYG{o}{=} \PYG{k+kc}{false}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}
+
+		\PYG{c+c1}{// стартовое состояние одной из вершин}
+		\PYG{n}{dist}\PYG{o}{[}\PYG{n}{src}\PYG{o}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+
+		\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{count} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{count} \PYG{o}{\PYGZlt{}} \PYG{n}{V}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{count}\PYG{o}{++}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k+kt}{int} \PYG{n}{u} \PYG{o}{=} \PYG{n}{minDistance}\PYG{p}{(}\PYG{n}{dist}\PYG{p}{,} \PYG{n}{sptSet}\PYG{p}{);}
+	
+			\PYG{c+c1}{// помечаем вершину с минимальным расстоянием}
+			\PYG{n}{sptSet}\PYG{o}{[}\PYG{n}{u}\PYG{o}{]} \PYG{o}{=} \PYG{k+kc}{true}\PYG{p}{;}
+
+			\PYG{c+cm}{/* ищем меньшие варианты обхода,}
+\PYG{c+cm}{			обновляем ранее установленное расстояние */}
+			\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{v} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{v} \PYG{o}{\PYGZlt{}} \PYG{n}{V}\PYG{p}{;} \PYG{n}{v}\PYG{o}{++}\PYG{p}{)}
+				\PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{sptSet}\PYG{o}{[}\PYG{n}{v}\PYG{o}{]} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{graph}\PYG{o}{[}\PYG{n}{u}\PYG{o}{][}\PYG{n}{v}\PYG{o}{]!=}\PYG{l+m+mi}{0} \PYG{o}{\PYGZam{}\PYGZam{}}
+						\PYG{n}{dist}\PYG{o}{[}\PYG{n}{u}\PYG{o}{]} \PYG{o}{!=} \PYG{n}{Integer}\PYG{p}{.}\PYG{n+na}{MAX\PYGZus{}VALUE} \PYG{o}{\PYGZam{}\PYGZam{}}
+						\PYG{n}{dist}\PYG{o}{[}\PYG{n}{u}\PYG{o}{]+}\PYG{n}{graph}\PYG{o}{[}\PYG{n}{u}\PYG{o}{][}\PYG{n}{v}\PYG{o}{]} \PYG{o}{\PYGZlt{}} \PYG{n}{dist}\PYG{o}{[}\PYG{n}{v}\PYG{o}{]}\PYG{p}{)}
+					\PYG{n}{dist}\PYG{o}{[}\PYG{n}{v}\PYG{o}{]} \PYG{o}{=} \PYG{n}{dist}\PYG{o}{[}\PYG{n}{u}\PYG{o}{]} \PYG{o}{+} \PYG{n}{graph}\PYG{o}{[}\PYG{n}{u}\PYG{o}{][}\PYG{n}{v}\PYG{o}{]}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{c+c1}{// выводим результат}
+		\PYG{n}{printSolution}\PYG{p}{(}\PYG{n}{dist}\PYG{p}{,} \PYG{n}{V}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+
+
+	\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{main} \PYG{p}{(}\PYG{n}{String}\PYG{o}{[]} \PYG{n}{args}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{c+c1}{// инициализируем двумерный массив симметричной матрицы смежности}
+		\PYG{k+kt}{int} \PYG{n}{graph}\PYG{o}{[][]} \PYG{o}{=} \PYG{k}{new} \PYG{k+kt}{int}\PYG{o}{[][]}\PYG{p}{\PYGZob{}\PYGZob{}}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{8}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{\PYGZcb{},}
+																\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{8}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{11}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{\PYGZcb{},}
+																\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{8}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{7}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{\PYGZcb{},}
+																\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{7}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{9}\PYG{p}{,} \PYG{l+m+mi}{14}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{\PYGZcb{},}
+																\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{9}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{10}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{\PYGZcb{},}
+																\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{14}\PYG{p}{,} \PYG{l+m+mi}{10}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{\PYGZcb{},}
+																\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{6}\PYG{p}{\PYGZcb{},}
+																\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{8}\PYG{p}{,} \PYG{l+m+mi}{11}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{7}\PYG{p}{\PYGZcb{},}
+																\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{6}\PYG{p}{,} \PYG{l+m+mi}{7}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{};}
+
+	\PYG{n}{ShortestPath} \PYG{n}{t} \PYG{o}{=} \PYG{k}{new} \PYG{n}{ShortestPath}\PYG{p}{();}
+
+	\PYG{n}{t}\PYG{p}{.}\PYG{n+na}{dijkstra}\PYG{p}{(}\PYG{n}{graph}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

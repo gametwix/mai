@@ -1,0 +1,27 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{array}\PYG{p}{[}\PYG{l+m+mi}{1000}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}} \PYG{c+cm}{/*отсортированный массив данных*/} \PYG{p}{\PYGZcb{};}
+\PYG{c+c1}{// Количество обрабатываемых чисел}
+\PYG{k+kt}{int} \PYG{n}{N} \PYG{o}{=} \PYG{l+m+mi}{100}\PYG{p}{;}
+\PYG{c+c1}{// Верхняя, нижняя грани и середина}
+\PYG{k+kt}{int} \PYG{n}{high}\PYG{p}{,} \PYG{n}{low}\PYG{p}{,} \PYG{n}{mid}\PYG{p}{;}
+\PYG{c+c1}{// Искомое значение}
+\PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{;}
+\PYG{n}{low} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{n}{high} \PYG{o}{=} \PYG{n}{N} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{k}{while}\PYG{p}{(}\PYG{n}{low} \PYG{o}{\PYGZlt{}} \PYG{n}{high}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}	
+	\PYG{c+c1}{// Берем середину}
+\PYG{n}{mid} \PYG{o}{=} \PYG{p}{(}\PYG{n}{low} \PYG{o}{+} \PYG{n}{high}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{;}
+\PYG{c+c1}{//Если искомое число больше}
+\PYG{k}{if}\PYG{p}{(}\PYG{n}{array}\PYG{p}{[}\PYG{n}{mid}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{n}{x}\PYG{p}{)}
+	\PYG{c+c1}{// Смещаем нижнюю грань на середину}
+\PYG{n}{low} \PYG{o}{=} \PYG{n}{mid} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{k}{else}
+\PYG{c+c1}{// Смещаем верхнюю грань на середину}
+\PYG{n}{high} \PYG{o}{=} \PYG{n}{mid}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{k}{if}\PYG{p}{(}\PYG{n}{array}\PYG{p}{[}\PYG{n}{low}\PYG{p}{]} \PYG{o}{==} \PYG{n}{x}\PYG{p}{)}
+\PYG{c+c1}{// Значение найдено}
+\PYG{k}{else}
+\PYG{c+c1}{// Значение не найдено}
+\end{Verbatim}

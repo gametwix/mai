@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{subalgo} \PYG{n}{findSet}\PYG{p}{(}\PYG{n}{v}\PYG{p}{:} \PYG{n}{a} \PYG{n}{node}\PYG{p}{):}
+\PYG{k}{if} \PYG{n}{v}\PYG{o}{.}\PYG{n}{parent} \PYG{o}{!=} \PYG{n}{v}
+	\PYG{n}{v}\PYG{o}{.}\PYG{n}{parent} \PYG{o}{=} \PYG{n}{findSet}\PYG{p}{(}\PYG{n}{v}\PYG{o}{.}\PYG{n}{parent}\PYG{p}{)}\PYG{c+c1}{\PYGZsh{} функция рекурсивно проходит от любого}
+								\PYG{c+c1}{\PYGZsh{} узла к корню}
+\PYG{k}{return} \PYG{n}{v}\PYG{o}{.}\PYG{n}{parent}
+\end{Verbatim}

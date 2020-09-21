@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{Node}\PYG{p}{:}		\PYG{c+c1}{\PYGZsh{} класс узла поддерева}
+	\PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{val}\PYG{p}{):} \PYG{c+c1}{\PYGZsh{} Поля класса}
+		\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{l\PYGZus{}child} \PYG{o}{=} \PYG{k+kc}{None} \PYG{c+c1}{\PYGZsh{} указатель на узел левого поддерева}
+		\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{r\PYGZus{}child} \PYG{o}{=} \PYG{k+kc}{None} \PYG{c+c1}{\PYGZsh{} указатель на узел правого поддерева}
+		\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data} \PYG{o}{=} \PYG{n}{val} \PYG{c+c1}{\PYGZsh{} значение}
+\end{Verbatim}

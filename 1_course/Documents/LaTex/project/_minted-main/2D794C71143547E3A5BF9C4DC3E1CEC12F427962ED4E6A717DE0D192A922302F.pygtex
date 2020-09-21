@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{max} \PYG{o}{=} \PYG{n}{INT\PYGZus{}MIN}\PYG{p}{;}
+\PYG{k+kt}{size\PYGZus{}t} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}	 \PYG{c+c1}{// из цикла for}
+\end{Verbatim}

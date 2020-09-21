@@ -1,0 +1,32 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{p}\PYG{o}{\PYGZhy{}}\PYG{n}{merge}\PYG{p}{(}\PYG{n}{T}\PYG{p}{,}\PYG{n}{p1}\PYG{p}{,}\PYG{n}{r1}\PYG{p}{,}\PYG{n}{p2}\PYG{p}{,}\PYG{n}{r2}\PYG{p}{,}\PYG{n}{A}\PYG{p}{,}\PYG{n}{p3}\PYG{p}{)}
+	\PYG{c+c1}{\PYGZsh{}длина первого отрезка}
+	\PYG{n}{n1} \PYG{o}{=} \PYG{n}{r1}\PYG{o}{\PYGZhy{}}\PYG{n}{p1}\PYG{o}{+}\PYG{l+m+mi}{1}
+	\PYG{c+c1}{\PYGZsh{}длина второго отрезка}
+	\PYG{n}{n2} \PYG{o}{=} \PYG{n}{r2}\PYG{o}{\PYGZhy{}}\PYG{n}{p2}\PYG{o}{+}\PYG{l+m+mi}{1}
+
+	\PYG{k}{if} \PYG{n}{n1}\PYG{o}{\PYGZlt{}}\PYG{n}{n2}
+		\PYG{c+c1}{\PYGZsh{}меняем местами надала отрезков}
+		\PYG{n}{permute} \PYG{n}{p1} \PYG{o+ow}{and} \PYG{n}{p2}
+		\PYG{c+c1}{\PYGZsh{}меняем местами концы отрезков}
+		\PYG{n}{permute} \PYG{n}{r1} \PYG{o+ow}{and} \PYG{n}{r2}
+		\PYG{c+c1}{\PYGZsh{}меняем местами длины отрезка}
+		\PYG{n}{permute} \PYG{n}{n1} \PYG{o+ow}{and} \PYG{n}{n2}
+	\PYG{k}{if} \PYG{n}{n1}\PYG{o}{==}\PYG{l+m+mi}{0}
+		\PYG{c+c1}{\PYGZsh{}массив пуст? тогда пусты оба массива}
+		\PYG{k}{return}
+	\PYG{k}{else}
+		\PYG{c+c1}{\PYGZsh{}округленная середина первого отрезка}
+		\PYG{n}{q1} \PYG{o}{=} \PYG{n}{floor}\PYG{p}{((}\PYG{n}{p1}\PYG{o}{+}\PYG{n}{r1}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{)}
+		\PYG{c+c1}{\PYGZsh{}ищем положение элемента с таким же значением во втором цикле}
+		\PYG{n}{q2} \PYG{o}{=} \PYG{n}{dichotomic}\PYG{o}{\PYGZhy{}}\PYG{n}{search}\PYG{p}{(}\PYG{n}{T}\PYG{p}{[}\PYG{n}{q1}\PYG{p}{],}\PYG{n}{T}\PYG{p}{,}\PYG{n}{p2}\PYG{p}{,}\PYG{n}{r2}\PYG{p}{)}
+		\PYG{c+c1}{\PYGZsh{}положение элемента в конечном массиве}
+		\PYG{n}{q3} \PYG{o}{=} \PYG{n}{p3} \PYG{o}{+} \PYG{p}{(}\PYG{n}{q1}\PYG{o}{\PYGZhy{}}\PYG{n}{p1}\PYG{p}{)} \PYG{o}{+} \PYG{p}{(}\PYG{n}{q2}\PYG{o}{\PYGZhy{}}\PYG{n}{p2}\PYG{p}{)}
+		\PYG{c+c1}{\PYGZsh{}помещаем элемент в результирующий массив}
+		\PYG{n}{A}\PYG{p}{[}\PYG{n}{q3}\PYG{p}{]} \PYG{o}{=} \PYG{n}{T}\PYG{p}{[}\PYG{n}{q1}\PYG{p}{]}
+		\PYG{c+c1}{\PYGZsh{}параллельно вызываем функции слияния, для левых и}
+		\PYG{c+c1}{\PYGZsh{}правых половин отрезков массива}
+		\PYG{n}{spawn} \PYG{n}{p}\PYG{o}{\PYGZhy{}}\PYG{n}{merge}\PYG{p}{(}\PYG{n}{T}\PYG{p}{,}\PYG{n}{p1}\PYG{p}{,}\PYG{n}{q1}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{p2}\PYG{p}{,}\PYG{n}{q2}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{A}\PYG{p}{,}\PYG{n}{p3}\PYG{p}{)}
+		\PYG{n}{p}\PYG{o}{\PYGZhy{}}\PYG{n}{merge}\PYG{p}{(}\PYG{n}{T}\PYG{p}{,}\PYG{n}{q1}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{r1}\PYG{p}{,}\PYG{n}{q2}\PYG{p}{,}\PYG{n}{r2}\PYG{p}{,}\PYG{n}{A}\PYG{p}{,}\PYG{n}{q3}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}
+		\PYG{n}{sync}
+\end{Verbatim}

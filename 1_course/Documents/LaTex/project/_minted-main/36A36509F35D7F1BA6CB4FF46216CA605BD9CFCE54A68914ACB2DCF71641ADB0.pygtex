@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{subalgo} \PYG{n}{unionSet}\PYG{p}{(}\PYG{n}{u}\PYG{p}{,} \PYG{n}{v}\PYG{p}{:} \PYG{n}{nodes}\PYG{p}{):}
+\PYG{c+c1}{\PYGZsh{} свяжем два узла с их корнями}
+\PYG{n}{vRoot} \PYG{o}{=} \PYG{n}{findSet}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}
+\PYG{n}{uRoot} \PYG{o}{=} \PYG{n}{findSet}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}
+\PYG{k}{if} \PYG{n}{vRoot} \PYG{o}{==} \PYG{n}{uRoot}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} проверим, чтобы два узла не совпадали}
+	\PYG{k}{return}
+\PYG{k}{if} \PYG{n}{vRoot}\PYG{o}{.}\PYG{n}{height} \PYG{o}{\PYGZlt{}} \PYG{n}{uRoot}\PYG{o}{.}\PYG{n}{height}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} согласно функции поиска корня при}
+\PYG{c+c1}{\PYGZsh{} выполнении данного условия один из корней будет родителем второго}
+	\PYG{n}{vRoot}\PYG{o}{.}\PYG{n}{parent} \PYG{o}{=} \PYG{n}{uRoot}
+\PYG{k}{else} \PYG{k}{if} \PYG{n}{vRoot}\PYG{o}{.}\PYG{n}{height} \PYG{o}{\PYGZgt{}} \PYG{n}{uRoot}\PYG{o}{.}\PYG{n}{height}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} согласно функции поиска корня при}
+\PYG{c+c1}{\PYGZsh{} выполнении данного условия один из корней будет родителем второго}
+	\PYG{n}{uRoot}\PYG{o}{.}\PYG{n}{parent} \PYG{o}{=} \PYG{n}{vRoot}
+\PYG{k}{else}\PYG{p}{:}
+	\PYG{n}{uRoot}\PYG{o}{.}\PYG{n}{parent} \PYG{o}{=} \PYG{n}{vRoot} \PYG{c+c1}{\PYGZsh{} если не выполняются оба условия будем считать}
+						 \PYG{c+c1}{\PYGZsh{} один из корней родителем другого по умолчанию}
+	\PYG{n}{uRoot}\PYG{o}{.}\PYG{n}{height} \PYG{o}{=}  \PYG{n}{uRoot}\PYG{o}{.}\PYG{n}{height} \PYG{o}{+} \PYG{l+m+mi}{1}
+\end{Verbatim}

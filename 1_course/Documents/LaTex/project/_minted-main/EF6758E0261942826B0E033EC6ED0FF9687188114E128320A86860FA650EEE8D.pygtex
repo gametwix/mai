@@ -1,0 +1,25 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{public} \PYG{k}{class} \PYG{n+nc}{SelectionSort}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{private} \PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{SortSelection}\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{[]} \PYG{n}{input}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{0}\PYG{p}{;} \PYG{n}{i} \PYG{p}{\PYGZlt{}} \PYG{n}{n} \PYG{p}{\PYGZhy{}} \PYG{l+m}{1}\PYG{p}{;} \PYG{n}{i}\PYG{p}{++)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k+kt}{var} \PYG{n}{minId} \PYG{p}{=} \PYG{n}{i}\PYG{p}{;}
+			\PYG{k+kt}{int} \PYG{n}{j}\PYG{p}{;}
+			\PYG{k}{for} \PYG{p}{(}\PYG{n}{j} \PYG{p}{=} \PYG{n}{i} \PYG{p}{+} \PYG{l+m}{1}\PYG{p}{;} \PYG{n}{j} \PYG{p}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{j}\PYG{p}{++)}
+			\PYG{p}{\PYGZob{}}
+				\PYG{k}{if} \PYG{p}{(}\PYG{n}{input}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{p}{\PYGZlt{}} \PYG{n}{input}\PYG{p}{[}\PYG{n}{minId}\PYG{p}{])} \PYG{n}{minId} \PYG{p}{=} \PYG{n}{j}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}
+			\PYG{k+kt}{var} \PYG{n}{temp} \PYG{p}{=} \PYG{n}{input}\PYG{p}{[}\PYG{n}{minId}\PYG{p}{];}
+			\PYG{n}{input}\PYG{p}{[}\PYG{n}{minId}\PYG{p}{]} \PYG{p}{=} \PYG{n}{input}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+			\PYG{n}{input}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{=} \PYG{n}{temp}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{public} \PYG{k}{static} \PYG{k+kt}{int}\PYG{p}{[]} \PYG{n+nf}{Main}\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{[]} \PYG{n}{input}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{SortSelection}\PYG{p}{(}\PYG{n}{input}\PYG{p}{,} \PYG{n}{input}\PYG{p}{.}\PYG{n}{Length}\PYG{p}{);}
+		\PYG{k}{return} \PYG{n}{input}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

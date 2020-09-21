@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{minimum} \PYG{o}{=} \PYG{n}{INF} \PYG{c+c1}{\PYGZsh{} Присваиваем минимуму бесконечно большое значение}
+\PYG{k}{for} \PYG{n+nb}{all} \PYG{n}{permutations} \PYG{n}{P} \PYG{c+c1}{\PYGZsh{} Перебираем все перестановки}
+
+	\PYG{n}{current} \PYG{o}{=} \PYG{l+m+mi}{0} \PYG{c+c1}{\PYGZsh{} Вводим счетчик для всех стоимостей путей}
+
+	\PYG{k}{for} \PYG{n}{i} \PYG{k+kn}{from} \PYG{l+m+mi}{0} \PYG{n}{to} \PYG{n}{N}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}
+	    \PYG{n}{current} \PYG{o}{=} \PYG{n}{current} \PYG{o}{+} \PYG{n}{cost}\PYG{p}{[}\PYG{n}{P}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]][}\PYG{n}{P}\PYG{p}{[}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]]} \PYG{c+c1}{\PYGZsh{} Добавить стоимость пути}
+	                                           \PYG{c+c1}{\PYGZsh{} из вершины 1 в следующую}
+
+	\PYG{n}{current} \PYG{o}{=} \PYG{n}{current} \PYG{o}{+} \PYG{n}{cost}\PYG{p}{[}\PYG{n}{P}\PYG{p}{[}\PYG{n}{N}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]][}\PYG{n}{P}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]]} \PYG{c+c1}{\PYGZsh{} Добавить стоимость пути из}
+                                    	   \PYG{c+c1}{\PYGZsh{} последней вершины в первую}
+	\PYG{k}{if} \PYG{n}{current} \PYG{o}{\PYGZlt{}} \PYG{n}{minimum} \PYG{c+c1}{\PYGZsh{} Обновить минимум, если необходимо}
+		\PYG{n}{minimum} \PYG{o}{=} \PYG{n}{current}
+\PYG{n}{output} \PYG{n}{minimum} \PYG{c+c1}{\PYGZsh{} Выводим минимальную стоимость}
+\end{Verbatim}

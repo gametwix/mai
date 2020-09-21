@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{function} \PYG{n}{heapsort}\PYG{p}{(}\PYG{n}{input}\PYG{p}{,} \PYG{n}{count}\PYG{p}{)}
+	\PYG{n}{heapify}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{n}{count}\PYG{p}{)}
+	\PYG{n}{end} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n}{count} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}
+	\PYG{k}{while} \PYG{n}{end} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{l+m+mi}{0} \PYG{k}{do}
+	\PYG{n}{swap}\PYG{p}{(}\PYG{n}{a}\PYG{p}{[}\PYG{n}{end}\PYG{p}{],}\PYG{n}{a}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}
+	\PYG{n}{end}\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{n}{end}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+	\PYG{n}{restore}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{end}\PYG{p}{)}
+	
+\PYG{n}{function} \PYG{n}{heapify}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{count}\PYG{p}{)}
+	\PYG{n}{start} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n}{parent}\PYG{p}{(}\PYG{n}{count} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)}
+	\PYG{k}{while} \PYG{n}{start} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0} \PYG{k}{do}
+		\PYG{n}{restore}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{start}\PYG{p}{,} \PYG{n}{count} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)}
+		\PYG{n}{start} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n}{start} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}
+\end{Verbatim}

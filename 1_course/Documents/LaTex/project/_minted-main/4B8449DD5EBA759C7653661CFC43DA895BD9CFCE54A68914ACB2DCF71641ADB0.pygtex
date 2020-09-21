@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{is\PYGZus{}BST}\PYG{p}{(}\PYG{n}{root}\PYG{p}{):} 	\PYG{c+c1}{\PYGZsh{} является ли дерево бинарным поиска}
+	\PYG{k}{if} \PYG{n}{root} \PYG{o}{==} \PYG{n}{NULL}\PYG{p}{:} 	\PYG{c+c1}{\PYGZsh{} если дерево пустое то оно BST}
+		\PYG{k}{return} \PYG{n}{true}
+	\PYG{c+c1}{\PYGZsh{} Проверка значения левого поддерева}
+	\PYG{k}{if} \PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left} \PYG{o}{!=} \PYG{n}{NULL}\PYG{p}{;}
+		\PYG{n}{max\PYGZus{}key\PYGZus{}in\PYGZus{}left} \PYG{o}{=} \PYG{n}{find\PYGZus{}max\PYGZus{}key}\PYG{p}{(}\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left}\PYG{p}{)}  \PYG{c+c1}{\PYGZsh{} максимальное значение}
+													\PYG{c+c1}{\PYGZsh{} в левом поддереве}
+		\PYG{k}{if} \PYG{n}{max\PYGZus{}key\PYGZus{}in\PYGZus{}left} \PYG{o}{\PYGZgt{}} \PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{key}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} если оно больше корня, то оно не BST}
+			\PYG{k}{return} \PYG{n}{false}
+
+	\PYG{c+c1}{\PYGZsh{} Проверка правого поддерева}
+	\PYG{k}{if} \PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right} \PYG{o}{!=} \PYG{n}{NULL}\PYG{p}{:}
+		\PYG{n}{min\PYGZus{}key\PYGZus{}in\PYGZus{}right} \PYG{o}{=} \PYG{n}{find\PYGZus{}min\PYGZus{}key}\PYG{p}{(}\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{p}{)}   \PYG{c+c1}{\PYGZsh{} максимальное значение}
+													   \PYG{c+c1}{\PYGZsh{} в правом поддереве}
+		\PYG{k}{if} \PYG{n}{min\PYGZus{}key\PYGZus{}in\PYGZus{}right} \PYG{o}{\PYGZlt{}} \PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{key}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} если оно меньше корня, то оно не BST}
+			\PYG{k}{return} \PYG{n}{false}
+	\PYG{k}{return} \PYG{n}{is\PYGZus{}BST}\PYG{p}{(}\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left}\PYG{p}{)} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{is\PYGZus{}BST}\PYG{p}{(}\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} возвращаем значение}
+												\PYG{c+c1}{\PYGZsh{} для левого и правого поддерева}
+\end{Verbatim}

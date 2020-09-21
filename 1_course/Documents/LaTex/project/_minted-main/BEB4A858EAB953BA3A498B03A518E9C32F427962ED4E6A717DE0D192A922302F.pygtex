@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{LIS}\PYG{p}{(}\PYG{n}{A}\PYG{p}{[}\PYG{l+m+mf}{1.}\PYG{p}{.}\PYG{n}{n}\PYG{p}{])}\PYG{o}{:}
+	\PYG{n}{Array} \PYG{n}{L}\PYG{p}{[}\PYG{l+m+mf}{1.}\PYG{p}{.}\PYG{n}{n}\PYG{p}{]}
+	\PYG{p}{(}\PYG{o}{*} \PYG{n}{L}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{=} \PYG{n}{value} \PYG{n}{of} \PYG{n}{LIS} \PYG{n}{ending}\PYG{p}{(}\PYG{n}{A}\PYG{p}{[}\PYG{l+m+mf}{1.}\PYG{p}{.}\PYG{n}{i}\PYG{p}{])}\PYG{o}{*}\PYG{p}{)}
+	\PYG{k}{for} \PYG{n}{i} \PYG{o}{=}\PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{n} \PYG{k}{do}
+		\PYG{n}{L}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{=}\PYG{l+m+mi}{1}
+		\PYG{k}{for} \PYG{n}{j} \PYG{o}{=}\PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{k}{do}
+			\PYG{k}{if}\PYG{p}{(}\PYG{n}{A}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}\PYG{o}{\PYGZlt{}} \PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{k}{do}
+				\PYG{n}{L}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{=} \PYG{n}{max}\PYG{p}{(}\PYG{n}{L}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{l+m+mi}{1}\PYG{o}{+} \PYG{n}{L}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])}
+	\PYG{k}{return} \PYG{n}{L}
+	
+\PYG{n}{MAIN}\PYG{p}{(}\PYG{n}{A}\PYG{p}{[}\PYG{l+m+mf}{1.}\PYG{p}{.}\PYG{n}{n}\PYG{p}{])}\PYG{o}{:}
+	\PYG{n}{L} \PYG{o}{=} \PYG{n}{LIS}\PYG{p}{(}\PYG{n}{A}\PYG{p}{[}\PYG{l+m+mf}{1.}\PYG{p}{.}\PYG{n}{n}\PYG{p}{])}
+		\PYG{k}{return} \PYG{n}{the} \PYG{n}{maximum} \PYG{n}{value} \PYG{n}{in} \PYG{n}{L}
+\end{Verbatim}

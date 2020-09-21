@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{bookean} \PYG{n+nf}{sameTree}\PYG{p}{(}\PYG{n}{node} \PYG{n}{root1}\PYG{p}{,} \PYG{n}{node} \PYG{n}{root2}\PYG{p}{)\PYGZob{}} \PYG{c+c1}{// функция сравнивающая два дерева,}
+								\PYG{c+c1}{// принимает в себя указатели на узлы деревьев	}
+\PYG{k}{if}\PYG{p}{(}\PYG{n}{root1} \PYG{o}{==} \PYG{n+nb}{NULL} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{root2} \PYG{o}{==} \PYG{n+nb}{NULL}\PYG{p}{)} \PYG{c+c1}{// проверяет пустые ли два узла	}
+	\PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;} \PYG{c+c1}{// если оба узла пустые, то эти 2 поддерева равны}
+			 \PYG{c+c1}{// и мы возвращаем истину		}
+\PYG{k}{if}\PYG{p}{(}\PYG{n}{root1} \PYG{o}{==} \PYG{n+nb}{NULL} \PYG{o}{||} \PYG{n}{root2} \PYG{o}{==} \PYG{n+nb}{NULL}\PYG{p}{)} \PYG{c+c1}{// если только один из узлов пустой		}
+	\PYG{k}{return} \PYG{n+nb}{false}\PYG{p}{;} \PYG{c+c1}{//то поддеревья не равны и мы возвращаем ложь}
+\PYG{c+c1}{// если оба поддерева не пустые то сравниваем их значение, и равны ли левое и}
+\PYG{c+c1}{// правое поддверево			}
+\PYG{k}{if}\PYG{p}{(}\PYG{n}{root1}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data} \PYG{o}{==} \PYG{n}{root2}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data}
+	\PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{sameTree}\PYG{p}{(}\PYG{n}{root1}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left}\PYG{p}{,}\PYG{n}{root2}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left}\PYG{p}{)} \PYG{c+c1}{//рекурсивно сравниваем поддеревья}
+	\PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{sameTree}\PYG{p}{(}\PYG{n}{root1}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{p}{,} \PYG{n}{root2}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{p}{))}	
+	\PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

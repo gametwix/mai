@@ -1,0 +1,365 @@
+% Королев
+
+\textbf{Утверждение 1.4:} Каждый алгоритм маркировки является строго \textbf{k-конкурентным}.
+
+\vspace{\baselineskip}
+
+\textbf{Доказательство:} Пусть $\sigma$– это пример для задачи пейджинга, а $l$ – число фаз для $\sigma$. Если $l = 1$, то каждый алгоритм маркировки является оптимальным и оптимальный оффлайн алгоритм не может быть лучше.
+
+Предположим, что $l \geqslant 2$. Стоимость каждого алгоритма маркировки, например $\sigma$, ограничена сверху числом $l \cdot k$, потому что каждая фаза алгоритма маркировки не может вытеснить больше $k$ страниц, не вытеснив одну помеченную страницу.
+
+Сейчас попробуем показать, что оптимальный оффлайн алгоритм вытесняет как минимум $k+l-2$ страниц для $\sigma$, k в первой фазе и как минимум одну для каждой последующей фазы кроме последней. Для доказательства определим $l-2$ разобщенные подпоследовательности для $\sigma$. Подпоследовательность $i \in \{1,\dots,l-2\}$ начинается со второй позиции фазы $i+1$ и заканчивается на первой позиции фазы $i+2$. Пусть $x$ – первая страница фазы $i + 1$. В начале подпоследовательности $i$ находится страница $x$ и не более $k-1$ различных страниц в кэше оптимального оффлайн алгоритма. В подпоследовательности $i$ есть запросы k страниц, отличных от $x$, поэтому оптимальный оффлайн алгоритм должен вытеснить как минимум одну страницу для каждой подпоследовательности. Поскольку в начале первой фазы кэш все еще пустой, оптимальный оффлайн алгоритм вытесняет $k$ страниц во время первой фазы. Это говорит о том, что
+
+\vspace{\baselineskip}
+
+\pline{0.4}{\textbf{$wA(\sigma) \leqslant l \cdot k \leqslant (k+l-2)k \leqslant OPT(\sigma) \cdot k$}}
+
+\vspace{\baselineskip}
+
+\textbf{Утверждение 1.5: LRU и FWF являются строго k-конкурентными.}
+
+\vspace{\baselineskip}
+
+\textbf{Упражнение:} Показать, что \textbf{FIFO} не является алгоритмом маркировки, но \textbf{является строго k-конкурентным.}
+
+\vspace{\baselineskip}
+
+Если не существует константы r, для которой онлайн алгоритм A является r-конкурентными, то будем называть А \textbf{неконкурентным}
+
+\vspace{\baselineskip}
+
+\textbf{Утверждение 1.6: LFU} и \textbf{LIFO} являются \textbf{неконкурентными.}
+
+\vspace{\baselineskip}
+
+\textbf{Доказательство:} Пусть $l \geqslant 2$ – константа, $k \geqslant 2$ – размер кэша. Различные страницы кэша пронумерованы от $1$ до $k+1$. Рассмотрим следующую последовательность:
+
+\vspace{\baselineskip}
+
+\pline{0.4}{\textbf{$\sigma = (1^l, 2^l, ... , (k-1)^l, (k, k+1)^{l-1})$}}
+
+\vspace{\baselineskip}
+
+Первая страница запрашивается в $l$ раз чаще, чем страница $2$ и так далее. В конце есть $(l-1)$ чередующихся запросов на страницы $k$ и $k+1$.
+
+\textbf{LFU} и \textbf{LIFO} заполняют свой кэш страницами $1-k$. Когда запрашивается страница $k+1$, страница $k$ вытесняется, и наоборот. Это означает, что каждый запрос подпоследовательности $(k, k+1)l-1$ вытесняет одну страницу. Кроме того, происходит промах кэша $k-1$ при первом использовании страниц $1-(k-1)$. Таким образом, \textbf{LFU} и \textbf{LIFO} вытесняют ровно $k-1+2(l-1)$ страниц.
+
+\vspace{\baselineskip}
+
+Теперь мы должны показать, что для любой константы $\tau \in \Re$ и для любой константы $r \leqslant 1$ существует такое число $l$, что
+
+\vspace{\baselineskip}
+
+\pline{0.4}{\textbf{$\omega_{LFU}(\sigma)=\omega_{LIFO}(\sigma)>r \cdot OPT(\sigma)+\tau$}}
+
+\vspace{\baselineskip}
+
+что эквивалентно
+
+\vspace{\baselineskip}
+
+\pline{0.4}{\textbf{$k-1+2(l-1)>r(k+1)+\tau \Longleftrightarrow l \geqslant 1+ \frac {r\cdot(k+1)+\tau - k +1}2$}}
+
+\vspace{\baselineskip}
+
+Чтобы это неравенство выполнялось, нужно выбрать достаточно большое $l$. Так что \textbf{LFU} и \textbf{LIFO} неконкурентные
+
+\vspace{\baselineskip}
+
+\textbf{Утверждение 1.7: Не существует неконкурентного} детерминированного алгоритма пейджинга, для которого \textbf{$r<k$.}
+
+\vspace{\baselineskip}
+
+Доказательство последнего утверждения довольно длинное и основано на утверждении, что \textbf{LFD} является оптимальным оффлайн алгоритмом. Заинтересованный читатель может найти его в книге Бородина и Эль-Янива (см. источники ниже).
+
+\vspace{\baselineskip}
+
+Вопрос в том, можно ли сделать это еще лучше. Для этого мы должны оставить детерминистский подход позади и начать рандомизировать наш алгоритм. Очевидно, что другим будет сложнее понять ваш алгоритм, если он будет рандомизированным.
+
+\vspace{\baselineskip}
+
+{\it Рандомизированный пейджинг будет рассмотрен в одном из следующих примеров\dots}
+
+\chapter*{Глава 28: Сортировка}
+
+\begin{tabular}{p{4cm}p{12cm}}
+\multicolumn{1}{c}{\textbf{Характеристика}}& \multicolumn{1}{c}{\textbf{Описание}} \\[5pt]
+
+\ttfamily Устойчивость (стабильность) & Алгоритм сортировки называется \textbf{устойчивым (стабильным)}, если он сохраняет относительный порядок равных элементов после сортировки.\\[5pt]
+
+\ttfamily Сортировка на месте & Алгоритм сортировки называется \textbf{сортировкой на месте}, если он используется только О(\textcolor{Purple}{1}) дополнительной памяти (не считая массив, который нужно отсортировать).\\[5pt]
+
+\ttfamily Минимальная сложность &  Алгоритм сортировки имеет минимальную временную сложность О(Т(n)), если время его работы \textbf{не менее} $T(n)$ при любых входных данных. \\[5pt]
+
+\ttfamily Средняя сложность & Алгоритм сортировки имеет среднюю временную сложность О(T(n)), если \textbf{среднее время его работы при любых входных данных} равно $T(n)$ .\\[5pt]
+
+\ttfamily Максимальная сложность & Алгоритм сортировки имеет максимальную временную сложность О(T(n)), если время его работы \textbf{не превышает} $T(n)$.\\[5pt]
+
+\end{tabular}
+
+\section*{Раздел 28.1: Устойчивость сортировок}
+
+Устойчивость сортировки означает, что алгоритм сортировки поддерживает относительный порядок равных ключей входных данных на выходе.
+
+\vspace{\baselineskip}
+
+Таким образом, алгоритм сортировки считается устойчивым, если два объекта с одинаковыми ключами появляются в отсортированном массиве в том же порядке, что и во входном неотсортированном.
+
+\vspace{\baselineskip}
+
+Рассмотрим список пар:
+
+\vspace{\baselineskip}
+
+\begin{tcolorbox} 
+(\textcolor{Purple}{1}, \textcolor{Purple}{2}) (\textcolor{Purple}{9}, \textcolor{Purple}{7}) (\textcolor{Purple}{3}, \textcolor{Purple}{4}) (\textcolor{Purple}{8}, \textcolor{Purple}{5}) (\textcolor{Purple}{9}, \textcolor{Purple}{3})
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+
+Теперь отсортируем список по первому элементу пары.
+
+\vspace{\baselineskip}
+
+\textbf{Устойчивая сортировка} этого списка выдаст следующее:
+
+\vspace{\baselineskip}
+
+\begin{tcolorbox} 
+(\textcolor{Purple}{1}, \textcolor{Purple}{2}) (\textcolor{Purple}{3}, \textcolor{Purple}{4}) (\textcolor{Purple}{8}, \textcolor{Purple}{6}) (\textcolor{Purple}{9}, \textcolor{Purple}{7}) (\textcolor{Purple}{9}, \textcolor{Purple}{3})
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+
+потому что (\textcolor{Purple}{9}, \textcolor{Purple}{3}) появляется после (\textcolor{Purple}{9}, \textcolor{Purple}{7}) в исходном списке.
+
+\vspace{\baselineskip}
+
+\textbf{Неустойчивая сортировка} выдаст следующий список:
+
+\vspace{\baselineskip}
+
+\begin{tcolorbox} 
+(\textcolor{Purple}{1}, \textcolor{Purple}{2}) (\textcolor{Purple}{3}, \textcolor{Purple}{4}) (\textcolor{Purple}{8}, \textcolor{Purple}{6}) (\textcolor{Purple}{9}, \textcolor{Purple}{3}) (\textcolor{Purple}{9}, \textcolor{Purple}{7})
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+
+Нестабильная сортировка может генерировать те же выходные данные, что и стабильная, но не всегда.
+
+\vspace{\baselineskip}
+
+Известные устойчивые сортировки:
+
+\begin{itemize}
+\item Сортировка слиянием
+\item Сортировка вставками
+\item Поразрядная сортировка
+\item Tim sort
+\item Сортировка пузырьком
+\end{itemize}
+
+Известные неустойчивые сортировки:
+
+\begin{itemize}
+\item Пирамидальная сортировка (сортировка кучей)
+\item Быстрая сортировка
+\end{itemize}
+
+\chapter*{Глава 29: Сортировка пузырьком (Bubble Sort)}
+
+\begin{tabular}{ll}
+\multicolumn{1}{c}{\textbf{Характеристика}}& \multicolumn{1}{c}{\textbf{Описание}} \\[5pt]
+\ttfamily Устойчивая (стабильность) & Да \\[5pt]
+\ttfamily На месте & Да \\[5pt]
+\ttfamily Минимальная сложность & $O(n)$ \\[5pt]
+\ttfamily Средняя сложность & $O(n^2)$ \\[5pt]
+\ttfamily Максимальная сложность & $O(n^2)$ \\[5pt]
+\ttfamily Пространственная сложность & $O(1)$ \\[5pt]
+\end{tabular}
+
+\section*{Раздел 29.1: Сортировка пузырьком (Bubble Sort)}
+
+Сортировка пузырьком сравнивает каждую последовательную пару элементов в неупорядоченном списке и меняет их местами, если они идут не по порядку.
+
+\vspace{\baselineskip}
+
+Следующий пример иллюстрирует пузырьковую сортировку списка \{\textcolor{Purple}{6}, \textcolor{Purple}{5}, \textcolor{Purple}{3}, \textcolor{Purple}{1},\ \textcolor{Purple}{8}, \textcolor{Purple}{7}, \textcolor{Purple}{2},\ \textcolor{Purple}{4}\} (пары, которые сравнивались на каждом шаге помечаются ‘**’):
+
+\vspace{\baselineskip}
+
+\begin{tcolorbox} 
+\{\textcolor{Purple}{6}, \textcolor{Purple}{5}, \textcolor{Purple}{3}, \textcolor{Purple}{1}, \textcolor{Purple}{8}, \textcolor{Purple}{7}, \textcolor{Purple}{2}, \textcolor{Purple}{4}\}
+
+\{**\textcolor{Purple}{5}, \textcolor{Purple}{6}**, \textcolor{Purple}{3}, \textcolor{Purple}{1}, \textcolor{Purple}{8}, \textcolor{Purple}{7}, \textcolor{Purple}{2}, \textcolor{Purple}{4}\} -- \textcolor{Purple}{5} < \textcolor{Purple}{6} -> меняем местами
+
+\{\textcolor{Purple}{5}, **\textcolor{Purple}{3}, \textcolor{Purple}{6}**, \textcolor{Purple}{1}, \textcolor{Purple}{8}, \textcolor{Purple}{7}, \textcolor{Purple}{2}, \textcolor{Purple}{4}\} -- \textcolor{Purple}{3} < \textcolor{Purple}{6} -> меняем местами
+
+\{\textcolor{Purple}{5}, \textcolor{Purple}{3}, **\textcolor{Purple}{1}, \textcolor{Purple}{6}**, \textcolor{Purple}{8}, \textcolor{Purple}{7}, \textcolor{Purple}{2}, \textcolor{Purple}{4}\} -- \textcolor{Purple}{1} < \textcolor{Purple}{6} -> меняем местами
+
+\{\textcolor{Purple}{5}, \textcolor{Purple}{3}, \textcolor{Purple}{1}, **\textcolor{Purple}{6}, \textcolor{Purple}{8}**, \textcolor{Purple}{7}, \textcolor{Purple}{2}, \textcolor{Purple}{4}\} -- \textcolor{Purple}{8} > \textcolor{Purple}{6} -> не меняем местами
+
+\{\textcolor{Purple}{5}, \textcolor{Purple}{3}, \textcolor{Purple}{1}, \textcolor{Purple}{6}, **\textcolor{Purple}{7}, \textcolor{Purple}{8}**, \textcolor{Purple}{2}, \textcolor{Purple}{4}\} -- \textcolor{Purple}{7} < \textcolor{Purple}{8} -> меняем местами
+
+\{\textcolor{Purple}{5}, \textcolor{Purple}{3}, \textcolor{Purple}{1}, \textcolor{Purple}{6}, \textcolor{Purple}{7}, **\textcolor{Purple}{2}, \textcolor{Purple}{8}**, \textcolor{Purple}{4}\} -- \textcolor{Purple}{2} < \textcolor{Purple}{8} -> меняем местами
+
+\{\textcolor{Purple}{5}, \textcolor{Purple}{3}, \textcolor{Purple}{1}, \textcolor{Purple}{6}, \textcolor{Purple}{7}, \textcolor{Purple}{2}, **\textcolor{Purple}{4}, \textcolor{Purple}{8}**\} -- \textcolor{Purple}{4} < \textcolor{Purple}{8} -> меняем местами
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+
+После одной итерации имеем список \{\textcolor{Purple}{5}, \textcolor{Purple}{3}, \textcolor{Purple}{1}, \textcolor{Purple}{6}, \textcolor{Purple}{7}, \textcolor{Purple}{2}, \textcolor{Purple}{4}, \textcolor{Purple}{8}\}. Обратите внимание, что наибольшее значение в массиве (в данном случае 8), всегда достигнет своей конечной позиции. Итак, чтобы убедиться, что список отсортирован, мы должны выполнить n-1 итераций для списка длины n.
+
+\vspace{\baselineskip}
+
+\href{http://i.stack.imgur.com/NJPXP.gif}{\underline{Визуализация}}
+
+\section*{Раздел 29.2: Реализация на С и С++}
+
+Пример реализации пузырьковой сортировки на С++:
+
+\vspace{\baselineskip}
+
+\begin{tcolorbox} 
+\begin{minted}{C++}
+void bubbleSort(vector<int>numbers)//на вход поступает массив с числами
+	{
+		for(int i = numbers.size() - 1; i >= 0; i--) {/*повторять для всех 
+		элементов массива, кроме крайнего*/
+			for(int j = 1; j <= i; j++) {//начиная со второго элемента
+				if(numbers[j-1] > numbers[j]) {/*если j-ый элемент больше 
+				предыдущего*/
+					swap(numbers[j-1],numbers(j));/*поменять значения местами*/
+				}
+			}
+		}
+	}
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+
+\textbf{Реализация на С} 
+
+\vspace{\baselineskip}
+
+\begin{tcolorbox} 
+\begin{minted}{C}
+void bubble_sort(long list[], long n) {/*на вход поступает массив со значениями и 
+	его длина*/
+	long c, d, t; /*с - номер "проверки на перестановку", d - индекс чисел массива*/
+	for (c = 0 ; c < ( n - 1 ); c++)//
+	{
+		for (d = 0 ; d < n - c - 1; d++)/*начиная от самого первого элемента массива,
+		заканчивая самым крайним (меняется в зависимости от номера проверки*/
+		{
+			if (list[d] > list[d+1])//если последующий элемент больше d-ого
+			{
+				/*Перестановка*/
+				t = list[d];//запоминаем значение d-ого элемента
+				list[d] = list[d+1];/*значение d-ого элемента присваиваем последующему*/
+				list[d+1] = t;//последующему элементу присваиваем значение d-го
+			}
+		}
+	}
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+
+\textbf{Пузырьковая сортировка с указателем} 
+
+\vspace{\baselineskip}
+
+\begin{tcolorbox} 
+\begin{minted}{C}
+void pointer_bubble_sort(long * list, long n) {/*на вход поступает список типа 
+long и его длина*/
+	long c, d, t;
+ 
+	for (c = 0 ; c < ( n - 1 ); c++)  {
+		for (d = 0 ; d < n - c - 1; d++)
+		{
+			if ( * (list + d ) > *(list+d+1))//
+			{
+				/* Перестановка с помощью указателей*/
+ 
+				t  = * (list + d );//
+				* (list + d )   = * (list + d + 1 );
+				* (list + d + 1) = t;
+			}
+		}
+	}
+ }
+\end{minted}
+\end{tcolorbox}
+
+\section*{Раздел 29.3: Реализация на C\#}
+
+\vspace{\baselineskip}
+
+Пузырьковая сортировка также известна как \textbf{плавающая сортировка (Sinking Sort).} Это простой алгоритм сортировки, который многократно проходит по сортируемому списку, сравнивает каждую пару соседних элементов и меняет их местами, если они находятся в неправильном порядке.
+
+\vspace{\baselineskip}
+
+ \textbf{Реализация пузырьковой сортировки}
+ 
+ \includeimage{0.8}{images/151_1.pdf}
+ 
+ 
+ Я использовал язык С\# для реализации алгоритма сортировки пузырьком.
+ 
+ \vspace{\baselineskip}
+ 
+\begin{tcolorbox} 
+\begin{minted}{C++}
+public class BubbleSort {
+	public static void SortBubble(int[] input)//поступает массив
+	{
+		for (var i = input.Length - 1; i >= 0; i--)/*повторять на 1 раз меньше 
+		размера массива*/
+		{
+			for (var j = input.Length - 1 - 1; j >= 0; j--)/*от первого элемента
+			до (размер массива-1)-го элемента*/
+			{
+				if (input[j] <= input[j + 1]) continue;/*если значение 
+				последующего элемента больше*/
+				var temp = input[j + 1];/*запоминаем значение 
+				последующего элемента*/
+				//заменяем
+				input[j + 1] = input[j];
+				input[j] = temp;
+			}
+		}
+	}
+
+	public static int[] Main(int[] input)
+	{
+		//вызов функции
+		SortBubble(input);
+		return input;
+	}
+ }
+\end{minted}
+\end{tcolorbox}
+
+\section*{Раздел 29.4: Реализация на Python}
+
+\begin{tcolorbox} 
+\begin{minted}{Python}
+#!/usr/bin/python
+
+input_list = [10,1,2,11]#создание массива
+
+for i in range(len(input_list)):#повторять n раз, где n - кол-во элементов 
+	#в массиве
+	for j in range(i):#для всех всех элементов
+		if int(input_list[j]) > int(input_list[j+1]):#если значение последующего 
+			#элемента больше перестановка значений местами
+			input_list[j],input_list[j+1] = input_list[j+1],input_list[j]
+
+print input_list #вывод отсортированного массива
+\end{minted}
+\end{tcolorbox}
+
+

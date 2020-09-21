@@ -1,0 +1,259 @@
+%Почаев
+
+\begin{tcolorbox}
+\begin{minted}{C}
+
+    pLo = 0; // Обнуляем все указатели
+    pHi = 0;
+    pDFT = 0;
+    DFT = 0;
+    pX = 0;
+}
+
+\end{minted}
+\end{tcolorbox}
+
+\section*{Раздел 55.2: Обратное быстрое преобразование Фурье с \newline двумя корнями}
+Из-за сильной двойственности преобразования Фурье, корректировка выходных данных прямого преобразования может привести к обратному FFT. Данные в области частот могут быть преобразованы в область времени с помощью следующего метода:
+
+\vspace{\baselineskip}
+\hspace*{6mm}1.	Найти комплексное сопряжение данных области частот путем инвертирования \newline \hspace*{6mm}воображаемой компоненты для все экземпляров К.
+
+\vspace{\baselineskip}
+\hspace*{6mm}2.	Выполнить прямой FFT на сопряженных данных области частот.
+
+\vspace{\baselineskip}
+\hspace*{6mm}3.	Разделить каждый выходной результат этого FFT на N, чтобы получить истинное \newline \hspace*{6mm}значение временной области.
+
+\vspace{\baselineskip}
+\hspace{6mm}4.	Найти комплексное сопряжение выходных данных, инвертируя воображаемый компонент \newline \hspace*{6mm}данных временной области для всех экземпляров n.
+
+\vspace{\baselineskip}
+\textbf{Примечание:} Данные о частотности и временном диапазоне являются сложными переменными. Обычно воображаемая составляющая сигнала временной области после обратного FFT либо равна нулю, либо игнорируется как ошибка при округлении. Повышение точности переменных с 32-битного плавающего значения до 64-битного двукратного значения или 128-битного двойного значения значительно снижает погрешность округления, возникающую в результате нескольких последовательных операций FFT.
+
+\vspace{\baselineskip}
+\textbf{Пример кода (Си/С++)}
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}
+
+#include <math.h>
+
+// PI для вычисления sin или cos
+#define PI       3.1415926535897932384626433832795
+
+// 2*PI для вычисления sin или cos
+#define TWOPI    6.283185307179586476925286766559
+
+// Коэффициент для перевода из градусов в радианы
+#define Deg2Rad  0.017453292519943295769236907684886
+
+// Коэффициент для перевода из радиан в градусы
+#define Rad2Deg  57.295779513082320876798154814105
+
+// Логарифм числа 2 по основанию 10 
+#define log10_2  0.30102999566398119521373889472449
+
+// 1/Log10(2)
+#define log10_2_INV 3.3219280948873623478703194294948
+
+// структура: комплексная переменная (двойная точность) 
+struct complex 
+{ 
+public:    
+	double  Re, Im;        // Не так уж и сложно в конце концов 
+};
+
+void rad2InverseFFT(int N, complex *x, complex *DFT)
+{    
+	// M - это количество итераций, которые нужно выполнить. 2^M = N    
+	double Mx = (log10((double)N) / log10((double)2));    
+	int a = (int)(ceil(pow(2.0, Mx)));
+	int status = 0;    
+	if (a != N) // Проверить, является ли N степенью 2   
+	{        
+		x = 0;        
+		DFT = 0;        
+    throw "rad2InverseFFT(): N must be a power of 2 for Radix 2 Inverse FFT";
+	}
+
+	complex *pDFT = DFT;        // Сбросить вектор для указателей DFT    
+	complex *pX = x;            // Сбросить вектор для указателя x[n]
+	double NN = 1 / (double)N;  // Коэффициент уточнения для обратного FFT 
+	for (int i = 0; i < N; i++, DFT++)        
+		DFT->Im *= -1; // Найти комплексное сопряжение частотного спектра
+
+	DFT = pDFT;                 // Сбросить DFT(Указатель Частотной Области)    
+	rad2FFT(N, DFT, x); // Выполнить прямой FFT с замененными переменными
+
+	int i;    
+	complex* x;    
+	for ( i = 0, x = pX; i < N; i++, x++){        
+x->Re *= NN; // Разделить временную область на N для точного вычисления амплитуды        
+x->Im *= -1;    // Изменить обозначение ImX
+	}    
+}
+
+\end{minted}
+\end{tcolorbox}
+
+\chapter*{Приложение А: Псевдокод}
+\section*{Раздел А.1: Переменные аффектации}
+Вы можете описать переменную аффектацию по-разному.
+
+\vspace{\baselineskip}
+\textbf{С типом}
+
+\begin{tcolorbox}
+\begin{minted}{C}
+
+int a = 1 
+int a := 1 
+let int a = 1
+int a <- 1
+
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+\textbf{Без типа}
+
+\begin{tcolorbox}
+\begin{minted}{C}
+
+a = 1 
+a := 1
+let a = 1 
+a <- 1 
+
+\end{minted}
+\end{tcolorbox}
+
+\section*{Раздел А.2: Функции}
+До тех пор, пока имя функции, оператор возврата и параметры явные, вы в порядке.
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}
+
+def incr n    
+	return n + 1
+
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+или
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}
+
+let incr(n) = n + 1
+
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+или
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}
+
+function incr (n)    
+	return n + 1
+
+\end{minted}
+\end{tcolorbox}
+
+все достаточно понятные, поэтому вы можете использовать их. Постарайтесь не быть двусмысленными с переменной аффектацией.
+
+\chapter*{Титры}
+
+\vspace{-0.2cm}
+Большое спасибо всем людям из Stack Overflow Documentation, которые помогли предоставить \newline \hspace*{6mm}этот контент, больше изменений может быть отправлено на \href{mailto:web@petercv.com}{\underline{web@petercv.com}} для нового \newline \hspace*{36mm} контента, который будет опубликован или обновлен
+
+\vspace{\baselineskip}
+\begin{tabular}{p{100}ll}
+\href{https://stackoverflow.com/users/5108673/}{\underline{Abdul Karim}} & Глава 1 \\
+\href{https://stackoverflow.com/users/33904/}{\underline{afeldspar}} & Глава 43 \\
+\href{https://stackoverflow.com/users/1890199/}{\underline{Ahmad Faiyaz}} & Глава 28 \\
+\href{https://stackoverflow.com/users/7310948/}{\underline{Alber Tadrous}} & Глава 53 \\
+\href{https://stackoverflow.com/users/6181189/}{\underline{Anagh Hegde}} & Главы 29 и 39 \\
+\href{https://stackoverflow.com/users/5339154/}{\underline{Andrii Artamonov}} & Глава 27 \\
+\href{https://stackoverflow.com/users/2795050/}{\underline{AnukuL}} & Глава 40 \\
+\href{https://stackoverflow.com/users/6879340/}{\underline{Bakhtiar Hasan}} & Главы 9, 11, 14, 17, 19, 20, 22, 40, 41, 42, 47, 52 и 54 \\
+\href{https://stackoverflow.com/users/6800367/}{\underline{Benson Lin}} & Главы 14, 39 и 44 \\
+\href{https://stackoverflow.com/users/5304035/}{\underline{brijs}} & Глава 39 \\
+\href{https://stackoverflow.com/users/2341336/}{\underline{Chris}} & Глава 15 \\
+\href{https://stackoverflow.com/users/5065086/}{\underline{Creative John}} & Главы 49 и 51 \\
+\href{https://stackoverflow.com/users/7003027/}{\underline{Dian Bakti}} & Глава 10 \\
+\href{https://stackoverflow.com/users/1307725/}{\underline{Didgeridoo}} & Главы 2 и 43 \\
+\href{https://stackoverflow.com/users/5309397/}{\underline{Dipesh Poudel}} & Глава 21 \\
+\href{https://stackoverflow.com/users/303612/}{\underline{Dr. ABT}} & Глава 55 \\
+\href{https://stackoverflow.com/users/7508077/}{\underline{EsmaeelE}} & Главы 2, 29, 30, 39 и 50 \\
+\href{https://stackoverflow.com/users/5045375/}{\underline{Filip Allberg}} & Главы 1 и 9 \\
+\href{https://stackoverflow.com/users/7214292/}{\underline{ghilesZ}} & Глава 17 \\
+\href{https://stackoverflow.com/users/4515432/}{\underline{goeddek}} & Глава 18 и 27 \\
+\href{https://stackoverflow.com/users/234175/}{\underline{greatwolf}} & Глава 5 \\
+\href{https://stackoverflow.com/users/4550110/}{\underline{Ijaz Khan}} & Глава 29 \\
+\href{https://stackoverflow.com/users/1332934/}{\underline{invisal}} & Глава 31 \\
+\href{https://stackoverflow.com/users/5489591/}{\underline{Isha Agarwal}} & Главы 4, 5, 6, 7 и 8 \\
+\href{https://stackoverflow.com/users/2516438/}{\underline{Ishit Mehta}} & Глава 5 \\
+\href{https://stackoverflow.com/users/270287/}{\underline{IVlad}} & Глава 16 и 28 \\
+\href{https://stackoverflow.com/users/4900669/}{\underline{Iwan}} & Глава 30 \\
+\href{https://stackoverflow.com/users/5537078/}{\underline{Janaky Murthy}} & Глава 6 \\
+\href{https://stackoverflow.com/users/6732642/}{\underline{JJTO}} & Глава 9 \\
+\href{https://stackoverflow.com/users/3729797/}{\underline{Julien Rousé}} & Глава 24 \\
+\href{https://stackoverflow.com/users/7190578/}{\underline{Juxhin Metaj}} & Главы 2 и 30 \\
+\href{https://stackoverflow.com/users/6326344/}{\underline{Keyur Ramoliya}} & Главы 23, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 45, 47, 48 и 50 \\
+\href{https://stackoverflow.com/users/2128327/}{\underline{Khaled.K}} & Глава 39 \\
+\href{https://stackoverflow.com/users/4688321/}{\underline{kiner\_shah}} & Глава 12 \\
+\href{https://stackoverflow.com/users/7565799/}{\underline{lambda}} & Глава 38 \\
+\href{https://stackoverflow.com/users/5016614/}{\underline{Luv Agarwal}} & Глава 30 \\
+\href{https://stackoverflow.com/users/5222625/}{\underline{Lymphatus}} & Глава 31 \\
+\href{https://stackoverflow.com/users/5882770/}{\underline{M S Hossain}} & Глава 17 \\
+\end{tabular}
+
+\newpage
+\vspace{\baselineskip}
+\begin{tabular}{p{100}ll}
+\href{https://stackoverflow.com/users/3572733/}{\underline{Malav}} & Глава 33 \\
+\href{https://stackoverflow.com/users/3310281/}{\underline{Malcolm McLean}} & Глава 4 and 39 \\
+\href{https://stackoverflow.com/users/2910751/}{\underline{Martin Frank}} & Глава 21 \\
+\href{https://stackoverflow.com/users/2176115/}{\underline{Mehedi Hasan}} & Глава 5 \\
+\href{https://stackoverflow.com/users/1460628/}{\underline{Miljen Mikic}} & Главы 2, 28 и 39 \\
+\href{https://stackoverflow.com/users/4684058/}{\underline{Minhas Kamal}} & Главы 12 и 46 \\
+\href{https://stackoverflow.com/users/2608433/}{\underline{mnoronha}} & Главы 23, 29, 31, 32, 33, 34, 35, 36 и 45 \\
+\href{https://stackoverflow.com/users/3208967/}{\underline{msohng}} & Глава 39 \\
+\href{https://stackoverflow.com/users/178082/}{\underline{Nick Larsen}} & Глава 2 \\
+\href{https://stackoverflow.com/users/4298392/}{\underline{Nick the coder}} & Глава 3 \\
+\href{https://stackoverflow.com/users/3566045/}{\underline{optimistanoop}} & Главы 29 и 33 \\
+\href{https://stackoverflow.com/users/4896952/}{\underline{Peter K}} & Глава 2 \\
+\href{https://stackoverflow.com/users/6400629/}{\underline{Rashik Hasnat}} & Глава 40 \\
+\href{https://stackoverflow.com/users/4110708/}{\underline{Roberto Fernandez}} & Глава 12 \\
+\href{https://stackoverflow.com/users/696391/}{\underline{samgak}} & Глава 29 \\
+\href{https://stackoverflow.com/users/2510655/}{\underline{Samuel Peter}} & Глава 3 \\
+\href{https://stackoverflow.com/users/5379399/}{\underline{Santiago Gil}} & Глава 30 \\
+\href{https://stackoverflow.com/users/1291716/}{\underline{Sayakiss}} & Глава 9 и 14 \\
+\href{https://stackoverflow.com/users/3465421/}{\underline{SHARMA}} & Глава 30 \\
+\href{https://stackoverflow.com/users/5956891/}{\underline{ShreePool}} & Глава 39 \\
+\href{https://stackoverflow.com/users/3160529/}{\underline{Shubham}} & Глава 16 \\
+\href{https://stackoverflow.com/users/4391177/}{\underline{Sumeet Singh}} & Главы 20 и 41 \\
+\href{https://stackoverflow.com/users/1524047/}{\underline{TajyMany}} & Главы 12 и 13 \\
+\href{https://stackoverflow.com/users/3409405/}{\underline{Tejus Prasad}} & Главы 2, 5, 9, 11, 18, 19 и 45 \\
+\href{https://stackoverflow.com/users/1287593/}{\underline{theJollySin}} & Глава 17 \\
+\href{https://stackoverflow.com/users/7533465/}{\underline{umop apisdn}} & Глава 39 \\
+\href{https://stackoverflow.com/users/1796837/}{\underline{User0911}} & Глава 29 \\
+\href{https://stackoverflow.com/users/3998030/}{\underline{user23013}} & Глава 9 \\
+\href{https://stackoverflow.com/users/3819850/}{\underline{VermillionAzure}} & Глава 4 и 9 \\
+\href{https://stackoverflow.com/users/3870293/}{\underline{Vishwas}} & Главы 14, 25 и 26 \\
+\href{https://stackoverflow.com/users/1745409/}{\underline{WitVault}} & Глава 3 \\
+\href{https://stackoverflow.com/users/4723795/}{\underline{xenteros}} & Главы 17, 29 и 39 \\
+\href{https://stackoverflow.com/users/6709421/}{\underline{Yair Twito}} & Глава 2 \\
+\href{https://stackoverflow.com/users/6952491/}{\underline{yd1}} & Глава 4 \\
+\href{https://stackoverflow.com/users/1597656/}{\underline{Yerken}} & Главы 16 и 20 \\
+\href{https://stackoverflow.com/users/2254048/}{\underline{YoungHobbit}} & Глава 29 \\
+\end{tabular}

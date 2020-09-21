@@ -1,0 +1,406 @@
+%Почаев
+
+предыдущего посещенного узла и сравнить с текущим узлом.
+
+\section*{Раздел 6.2: Имеет ли данное на входе дерево свойства \newline бинарного дерева поиска или нет}
+
+Например
+
+\vspace{\baselineskip}
+\textbf{Если входные данные таковы:}
+
+\vspace{\baselineskip}
+\vspace{-0.3cm}
+\includeimage{0.75}{images/30_1.pdf}
+
+\textbf{Результат должен быть ложным:}
+
+\vspace{\baselineskip}
+Так как 4 в левом поддереве больше, чем значение корня(3)
+
+\vspace{\baselineskip}
+\textbf{Если входные данные таковы:}
+
+\includeimage{0.5}{images/30_2.pdf}
+
+\vspace{-0.5cm}
+\textbf{Результат должен быть истинным}
+
+\chapter*{Глава 7: Обходы бинарного дерева}
+\vspace{-0.3cm}
+Посещение узла бинарного дерева в определенном порядке называется обходом.
+
+\vspace{\baselineskip}
+\vspace{-0.4cm}
+\section*{Раздел 7.1: Реализация обхода в порядке уровней}
+Например, если данное дерево таково:
+
+\includeimage{0.75}{images/31.pdf}
+
+\textbf{Обход в порядке уровней будет}
+
+\vspace{\baselineskip}
+1 2 3 4 5 6 7
+
+\vspace{\baselineskip}
+Печать данных узла производится по уровням
+
+\vspace{\baselineskip}
+Код:
+
+\vspace{\baselineskip}
+\vspace{-0.2cm}
+\begin{tcolorbox}
+\begin{minted}{C}
+
+#include<iostream>
+#include<queue>
+#include<malloc.h>
+using namespace std;
+struct node{
+
+    int data;
+    node *left;
+    node *right;
+};
+void levelOrder(struct node *root){
+
+        if(root == NULL) return;
+
+        queue<node *> Q;
+        Q.push(root);
+
+        while(!Q.empty()){
+        struct node* curr = Q.front();
+            cout<< curr->data <<" ";
+            if(curr->left != NULL) Q.push(curr-> left);
+                if(curr->right != NULL) Q.push(curr-> right);
+
+                Q.pop();
+
+
+        }
+}
+struct node* newNode(int data)
+{
+    struct node* node = (struct node*)
+                        malloc(sizeof(struct node));
+    node->data = data;
+    node->left = NULL;
+    node->right = NULL;
+
+    return(node);
+}
+
+int main(){
+
+    struct node *root = newNode(1);
+    root->left = newNode(2);
+    root->right = newNode(3);
+    root->left->left = newNode(4);
+    root->left->right = newNode(5);
+    root->right->left = newNode(6);
+    root->right->right = newNode(7);
+    
+    
+    printf("Level Order traversal of binary tree is \n");
+    levelOrder(root);
+
+    return 0;
+
+}
+
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+\vspace{-0.3cm}
+Такая структура данных, как очередь, используется для решения выше поставленной задачи.
+
+
+\section*{Раздел 7.2:Прямой, симметричный и обратный обход \newline бинарного дерева}
+Рассмотрим бинарное дерево:
+
+\includeimage{0.75}{images/31.pdf}
+
+\textbf{Прямым обходом(корня)} называется обход, при котором сначала происходит обход узла, затем левого и правого поддерева этого узла.
+
+\vspace{\baselineskip}
+Таким образом, прямой обход показанного выше дерева будет:
+
+\vspace{\baselineskip}
+1 2 4 5 3 6 7
+
+\vspace{\baselineskip}
+\textbf{Симметричным обходом(корня)} называется обход, при котором сначала происходит обход левого поддерева узла, затем самого узла , а после  правого поддерева узла.
+
+\vspace{\baselineskip}
+Таким образом, симметричный обход показанного выше дерева будет:
+
+\vspace{\baselineskip}
+4 2 5 1 6 3 7
+
+\vspace{\baselineskip}
+\textbf{Обратным обходом(корня)} называется обход, при котором сначала происходит обход левого поддерева узла, затем правого поддерева узла, а после самого узла.
+
+\vspace{\baselineskip}
+Таким образом, обратный порядок обхода дерева, показанного выше, будет:
+
+\vspace{\baselineskip}
+4 5 2 6 7 3 1
+
+\chapter*{Глава 8: Самый нижний общий предок бинарного дерева}
+\vspace{-0.4cm}
+Самый нижний общий предок между двумя узлами n1 и n2 определяется как самый нижний узел в дереве, который имеет оба узла n1 и n2 в качестве потомков
+
+\section*{Раздел 8.1: Нахождение самого нижнего общего предка}
+Рассмотрим дерево:
+
+\includeimage{0.75}{images/30_1.pdf}
+
+Самым низким общим предком  узлов со значениями 1 и 4 является 2
+
+\vspace{\baselineskip}
+Самым низким общим предком  узлов со значениями 1 и 5 является 3
+
+\vspace{\baselineskip}
+Самым низким общим предком   узлов со значениями 2 и 4 является 4
+
+\vspace{\baselineskip}
+Самым низким общим предком   узлов со значениями 1 и 2 является 2
+
+\vspace{\baselineskip}
+\chapter*{Глава 9: Граф}
+\vspace{-0.5cm}
+Граф - это совокупность точек и линий, соединяющих некоторое (возможно пустое) их подмножество. Точки графа называются вершинами графа, узлами или просто точками.Также линии, соединяющие вершины графа, называются ребрами графа, дугами или линиями.
+
+\vspace{\baselineskip}
+Граф G может быть определен как пара (V,E), где V - множество вершин, а E - множество ребер между вершинами $E \subseteq \{(u,v) | u,v \in V \}$.
+
+\vspace{-0.2cm}
+\section*{Раздел 9.1: Хранение графов (матрицы смежности)}
+Для хранения графа обычно используется два способа:
+
+\vspace{-0.2cm}
+\begin{itemize}
+  \item Матрица смежности
+  \vspace{-0.4cm}
+  \item Список смежности
+\end{itemize}
+
+\vspace{-0.2cm}
+\href{https://en.wikipedia.org/wiki/Adjacency_matrix}{\underline{Матрица смежности}} - это квадратная матрица, используемая для конечного представления графа. Элементы матрицы показывают, какие пары вершин в графе являются  смежными, а какие - нет.
+
+\vspace{\baselineskip}
+Смежный - это либо граничащий с чем-то, либо находящийся рядом с чем-то. Например, ваши соседи смежны с вами. В теории графов, если мы можем попасть в \textbf{узел B} из \textbf{узла A}, мы говорим, что \textbf{узел B} смежный с \textbf{узлом A}. Теперь мы узнаем о том, как хранить такие узлы, которые примыкают к каким-то  из них с помощью матрицы смежности. Это значит,что мы изобразим узлы,которые делят ребро между собой. Здесь матрица подразумевается как двумерный массив.
+
+\includeimage{0.7}{images/35.pdf}
+Здесь вы можете увидеть таблицу рядом с графом.Это наша матрица
+смежности. Здесь \textbf{Мatrix[i][j] = 1} показывает, что существует ребро между \textbf{i} и \textbf{j}. Если ребра нет, мы просто помещаем \textbf{0} в \textbf{Мatrix[i][j]}.
+
+\vspace{\baselineskip}
+Эти ребра могут быть нагруженными,что можно представить как расстояние между двумя городами. Тогда мы поместим вместо 1 какое-то значение в \textbf{Matrix[i][j]}.
+
+\vspace{\baselineskip}
+Граф, описанный выше, называется двунаправленным или ненаправленным.Это значит, что если мы можем попасть из \textbf{узла 2} в \textbf{узел 1},то  мы также можем попасть из \textbf{узла 1} в \textbf{узел 2}. Если бы  граф был Направленным, то на одной стороне графа был знак-стрелка. И даже такой граф можно представить в виде матрицы смежности.
+
+\includeimage{0.55}{images/36.pdf}
+
+Мы представляем узлы, которые не делят ребро на бесконечность. Стоит отметить, что если граф является ненаправленным,то матрица становится симметричной.
+
+\vspace{\baselineskip}
+Псевдокод для создания матрицы:
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}
+
+Procedure AdjacencyMatrix(N):        //N показывает количество вершин
+Matrix[N][N]
+for i from 1 to N           
+    for j from 1 to N
+        Take input -> Matrix[i][j]
+    endfor
+endfor
+
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Мы также можем заполнить матрицу, пользуясь обычным методом:
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}
+
+Procedure AdjacencyMatrix(N, E):    // N -> количество вершин
+Matrix[N][E]       				    // E -> количество рёбер
+for i from 1 to E
+    input -> n1, n2, cost
+    Matrix[n1][n2]=cost
+    Matrix[n2][n1]=cost
+endfor
+
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Для направленных графов мы можем удалить строку, где \textbf{Matrix[n2][n1] = cost}.
+
+\vspace{\baselineskip}
+\textbf{Недостатки использования матрицы смежности:}
+
+\vspace{\baselineskip}
+Память - это огромная проблема. Вне зависимости от того, как много ребер, нам всегда нужна матрица размеров N*N, где N - это количество узлов. Для 10000 узлов размер матрицы будет 4*10000*10000, что составляет примерно 381 Мбайт. Это огромная трата памяти, если мы рассматриваем графы, которые имеют несколько ребер.
+
+\vspace{\baselineskip}
+Предположим, что нам надо выяснить, в какой узел мы можем попасть из узла \textbf{u}. Нам необходимо проверить каждый ряд с \textbf{u}, что занимает много времени.
+
+\vspace{\baselineskip}
+Единственное преимущество в том, что мы можем легко найти связь между узлами \textbf{u-v} и их стоимость, используя матрицу смежности.
+
+\vspace{\baselineskip}
+Java-код, который реализует использованный выше псевдокод:
+\begin{tcolorbox}
+\begin{minted}{Java}
+
+import java.util.Scanner;
+
+public class Represent_Graph_Adjacency_Matrix
+{
+    private final int vertices;
+    private int[][] adjacency_matrix;
+    
+    public Represent_Graph_Adjacency_Matrix(int v)
+    {
+        vertices = v;
+        adjacency_matrix = new int[vertices + 1][vertices + 1];
+    }
+    public void makeEdge(int to, int from, int edge)
+    {
+        try
+        {
+            adjacency_matrix[to][from] = edge;
+        }
+        catch (ArrayIndexOutOfBoundsException index)
+        {
+            System.out.println("The vertices does not exists");
+        }
+    }
+    
+    public int getEdge(int to, int from)
+    {
+        try
+        {
+            return adjacency_matrix[to][from];
+        }
+        catch (ArrayIndexOutOfBoundsException index)
+        {
+            System.out.println("The vertices does not exists");
+        }
+        return -1;
+    }
+    
+    public static void main(String args[])
+    {
+        int v, e, count = 1, to = 0, from = 0;
+        Scanner sc = new Scanner(System.in);
+        Represent_Graph_Adjacency_Matrix graph;
+        try
+        {
+            System.out.println("Enter the number of vertices: ");
+            v = sc.nextInt();
+            System.out.println("Enter the number of edges: ");
+            e = sc.nextInt();
+            
+            graph = new Represent_Graph_Adjacency_Matrix(v);
+            
+            System.out.println("Enter the edges: <to> <from>");
+            while (count <= e)
+            {
+                to = sc.nextInt();
+                from = sc.nextInt();
+                
+                graph.makeEdge(to, from, 1);
+                count++;
+            }
+            
+            System.out.println("The adjacency matrix for the given graph is: ");
+            System.out.print(" ");
+            for (int i = 1; i <= v; i++)
+                System.out.print(i + " ");
+            System.out.println();
+            for (int i = 1; i <= v; i++)
+            {
+                System.out.print(i + " ");
+                for (int j = 1; j <= v; j++)
+                    System.out.print(graph.getEdge(i, j) + " ");
+                System.out.println();
+            }
+        }
+        catch (Exception E)
+        {
+            System.out.println("Somthing went wrong");
+        }
+        
+        sc.close();
+    }
+}
+
+\end{minted}
+\end{tcolorbox}
+
+Запускаем код: сохраняем файл и компилируем, используя javac Represent\_Graph\_Adjacency\_Matrix.java
+
+\vspace{\baselineskip}
+Пример:
+\begin{tcolorbox}
+\begin{minted}{Java}
+
+$ java Represent_Graph_Adjacency_Matrix
+Enter the number of vertices:
+4
+Enter the number of edges:
+6
+Enter the edges:
+1 1
+3 4
+2 3
+1 4
+2 4
+1 2
+The adjacency matrix for the given graph is:
+1 2 3 4
+1 1 1 0 1
+2 0 0 1 1
+3 0 0 0 1
+4 0 0 0 0
+
+\end{minted}
+\end{tcolorbox}
+
+\vspace{-0.2cm}
+\section*{Раздел 9.2: Введение в теорию графов}
+\href{https://en.wikipedia.org/wiki/Graph_theory}{\underline{Теория графов}} - это изучение тех графов, которые представляют собой математические структуры, используемые для моделирования попарных отношений между объектами.
+
+\vspace{\baselineskip}
+Вы знали, что почти все задачи на планете Земля можно конвертировать в задачи про дороги и города и решить? Теория графов была изобретена много лет назад до изобретения компьютера. \href{https://en.wikipedia.org/wiki/Leonhard_Euler}{\underline{Леонард Эйлер}} написал статью о \href{https://en.wikipedia.org/wiki/Seven_Bridges_of_Konigsberg}{\underline{семи мостах Кёнигсберга}}, который считают первым документом по теории графов. С тех пор люди начали понимать, что если мы можем конвертировать любую задачу в задачу про города и дороги, то можем легко решить ее с помощью теории графов.
+
+\vspace{\baselineskip}
+Теория графов имеет множество применений. Одно из самых распространенных  - поиск  кратчайшего расстояния между двумя городами.Мы все знаем, что для того, чтобы добраться до вашего пк, этой веб-странице пришлось пройти множество маршрутизаторов с сервера. Теория графов помогает выяснить, какие маршрутизаторы необходимо пересечь. Какую улицу необходимо было бомбардировать во время войны, чтобы отсоединить столицу от других городов, можно было выяснить с помощью теории графов.
+
+\vspace{\baselineskip}
+Давайте для начала выучим несколько базовых определений в теории графов.
+
+\vspace{\baselineskip}
+\textbf{Граф:}
+
+\vspace{\baselineskip}
+Пусть у нас есть 6 городов, которые мы отметим цифрами 1, 2, 3, 4, 5, 6. Теперь соединим города, между которыми есть дорога.
+
+\includeimage{0.70}{images/39.pdf}
+
+Это простой граф, где некоторые города изображены с дорогами, которые их соединяют. В теории графов мы называем каждый из этих городов \textbf{узлом} или \textbf{вершиной}, а дороги - \textbf{ребрами}. Проще говоря, граф - это совокупность узлов и ребер.
+
+\vspace{\baselineskip}
+\textbf{Узел} может представлять собой очень многое. В некоторых графах узлы представляют собой города, некоторые - аэропорты, а какие-то -  квадрат на шахматной доске. \textbf{Ребро} представляет собой отношение между узлами. Такое отношение может быть временем, чтобы добраться от одного аэропорта до другого, движения коня от одного квадрата до других  и т.д.

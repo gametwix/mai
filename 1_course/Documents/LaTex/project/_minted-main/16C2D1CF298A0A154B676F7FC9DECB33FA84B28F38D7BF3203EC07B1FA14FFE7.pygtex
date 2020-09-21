@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{\PYGZdl{}} \PYG{n}{java} \PYG{n}{Represent\PYGZus{}Graph\PYGZus{}Adjacency\PYGZus{}Matrix}
+\PYG{n}{Enter} \PYG{n}{the} \PYG{n}{number} \PYG{n}{of} \PYG{n}{vertices}\PYG{p}{:}
+\PYG{l+m+mi}{4}
+\PYG{n}{Enter} \PYG{n}{the} \PYG{n}{number} \PYG{n}{of} \PYG{n}{edges}\PYG{p}{:}
+\PYG{l+m+mi}{6}
+\PYG{n}{Enter} \PYG{n}{the} \PYG{n}{edges}\PYG{p}{:}
+\PYG{l+m+mi}{1} \PYG{l+m+mi}{1}
+\PYG{l+m+mi}{3} \PYG{l+m+mi}{4}
+\PYG{l+m+mi}{2} \PYG{l+m+mi}{3}
+\PYG{l+m+mi}{1} \PYG{l+m+mi}{4}
+\PYG{l+m+mi}{2} \PYG{l+m+mi}{4}
+\PYG{l+m+mi}{1} \PYG{l+m+mi}{2}
+\PYG{n}{The} \PYG{n}{adjacency} \PYG{n}{matrix} \PYG{k}{for} \PYG{n}{the} \PYG{n}{given} \PYG{n}{graph} \PYG{n}{is}\PYG{p}{:}
+\PYG{l+m+mi}{1} \PYG{l+m+mi}{2} \PYG{l+m+mi}{3} \PYG{l+m+mi}{4}
+\PYG{l+m+mi}{1} \PYG{l+m+mi}{1} \PYG{l+m+mi}{1} \PYG{l+m+mi}{0} \PYG{l+m+mi}{1}
+\PYG{l+m+mi}{2} \PYG{l+m+mi}{0} \PYG{l+m+mi}{0} \PYG{l+m+mi}{1} \PYG{l+m+mi}{1}
+\PYG{l+m+mi}{3} \PYG{l+m+mi}{0} \PYG{l+m+mi}{0} \PYG{l+m+mi}{0} \PYG{l+m+mi}{1}
+\PYG{l+m+mi}{4} \PYG{l+m+mi}{0} \PYG{l+m+mi}{0} \PYG{l+m+mi}{0} \PYG{l+m+mi}{0}
+\end{Verbatim}

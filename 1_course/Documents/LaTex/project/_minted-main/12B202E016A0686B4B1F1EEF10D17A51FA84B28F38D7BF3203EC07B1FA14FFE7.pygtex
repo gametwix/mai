@@ -1,0 +1,64 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{java.util.Arrays}\PYG{p}{;}
+\PYG{k+kn}{import} \PYG{n+nn}{java.util.Comparator}\PYG{p}{;}
+\PYG{k+kd}{class} \PYG{n+nc}{Job}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{start}\PYG{p}{,} \PYG{n}{finish}\PYG{p}{,} \PYG{n}{profit}\PYG{p}{;}
+	\PYG{n}{Job}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{start}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{finish}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{profit}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{this}\PYG{p}{.}\PYG{n+na}{start} \PYG{o}{=} \PYG{n}{start}\PYG{p}{;}
+		\PYG{k}{this}\PYG{p}{.}\PYG{n+na}{finish} \PYG{o}{=} \PYG{n}{finish}\PYG{p}{;}
+		\PYG{k}{this}\PYG{p}{.}\PYG{n+na}{profit} \PYG{o}{=} \PYG{n}{profit}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kd}{class} \PYG{n+nc}{JobComparator} \PYG{k+kd}{implements} \PYG{n}{Comparator}\PYG{o}{\PYGZlt{}}\PYG{n}{Job}\PYG{o}{\PYGZgt{}}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kd}{public} \PYG{k+kt}{int} \PYG{n+nf}{compare}\PYG{p}{(}\PYG{n}{Job} \PYG{n}{a}\PYG{p}{,} \PYG{n}{Job} \PYG{n}{b}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{return} \PYG{n}{a}\PYG{p}{.}\PYG{n+na}{finish} \PYG{o}{\PYGZlt{}} \PYG{n}{b}\PYG{p}{.}\PYG{n+na}{finish} \PYG{o}{?} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{p}{:} \PYG{n}{a}\PYG{p}{.}\PYG{n+na}{finish} \PYG{o}{==} \PYG{n}{b}\PYG{p}{.}\PYG{n+na}{finish} \PYG{o}{?} \PYG{l+m+mi}{0} \PYG{p}{:} \PYG{l+m+mi}{1}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kd}{public} \PYG{k+kd}{class} \PYG{n+nc}{WeightedIntervalScheduling}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kd}{static} \PYG{k+kd}{public} \PYG{k+kt}{int} \PYG{n+nf}{binarySearch}\PYG{p}{(}\PYG{n}{Job} \PYG{n}{jobs}\PYG{o}{[]}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{index}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{lo} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{hi} \PYG{o}{=} \PYG{n}{index} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;}
+		\PYG{k}{while} \PYG{p}{(}\PYG{n}{lo} \PYG{o}{\PYGZlt{}=} \PYG{n}{hi}\PYG{p}{)}
+			\PYG{p}{\PYGZob{}}
+			\PYG{k+kt}{int} \PYG{n}{mid} \PYG{o}{=} \PYG{p}{(}\PYG{n}{lo} \PYG{o}{+} \PYG{n}{hi}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mi}{2}\PYG{p}{;}
+			\PYG{k}{if} \PYG{p}{(}\PYG{n}{jobs}\PYG{o}{[}\PYG{n}{mid}\PYG{o}{]}\PYG{p}{.}\PYG{n+na}{finish} \PYG{o}{\PYGZlt{}=} \PYG{n}{jobs}\PYG{o}{[}\PYG{n}{index}\PYG{o}{]}\PYG{p}{.}\PYG{n+na}{start}\PYG{p}{)}
+			\PYG{p}{\PYGZob{}}
+				\PYG{k}{if} \PYG{p}{(}\PYG{n}{jobs}\PYG{o}{[}\PYG{n}{mid} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{.}\PYG{n+na}{finish} \PYG{o}{\PYGZlt{}=} \PYG{n}{jobs}\PYG{o}{[}\PYG{n}{index}\PYG{o}{]}\PYG{p}{.}\PYG{n+na}{start}\PYG{p}{)}
+					\PYG{n}{lo} \PYG{o}{=} \PYG{n}{mid} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;}
+				\PYG{k}{else}
+					\PYG{k}{return} \PYG{n}{mid}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}
+			\PYG{k}{else}
+				\PYG{n}{hi} \PYG{o}{=} \PYG{n}{mid} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{return} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k+kd}{static} \PYG{k+kd}{public} \PYG{k+kt}{int} \PYG{n+nf}{schedule}\PYG{p}{(}\PYG{n}{Job} \PYG{n}{jobs}\PYG{o}{[]}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+	\PYG{n}{Arrays}\PYG{p}{.}\PYG{n+na}{sort}\PYG{p}{(}\PYG{n}{jobs}\PYG{p}{,} \PYG{k}{new} \PYG{n}{JobComparator}\PYG{p}{());}
+	\PYG{k+kt}{int} \PYG{n}{n} \PYG{o}{=} \PYG{n}{jobs}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{;}
+	\PYG{k+kt}{int} \PYG{n}{table}\PYG{o}{[]} \PYG{o}{=} \PYG{k}{new} \PYG{k+kt}{int}\PYG{o}{[}\PYG{n}{n}\PYG{o}{]}\PYG{p}{;}
+	\PYG{n}{table}\PYG{o}{[}\PYG{l+m+mi}{0}\PYG{o}{]} \PYG{o}{=} \PYG{n}{jobs}\PYG{o}{[}\PYG{l+m+mi}{0}\PYG{o}{]}\PYG{p}{.}\PYG{n+na}{profit}\PYG{p}{;}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{inclProf} \PYG{o}{=} \PYG{n}{jobs}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{p}{.}\PYG{n+na}{profit}\PYG{p}{;}
+		\PYG{k+kt}{int} \PYG{n}{l} \PYG{o}{=} \PYG{n}{binarySearch}\PYG{p}{(}\PYG{n}{jobs}\PYG{p}{,} \PYG{n}{i}\PYG{p}{);}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{l} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
+			\PYG{n}{inclProf} \PYG{o}{+=} \PYG{n}{table}\PYG{o}{[}\PYG{n}{l}\PYG{o}{]}\PYG{p}{;}
+		\PYG{n}{table}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]} \PYG{o}{=} \PYG{n}{Math}\PYG{p}{.}\PYG{n+na}{max}\PYG{p}{(}\PYG{n}{inclProf}\PYG{p}{,} \PYG{n}{table}\PYG{o}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{n}{table}\PYG{o}{[}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{main}\PYG{p}{(}\PYG{n}{String}\PYG{o}{[]} \PYG{n}{args}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{Job} \PYG{n}{jobs}\PYG{o}{[]} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{k}{new} \PYG{n}{Job}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{50}\PYG{p}{),} \PYG{k}{new} \PYG{n}{Job}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{20}\PYG{p}{),}
+					\PYG{k}{new} \PYG{n}{Job}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{,} \PYG{l+m+mi}{19}\PYG{p}{,} \PYG{l+m+mi}{100}\PYG{p}{),} \PYG{k}{new} \PYG{n}{Job}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{100}\PYG{p}{,} \PYG{l+m+mi}{200}\PYG{p}{)\PYGZcb{};}
+		\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Optimal profit is \PYGZdq{}} \PYG{o}{+} \PYG{n}{schedule}\PYG{p}{(}\PYG{n}{jobs}\PYG{p}{));}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

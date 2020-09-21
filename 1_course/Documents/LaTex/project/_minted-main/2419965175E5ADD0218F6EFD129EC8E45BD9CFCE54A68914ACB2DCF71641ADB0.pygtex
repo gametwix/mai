@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{is\PYGZus{}BST}\PYG{p}{(}\PYG{n}{my\PYGZus{}tree\PYGZus{}root}\PYG{p}{,} \PYG{n}{KEY\PYGZus{}MIN}\PYG{p}{,} \PYG{n}{KEY\PYGZus{}MAX}\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{if} \PYG{n}{Job}\PYG{o}{[}\PYG{n}{j}\PYG{o}{]}\PYG{p}{.}\PYG{n+na}{finish\PYGZus{}time} \PYG{o}{\PYGZlt{}=} \PYG{n}{Job}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{p}{.}\PYG{n+na}{start\PYGZus{}time}
+	\PYG{k}{if} \PYG{n}{Acc\PYGZus{}Prof}\PYG{o}{[}\PYG{n}{j}\PYG{o}{]} \PYG{o}{+} \PYG{n}{Profit}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{Acc\PYGZus{}Prof}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}
+		\PYG{n}{Acc\PYGZus{}Prof}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]} \PYG{o}{=} \PYG{n}{Acc\PYGZus{}Prof}\PYG{o}{[}\PYG{n}{j}\PYG{o}{]} \PYG{o}{+} \PYG{n}{Profit}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}
+	\PYG{n}{endif}
+\PYG{n}{endif}
+\end{Verbatim}

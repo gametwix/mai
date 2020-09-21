@@ -1,0 +1,46 @@
+\section*{Задание 3}
+
+Используя алгоритм “фронта волны”, найти все кратчайшие пути из первой вершины в остальные вершины орграфа, заданного матрицей смежности:
+
+\vspace{\baselineskip}
+
+$$A = \begin{pmatrix}0&0&0&0&1&1&0&0 \\ 1&0&0&0&1&0&1&0 \\ 1&0&0&1&1&1&0&0 \\ 0&1&0&0&1&1&0&0 \\ 1&0&0&0&0&1&0&0 \\ 1&0&0&1&1&0&0&0 \\ 1&0&1&1&1&0&0&1 \\ 1&0&1&0&1&0&1&0  \end{pmatrix}$$
+
+\vspace{\baselineskip}
+
+{\large\textbf{Решение:}}
+
+\vspace{\baselineskip}
+
+\begin{enumerate}
+\item Помечаем вершину $\mathcal{V}_1$ индексом 0. Вершина $\mathcal{V}_1$ принадлежит фронту волны нулевого уровня $W_0(\mathcal{V}_1)$.
+
+\item Вершины из множества $\text{Г}\mathcal{V}_i = \text{Г}W_0(\mathcal{V}_1) = \{\mathcal{V}_5 , \mathcal{V}_6 \} $  помечаем индексом 1, они принадлежат фронтуволны первого уровня $W_1(\mathcal{V}_1)$.
+
+\item Непомеченные ранее вершины из множества $\text{Г}W_1(\mathcal{V}_1) = \text{Г}\{\mathcal{V}_ 5, \mathcal{V}_6\} = \{\mathcal{V}_4 \}$ помечаем индексом 2, $\mathcal{V}_4$ принадлежит фронту волны второго уровня $W_2(\mathcal{V}_1)$.
+
+\item Непомеченные ранее вершины из множества $\text{Г}W_2(\mathcal{V}_1) = \text{Г}\{\mathcal{V}_4 \} = \{\mathcal{V}_2 \}$  помечаем индексом 3, $\mathcal{V}_2$ принадлежит фронту волны третьего уровня $W_3(\mathcal{V}_1)$.
+
+\item Непомеченные ранее вершины из множества $\text{Г}W_3(\mathcal{V}_1) = \text{Г}\{\mathcal{V}_2 \} = \{\mathcal{V}_7 \}$  помечаем индексом 4, $\mathcal{V}_7$ принадлежит фронту волны четвертого уровня $W_4(\mathcal{V}_1)$.
+
+\item Непомеченные ранее вершины из множества $\text{Г}W_4(\mathcal{V}_1) = \text{Г}\{\mathcal{V}_7 \} = \{\mathcal{V}_3,\mathcal{V}_8\}$  помечаем индексом 5, они принадлежат фронту волны пятого уровня $W_5(\mathcal{V}_1)$.
+
+\item Вершина $\mathcal{V}_8$ достигнута, помечена индексом 5, следовательно, длина кратчайшего пути из $\mathcal{V}_1$  в $\mathcal{V}_8$  равна пяти.
+
+\end{enumerate}
+
+Промежуточные вершины кратчайших путей находятся согласно приведенным формулам (начинаем с последней вершины пути):
+
+
+\begin{enumerate}
+\item $\mathcal{V}_8$
+\item $W_4(\mathcal{V}_1)\cap\text{Г}^{-1}\mathcal{V}_8=\{\mathcal{V}_7\}\cap\{\mathcal{V}_7\}=\{\mathcal{V}_7\}$
+\item $W_3(\mathcal{V}_1)\cap\text{Г}^{-1}\mathcal{V}_7=\{\mathcal{V}_2\}\cap\{\mathcal{V}_2,\mathcal{V}_8\}=\{\mathcal{V}_2\}$
+\item $W_2(\mathcal{V}_1)\cap\text{Г}^{-1}\mathcal{V}_2=\{\mathcal{V}_4\}\cap\{\mathcal{V}_4\}=\{\mathcal{V}_4\}$
+\item $W_1(\mathcal{V}_1)\cap\text{Г}^{-1}\mathcal{V}_4=\{\mathcal{V}_5,\mathcal{V}_6,\}\cap\{\mathcal{V}_3,\mathcal{V}_6,\mathcal{V}_7\}=\{\mathcal{V}_6\}$
+\item $W_0(\mathcal{V}_1)\cap\text{Г}^{-1}\mathcal{V}_6=\{\mathcal{V}_1\}\cap\{\mathcal{V}_1,\mathcal{V}_3,\mathcal{V}_4,\mathcal{V}_5\}=\{\mathcal{V}_1\}$
+\end{enumerate}
+
+Один кратчайший путь: $\mathcal{V}_1\rightarrow\mathcal{V}_6\rightarrow\mathcal{V}_4\rightarrow\mathcal{V}_2\rightarrow\mathcal{V}_7\rightarrow\mathcal{V}_8$
+
+\newpage

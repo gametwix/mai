@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{d}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{)} \PYG{o}{=} \PYG{o}{|}\PYG{n}{x} \PYG{o}{\PYGZhy{}} \PYG{n}{y}\PYG{o}{|} \PYG{c+c1}{// абсолютная разница}
+\end{Verbatim}

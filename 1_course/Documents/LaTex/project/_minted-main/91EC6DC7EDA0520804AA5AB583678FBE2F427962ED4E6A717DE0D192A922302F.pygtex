@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void} \PYG{n+nf}{bubble\PYGZus{}sort}\PYG{p}{(}\PYG{k+kt}{long} \PYG{n}{list}\PYG{p}{[],} \PYG{k+kt}{long} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{c+cm}{/*на вход поступает массив со значениями и}
+\PYG{c+cm}{	его длина*/}
+	\PYG{k+kt}{long} \PYG{n}{c}\PYG{p}{,} \PYG{n}{d}\PYG{p}{,} \PYG{n}{t}\PYG{p}{;} \PYG{c+cm}{/*с \PYGZhy{} номер \PYGZdq{}проверки на перестановку\PYGZdq{}, d \PYGZhy{} индекс чисел массива*/}
+	\PYG{k}{for} \PYG{p}{(}\PYG{n}{c} \PYG{o}{=} \PYG{l+m+mi}{0} \PYG{p}{;} \PYG{n}{c} \PYG{o}{\PYGZlt{}} \PYG{p}{(} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1} \PYG{p}{);} \PYG{n}{c}\PYG{o}{++}\PYG{p}{)}\PYG{c+c1}{//}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{for} \PYG{p}{(}\PYG{n}{d} \PYG{o}{=} \PYG{l+m+mi}{0} \PYG{p}{;} \PYG{n}{d} \PYG{o}{\PYGZlt{}} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{n}{c} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{d}\PYG{o}{++}\PYG{p}{)}\PYG{c+cm}{/*начиная от самого первого элемента массива,}
+\PYG{c+cm}{		заканчивая самым крайним (меняется в зависимости от номера проверки*/}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k}{if} \PYG{p}{(}\PYG{n}{list}\PYG{p}{[}\PYG{n}{d}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{list}\PYG{p}{[}\PYG{n}{d}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{])}\PYG{c+c1}{//если последующий элемент больше d\PYGZhy{}ого}
+			\PYG{p}{\PYGZob{}}
+				\PYG{c+cm}{/*Перестановка*/}
+				\PYG{n}{t} \PYG{o}{=} \PYG{n}{list}\PYG{p}{[}\PYG{n}{d}\PYG{p}{];}\PYG{c+c1}{//запоминаем значение d\PYGZhy{}ого элемента}
+				\PYG{n}{list}\PYG{p}{[}\PYG{n}{d}\PYG{p}{]} \PYG{o}{=} \PYG{n}{list}\PYG{p}{[}\PYG{n}{d}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{];}\PYG{c+cm}{/*значение d\PYGZhy{}ого элемента присваиваем последующему*/}
+				\PYG{n}{list}\PYG{p}{[}\PYG{n}{d}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{t}\PYG{p}{;}\PYG{c+c1}{//последующему элементу присваиваем значение d\PYGZhy{}го}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

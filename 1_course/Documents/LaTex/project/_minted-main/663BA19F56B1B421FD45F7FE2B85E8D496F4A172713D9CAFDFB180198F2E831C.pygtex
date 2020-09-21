@@ -1,0 +1,61 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public} \PYG{k+kd}{class} \PYG{n+nc}{MergeSortBU} \PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{// тестовые данные}
+	\PYG{k+kd}{private} \PYG{k+kd}{static} \PYG{n}{Integer}\PYG{o}{[]} \PYG{n}{array} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+		\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{8}\PYG{p}{,} \PYG{l+m+mi}{9}\PYG{p}{,} \PYG{l+m+mi}{15}\PYG{p}{,} \PYG{l+m+mi}{20}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{6}\PYG{p}{,} \PYG{l+m+mi}{30}\PYG{p}{,} \PYG{l+m+mi}{70}\PYG{p}{,}\PYG{l+m+mi}{60}\PYG{p}{,}\PYG{l+m+mi}{80}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{9}\PYG{p}{,}\PYG{l+m+mi}{67}\PYG{p}{,}\PYG{l+m+mi}{54}\PYG{p}{,}\PYG{l+m+mi}{51}\PYG{p}{,}\PYG{l+m+mi}{52}\PYG{p}{,}\PYG{l+m+mi}{24}\PYG{p}{,}\PYG{l+m+mi}{54}\PYG{p}{,}\PYG{l+m+mi}{7}		 \PYG{p}{\PYGZcb{};}
+	\PYG{k+kd}{public} \PYG{n+nf}{MergeSortBU}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k+kd}{private} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{merge}\PYG{p}{(}\PYG{n}{Comparable}\PYG{o}{[]} \PYG{n}{arrayToSort}\PYG{p}{,} \PYG{n}{Comparable}\PYG{o}{[]} \PYG{n}{aux}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{lo}\PYG{p}{,}\PYG{k+kt}{int} \PYG{n}{mid}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{hi}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	 \PYG{c+c1}{// делаем копию}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{index} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{index} \PYG{o}{\PYGZlt{}} \PYG{n}{arrayToSort}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{;} \PYG{n}{index}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{n}{aux}\PYG{o}{[}\PYG{n}{index}\PYG{o}{]} \PYG{o}{=} \PYG{n}{arrayToSort}\PYG{o}{[}\PYG{n}{index}\PYG{o}{]}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{lo}\PYG{p}{;} \PYG{c+c1}{// нижний индекс}
+	\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{n}{mid} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{c+c1}{// медиана}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{k} \PYG{o}{=} \PYG{n}{lo}\PYG{p}{;} \PYG{n}{k} \PYG{o}{\PYGZlt{}=} \PYG{n}{hi}\PYG{p}{;} \PYG{n}{k}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{i} \PYG{o}{\PYGZgt{}} \PYG{n}{mid}\PYG{p}{)} \PYG{c+c1}{// когда дошли до середины идним из массивов}
+			\PYG{n}{arrayToSort}\PYG{o}{[}\PYG{n}{k}\PYG{o}{]} \PYG{o}{=} \PYG{n}{aux}\PYG{o}{[}\PYG{n}{j}\PYG{o}{++]}\PYG{p}{;}
+		\PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{j} \PYG{o}{\PYGZgt{}} \PYG{n}{hi}\PYG{p}{)}
+			\PYG{n}{arrayToSort}\PYG{o}{[}\PYG{n}{k}\PYG{o}{]} \PYG{o}{=} \PYG{n}{aux}\PYG{o}{[}\PYG{n}{i}\PYG{o}{++]}\PYG{p}{;}
+		 \PYG{c+c1}{// выполняется сначала нижняя часть составных условий}
+		\PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{isLess}\PYG{p}{(}\PYG{n}{aux}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{p}{,} \PYG{n}{aux}\PYG{o}{[}\PYG{n}{j}\PYG{o}{]}\PYG{p}{))} \PYG{p}{\PYGZob{}}
+			\PYG{c+c1}{// присваиваем меньший элемент, увеличиваем счетчик}
+
+			\PYG{n}{arrayToSort}\PYG{o}{[}\PYG{n}{k}\PYG{o}{]} \PYG{o}{=} \PYG{n}{aux}\PYG{o}{[}\PYG{n}{i}\PYG{o}{++]}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+			\PYG{n}{arrayToSort}\PYG{o}{[}\PYG{n}{k}\PYG{o}{]} \PYG{o}{=} \PYG{n}{aux}\PYG{o}{[}\PYG{n}{j}\PYG{o}{++]}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{sort}\PYG{p}{(}\PYG{n}{Comparable}\PYG{o}{[]} \PYG{n}{arrayToSort}\PYG{p}{,} \PYG{n}{Comparable}\PYG{o}{[]} \PYG{n}{aux}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{lo}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{hi}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{N} \PYG{o}{=} \PYG{n}{arrayToSort}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{;} \PYG{c+c1}{// количество элементов}
+	 \PYG{c+c1}{// цикл с шагом в два раза большим предыдущего}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{sz} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{sz} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{;} \PYG{n}{sz} \PYG{o}{=} \PYG{n}{sz} \PYG{o}{+} \PYG{n}{sz}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		 \PYG{c+c1}{// шаг больше на величину индекса, прошлого элемента}
+		\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{low} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{low} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{;} \PYG{n}{low} \PYG{o}{=} \PYG{n}{low} \PYG{o}{+} \PYG{n}{sz} \PYG{o}{+} \PYG{n}{sz}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+			\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Size:\PYGZdq{}}\PYG{o}{+} \PYG{n}{sz}\PYG{p}{);} \PYG{c+c1}{// вывод размера}
+			 \PYG{c+c1}{// слияние непересекающихся частей}
+			\PYG{n}{merge}\PYG{p}{(}\PYG{n}{arrayToSort}\PYG{p}{,} \PYG{n}{aux}\PYG{p}{,} \PYG{n}{low}\PYG{p}{,} \PYG{n}{low} \PYG{o}{+} \PYG{n}{sz} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{Math}\PYG{p}{.}\PYG{n+na}{min}\PYG{p}{(}\PYG{n}{low} \PYG{o}{+} \PYG{n}{sz} \PYG{o}{+} \PYG{n}{sz} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{N} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{));}
+			\PYG{n}{print}\PYG{p}{(}\PYG{n}{arrayToSort}\PYG{p}{);} \PYG{c+c1}{// вывод результата}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{boolean} \PYG{n+nf}{isLess}\PYG{p}{(}\PYG{n}{Comparable} \PYG{n}{a}\PYG{p}{,} \PYG{n}{Comparable} \PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{k}{return} \PYG{n}{a}\PYG{p}{.}\PYG{n+na}{compareTo}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{c+c1}{// истина, если первый элемент меньше}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kd}{private} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{print}\PYG{p}{(}\PYG{n}{Comparable}\PYG{o}{[]} \PYG{n}{array}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{n}{StringBuffer} \PYG{n}{buffer} \PYG{o}{=} \PYG{k}{new} \PYG{n}{StringBuffer}\PYG{p}{();} \PYG{c+c1}{// объявляем для копии}
+		\PYG{k}{for} \PYG{p}{(}\PYG{n}{Comparable} \PYG{n}{value} \PYG{p}{:} \PYG{n}{array}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// заполняем с пробелами}
+			\PYG{n}{buffer}\PYG{p}{.}\PYG{n+na}{append}\PYG{p}{(}\PYG{n}{value}\PYG{p}{);}
+			\PYG{n}{buffer}\PYG{p}{.}\PYG{n+na}{append}\PYG{p}{(}\PYG{l+s+sc}{\PYGZsq{} \PYGZsq{}}\PYG{p}{);}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{n}{buffer}\PYG{p}{);} \PYG{c+c1}{// выводим копию}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{main}\PYG{p}{(}\PYG{n}{String}\PYG{o}{[]} \PYG{n}{args}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		 \PYG{c+c1}{// объявляем обрабатываемый массив}
+		\PYG{n}{Comparable}\PYG{o}{[]} \PYG{n}{aux} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Comparable}\PYG{o}{[}\PYG{n}{array}\PYG{p}{.}\PYG{n+na}{length}\PYG{o}{]}\PYG{p}{;}
+		\PYG{n}{print}\PYG{p}{(}\PYG{n}{array}\PYG{p}{);}
+		\PYG{n}{MergeSortBU}\PYG{p}{.}\PYG{n+na}{sort}\PYG{p}{(}\PYG{n}{array}\PYG{p}{,} \PYG{n}{aux}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{array}\PYG{p}{.}\PYG{n+na}{length} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

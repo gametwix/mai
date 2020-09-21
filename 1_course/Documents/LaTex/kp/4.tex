@@ -1,0 +1,122 @@
+\section*{Задание 4}
+
+Используя алгоритм Форда, найти минимальные пути из первой вершины во все достижимые вершины в нагруженном графе, заданном матрицей длин дуг.
+
+ $$C = \begin{pmatrix}
+ \infty&10&6&5&\infty&\infty&\infty&\infty \\
+ \infty&\infty&3&\infty&15&\infty&\infty&\infty \\
+ \infty&3&\infty&1&\infty&7&\infty&\infty \\
+17&\infty&1&\infty&\infty&\infty&3&\infty \\
+ \infty&\infty&\infty&\infty&\infty&4&\infty&3 \\
+ \infty&\infty&\infty&\infty&4&\infty&2&8 \\
+ \infty&\infty&\infty&\infty&\infty&2&\infty&10 \\
+ 4&7&\infty&6&5&8&\infty&\infty
+ \end{pmatrix}$$
+
+\vspace{\baselineskip}
+
+{\large\textbf{Решение:}}
+
+\vspace{\baselineskip}
+\begin{enumerate}
+\item Составим таблицу итераций.
+
+\begin{tabular}{|*{16}{c|}}
+\hline
+ &$\mathcal{V}_1$&$\mathcal{V}_2$&$\mathcal{V}_3$&$\mathcal{V}_4$&$\mathcal{V}_5$&$\mathcal{V}_6$&$\mathcal{V}_7$&$\mathcal{V}_8$&$\lambda^{(0)}_i$&$\lambda^{(1)}_i$&$\lambda^{(2)}_i$&$\lambda^{(3)}_i$&$\lambda^{(4)}_i$&$\lambda^{(5)}_i$&$\lambda^{(6)}_i$\\
+ \hline
+$\mathcal{V}_1$ &$\infty$&10&6&5&$\infty$&$\infty$&$\infty$&$\infty$&0&0&0&0&0&0&0 \\
+\hline
+$\mathcal{V}_2$& $\infty$&$\infty$&3&$\infty$&15&$\infty$&$\infty$&$\infty$&$\infty$&10&9&9&9&9&9 \\
+\hline
+$\mathcal{V}_3$&$\infty$&3&$\infty$&1&$\infty$&7&$\infty$&$\infty$&$\infty$&6&6&6&6&6&6 \\
+\hline
+$\mathcal{V}_4$&17&$\infty$&1&$\infty$&$\infty$&$\infty$&3&$\infty$&$\infty$&5&5&5&5&5&5 \\
+\hline
+$\mathcal{V}_5$&$\infty$&$\infty$&$\infty$&$\infty$&$\infty$&4&$\infty$&3&$\infty$&$\infty$&25&17&14&14&14 \\
+\hline
+$\mathcal{V}_6$&$\infty$&$\infty$&$\infty$&$\infty$&4&$\infty$&2&8&$\infty$&$\infty$&13&10&10&10&10 \\
+\hline
+$\mathcal{V}_7$&$\infty$&$\infty$&$\infty$&$\infty$&$\infty$&2&$\infty$&10&$\infty$&$\infty$&8&8&8&8&8 \\
+\hline
+$\mathcal{V}_8$&4&7&$\infty$&6&5&8&$\infty$&$\infty$&$\infty$&$\infty$&$\infty$&18&18&17&17\\
+\hline
+\end{tabular}
+
+\item Длины минимальных путей из вершины $\mathcal{V}_1$ во все остальные вершины определены в последнем столбце таблицы
+
+\item Найдем вершины, входящие в минимальные пути из $\mathcal{V}_1$ во все остальные вершины графа.
+\begin{enumerate}
+\item Минимальный пути из $\mathcal{V}_1$ в $\mathcal{V}_2$:
+\begin{enumerate}
+\item $\mathcal{V}_1\rightarrow\mathcal{V}_3\rightarrow\mathcal{V}_2$ , его длина равна 9
+
+$\lambda^{(1)}_3 + c_{32} = 6 + 3 = 9 = \lambda^{(2)}_2$
+
+$\lambda^{(0)}_1 + c_{13} = 0 + 6 = 6 = \lambda^{(1)}_3 $
+
+\item $\mathcal{V}_1\rightarrow\mathcal{V}_4\rightarrow\mathcal{V}_3\rightarrow\mathcal{V}_2$ , его длина равна 9
+
+$\lambda^{(2)}_3 + c_{32} = 6 + 3 = 9 = \lambda^{(3)}_2$
+
+$\lambda^{(1)}_4 + c_{43} = 5 + 1 = 6 = \lambda^{(2)}_3$
+
+$\lambda^{(0)}_1 + c_{14} = 0 + 5 = 5 = \lambda^{(1)}_4$
+
+\end{enumerate}
+\item Минимальный пути из $\mathcal{V}_1$ в $\mathcal{V}_3$:
+\begin{enumerate}
+\item $\mathcal{V}_1\rightarrow\mathcal{V}_3$ , его длина равна 6
+
+$\lambda^{(0)}_1 + c_{13} = 0 + 6 = 6 = \lambda^{(1)}_3 $
+
+\item $\mathcal{V}_1\rightarrow\mathcal{V}_4\rightarrow\mathcal{V}_3$ , его длина равна 6
+
+
+$\lambda^{(1)}_4 + c_{43} = 5 + 1 = 6 = \lambda^{(2)}_3$
+
+$\lambda^{(0)}_1 + c_{14} = 0 + 5 = 5 = \lambda^{(1)}_4$
+\end{enumerate}
+\item Минимальный путь из $\mathcal{V}_1$ в $\mathcal{V}_4$: $\mathcal{V}_1\rightarrow\mathcal{V}_4$ ,его длина 5
+
+$\lambda^{(0)}_1 + c_{14} = 0 + 5 = 5 = \lambda^{(1)}_4$
+
+\item Минимальный путь из $\mathcal{V}_1$ в $\mathcal{V}_5$: $\mathcal{V}_1\rightarrow\mathcal{V}_4\rightarrow\mathcal{V}_7\rightarrow\mathcal{V}_6\rightarrow\mathcal{V}_5$ ,его длина 14
+
+$\lambda^{(3)}_6 + c_{65} = 10 + 4 = 14 = \lambda^{(4)}_5$
+
+$\lambda^{(2)}_7 + c_{76} = 8 + 2 = 10 = \lambda^{(3)}_6$
+
+$\lambda^{(1)}_4 + c_{47} = 5 + 3 = 8 = \lambda^{(2)}_7$
+
+$\lambda^{(0)}_1 + c_{14} = 0 + 5 = 5 = \lambda^{(1)}_4$
+
+\item Минимальный путь из $\mathcal{V}_1$ в $\mathcal{V}_6$: $\mathcal{V}_1\rightarrow\mathcal{V}_4\rightarrow\mathcal{V}_7\rightarrow\mathcal{V}_6$ ,его длина 10
+
+$\lambda^{(2)}_7 + c_{76} = 8 + 2 = 10 = \lambda^{(3)}_6$
+
+$\lambda^{(1)}_4 + c_{47} = 5 + 3 = 8 = \lambda^{(2)}_7$
+
+$\lambda^{(0)}_1 + c_{14} = 0 + 5 = 5 = \lambda^{(1)}_4$
+
+\item Минимальный путь из $\mathcal{V}_1$ в $\mathcal{V}_7$: $\mathcal{V}_1\rightarrow\mathcal{V}_4\rightarrow\mathcal{V}_7$ ,его длина 8
+
+$\lambda^{(1)}_4 + c_{47} = 5 + 3 = 8 = \lambda^{(2)}_7$
+
+$\lambda^{(0)}_1 + c_{14} = 0 + 5 = 5 = \lambda^{(1)}_4$
+
+\item Минимальный путь из $\mathcal{V}_1$ в $\mathcal{V}_8$: $\mathcal{V}_1\rightarrow\mathcal{V}_4\rightarrow\mathcal{V}_7\rightarrow\mathcal{V}_6\rightarrow\mathcal{V}_8$ ,его длина 17
+
+$\lambda^{(4)}_5 + c_{58} = 14 + 3 = 17 = \lambda^{(5)}_8$
+
+$\lambda^{(3)}_6 + c_{65} = 10 + 4 = 14 = \lambda^{(4)}_5$
+
+$\lambda^{(2)}_7 + c_{76} = 8 + 2 = 10 = \lambda^{(3)}_6$
+
+$\lambda^{(1)}_4 + c_{47} = 5 + 3 = 8 = \lambda^{(2)}_7$
+
+$\lambda^{(0)}_1 + c_{14} = 0 + 5 = 5 = \lambda^{(1)}_4$
+\end{enumerate}
+\end{enumerate}
+
+\newpage

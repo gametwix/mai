@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c}{(* при условии, что денежная система отсортирована в порядке убывания *)}
+\PYG{k}{let} \PYG{n}{change\PYGZus{}make} \PYG{n}{money\PYGZus{}system} \PYG{n}{amount} \PYG{o}{=}
+	\PYG{c}{(* устанавливает сдачу после пересчета *)}
+	\PYG{k}{let} \PYG{k}{rec} \PYG{n}{loop} \PYG{n}{given} \PYG{n}{amount} \PYG{o}{=}
+		\PYG{k}{if} \PYG{n}{amount} \PYG{o}{=} \PYG{l+m+mi}{0} \PYG{k}{then}
+			\PYG{n}{given}
+		\PYG{k}{else}
+			\PYG{c}{(* мы находим первое значение, которое меньше или равно}
+\PYG{c}{			оставшемуся количеству *)}
+			\PYG{k}{let} \PYG{n}{coin} \PYG{o}{=} \PYG{n+nn}{List}\PYG{p}{.}\PYG{n}{find} \PYG{o}{((\PYGZgt{}=)} \PYG{n}{amount}\PYG{o}{)} \PYG{n}{money\PYGZus{}system} \PYG{k}{in}
+			\PYG{n}{loop} \PYG{o}{(}\PYG{n}{coin}\PYG{o}{::}\PYG{n}{given}\PYG{o}{)} \PYG{o}{(}\PYG{n}{amount} \PYG{o}{\PYGZhy{}} \PYG{n}{coin}\PYG{o}{)}
+  \PYG{k}{in} \PYG{n}{loop} \PYG{n+nb+bp}{[]} \PYG{n}{amount}
+\end{Verbatim}

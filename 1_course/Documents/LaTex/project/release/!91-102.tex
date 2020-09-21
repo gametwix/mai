@@ -1,0 +1,829 @@
+%Моисеенков
+
+\chapter*{Глава 18: Применение жадной стратегии}
+\section*{Раздел 18.1: Офлайн кэширование}
+
+Проблема кэширования возникает из-за ограниченности конечного пространства. Предположим, что в нашем кэше C есть k страниц. Теперь мы хотим обработать последовательность m запросов элементов, которые должны быть помещены в кэш перед их обработкой. Конечно, если $m \leq k$, то мы просто поместим все элементы в кэш, и это будет работать, но обычно $m>>k$.
+
+\vspace{\baselineskip}
+
+Мы говорим, что запрос является \textbf{кэш-попаданием}, когда элемент уже находится в кэше, в противном случае он называется \textbf{кэш-промахом}. В этом случае мы должны внести запрошенный элемент в кэш и вытеснить другой, предполагая, что кэш заполнен. Цель - это список вытеснений, который \textbf{минимизирует количество вытеснений}.
+
+\vspace{\baselineskip}
+
+Существует множество жадных стратегий для решения этой проблемы. Давайте рассмотрим некоторые из них:
+
+\begin{enumerate}
+    \item \textbf{Первым пришел - первым вышел (FIFO)}: Самая старая страница вытесняется
+    \item \textbf{Последним пришел - первым вышел (LIFO)}: Самая новая страница вытесняется
+    \item \textbf{Последняя посещаемая страница (LRU)}: Вытесняется страница, последний доступ к которой был самым ранним
+    \item \textbf{Наименее часто запрашиваемая страница (LFU)}: Вытесняется страница, которая запрашивалась реже всех
+    \item \textbf{Самое длинное прямое расстояние (LFD)}: Вытесняется страница, которая не будет запрашиваться дольше всех в будущем
+\end{enumerate}
+
+\vspace{\baselineskip}
+
+\textbf{Внимание:} В следующих примерах мы вытесняем страницу с наименьшим индексом, если может быть вытеснено больше одной страницы.
+
+\vspace{\baselineskip}
+
+\textbf{Пример (FIFO)}
+
+\vspace{\baselineskip}
+
+Пусть размер кэша k=\textcolor{Purple}{3}, начальный кэш {\usefont{T2A}{cmtt}{m}{n} a,b,c} и запрос 
+{\usefont{T2A}{cmtt}{m}{n} a,a,d,e,b,b,a,c,f,d,e,a,f,b,e,c}:
+
+\vspace{\baselineskip}
+
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{*{17}{c}}
+\textbf{Запрос} & \textbf{a} & \textbf{a} & \textbf{d} & \textbf{e} & \textbf{b} & \textbf{b} & \textbf{a} & \textbf{c} & \textbf{f} & \textbf{d} & \textbf{e} & \textbf{a} & \textbf{f} & \textbf{b} & \textbf{e} & \textbf{c}\\
+кэш \textcolor{Purple}{1} & a & a & d & d & d & d & a & a & a & d & d & d & f & f & f & b \\
+кэш \textcolor{Purple}{2} & b & b & b & e & e & e & e & c & c & c & e & e & e & b & b & b \\
+кэш \textcolor{Purple}{3} & c & c & c & c & b & b & b & b & f & f & f & a & a & a & e & e \\
+кэш-промах & \ & \ & x & x & x & \ & x & x & x & x & x & x & x & x & x & x \\
+\end{tabular}
+
+\vspace{\baselineskip}
+
+Тринадцать кэш-промахов на шестнадцать запросов звучит не очень оптимально, давайте попробуем такой же пример с другой стратегией
+
+\vspace{\baselineskip}
+
+\textbf{Пример (LFD)}
+
+\vspace{\baselineskip}
+
+Пусть размер кэша k=\textcolor{Purple}{3}, начальный кэш {\usefont{T2A}{cmtt}{m}{n} a,b,c} и запрос 
+{\usefont{T2A}{cmtt}{m}{n} a,a,d,e,b,b,a,c,f,d,e,a,f,b,e,c}:
+
+\vspace{\baselineskip}
+
+\begin{tabular}{*{17}{c}}
+\textbf{Запрос} & \textbf{a} & \textbf{a} & \textbf{d} & \textbf{e} & \textbf{b} & \textbf{b} & \textbf{a} & \textbf{c} & \textbf{f} & \textbf{d} & \textbf{e} & \textbf{a} & \textbf{f} & \textbf{b} & \textbf{e} & \textbf{c}\\
+кэш \textcolor{Purple}{1} & a & a & d & e & e & e & e & e & e & e & e & e & e & e & e & c \\
+кэш \textcolor{Purple}{2} & b & b & b & b & b & b & a & a & a & a & a & a & f & f & f & f \\
+кэш \textcolor{Purple}{3} & c & c & c & c & c & c & c & c & f & d & d & d & d & b & b & b \\
+кэш-промах & \ & \ & x & x & \ & \ & x & \ & x & x & \ & \ & x & x & \ & x \\
+\end{tabular}
+\setlength{\tabcolsep}{6pt}
+
+\vspace{\baselineskip}
+
+Восемь кэш-промахов, уже намного лучше.
+
+\vspace{\baselineskip}
+
+\textbf{Задание:} Сделайте пример для LIFO, LFU, RFU и посмотрите, что произойдет.
+
+\vspace{\baselineskip}
+
+Следующий пример программы (написанной на С++) состоит из двух частей:
+Каркас - это программа, которая решает проблему в зависимости от выбранной жадной стратегии:
+
+
+\begin{tcolorbox}
+\begin{minted}{C++}
+#include <iostream>
+#include <memory>
+
+using namespace std;
+
+const int cacheSize = 3;
+const int requestLength = 16;
+
+const char request[] = {'a','a','d','e','b','b','a','c','f','d','e',
+							'a','f','b','e','c'};
+char cache[] = {'a','b','c'}; 
+
+char originalCache[] = {'a','b','c'};
+
+class Strategy {
+
+public:
+	Strategy(std::string name) : strategyName(name) {}
+	virtual ~Strategy() = default;
+	
+	virtual int apply(int requestIndex) = 0;
+	
+	virtual void update(int cachePlace, int requestIndex, bool cacheMiss) = 0;
+	
+	const std::string strategyName;
+};
+
+bool updateCache(int requestIndex, Strategy* strategy)
+{
+	
+	int cachePlace = strategy->apply(requestIndex);
+	
+	bool isMiss = request[requestIndex] != cache[cachePlace];
+	
+	strategy->update(cachePlace, requestIndex, isMiss);
+	
+	cache[cachePlace] = request[requestIndex];
+	
+	return isMiss;
+}
+
+int main()
+{
+	
+	Strategy* selectedStrategy[] = { new FIFO, new LIFO,new LRU, 
+										new LFU, new LFD };
+	
+	for (int strat=0; strat < 5; ++strat)
+	{
+		
+		for (int i=0; i < cacheSize; ++i) cache[i] = originalCache[i];
+		
+		cout <<"\nStrategy: " << selectedStrategy[strat]->strategyName << endl;
+		
+		cout << "\nCache initial: (";
+		for (int i=0; i < cacheSize-1; ++i) cout << cache[i] << ",";
+		cout << cache[cacheSize-1] << ")\n\n";
+		
+		cout << "Request\t";
+		for (int i=0; i < cacheSize; ++i) cout << "cache " << i << "\t";
+		cout << "cache miss" << endl;
+		
+		int cntMisses = 0;
+		
+		for(int i=0; i<requestLength; ++i)
+		{
+		
+			bool isMiss = updateCache(i, selectedStrategy[strat]);
+			if (isMiss) ++cntMisses;
+			cout << " " << request[i] << "\t";
+			for (int l=0; l < cacheSize; ++l) 
+			cout << " " << cache[l] << "\t";
+			cout << (isMiss ? "x" : "") << endl;
+		}
+		
+		cout<< "\nTotal cache misses: " << cntMisses << endl;
+		
+	}
+	
+	for (int i=0; i<5; ++i) delete selectedStrategy[i];
+}
+
+\end{minted}
+\end{tcolorbox}
+
+Основная идея проста: для каждого запроса у меня есть два вызова моей стратегии:
+\begin{enumerate}
+    \item \textbf{применить:} Стратегия должна сообщить вызывающей стороне, какую страницу использовать
+    \item \textbf{обновить:} После того, как вызывающая сторона использует место, она сообщает стратегии, было ли оно пропущено или нет. Тогда стратегия может обновить свои внутренние данные. Стратегия \textbf{LFU}, например, должна обновлять частоту попаданий к страницам кэша, в то время как стратегия \textbf{LFD} должна пересчитывать расстояние для страниц кэша.
+\end{enumerate}
+
+\vspace{\baselineskip}
+
+Теперь давайте рассмотрим примеры реализации наших пяти стратегий:
+
+\vspace{\baselineskip}
+\textbf{FIFO}
+
+\begin{tcolorbox}
+\begin{minted}{C++}
+class FIFO : public Strategy {
+public:
+	FIFO() : Strategy("FIFO")
+	{
+		for (int i=0; i<cacheSize; ++i) age[i] = 0;
+	}
+	
+	int apply(int requestIndex) override
+	{
+		int oldest = 0;
+		
+		for(int i=0; i<cacheSize; ++i)
+		{
+			if(cache[i] == request[requestIndex])
+			return i;
+			
+			else if(age[i] > age[oldest])
+			oldest = i;
+		}
+		
+		return oldest;
+	}
+	
+	void update(int cachePos, int requestIndex, bool cacheMiss) override
+	{
+		if(!cacheMiss)
+			return;
+		for(int i=0; i<cacheSize; ++i)
+		{
+			if(i != cachePos)
+				age[i]++;
+			
+			else
+				age[i] = 0;
+		}
+	}
+
+private:
+	int age[cacheSize];
+};
+\end{minted}
+\end{tcolorbox}
+
+\textbf{FIFO} просто нужна информация о том, как долго страница находится в кэше (и, конечно, только относительно других страниц). Так что единственное, что нужно сделать - это дождаться промаха, а затем создать страницы, которые не будут вытеснять старые. Приведём решение для нашего примера, написанного сверху:
+
+\begin{tcolorbox}
+{\usefont{T2A}{cmtt}{m}{n}
+Strategy: FIFO
+
+\vspace{\baselineskip}
+ 
+Cache initial: (a,b,c)
+    
+\vspace{\baselineskip}
+\begin{tabular}{*{5}{c}}
+\textcolor{Blue}{Request} & cache \textcolor{Purple}{0} & cache \textcolor{Purple}{1} & cache \textcolor{Purple}{2} & cache miss \\
+a & a & b & c & \ \\
+a & a & b & c & \ \\
+d & d & b & c & x \\
+e & d & e & c & x \\
+b & d & e & b & x \\
+b & d & e & b & \ \\
+a & a & e & b & x \\
+c & a & c & b & x \\
+f & a & c & f & x \\
+d & d & c & f & x \\
+e & d & e & f & x \\
+a & d & e & a & x \\
+f & f & e & a & x \\
+b & f & b & a & x \\
+e & f & b & e & x \\
+c & c & b & e & x \\
+\end{tabular}
+    
+    \vspace{\baselineskip}
+    
+    Total cache misses: \textcolor{Purple}{13}}
+\end{tcolorbox}
+
+Это и есть решение вышенаписанного.
+
+\vspace{\baselineskip}
+
+\textbf{LIFO}
+
+
+\begin{tcolorbox}
+\begin{minted}{C++}
+class LIFO : public Strategy {
+public
+	LIFO() : Strategy("LIFO")
+	{
+		for (int i=0; i<cacheSize; ++i) age[i] = 0;
+	}
+	
+	int apply(int requestIndex) override
+	{
+		int newest = 0;
+		for(int i=0; i<cacheSize; ++i)
+		{
+		
+			if(cache[i] == request[requestIndex])
+				return i;
+			
+			else if(age[i] < age[newest])
+				newest = i;
+		
+		}
+		
+		return newest;
+	}
+	
+	void update(int cachePos, int requestIndex, bool cacheMiss) override
+	{
+		if(!cacheMiss)
+			return;
+		
+		for(int i=0; i<cacheSize; ++i)
+		{
+		
+			if(i != cachePos)
+				age[i]++;
+			
+			else
+				age[i] = 0;
+		
+		}
+	}
+	
+private:
+	int age[cacheSize];
+};
+\end{minted}
+\end{tcolorbox}
+
+Реализация \textbf{LIFO} более или менее аналогична \textbf{FIFO}, но мы вытесняем самую младшую, а не самую старую страницу. Результаты программы:
+
+\begin{tcolorbox}
+{\usefont{T2A}{cmtt}{m}{n}
+Strategy: LIFO
+
+\vspace{\baselineskip}
+
+Cache initial: (a,b,c)
+
+\vspace{\baselineskip}
+\begin{tabular}{*{5}{c}}
+\textcolor{Blue}{Request} & cache \textcolor{Purple}{0} & cache \textcolor{Purple}{1} & cache \textcolor{Purple}{2} & cache miss \\
+a & a & b & c & \ \\
+a & a & b & c & \ \\
+d & d & b & c & x \\
+e & e & b & c & x \\
+b & e & b & c & \ \\
+b & e & b & c & \ \\
+a & a & b & c & x \\
+c & a & b & c & \ \\
+f & f & b & c & x \\
+d & d & b & c & x \\
+e & e & b & c & x \\
+a & a & b & c & x \\
+f & f & b & c & x \\
+b & f & b & c & \ \\
+e & e & b & c & x \\
+c & e & b & c & \ \\
+\end{tabular}
+
+\vspace{\baselineskip}
+
+Total cache misses: \textcolor{Purple}{9}}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+
+\textbf{LRU}
+
+\begin{tcolorbox}
+\begin{minted}{C++}
+class LRU : public Strategy {
+public:
+	LRU() : Strategy("LRU")
+	{
+		for (int i=0; i<cacheSize; ++i) age[i] = 0;
+	}
+	
+	int apply(int requestIndex) override
+	{
+		int oldest = 0;
+		
+		for(int i=0; i<cacheSize; ++i)
+		{
+		
+			if(cache[i] == request[requestIndex])
+				return i;
+			
+			else if(age[i] > age[oldest])
+				oldest = i;
+		
+		}
+		return oldest;
+		
+	}
+	
+	void update(int cachePos, int requestIndex, bool cacheMiss) override
+	{
+		for(int i=0; i<cacheSize; ++i)
+		{
+		
+			if(i != cachePos)
+				age[i]++;
+			
+			else
+				age[i] = 0;
+		}
+	}
+
+private:
+	int age[cacheSize];
+};
+
+\end{minted}
+\end{tcolorbox}
+
+В случае \textbf{LRU} стратегия не зависит от того, что находится на странице кэша. Единственным, что ее интересует, является последнее использование. Результат программы:
+
+\newpage
+
+\begin{tcolorbox}
+{\usefont{T2A}{cmtt}{m}{n}
+Strategy: LRU
+
+\vspace{\baselineskip}
+
+Cache initial: (a,b,c)
+
+\vspace{\baselineskip}
+\begin{tabular}{*{5}{c}}
+\textcolor{Blue}{Request} & cache \textcolor{Purple}{0} & cache \textcolor{Purple}{1} & cache \textcolor{Purple}{2} & cache miss \\
+a & a & b & c & \ \\
+a & a & b & c & \ \\
+d & a & d & c & x \\
+e & a & d & e & x \\
+b & b & d & e & x \\
+b & b & d & e & \ \\
+a & b & a & e & x \\
+c & b & a & c & x \\
+f & f & a & c & x \\
+d & f & d & c & x \\
+e & f & d & e & x \\
+a & a & d & e & x \\
+f & a & f & e & x \\
+b & a & f & b & x \\
+e & e & f & b & x \\
+c & e & c & b & x \\
+\end{tabular}
+
+\vspace{\baselineskip}
+
+Total cache misses: \textcolor{Purple}{13}}
+\end{tcolorbox}
+
+\textbf{LFU}
+
+\begin{tcolorbox}
+\begin{minted}{C++}
+class LFU : public Strategy {
+public:
+	LFU() : Strategy("LFU")
+	{
+		for (int i=0; i<cacheSize; ++i) requestFrequency[i] = 0;
+	}
+	
+	int apply(int requestIndex) override
+	{
+		
+		int least = 0;
+		
+		for(int i=0; i<cacheSize; ++i)
+		{
+		
+			if(cache[i] == request[requestIndex])
+				return i;
+			
+			else if(requestFrequency[i] < requestFrequency[least])
+				least = i;
+		
+		}
+		
+		return least;
+	
+	}
+	
+	void update(int cachePos, int requestIndex, bool cacheMiss) override
+	{
+		
+		if(cacheMiss)
+			requestFrequency[cachePos] = 1;
+		
+		else
+			++requestFrequency[cachePos];
+		
+	}
+
+private:
+
+	int requestFrequency[cacheSize];
+};
+\end{minted}
+\end{tcolorbox}
+
+\textbf{LFU} вытесняет страницу, которая используется реже всего. Поэтому стратегия обновления заключается просто в подсчете каждого доступа. Конечно, после промаха счет сбрасывается. Результаты программы:
+
+\begin{tcolorbox}
+{\usefont{T2A}{cmtt}{m}{n}
+Strategy: LFU
+
+\vspace{\baselineskip}
+
+Cache initial: (a,b,c)
+
+\vspace{\baselineskip}
+\begin{tabular}{*{5}{c}}
+\textcolor{Blue}{Request} & cache \textcolor{Purple}{0} & cache \textcolor{Purple}{1} & cache \textcolor{Purple}{2} & cache miss \\
+a & a & b & c & \ \\
+a & a & b & c & \ \\
+d & a & d & c & x \\
+e & a & d & e & x \\
+b & a & b & e & x \\
+b & a & b & e & \ \\
+a & a & b & e & \ \\
+c & a & b & c & x \\
+f & a & b & f & x \\
+d & a & b & d & x \\
+e & a & b & e & x \\
+a & a & b & e & \ \\
+f & a & b & f & x \\
+b & a & b & f & \ \\
+e & a & b & e & x \\
+c & a & b & c & x \\
+\end{tabular}
+
+\vspace{\baselineskip}
+
+Total cache misses: \textcolor{Purple}{10}}
+\end{tcolorbox}
+
+\textbf{LFD}
+
+
+\begin{tcolorbox}
+\begin{minted}{C++}
+class LFD : public Strategy {
+public:
+	LFD() : Strategy("LFD")
+	{
+		for (int i=0; i<cacheSize; ++i)
+			nextUse[i] = calcNextUse(-1, cache[i]);
+	}
+	
+	int apply(int requestIndex) override
+	{
+		
+		int latest = 0;
+		
+		for(int i=0; i<cacheSize; ++i)
+		{
+		
+			if(cache[i] == request[requestIndex])
+				return i;
+			
+			else if(nextUse[i] > nextUse[latest])
+				latest = i;
+		
+		}
+		return latest;
+	
+	}
+	void update(int cachePos, int requestIndex, bool cacheMiss) override
+	{
+		nextUse[cachePos] = calcNextUse(requestIndex, cache[cachePos]);
+	}
+private:
+
+	int calcNextUse(int requestPosition, char pageItem)
+	{
+	
+		for(int i = requestPosition+1; i < requestLength; ++i)
+		{
+			if (request[i] == pageItem)
+				return i;
+		}
+		return requestLength + 1;
+	
+	}
+	
+	int nextUse[cacheSize];
+};
+\end{minted}
+\end{tcolorbox}
+
+Стратегия \textbf{LFD} отличается от всех ранее написанных. Это единственная стратегия, которая использует будущие запросы для принятия решения, кого вытеснять. Для реализации используется функция {\usefont{T2A}{cmtt}{m}{n} calcNextUse}, чтобы получить страницу, следующее использование которой в будущем будет наиболее отдалённым. Программное решение равносильно вышенаписанному решению:
+
+\begin{tcolorbox}
+{\usefont{T2A}{cmtt}{m}{n}
+Strategy: LFD
+
+\vspace{\baselineskip}
+
+Cache initial: (a,b,c)
+
+\vspace{\baselineskip}
+\begin{tabular}{*{5}{c}}
+\textcolor{Blue}{Request} & cache \textcolor{Purple}{0} & cache \textcolor{Purple}{1} & cache \textcolor{Purple}{2} & cache miss \\
+a & a & b & c & \ \\
+a & a & b & c & \ \\
+d & a & b & d & x \\
+e & a & b & e & x \\
+b & a & b & e & \ \\
+b & a & b & e & \ \\
+a & a & b & e & \ \\
+c & a & c & e & x \\
+f & a & f & e & x \\
+d & a & d & e & x \\
+e & a & d & e & \ \\
+a & a & d & e & \ \\
+f & f & d & e & x \\
+b & b & d & e & x \\
+e & b & d & e & \ \\
+c & c & d & e & x \\
+\end{tabular}
+
+\vspace{\baselineskip}
+
+Total cache misses: \textcolor{Purple}{8}}
+\end{tcolorbox}
+
+\setlength{\tabcolsep}{6pt}
+\vspace{\baselineskip}
+
+Жадная стратегия \textbf{LFD} действительно является оптимальной стратегией из пяти представленных. Доказательство довольно длинное и может быть найдено \href{https://blog.henrypoon.com/blog/2014/02/02/proof-of-the-farthest-in-future-optimal-caching-algorithm/}{\underline{здесь}} или в книге Джона Клейнберга и Евы Тардос (см. Источники в примечаниях ниже).
+
+\vspace{\baselineskip}
+
+\textbf{Алгоритм против реальности}
+
+\vspace{\baselineskip}
+
+Стратегия \textbf{LFD} является оптимальной, но есть большая проблема. Это оптимальное \textbf{офлайн} решение. На практике кэширования обычно возникают \textbf{онлайн}-задачи, это означает, что стратегия бесполезна, потому что мы не можем знать, когда в следующий раз нам понадобится конкретный элемент. Другие четыре стратегии являются \textbf{онлайн}-стратегиями. Для онлайн-задач нам нужен другой подход.
+
+\section*{Раздел 18.2: Автомат билетов}
+
+\vspace{\baselineskip}
+
+Первый простой пример:
+
+\vspace{\baselineskip}
+
+У вас есть автомат по продаже билетов, который даёт возможность обменивать монеты со значениями 1, 2, 5, 10 и 20. Раздачу можно рассматривать как серию падающих монет до тех пор, пока не будет выдано нужное значение. Мы говорим, что раздача является \textbf{оптимальной}, когда \textbf{количество монет минимально} для её стоимости.
+
+\vspace{\baselineskip}
+
+Пусть $M$ из интервала [\textcolor{Red}{1},\textcolor{Red}{50}] - цена за билет $T$, а $P$ из интервала [\textcolor{Red}{1},\textcolor{Red}{50}] - деньги, которые кто-то заплатил за $T$, $P \geq M$. Пусть $D = P - M$. Мы определяем \textbf{выгоду} сделанного шага как разницу между $D$ и $D - c$, где $c$ - монета из автомата, выданная на этом шаге.
+
+\vspace{\baselineskip}
+
+\textbf{Жадная техника} обмена - это следующий псевдо алгоритмический подход:
+
+\vspace{\baselineskip}
+
+\textbf{Шаг 1}: пока $D > \textcolor{Purple}{20}$ выдать монету со значением 20 и установить $D = D - 20$ \\
+\textbf{Шаг 2}: пока $D > \textcolor{Purple}{10}$ выдать монету со значением 10 и установить $D = D - 10$ \\
+\textbf{Шаг 3}: пока $D > \textcolor{Purple}{5}$ выдать монету со значением 5 и установить $D = D - 5$ \\
+\textbf{Шаг 4}: пока $D > \textcolor{Purple}{2}$ выдать монету со значением 2 и установить $D = D - 2$ \\
+\textbf{Шаг 5}: пока $D > \textcolor{Purple}{1}$ выдать монету со значением 1 и установить $D = D - 1$
+
+\vspace{\baselineskip}
+
+После этого сумма всех монет явно равна $D$. Это \textbf{жадный алгоритм}, потому что после каждого шага и после каждого повторения шага выгода максимизируется. Мы не можем выдать другую монету и получить большую выгоду.
+
+Реализация автомата билетов на C++:
+
+\begin{tcolorbox}
+\begin{minted}{C++}
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+std::vector<unsigned int> readInCoinValues();
+
+int main()
+{
+	std::vector<unsigned int> coinValues;
+	int ticketPrice;
+	int paidMoney;
+	
+	coinValues = readInCoinValues();
+	
+	cout << "ticket price: ";
+	cin >> ticketPrice;
+	
+	cout << "money paid: ";
+	cin >> paidMoney;
+	
+	if(paidMoney <= ticketPrice)
+	{
+		cout << "No exchange money" << endl;
+		return 1;
+	}
+	
+	int diffValue = paidMoney - ticketPrice;
+	
+	std::vector<unsigned int> coinCount;
+	
+	for(auto coinValue = coinValues.begin();
+		coinValue != coinValues.end(); ++coinValue)
+	{
+		int countCoins = 0;
+		while (diffValue >= *coinValue)
+		{
+			diffValue -= *coinValue;
+			countCoins++;
+		}
+		coinCount.push_back(countCoins);
+	}
+	
+	cout << "the difference " << paidMoney - ticketPrice
+		<< " is paid with: " << endl;
+	for(unsigned int i=0; i < coinValues.size(); ++i)
+	{
+		if(coinCount[i] > 0)
+			cout << coinCount[i] << " coins with value "
+				<< coinValues[i] << endl;
+	}
+	return 0;
+
+}
+
+std::vector<unsigned int> readInCoinValues()
+{
+	std::vector<unsigned int> coinValues;
+	
+	coinValues.push_back(1);
+	
+	while(true)
+	{
+		
+		int coinValue;
+		
+		cout << "Coin value (<1 to stop): ";
+		cin >> coinValue;
+		
+		if(coinValue > 0)
+			coinValues.push_back(coinValue);
+		
+		else
+		break;
+	
+	}
+	
+	sort(coinValues.begin(), coinValues.end(), std::greater<int>());
+	
+	auto last = std::unique(coinValues.begin(), coinValues.end());
+	coinValues.erase(last, coinValues.end());
+	
+	cout << "Coin values: ";
+	
+	for(auto i : coinValues)
+		cout << i << " ";
+	
+	cout << endl;
+	
+	return coinValues;
+
+}
+\end{minted}
+\end{tcolorbox}
+
+Имейте в виду, что теперь есть проверка ввода, чтобы упростить пример. Пример вывода:
+
+\vspace{\baselineskip}
+
+\begin{tcolorbox}
+{\usefont{T2A}{cmtt}{m}{n}
+Coin value (<\textcolor{Purple}{1} to stop): \textcolor{Purple}{2} \\
+Coin value (<\textcolor{Purple}{1} to stop): \textcolor{Purple}{4} \\
+Coin value (<\textcolor{Purple}{1} to stop): \textcolor{Purple}{7} \\
+Coin value (<\textcolor{Purple}{1} to stop): \textcolor{Purple}{9} \\
+Coin value (<\textcolor{Purple}{1} to stop): \textcolor{Purple}{14} \\
+Coin value (<\textcolor{Purple}{1} to stop): \textcolor{Purple}{4} \\
+Coin value (<\textcolor{Purple}{1} to stop): \textcolor{Purple}{0} \\
+Coin values: \textcolor{Purple}{14 9 7 4 2 1} \\
+ticket price: \textcolor{Purple}{34} \\
+money paid: \textcolor{Purple}{67} \\
+the difference \textcolor{Purple}{33} is paid with: \\
+\textcolor{Purple}{2} coins with value \textcolor{Purple}{14} \\
+\textcolor{Purple}{1} coins with value \textcolor{Purple}{4} \\
+\textcolor{Purple}{1} coins with value \textcolor{Purple}{1}}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+
+Пока есть монета со значением 1, мы знаем, что алгоритм будет завершен, потому что:
+\begin{itemize}
+    \item $D$ строго уменьшается с каждым шагом
+    \item $D$ никогда не будет >\textcolor{Purple}{0} и меньше, чем самая маленькая монета 1, одновременно
+\end{itemize}
+
+Но алгоритм имеет два подводных камня:
+\begin{enumerate}
+    \item Пусть \textit{C} будет наибольшим значением монеты. Время исполнения является полиномиальным только до тех пор, пока $D/C$ является полиномиальным, потому что представление $D$ использует только {\usefont{T2A}{cmtt}{m}{n} log} $D$ бит, а в $D/C$ время исполнения является по меньшей мере линейным.
+    \item На каждом этапе наш алгоритм выбирает локальный оптимум. Но этого недостаточно, чтобы сказать, что алгоритм находит глобальное оптимальное решение (см. больше информации \href{https://vk.cc/atBY90}{\underline{здесь}} или в книге \href{http://www.or.uni-bonn.de/~vygen/co.html}{\underline{Корти и Вайджена}}).
+\end{enumerate}
+
+\vspace{\baselineskip}
+
+Простой пример счётчика: монеты 1,3,4 и D=6. Оптимальным решением, безусловно, являются две монеты номиналом 3, но жадный выбирает 4 на первом шаге, поэтому он должен выбрать 1 на втором и третьем шагах. Так что это не даёт оптимального решения. Возможный оптимальный алгоритм для данного примера основан на \textbf{динамическом программировании}.
+
+\section*{Раздел 18.3: Интервальное планирование}
+
+У нас есть набор работ J={\usefont{T2A}{cmtt}{m}{n}{{a,b,c,d,e,f,g}}}. Пусть {\usefont{T2A}{cmtt}{m}{n} j} из J будет работой, которая начинается в {\usefont{T2A}{cmtt}{m}{n} $s_j$} и заканчивается в {\usefont{T2A}{cmtt}{m}{n} $f_j$}. Две работы совместимы, если они не пересекаются. Пример:
+
+\newpage
+
+\begin{center}
+\includeimage{0.54}{images/102_1.pdf}
+\end{center}
+
+Цель состоит в том, чтобы найти \textbf{максимальное подмножество взаимно совместимых работ}. Есть несколько жадных подходов к этой проблеме:
+
+\begin{enumerate}
+    \item \textbf{Ранний старт}: Рассматриваем задания в порядке возрастания {\usefont{T2A}{cmtt}{m}{n} $s_j$}
+    \item \textbf{Раннее завершение}: Рассматриваем задания в порядке возрастания {\usefont{T2A}{cmtt}{m}{n} $f_j$}
+    \item \textbf{Кратчайший интервал}: Рассматриваем задания в порядке возрастания {\usefont{T2A}{cmtt}{m}{n} $f_j-s_j$}
+    \item \textbf{Наименьшее количество конфликтов}: Для каждого задания {\usefont{T2A}{cmtt}{m}{n} j} подсчитать количество конфликтующих заданий {\usefont{T2A}{cmtt}{m}{n} $c_j$}
+\end{enumerate}
+
+\vspace{\baselineskip}
+
+Вопрос сейчас состоит в том, какой подход действительно успешен. \textbf{Ранний старт} - определенно нет, вот контрпример:
+

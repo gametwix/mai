@@ -1,0 +1,27 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Procedure} \PYG{n}{DFS}\PYG{p}{(}\PYG{n}{G}\PYG{p}{)}\PYG{o}{:}
+\PYG{k}{for} \PYG{n}{each} \PYG{n}{node} \PYG{n}{u} \PYG{n}{in} \PYG{n}{V}\PYG{p}{[}\PYG{n}{G}\PYG{p}{]}
+    \PYG{n}{color}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{:=} \PYG{n}{white}
+    \PYG{n}{parent}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{:=} \PYG{n+nb}{NULL}
+\PYG{n}{end} \PYG{k}{for}
+\PYG{n+nl}{time} \PYG{p}{:}\PYG{o}{=} \PYG{l+m+mi}{0}
+\PYG{k}{for} \PYG{n}{each} \PYG{n}{node} \PYG{n}{u} \PYG{n}{in} \PYG{n}{V}\PYG{p}{[}\PYG{n}{G}\PYG{p}{]}
+    \PYG{k}{if} \PYG{n}{color}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{==} \PYG{n}{white}
+        \PYG{n}{DFS}\PYG{o}{\PYGZhy{}}\PYG{n}{Visit}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}
+    \PYG{n}{end} \PYG{k}{if}
+\PYG{n}{end} \PYG{k}{for}
+
+\PYG{n}{Procedure} \PYG{n}{DFS}\PYG{o}{\PYGZhy{}}\PYG{n}{Visit}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{o}{:}
+\PYG{n}{color}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{:=} \PYG{n}{gray}
+\PYG{n+nl}{time} \PYG{p}{:}\PYG{o}{=} \PYG{n}{time} \PYG{o}{+} \PYG{l+m+mi}{1}
+\PYG{n}{d}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{:=} \PYG{n}{time}
+\PYG{k}{for} \PYG{n}{each} \PYG{n}{node} \PYG{n}{v} \PYG{n}{adjacent} \PYG{n}{to} \PYG{n}{u}
+    \PYG{k}{if} \PYG{n}{color}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{==} \PYG{n}{white}
+        \PYG{n}{parent}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{:=} \PYG{n}{u}
+        \PYG{n}{DFS}\PYG{o}{\PYGZhy{}}\PYG{n}{Visit}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}
+    \PYG{n}{end} \PYG{k}{if}
+\PYG{n}{end} \PYG{k}{for}
+\PYG{n}{color}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{:=} \PYG{n}{black}
+\PYG{n+nl}{time} \PYG{p}{:}\PYG{o}{=} \PYG{n}{time} \PYG{o}{+} \PYG{l+m+mi}{1}
+\PYG{n}{f}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{:=} \PYG{n}{time}
+\end{Verbatim}

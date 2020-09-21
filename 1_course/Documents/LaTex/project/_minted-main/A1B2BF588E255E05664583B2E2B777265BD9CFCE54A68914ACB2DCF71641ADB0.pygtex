@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{insert}\PYG{p}{(}\PYG{n}{root}\PYG{p}{,} \PYG{n}{node}\PYG{p}{):} \PYG{c+c1}{\PYGZsh{} добавление элемента в дерево}
+						\PYG{c+c1}{\PYGZsh{} принимает в себя корень и новый узел}
+	\PYG{k}{if} \PYG{n}{root} \PYG{o+ow}{is} \PYG{k+kc}{None}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} пустой ли корень}
+		\PYG{n}{root} \PYG{o}{=} \PYG{n}{node} \PYG{c+c1}{\PYGZsh{} если корень пуст, то присваиваем ему введенный узел}
+	\PYG{k}{else}\PYG{p}{:}
+		\PYG{k}{if} \PYG{n}{root}\PYG{o}{.}\PYG{n}{data} \PYG{o}{\PYGZgt{}} \PYG{n}{node}\PYG{o}{.}\PYG{n}{data}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} больше ли элемент данного узла}
+			\PYG{k}{if} \PYG{n}{root}\PYG{o}{.}\PYG{n}{l\PYGZus{}child} \PYG{o+ow}{is} \PYG{k+kc}{None}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} пустой ли левый ребенок}
+				\PYG{n}{root}\PYG{o}{.}\PYG{n}{l\PYGZus{}childe} \PYG{o}{=} \PYG{n}{node} \PYG{c+c1}{\PYGZsh{} присваиваем ему узел}
+			\PYG{k}{else}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{}если левый узел не пустой}
+				\PYG{n}{insert}\PYG{p}{(}\PYG{n}{root}\PYG{o}{.}\PYG{n}{l\PYGZus{}child}\PYG{p}{,} \PYG{n}{node}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} повторяем функцию}
+										  \PYG{c+c1}{\PYGZsh{} для левого поддерева}
+		\PYG{k}{else}\PYG{p}{:}
+			\PYG{k}{if} \PYG{n}{root}\PYG{o}{.}\PYG{n}{r\PYGZus{}child} \PYG{o+ow}{is} \PYG{k+kc}{None}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} пустой ли правый ребенок}
+				\PYG{n}{root}\PYG{o}{.}\PYG{n}{r\PYGZus{}childe} \PYG{o}{=} \PYG{n}{node} \PYG{c+c1}{\PYGZsh{} присваиваем ему узел}
+			\PYG{k}{else}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{}если  правый узел не пустой}
+				\PYG{n}{insert}\PYG{p}{(}\PYG{n}{root}\PYG{o}{.}\PYG{n}{r\PYGZus{}child}\PYG{p}{,} \PYG{n}{node}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} повторяем функцию}
+										  \PYG{c+c1}{\PYGZsh{} для правого поддерева}
+\end{Verbatim}

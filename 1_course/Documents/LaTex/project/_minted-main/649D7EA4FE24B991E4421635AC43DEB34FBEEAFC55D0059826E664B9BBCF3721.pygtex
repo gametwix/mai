@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{multiply}\PYG{o}{\PYGZhy{}}\PYG{n}{square}\PYG{o}{\PYGZhy{}}\PYG{n}{matrix}\PYG{o}{\PYGZhy{}}\PYG{n}{parallel}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,} \PYG{n}{B}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}функция умножения двух квадратных матриц}
+\PYG{c+c1}{\PYGZsh{}переменная хранящая количество линий в матрице А}
+\PYG{n}{n} \PYG{o}{=} \PYG{n}{A}\PYG{o}{.}\PYG{n}{lines}
+\PYG{c+c1}{\PYGZsh{}создаем матрицу размера n*n}
+\PYG{n}{C} \PYG{o}{=} \PYG{n}{Matrix}\PYG{p}{(}\PYG{n}{n}\PYG{p}{,}\PYG{n}{n}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}создаем n*n параллельных циклов, каждый из который выполняет по одной итерации}
+\PYG{n}{parallel} \PYG{k}{for} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{n}
+	\PYG{n}{parallel} \PYG{k}{for} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{n}
+		\PYG{c+c1}{\PYGZsh{}обнуляем элимент матрицы}
+		\PYG{n}{C}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}
+		\PYG{c+c1}{\PYGZsh{}проходим k от 1 до n}
+		\PYG{n}{pour} \PYG{n}{k} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{n}
+		\PYG{c+c1}{\PYGZsh{}прибавляя произведение k\PYGZhy{}го элемента i строк матрицы A и k\PYGZhy{}го элемента}
+		\PYG{c+c1}{\PYGZsh{}j столбца матрицы B}
+			\PYG{n}{C}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{C}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{+} \PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{k}\PYG{p}{]}\PYG{o}{*}\PYG{n}{B}\PYG{p}{[}\PYG{n}{k}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]}
+\PYG{c+c1}{\PYGZsh{}возвращаем матрицу С}
+\PYG{k}{return} \PYG{n}{C}
+\end{Verbatim}

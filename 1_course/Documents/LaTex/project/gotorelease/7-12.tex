@@ -1,0 +1,374 @@
+% Королев
+
+\chapter*{Глава 1: Приступим к алгоритмам}
+\section*{Раздел 1.1: Образец алгоритмической задачи}
+
+Алгоритмическая задача дается описанием полного набора объектов, с которыми алгоритм должен работать, а также выходных данных после работы над каким-нибудь одним объектом входных данных. Эта разница между задачей и объектом задачи фундаментальна. Алгоритмическая задача, известная как сортировка, определяется следующим образом: 
+
+[Skiena:2008:ADM:1410219]
+\begin{itemize}
+\item Задача: Сортировка
+\item Входные данные: последовательность из n элементов: \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$a_1,\ a_2,\ \dots,\ a_n$}
+\item Выходные данные: изменение порядка входной последовательности таким образом, что  \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$a_1 \leqslant a_2 \leqslant \dots \leqslant a_{n-1} \leqslant a_n$}
+\end{itemize}
+
+Объектом сортировки  может быть массив из строк, например,  \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{\{ Haskell, Emacs \}} или последовательность чисел, например,\tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{\{ \textcolor{Purple}{154}, \textcolor{Purple}{245}, \textcolor{Purple}{1337} \}}. 
+
+\section*{Раздел 1.2: Приступим к простой реализации Fizz Buzz алгоритма на Swift}
+
+Для тех из вас, кто еще не знаком с программированием в среде Swift и тех, кто начинал обучение с других базовых языков, таких как Python или Java, эта статья должна помочь. Здесь мы обсудим простое решение для создания алгоритмов swift.
+
+\vspace{\baselineskip}
+
+\textbf{Fizz Buzz}
+
+\vspace{\baselineskip}
+
+Вы, может быть, встречали такие варианты написания как Fizz Buzz, FizzBuzz, или Fizz-Buzz; все они ссылаются на одно и то же. Это “вещь” является основной темой для сегодняшнего обсуждения. Во-первых, что такое FizzBuzz?
+
+\vspace{\baselineskip}
+
+Это частый вопрос, который возникает на собеседованиях.
+
+\vspace{\baselineskip}
+
+Представьте себе последовательность чисел от 1 до 10.
+
+\vspace{\baselineskip}
+
+\begin{tcolorbox} 
+1 2 3 4 5 6 7 8 9 10
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+
+Fizz и Buzz могут означать любое число, делящееся на 3 и на 5 соответственно. Другими словами, если число делится на 3, его заменяют на “fizz”; если оно делится на 5, то его заменяют на “buzz”. Если же число делится И на 3 И на 5 одновременно, то его заменяют на “fizz buzz”. По сути, мы симулируем известную детскую игру “fizz buzz”.
+
+\vspace{\baselineskip}
+
+Для работы над этой задачей, откройте Xcode для создания новой песочницы и инициализируйте массив как приведено ниже:
+
+\vspace{\baselineskip}
+
+\begin{tcolorbox} 
+\begin{minted}{C}
+// например
+let number = [1,2,3,4,5]
+// здесь “3” - это fizz, а “5” - buzz
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+
+Для нахождения всех “fizz” и “buzz” мы должны пройтись по всему массиву и проверить, какие числа есть “fizz”, а какие “buzz”. Для этого создайте цикл for для прохождения по массиву, который мы инициализировали:
+
+\vspace{\baselineskip}
+
+\begin{tcolorbox} 
+\begin{minted}{C}
+for num in number {
+// здесь находится тело цикла и расчеты
+}
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+
+После этого, мы можем просто использовать конструкцию “if else” и оператор деления с остатком “\%” в swift для определения fizz и buzz.
+
+\vspace{\baselineskip}
+
+\begin{tcolorbox} 
+\begin{minted}{C}
+for num in number { // для всех чисел из number
+  if num % 3 == 0 { // если число делится на 3 без остатка
+    print("\(num) fizz") //вывести "\(num) fizz"
+  } else {
+    print(num) // иначе просто вывести это число
+  }
+ }
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+
+Замечательно! Вы можете зайти в консоль отладки в песочнице Xcode и посмотреть результат работы программы. Вы увидите, что “fizz” были отсортированы в вашем массиве.
+
+\vspace{\baselineskip}
+
+Для проставления “buzz”, мы воспользуемся той же техникой. Попробуйте это сделать сами перед тем, как прочитать далее - вы можете сверить свои результаты с результатами, которые приведены в данной статье, как только вы закончите.
+
+\vspace{\baselineskip}
+
+\begin{tcolorbox} 
+\begin{minted}{C}
+for num in number {
+  if num % 3 == 0 {
+    print("\(num) fizz")
+  } else if num % 5 == 0 { // иначе, если число делится на 5 без остатка
+    print("\(num) buzz")
+  } else {
+    print(num)
+  }
+ }
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+
+Проверьте выходные данные!
+
+\vspace{\baselineskip}
+
+Это довольно просто --- вы разделили число на 3, “fizz” и  разделили число на 5, “buzz”. Теперь увеличьте количество чисел в массиве
+
+\vspace{\baselineskip}
+
+\tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{let number = [\textcolor{Purple}{1}, \textcolor{Purple}{2}, \textcolor{Purple}{3}, \textcolor{Purple}{4}, \textcolor{Purple}{5}, \textcolor{Purple}{6}, \textcolor{Purple}{7}, \textcolor{Purple}{8}, \textcolor{Purple}{9}, \textcolor{Purple}{10}, \textcolor{Purple}{11}, \textcolor{Purple}{12}, \textcolor{Purple}{13}, \textcolor{Purple}{14}, \textcolor{Purple}{15}]} 
+
+\vspace{\baselineskip}
+
+Мы увеличили диапазон чисел с 1-10 до 1-15 для того, чтобы продемонстрировать концепт “fizz buzz”. Так как число 15 кратно 3 и 5, оно должно быть заменено на “fizz buzz”. Попробуйте сами и проверьте результат!
+
+\vspace{\baselineskip}
+
+Вот решение:
+
+\vspace{\baselineskip}
+
+\begin{tcolorbox} 
+\begin{minted}{C}
+for num in number {
+  if num % 3 == 0 && num % 5 == 0 {/*если число делится без остатка и на 5,
+  и на 3 */
+    print("\(num) fizz buzz")
+  } else if num % 3 == 0 {
+    print("\(num) fizz")
+  } else if num % 5 == 0 {
+    print("\(num) buzz")
+  } else {
+    print(num)
+  }
+ }
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+
+Подождите … мы еще не закончили! Весь смысл алгоритма заключается в том, чтобы правильно организовать время выполнения. Представьте, если диапазон увеличивается с 1-15 до 1-100. Компилятор проверит каждое число, делится ли оно на 3 или на 5. После чего он пройдется по числам снова, чтобы определить, делится ли число на 3 и на 5. Код по сути, должен будет пройти через каждое число в массиве дважды - ему следовало бы пройтись по числам, делящимся сначала на 3 и потом на 5. Чтобы ускорить процесс, мы можем просто “сказать” нашему коду проверять делимость сразу на 15.
+
+\vspace{\baselineskip}
+
+Конечный вариант нашего кода:
+
+\vspace{\baselineskip}
+
+\begin{tcolorbox} 
+\begin{minted}{C}
+for num in number {
+  if num % 15 == 0 {
+    print("\(num) fizz buzz")
+  } else if num % 3 == 0 {
+    print("\(num) fizz")
+  } else if num % 5 == 0 {
+    print("\(num) buzz")
+  } else {
+    print(num)
+  } 
+}
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+
+Так же легко, как здесь, вы можете использовать любой язык по вашему выбору и начать с него.
+
+\vspace{\baselineskip}
+
+Приятного программирования
+
+\chapter*{Глава 2: Сложность Алгоритмов}
+
+\section*{Раздел 2.1: Большая-Тета нотация}
+
+В отличии от Большой-О нотации, которая описывает только верхнюю границу времени выполнения для некоторого алгоритма, Большая-Тета ограничена узкими рамками; верхней и нижней границами. Узкие рамки более точны, однако их сложнее вычислить.
+
+\vspace{\baselineskip}
+
+Нотация Большой-Теты симметрична: \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f(x) = \Theta(g(x)) \Leftrightarrow g(x) = \Theta(f(x))$}
+
+\vspace{\baselineskip}
+
+Для интуитивного понимания, \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f(x) = \Theta(g(x))$} означает, что графики от $f(x)$ и $g(x)$ растут с одинаковой скоростью, или что графики “ведут себя” схоже при достаточно больших x.
+
+\vspace{\baselineskip}
+
+Полное математическое выражение для Большой-Теты: $\Theta(f(x))$ = \{g: $N_0 \to R$ и $c_1$, $c_2$, $n_0 > 0$, где $c_1 < abs(g(n) / f(n))$, для каждого $n > n_0$ и abs - модуль числа\}
+
+\vspace{\baselineskip}
+
+\textbf{Пример}
+
+\vspace{\baselineskip}
+
+Если алгоритм для ввода n данных требует \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$42n^{\textcolor{Purple}{2}} + 25n + \textcolor{Purple}{4}$} операций для завершения, мы говорим, что это \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$O(n^{\textcolor{Purple}{2}})$}, но также \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$O(n^{\textcolor{Purple}{3}})$} и  \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$O(n^{\textcolor{Purple}{100}})$}. Однако, это \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$\Theta(n^{\textcolor{Purple}{2}})$}, а не \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm]{$\Theta(n^{\textcolor{Purple}{3}})$}, \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$\Theta(n^{\textcolor{Purple}{4}})$} и т.д. Алгоритм \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$\Theta(f(n))$} является также \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$O(f(n))$}, но не наоборот!
+
+\vspace{\baselineskip}
+
+\textbf{Формальное математическое определение}
+
+\vspace{\baselineskip}
+
+\tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$\Theta(g(x))$}, является множеством функций.
+
+\vspace{\baselineskip}
+
+\tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$\Theta(g(x))$ = $f(x)$ такие, что существуют положительные константы $c_1$, $c_2$, $N$ такие, что}
+
+\tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$\textcolor{Purple}{0} \leqslant c_1*g(x) \leqslant f(x) \leqslant c_2 \cdot g(x)$ для всех $x > N$} 
+
+\vspace{\baselineskip}
+Поскольку \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$\Theta(g(x))$} является множеством, мы могли бы написать \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f(x) \in \Theta(f(x))$}, чтобы указать, что \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f(x)$} является членом \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$\Theta(g(x))$}. Вместо этого, мы в основном будем писать 
+
+\tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f(x) = \Theta(f(x))$} для обозначения того же - это общепринятое написание.
+
+\vspace{\baselineskip}
+
+Всякий раз, когда \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$\Theta(f(x))$}появляется в формулах, мы интерпретируем ее как название некоторой безымянной функции, чье имя нам неважно. Например, уравнение  \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$T(n) = T(n/{\textcolor{Purple}{2}}) + \Theta(n)$} означает \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$T(n) = T(n/{\textcolor{Purple}{2}}) + f(n)$}, где \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f(n)$} - функция из множества \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$\Theta(n)$}.
+
+\vspace{\baselineskip}
+
+Пусть \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f$} и \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$g$} - две функции, определенные на некотором подмножестве действительных чисел. Мы пишем \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f(x) = \Theta(f(x))$} при \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$x \to \infty$} тогда и только тогда, когда существуют положительные константы \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$K$} и \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$L$} и действительное число \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$x_0$} такие, что:
+
+\vspace{\baselineskip}
+
+\tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$K|g(x)| \leqslant f(x) \leqslant L|g(x)|$} для всех \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$x \geqslant x_0$}.
+
+\vspace{\baselineskip}
+
+Определение равно следующему:
+
+\vspace{\baselineskip}
+
+\tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f(x) = O(g(x))$ и $f(x) = \Omega(g(x))$}
+
+\vspace{\baselineskip}
+
+\textbf{Метод, использующий пределы}
+
+\vspace{\baselineskip}
+
+\tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{Если $\lim\limits_{x \to \infty} f(x)/g(x) = c \in ({\textcolor{Purple}{0}},\infty)$}, т.е. предел существует и он положительный, тогда 
+
+\tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f(x) = \Theta(g(x))$}
+
+\vspace{\baselineskip}
+
+\textbf{Классы общей сложности}
+
+\vspace{\baselineskip}
+
+\begin{tabular}{llrr}
+\multicolumn{1}{c}{\textbf{Название}}& \multicolumn{1}{c}{\textbf{Нотация}} & \multicolumn{1}{c}{\textbf{n=10}} & \multicolumn{1}{c}{\textbf{n=100}} \\[5pt]
+\ttfamily Постоянная & $\Theta(1)$ & 1 & 1\\[5pt]
+\ttfamily Логарифмическая & $\Theta(log(n))$ & 3 & 7\\[5pt]
+\ttfamily Линейная &  $\Theta(n)$ & 10 & 100\\[5pt]
+\ttfamily Линеарифметическая & $\Theta(n*log(n))$ & 30 & 700\\[5pt]
+\ttfamily Квадратическая & $\Theta(n^2)$ & 100 & 10 000\\[5pt]
+\ttfamily Экспоненциальная & $\Theta(2^n)$ & 1 024 & 1.267650e+30\\[5pt]
+\ttfamily Факториальная & $\Theta(n!)$ & 3 628 800 & 9.332622e+157 \\[5pt]
+\end{tabular}
+
+\section*{Раздел 2.2: Сравнение асимптотических обозначений}
+
+Пусть \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f(n)$} и \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$g(n)$} - две функции, определенные на множестве положительных действительных чисел, \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$c$, $c_1$, $c_2$, $n_0$} - положительные действительные константы.
+
+\vspace{\baselineskip}
+
+\resizebox{18cm}{!}{
+\begin{tabular}{p{4cm}p{4cm}p{4cm}p{4cm}p{4cm}p{4cm}}
+\multicolumn{1}{c}{\textbf{Нотация}} & \multicolumn{1}{c}{$\mathbf{f(n)=O(g(n))}$} & \multicolumn{1}{c}{$\mathbf{f(n)=\Omega(g(n))}$} & \multicolumn{1}{c}{$\mathbf{f(n) = \Theta(g(n))}$} & \multicolumn{1}{c}{$\mathbf{f(n)=o(g(n))}$} & \multicolumn{1}{c}{$\mathbf{f(n) = \omega(g(n)))}$}\\ [5pt]
+\ttfamily Формальное определение & $\exists \ c>\textcolor{Purple}{0},\ \exists \ n_0>\textcolor{Purple}{0}: \forall \ n \geqslant n_0,\ \textcolor{Purple}{0} \leqslant f(n) \leqslant c \ g(n)$ & $\exists \ c>\textcolor{Purple}{0},\ \exists \ n_0>\textcolor{Purple}{0}: \forall \ n \geqslant n_0,\ \textcolor{Purple}{0} \leqslant c \ g(n) \leqslant f(n)$ & $\exists \ c_1, \ c_2>\textcolor{Purple}{0},\ \exists \ n_0>\textcolor{Purple}{0}: \forall \ n \geqslant n_0,\ \textcolor{Purple}{0} \leqslant c_1 \ g(n) \leqslant f(n) \leqslant c_2 \ g(n)$ & $\forall \ c>\textcolor{Purple}{0}, \exists \ n_0>\textcolor{Purple}{0}: \forall \ n \geqslant n_0,\ \textcolor{Purple}{0} \leqslant f(n) < c \ g(n)$ & $\forall \ c>\textcolor{Purple}{0},\ \exists \ n_0>\textcolor{Purple}{0}: \forall \ n \geqslant n_0,\ \textcolor{Purple}{0} \leqslant c\ g(n) < f(n)$\\[5pt]
+\ttfamily Аналогия между  асимптотическим сравнением f, g и действительными числами a, b & \vspace{\baselineskip} $a \leqslant b$ & \vspace{\baselineskip} $a \geqslant b$ & \vspace{\baselineskip} $a = b$ & \vspace{\baselineskip} $a<b$ \vspace{\baselineskip} & \vspace{\baselineskip} $a>b$\\[5pt]
+\ttfamily Пример &  $7n + \textcolor{Purple}{10} = O(n^{\textcolor{Purple}{2}} + n - \textcolor{Purple}{9})$ & $n^{\textcolor{Purple}{3}} - \textcolor{Purple}{34} = \Omega(10n^{\textcolor{Purple}{2}} - 7n + \textcolor{Purple}{1})$ & $\textcolor{Purple}{1/2} n^{\textcolor{Purple}{2}} - 7n = \Theta(n^{\textcolor{Purple}{2}})$ & $5n^{\textcolor{Purple}{2}} = o(n^{\textcolor{Purple}{3}})$ & $7n^{\textcolor{Purple}{2}} = \Omega(n)$\\[5pt]
+\end{tabular}
+}
+  
+\vspace{\baselineskip}
+
+\includeimage{0.5}{images/11_1.pdf} 
+\includeimage{0.5}{images/11_2.pdf} 
+\includeimage{0.5}{images/11_3.pdf} 
+Асимптотическая нотация может быть представлена на диаграмме Венна следующим образом:
+
+\includeimage{1}{images/11_4.pdf}
+
+\vspace{\baselineskip}
+
+\textbf{Ссылки}
+
+\vspace{\baselineskip}
+
+Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein. Introduction to Algorithms
+
+\vspace{\baselineskip}
+
+\section*{Раздел 2.3: Большая-Омега нотация}
+
+\vspace{\baselineskip}
+
+$\Omega$-нотация используется для асимптотической нижней границы.
+
+\vspace{\baselineskip}
+
+\textbf{Формальное определение}
+
+\vspace{\baselineskip}
+
+Пусть \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f(n)$} и \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$g(n)$} - две функции, определённые на множестве положительных действительных чисел. Мы пишем \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f(n) = \Omega(g(n))$}, если есть положительные константы \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$c$} и \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$n_0$} такие, что:
+
+\vspace{\baselineskip}
+
+\tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$\textbf{0} \leqslant c \ g(n) \leqslant f(n)$ \textbf{для всех} $n \geqslant n0$}.
+
+\vspace{\baselineskip}
+
+\textbf{Примечание}
+
+\vspace{\baselineskip}
+
+\tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f(n) = \Omega(g(n))$} означает, что \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f(n)$} растет асимптотически не медленнее, чем \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$g(n)$}. Также мы можем сказать об \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$\Omega(g(n))$} когда алгоритма анализа недостаточно для утверждения об \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$\Theta(g(n))$} и/или \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$O(g(n))$}.
+
+\vspace{\baselineskip}
+
+Из определения нотации следует теорема:
+
+\vspace{\baselineskip}
+
+Для двух любых функций \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f(n)$} и \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$g(n)$} мы имеем \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f(n) = \Theta(g(n))$} тогда и только тогда, когда \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f(n)= O(g(n))$} и \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f(n)=\Omega(g(n))$}.
+
+\vspace{\baselineskip}
+
+Графически $\Omega$-нотация может быть представлена следующим образом:
+
+\includeimage{1}{images/12.pdf}
+
+\vspace{\baselineskip}
+
+Например пусть \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f(n) = 3n^{\textcolor{Purple}{2}} + 5n - \textcolor{Purple}{4}$}. Тогда \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f(n) = \Omega(n^{\textcolor{Purple}{2}})$}. Также правильно будет \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f(n) = \Omega(n)$}, или даже \tcbox[nobeforeafter, tcbox raise base,top=0.1mm,bottom=0.1mm, right=0.1mm, left=0.1mm]{$f(n) = \Omega(\textcolor{Purple}{1})$}.
+
+\vspace{\baselineskip}
+
+Другой пример для решения алгоритма идеального паросочетания: если число вершин нечётное, вывести “Нет идеальных пар”, иначе попробуйте все возможные комбинации.
+
+\vspace{\baselineskip}
+
+Нам хотелось бы сказать, что алгоритм требует экспоненциального времени, но вы не можете доказать, что $\Omega(n^{\textcolor{Purple}{2}})$ - нижняя граница, используя обычное определение $\Omega$, так как алгоритм работает за линейное время, если n - нечётное. Вместо этого следует определить $f(n)=\Omega(g(n))$ так, что для некоторой константы $c>\textcolor{Purple}{0}$, $f(n) \geqslant c g(n)$ для бесконечно большого n. Это даёт хорошее соответствие между верхней и нижней границами: $f(n)=\Omega(g(n))$ тогда и только тогда, когда $f(n) \neq o(g(n))$.
+
+\vspace{\baselineskip}
+
+\textbf{Ссылки}
+
+\vspace{\baselineskip}
+
+Формальное определение и теорема взяты из книги "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest,Clifford Stein. Introduction to Algorithms".

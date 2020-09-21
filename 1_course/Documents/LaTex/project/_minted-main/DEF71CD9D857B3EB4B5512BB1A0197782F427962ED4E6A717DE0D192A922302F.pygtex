@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Procedure} \PYG{n}{AdjacencyMatrix}\PYG{p}{(}\PYG{n}{N}\PYG{p}{)}\PYG{o}{:}		\PYG{c+c1}{//N показывает количество вершин}
+\PYG{n}{Matrix}\PYG{p}{[}\PYG{n}{N}\PYG{p}{][}\PYG{n}{N}\PYG{p}{]}
+\PYG{k}{for} \PYG{n}{i} \PYG{n}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{N}		
+	\PYG{k}{for} \PYG{n}{j} \PYG{n}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{N}
+		\PYG{n}{Take} \PYG{n}{input} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{Matrix}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]}
+	\PYG{n}{endfor}
+\PYG{n}{endfor}
+\end{Verbatim}

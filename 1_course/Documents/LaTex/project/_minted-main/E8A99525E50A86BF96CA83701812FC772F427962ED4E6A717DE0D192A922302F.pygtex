@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Procedure} \PYG{n}{Calculate}\PYG{o}{\PYGZhy{}}\PYG{n}{Hash}\PYG{p}{(}\PYG{n}{String}\PYG{p}{,} \PYG{n}{Prime}\PYG{p}{,} \PYG{n}{x}\PYG{p}{)}\PYG{o}{:}
+\PYG{n+nl}{hash} \PYG{p}{:}\PYG{o}{=}\PYG{l+m+mi}{0}
+\PYG{k}{for} \PYG{n}{m} \PYG{n}{from} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{x}						   \PYG{n}{hash} \PYG{n}{value}
+	\PYG{n+nl}{hash} \PYG{p}{:}\PYG{o}{=} \PYG{n}{hash} \PYG{o}{+}\PYG{p}{(}\PYG{n}{Value} \PYG{n}{of} \PYG{n}{String}\PYG{p}{[}\PYG{n}{m}\PYG{p}{])}\PYG{o}{\PYGZca{}}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{n}{end} \PYG{k}{for}
+\PYG{n}{Return} \PYG{n}{hash}
+\end{Verbatim}

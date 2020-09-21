@@ -1,0 +1,1724 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.7.16)  16 JUL 2020 23:21
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**z7.tex
+(./z7.tex
+LaTeX2e <2019-10-01> patch level 1
+(./preambula.tex (/usr/share/texmf-dist/tex/latex/extsizes/extreport.cls
+Document Class: extreport 1996/10/08 v1.0 Non Standard LaTeX document class
+(/usr/share/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2019/08/27 v1.4j Standard LaTeX file (size option)
+)
+(/usr/share/texmf-dist/tex/latex/base/exscale.sty
+Package: exscale 2018/09/24 v2.1i Standard LaTeX package exscale
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 57.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/cmex/m/n on input line 57.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/cmex/m/n on input line 57.
+\big@size=\dimen102
+)
+\c@part=\count80
+\c@chapter=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\c@figure=\count87
+\c@table=\count88
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen103
+)
+(/usr/share/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2018/08/11 v1.3c Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+)
+(/usr/share/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2019/10/15 3.35 The Babel package
+
+(/usr/share/texmf-dist/tex/generic/babel/switch.def
+File: switch.def 2019/10/15 3.35 Babel switching mechanism
+)
+(/usr/share/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+
+(/usr/share/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2019/10/15 3.35 Babel common definitions
+\babel@savecnt=\count89
+\U@D=\dimen104
+
+(/usr/share/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@dirlevel=\count90
+)
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+)
+(/usr/share/texmf-dist/tex/generic/babel-russian/russianb.ldf
+Language: russian 2017/08/12 1.3j Russian support for the Babel system
+
+
+Package babel Warning: No Cyrillic font encoding has been loaded so far.
+(babel)                A font encoding should be declared before babel.
+(babel)                Default `T2A' encoding will be loaded  on input line 74.
+
+
+(/usr/share/texmf-dist/tex/latex/cyrillic/t2aenc.def
+File: t2aenc.def 2005/09/27 v1.0i Cyrillic encoding definition file
+Now handling font encoding T2A ...
+... processing UTF-8 mapping file for font encoding T2A
+
+(/usr/share/texmf-dist/tex/latex/base/t2aenc.dfu
+File: t2aenc.dfu 2019/07/11 v1.2j UTF-8 support for inputenc
+   defining Unicode char U+00A4 (decimal 164)
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00AB (decimal 171)
+   defining Unicode char U+00BB (decimal 187)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0237 (decimal 567)
+   defining Unicode char U+0400 (decimal 1024)
+   defining Unicode char U+0401 (decimal 1025)
+   defining Unicode char U+0402 (decimal 1026)
+   defining Unicode char U+0403 (decimal 1027)
+   defining Unicode char U+0404 (decimal 1028)
+   defining Unicode char U+0405 (decimal 1029)
+   defining Unicode char U+0406 (decimal 1030)
+   defining Unicode char U+0407 (decimal 1031)
+   defining Unicode char U+0408 (decimal 1032)
+   defining Unicode char U+0409 (decimal 1033)
+   defining Unicode char U+040A (decimal 1034)
+   defining Unicode char U+040B (decimal 1035)
+   defining Unicode char U+040C (decimal 1036)
+   defining Unicode char U+040D (decimal 1037)
+   defining Unicode char U+040E (decimal 1038)
+   defining Unicode char U+040F (decimal 1039)
+   defining Unicode char U+0410 (decimal 1040)
+   defining Unicode char U+0411 (decimal 1041)
+   defining Unicode char U+0412 (decimal 1042)
+   defining Unicode char U+0413 (decimal 1043)
+   defining Unicode char U+0414 (decimal 1044)
+   defining Unicode char U+0415 (decimal 1045)
+   defining Unicode char U+0416 (decimal 1046)
+   defining Unicode char U+0417 (decimal 1047)
+   defining Unicode char U+0418 (decimal 1048)
+   defining Unicode char U+0419 (decimal 1049)
+   defining Unicode char U+041A (decimal 1050)
+   defining Unicode char U+041B (decimal 1051)
+   defining Unicode char U+041C (decimal 1052)
+   defining Unicode char U+041D (decimal 1053)
+   defining Unicode char U+041E (decimal 1054)
+   defining Unicode char U+041F (decimal 1055)
+   defining Unicode char U+0420 (decimal 1056)
+   defining Unicode char U+0421 (decimal 1057)
+   defining Unicode char U+0422 (decimal 1058)
+   defining Unicode char U+0423 (decimal 1059)
+   defining Unicode char U+0424 (decimal 1060)
+   defining Unicode char U+0425 (decimal 1061)
+   defining Unicode char U+0426 (decimal 1062)
+   defining Unicode char U+0427 (decimal 1063)
+   defining Unicode char U+0428 (decimal 1064)
+   defining Unicode char U+0429 (decimal 1065)
+   defining Unicode char U+042A (decimal 1066)
+   defining Unicode char U+042B (decimal 1067)
+   defining Unicode char U+042C (decimal 1068)
+   defining Unicode char U+042D (decimal 1069)
+   defining Unicode char U+042E (decimal 1070)
+   defining Unicode char U+042F (decimal 1071)
+   defining Unicode char U+0430 (decimal 1072)
+   defining Unicode char U+0431 (decimal 1073)
+   defining Unicode char U+0432 (decimal 1074)
+   defining Unicode char U+0433 (decimal 1075)
+   defining Unicode char U+0434 (decimal 1076)
+   defining Unicode char U+0435 (decimal 1077)
+   defining Unicode char U+0436 (decimal 1078)
+   defining Unicode char U+0437 (decimal 1079)
+   defining Unicode char U+0438 (decimal 1080)
+   defining Unicode char U+0439 (decimal 1081)
+   defining Unicode char U+043A (decimal 1082)
+   defining Unicode char U+043B (decimal 1083)
+   defining Unicode char U+043C (decimal 1084)
+   defining Unicode char U+043D (decimal 1085)
+   defining Unicode char U+043E (decimal 1086)
+   defining Unicode char U+043F (decimal 1087)
+   defining Unicode char U+0440 (decimal 1088)
+   defining Unicode char U+0441 (decimal 1089)
+   defining Unicode char U+0442 (decimal 1090)
+   defining Unicode char U+0443 (decimal 1091)
+   defining Unicode char U+0444 (decimal 1092)
+   defining Unicode char U+0445 (decimal 1093)
+   defining Unicode char U+0446 (decimal 1094)
+   defining Unicode char U+0447 (decimal 1095)
+   defining Unicode char U+0448 (decimal 1096)
+   defining Unicode char U+0449 (decimal 1097)
+   defining Unicode char U+044A (decimal 1098)
+   defining Unicode char U+044B (decimal 1099)
+   defining Unicode char U+044C (decimal 1100)
+   defining Unicode char U+044D (decimal 1101)
+   defining Unicode char U+044E (decimal 1102)
+   defining Unicode char U+044F (decimal 1103)
+   defining Unicode char U+0450 (decimal 1104)
+   defining Unicode char U+0451 (decimal 1105)
+   defining Unicode char U+0452 (decimal 1106)
+   defining Unicode char U+0453 (decimal 1107)
+   defining Unicode char U+0454 (decimal 1108)
+   defining Unicode char U+0455 (decimal 1109)
+   defining Unicode char U+0456 (decimal 1110)
+   defining Unicode char U+0457 (decimal 1111)
+   defining Unicode char U+0458 (decimal 1112)
+   defining Unicode char U+0459 (decimal 1113)
+   defining Unicode char U+045A (decimal 1114)
+   defining Unicode char U+045B (decimal 1115)
+   defining Unicode char U+045C (decimal 1116)
+   defining Unicode char U+045D (decimal 1117)
+   defining Unicode char U+045E (decimal 1118)
+   defining Unicode char U+045F (decimal 1119)
+   defining Unicode char U+0490 (decimal 1168)
+   defining Unicode char U+0491 (decimal 1169)
+   defining Unicode char U+0492 (decimal 1170)
+   defining Unicode char U+0493 (decimal 1171)
+   defining Unicode char U+0496 (decimal 1174)
+   defining Unicode char U+0497 (decimal 1175)
+   defining Unicode char U+0498 (decimal 1176)
+   defining Unicode char U+0499 (decimal 1177)
+   defining Unicode char U+049A (decimal 1178)
+   defining Unicode char U+049B (decimal 1179)
+   defining Unicode char U+049C (decimal 1180)
+   defining Unicode char U+049D (decimal 1181)
+   defining Unicode char U+04A0 (decimal 1184)
+   defining Unicode char U+04A1 (decimal 1185)
+   defining Unicode char U+04A2 (decimal 1186)
+   defining Unicode char U+04A3 (decimal 1187)
+   defining Unicode char U+04A4 (decimal 1188)
+   defining Unicode char U+04A5 (decimal 1189)
+   defining Unicode char U+04AA (decimal 1194)
+   defining Unicode char U+04AB (decimal 1195)
+   defining Unicode char U+04AE (decimal 1198)
+   defining Unicode char U+04AF (decimal 1199)
+   defining Unicode char U+04B0 (decimal 1200)
+   defining Unicode char U+04B1 (decimal 1201)
+   defining Unicode char U+04B2 (decimal 1202)
+   defining Unicode char U+04B3 (decimal 1203)
+   defining Unicode char U+04B6 (decimal 1206)
+   defining Unicode char U+04B7 (decimal 1207)
+   defining Unicode char U+04B8 (decimal 1208)
+   defining Unicode char U+04B9 (decimal 1209)
+   defining Unicode char U+04BA (decimal 1210)
+   defining Unicode char U+04BB (decimal 1211)
+   defining Unicode char U+04C0 (decimal 1216)
+   defining Unicode char U+04C1 (decimal 1217)
+   defining Unicode char U+04C2 (decimal 1218)
+   defining Unicode char U+04D0 (decimal 1232)
+   defining Unicode char U+04D1 (decimal 1233)
+   defining Unicode char U+04D2 (decimal 1234)
+   defining Unicode char U+04D3 (decimal 1235)
+   defining Unicode char U+04D4 (decimal 1236)
+   defining Unicode char U+04D5 (decimal 1237)
+   defining Unicode char U+04D6 (decimal 1238)
+   defining Unicode char U+04D7 (decimal 1239)
+   defining Unicode char U+04D8 (decimal 1240)
+   defining Unicode char U+04D9 (decimal 1241)
+   defining Unicode char U+04DA (decimal 1242)
+   defining Unicode char U+04DB (decimal 1243)
+   defining Unicode char U+04DC (decimal 1244)
+   defining Unicode char U+04DD (decimal 1245)
+   defining Unicode char U+04DE (decimal 1246)
+   defining Unicode char U+04DF (decimal 1247)
+   defining Unicode char U+04E2 (decimal 1250)
+   defining Unicode char U+04E3 (decimal 1251)
+   defining Unicode char U+04E4 (decimal 1252)
+   defining Unicode char U+04E5 (decimal 1253)
+   defining Unicode char U+04E6 (decimal 1254)
+   defining Unicode char U+04E7 (decimal 1255)
+   defining Unicode char U+04E8 (decimal 1256)
+   defining Unicode char U+04E9 (decimal 1257)
+   defining Unicode char U+04EC (decimal 1260)
+   defining Unicode char U+04ED (decimal 1261)
+   defining Unicode char U+04EE (decimal 1262)
+   defining Unicode char U+04EF (decimal 1263)
+   defining Unicode char U+04F0 (decimal 1264)
+   defining Unicode char U+04F1 (decimal 1265)
+   defining Unicode char U+04F2 (decimal 1266)
+   defining Unicode char U+04F3 (decimal 1267)
+   defining Unicode char U+04F4 (decimal 1268)
+   defining Unicode char U+04F5 (decimal 1269)
+   defining Unicode char U+04F8 (decimal 1272)
+   defining Unicode char U+04F9 (decimal 1273)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+   defining Unicode char U+201E (decimal 8222)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+2116 (decimal 8470)
+   defining Unicode char U+2329 (decimal 9001)
+   defining Unicode char U+232A (decimal 9002)
+   defining Unicode char U+2423 (decimal 9251)
+   defining Unicode char U+27E8 (decimal 10216)
+   defining Unicode char U+27E9 (decimal 10217)
+   defining Unicode char U+FB00 (decimal 64256)
+   defining Unicode char U+FB01 (decimal 64257)
+   defining Unicode char U+FB02 (decimal 64258)
+   defining Unicode char U+FB03 (decimal 64259)
+   defining Unicode char U+FB04 (decimal 64260)
+   defining Unicode char U+FB05 (decimal 64261)
+   defining Unicode char U+FB06 (decimal 64262)
+))
+Package babel Info: Making " an active character on input line 120.
+Package babel Info: Default for \cyrdash is provided on input line 157.
+))
+(/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2018/04/16 v5.8 Page Geometry
+
+(/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+(/usr/share/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+)
+(/usr/share/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count91
+\Gm@cntv=\count92
+\c@Gm@tempcnt=\count93
+\Gm@bindingoffset=\dimen105
+\Gm@wd@mp=\dimen106
+\Gm@odd@mp=\dimen107
+\Gm@even@mp=\dimen108
+\Gm@layoutwidth=\dimen109
+\Gm@layoutheight=\dimen110
+\Gm@layouthoffset=\dimen111
+\Gm@layoutvoffset=\dimen112
+\Gm@dimlist=\toks17
+)
+(/usr/share/texmf-dist/tex/latex/incgraph/incgraph.sty
+Package: incgraph 2015/03/12 version 1.12 LaTeX special graphics inclusion
+
+(/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks18
+\pgfkeys@temptoks=\toks19
+
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
+\pgfkeys@tmptoks=\toks20
+)))
+(/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks21
+\pgfutil@tempdima=\dimen113
+\pgfutil@tempdimb=\dimen114
+
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex))
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box27
+
+(/usr/share/texmf-dist/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2019/08/03 v3.1.4b (3.1.4b)
+))
+Package: pgf 2019/08/03 v3.1.4b (3.1.4b)
+
+(/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2019/10/08 v1.3c Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+
+(/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen115
+\Gin@req@width=\dimen116
+)
+(/usr/share/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2019/08/03 v3.1.4b (3.1.4b)
+
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
+\pgf@x=\dimen117
+\pgf@y=\dimen118
+\pgf@xa=\dimen119
+\pgf@ya=\dimen120
+\pgf@xb=\dimen121
+\pgf@yb=\dimen122
+\pgf@xc=\dimen123
+\pgf@yc=\dimen124
+\pgf@xd=\dimen125
+\pgf@yd=\dimen126
+\w@pgf@writea=\write3
+\r@pgf@reada=\read1
+\c@pgf@counta=\count94
+\c@pgf@countb=\count95
+\c@pgf@countc=\count96
+\c@pgf@countd=\count97
+\t@pgf@toka=\toks22
+\t@pgf@tokb=\toks23
+\t@pgf@tokc=\toks24
+\pgf@sys@id@count=\count98
+
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2019/08/03 v3.1.4b (3.1.4b)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2019/08/03 v3.1.4b (3.1.4b)
+
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2019/08/03 v3.1.4b (3.1.4b)
+)))
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfsyssoftpath@smallbuffer@items=\count99
+\pgfsyssoftpath@bigbuffer@items=\count100
+)
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+))
+(/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2019/08/03 v3.1.4b (3.1.4b)
+
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen127
+\pgfmath@count=\count101
+\pgfmath@box=\box28
+\pgfmath@toks=\toks25
+\pgfmath@stack@operand=\toks26
+\pgfmath@stack@operation=\toks27
+)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code
+.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.te
+x) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics
+.code.tex))) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count102
+)) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@picminx=\dimen128
+\pgf@picmaxx=\dimen129
+\pgf@picminy=\dimen130
+\pgf@picmaxy=\dimen131
+\pgf@pathminx=\dimen132
+\pgf@pathmaxx=\dimen133
+\pgf@pathminy=\dimen134
+\pgf@pathmaxy=\dimen135
+\pgf@xx=\dimen136
+\pgf@xy=\dimen137
+\pgf@yx=\dimen138
+\pgf@yy=\dimen139
+\pgf@zx=\dimen140
+\pgf@zy=\dimen141
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@path@lastx=\dimen142
+\pgf@path@lasty=\dimen143
+) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@shorten@end@additional=\dimen144
+\pgf@shorten@start@additional=\dimen145
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfpic=\box29
+\pgf@hbox=\box30
+\pgf@layerbox@main=\box31
+\pgf@picture@serial@count=\count103
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgflinewidth=\dimen146
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.t
+ex
+File: pgfcoretransformations.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@pt@x=\dimen147
+\pgf@pt@y=\dimen148
+\pgf@pt@temp=\dimen149
+) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.te
+x
+File: pgfcorepathprocessing.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfarrowsep=\dimen150
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@max=\dimen151
+\pgf@sys@shading@range@num=\count104
+\pgf@shadingcount=\count105
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfexternal@startupbox=\box32
+))
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+)))
+(/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfnodeparttextbox=\box33
+)
+(/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+)
+(/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@nodesepstart=\dimen152
+\pgf@nodesepend=\dimen153
+)
+(/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2019/08/03 v3.1.4b (3.1.4b)
+))
+(/usr/share/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2019/08/03 v3.1.4b (3.1.4b)
+
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+\pgffor@iter=\dimen154
+\pgffor@skip=\dimen155
+\pgffor@stack=\toks28
+\pgffor@toks=\toks29
+))
+(/usr/share/texmf-dist/tex/latex/oberdiek/bookmark.sty
+Package: bookmark 2019/06/04 v1.27 PDF bookmarks (HO)
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/pdfescape.sty
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2019/07/25 v0.30 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/share/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+))
+(/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2019/09/28 v7.00a Hypertext links for LaTeX
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package hobsub Info: Skipping package `ifluatex' (already loaded).
+Package hobsub Info: Skipping package `ifvtex' (already loaded).
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package hobsub Info: Skipping package `pdftexcmds' (already loaded).
+Package hobsub Info: Skipping package `pdfescape' (already loaded).
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+(/usr/share/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+)
+\@linkdim=\dimen156
+\Hy@linkcounter=\count106
+\Hy@pagecounter=\count107
+
+(/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2019/09/28 v7.00a Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+\Hy@SavedSpaceFactor=\count108
+Package hyperref Info: Option `unicode' set `true' on input line 3495.
+
+(/usr/share/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2019/09/28 v7.00a Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+(/usr/share/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4540.
+Package hyperref Info: Link nesting OFF on input line 4545.
+Package hyperref Info: Hyper index ON on input line 4548.
+Package hyperref Info: Plain pages OFF on input line 4555.
+Package hyperref Info: Backreferencing OFF on input line 4560.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4793.
+\c@Hy@tempcnt=\count109
+
+(/usr/share/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5152.
+\XeTeXLinkMargin=\dimen157
+\Fld@menulength=\count110
+\Field@Width=\dimen158
+\Fld@charsize=\dimen159
+Package hyperref Info: Hyper figures OFF on input line 6423.
+Package hyperref Info: Link nesting OFF on input line 6428.
+Package hyperref Info: Hyper index ON on input line 6431.
+Package hyperref Info: backreferencing OFF on input line 6438.
+Package hyperref Info: Link coloring OFF on input line 6443.
+Package hyperref Info: Link coloring with OCG OFF on input line 6448.
+Package hyperref Info: PDF/A mode OFF on input line 6453.
+LaTeX Info: Redefining \ref on input line 6493.
+LaTeX Info: Redefining \pageref on input line 6497.
+\Hy@abspage=\count111
+\c@Item=\count112
+\c@Hfootnote=\count113
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/usr/share/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2019/09/28 v7.00a Hyperref driver for pdfTeX
+\Fld@listcount=\count114
+\c@bookmark@seq@number=\count115
+
+(/usr/share/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip43
+)
+(/usr/share/texmf-dist/tex/latex/oberdiek/bkm-pdftex.def
+File: bkm-pdftex.def 2019/06/04 v1.27 bookmark driver for pdfTeX (HO)
+\BKM@id=\count116
+))
+\igrbox=\box34
+\igr@length=\dimen160
+\c@igrtarget=\count117
+)
+(/usr/share/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks30
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2019/04/01 v2.17c AMS math features
+\@mathmargin=\skip44
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks31
+\ex@=\dimen161
+))
+(/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen162
+)
+(/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count118
+LaTeX Info: Redefining \frac on input line 227.
+\uproot@=\count119
+\leftroot@=\count120
+LaTeX Info: Redefining \overline on input line 389.
+\classnum@=\count121
+\DOTSCASE@=\count122
+LaTeX Info: Redefining \ldots on input line 486.
+LaTeX Info: Redefining \dots on input line 489.
+LaTeX Info: Redefining \cdots on input line 610.
+\Mathstrutbox@=\box35
+\strutbox@=\box36
+\big@size=\dimen163
+LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
+\macc@depth=\count123
+\c@MaxMatrixCols=\count124
+\dotsspace@=\muskip11
+\c@parentequation=\count125
+\dspbrk@lvl=\count126
+\tag@help=\toks32
+\row@=\count127
+\column@=\count128
+\maxfields@=\count129
+\andhelp@=\toks33
+\eqnshift@=\dimen164
+\alignsep@=\dimen165
+\tagshift@=\dimen166
+\tagwidth@=\dimen167
+\totwidth@=\dimen168
+\lineht@=\dimen169
+\@envbody=\toks34
+\multlinegap=\skip45
+\multlinetaggap=\skip46
+\mathdisplay@stack=\toks35
+LaTeX Info: Redefining \[ on input line 2855.
+LaTeX Info: Redefining \] on input line 2856.
+)
+(/usr/share/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2019/08/03 v3.1.4b (3.1.4b)
+
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.te
+x
+File: pgflibraryplothandlers.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@plot@mark@count=\count130
+\pgfplotmarksize=\dimen170
+)
+\tikz@lastx=\dimen171
+\tikz@lasty=\dimen172
+\tikz@lastxsaved=\dimen173
+\tikz@lastysaved=\dimen174
+\tikz@lastmovetox=\dimen175
+\tikz@lastmovetoy=\dimen176
+\tikzleveldistance=\dimen177
+\tikzsiblingdistance=\dimen178
+\tikz@figbox=\box37
+\tikz@figbox@bg=\box38
+\tikz@tempbox=\box39
+\tikz@tempbox@bg=\box40
+\tikztreelevel=\count131
+\tikznumberofchildren=\count132
+\tikznumberofcurrentchild=\count133
+\tikz@fig@count=\count134
+ (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfmatrixcurrentrow=\count135
+\pgfmatrixcurrentcolumn=\count136
+\pgf@matrix@numberofcolumns=\count137
+)
+\tikz@expandcount=\count138
+
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+topaths.code.tex
+File: tikzlibrarytopaths.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+))) (/usr/share/texmf-dist/tex/latex/wasysym/wasysym.sty
+Package: wasysym 2003/10/30 v2.0 Wasy-2 symbol support package
+\symwasy=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `wasy' in version `bold'
+(Font)                  U/wasy/m/n --> U/wasy/b/n on input line 90.
+)
+(/usr/share/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
+s
+\f@nch@headwidth=\skip47
+\f@nch@O@elh=\skip48
+\f@nch@O@erh=\skip49
+\f@nch@O@olh=\skip50
+\f@nch@O@orh=\skip51
+\f@nch@O@elf=\skip52
+\f@nch@O@erf=\skip53
+\f@nch@O@olf=\skip54
+\f@nch@O@orf=\skip55
+)) (./z7.aux
+LaTeX Font Info:    Trying to load font information for T2A+cmr on input line 2
+2.
+
+(/usr/share/texmf-dist/tex/latex/cyrillic/t2acmr.fd
+File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
+))
+\openout1 = `z7.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 512.14963pt, 28.45274pt)
+* v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=512.14963pt
+* \textheight=731.23584pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-52.36449pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+ABD: EveryShipout initializing macros
+(/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count139
+\scratchdimen=\dimen179
+\scratchbox=\box41
+\nofMPsegments=\count140
+\nofMParguments=\count141
+\everyMPshowfont=\toks36
+\MPscratchCnt=\count142
+\MPscratchDim=\dimen180
+\MPnumerator=\count143
+\makeMPintoPDFobject=\count144
+\everyMPtoPDFconversion=\toks37
+) (/usr/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/share/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\AtBeginShipoutBox=\box42
+Package hyperref Info: Link coloring OFF on input line 3.
+
+(/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count145
+)
+LaTeX Info: Redefining \ref on input line 3.
+LaTeX Info: Redefining \pageref on input line 3.
+LaTeX Info: Redefining \nameref on input line 3.
+ (./titul.tex
+LaTeX Font Info:    Trying to load font information for U+msa on input line 26.
+
+
+(/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 26.
+
+
+(/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+wasy on input line 26
+.
+
+(/usr/share/texmf-dist/tex/latex/wasysym/uwasy.fd
+File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
+) [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}])
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+[]\T2A/cmr/m/n/12 Название
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+[]\T2A/cmr/m/n/12 Рабо-чие
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--13
+[]\T2A/cmr/m/n/12 Мето-ди-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--13
+\T2A/cmr/m/n/12 чес-кие
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+[]\T2A/cmr/m/n/12 Отжимания
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+\T2A/cmr/m/n/12 от по-ля
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+\T2A/cmr/m/n/12 хва-том на
+ []
+
+
+Underfull \hbox (badness 6110) in paragraph at lines 14--14
+[]\T2A/cmr/m/n/12 И.П. - упор ле-жа, ру-ки
+ []
+
+
+Underfull \hbox (badness 1377) in paragraph at lines 14--14
+[]\T2A/cmr/m/n/12 3 под-хо-да
+ []
+
+
+Underfull \hbox (badness 1062) in paragraph at lines 14--14
+\T2A/cmr/m/n/12 по 10 по-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+[]\T2A/cmr/m/n/12 Большие
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+\T2A/cmr/m/n/12 груд-ные
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+\T2A/cmr/m/n/12 мыш-цы,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+\T2A/cmr/m/n/12 три-цеп-сы,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+\T2A/cmr/m/n/12 дель-то-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+[]\T2A/cmr/m/n/12 Отжимания
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+\T2A/cmr/m/n/12 с уз-ким
+ []
+
+
+Underfull \hbox (badness 1377) in paragraph at lines 16--16
+[]\T2A/cmr/m/n/12 2 под-хо-да
+ []
+
+
+Underfull \hbox (badness 1062) in paragraph at lines 16--16
+\T2A/cmr/m/n/12 по 10 по-
+ []
+
+
+Underfull \hbox (badness 2326) in paragraph at lines 18--18
+\T2A/cmr/m/n/12 тя-нув пря-мые но-ги и ру-
+ []
+
+
+Underfull \hbox (badness 5189) in paragraph at lines 18--18
+[]\T2A/cmr/m/n/12 10 по-вто-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
+[]\T2A/cmr/m/n/12 Тра-пе-це-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
+\T2A/cmr/m/n/12 вид-ные
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+[]\T2A/cmr/m/n/12 Разведение
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\T2A/cmr/m/n/12 ган-те-лей в
+ []
+
+
+Underfull \hbox (badness 5189) in paragraph at lines 20--20
+[]\T2A/cmr/m/n/12 10 по-вто-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\T2A/cmr/m/n/12 ре-ний по
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+[]\T2A/cmr/m/n/12 Тра-пе-це-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\T2A/cmr/m/n/12 вид-ные
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\T2A/cmr/m/n/12 мыш-цы,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\T2A/cmr/m/n/12 ши-ро-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\T2A/cmr/m/n/12 чай-шие
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\T2A/cmr/m/n/12 и ром-бо-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\T2A/cmr/m/n/12 вид-ные
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.24   \newpage
+                [1]
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+[]\T2A/cmr/m/n/12 Наклон с
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\T2A/cmr/m/n/12 по-во-ро-том
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\T2A/cmr/m/n/12 к про-ти-во-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\T2A/cmr/m/n/12 по-лож-ной
+ []
+
+
+Underfull \hbox (badness 5189) in paragraph at lines 28--28
+[]\T2A/cmr/m/n/12 20 по-вто-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+[]\T2A/cmr/m/n/12 Мышцы
+ []
+
+
+Overfull \hbox (0.81929pt too wide) in paragraph at lines 30--30
+[]\T2A/cmr/m/n/12 Скручивания
+ []
+
+
+Underfull \hbox (badness 1406) in paragraph at lines 30--30
+\T2A/cmr/m/n/12 с вы-тя-ну-ты-
+ []
+
+
+Underfull \hbox (badness 1648) in paragraph at lines 30--30
+\T2A/cmr/m/n/12 дол-жа-ют ли-нию ту-ло-ви-ща,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+[]\T2A/cmr/m/n/12 15-20 по-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+[]\T2A/cmr/m/n/12 Верхний
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\T2A/cmr/m/n/12 сег-мент
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\T2A/cmr/m/n/12 пря-мой
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+[]\T2A/cmr/m/n/12 Поднятие
+ []
+
+
+Underfull \hbox (badness 1953) in paragraph at lines 32--32
+\T2A/cmr/m/n/12 но при-жать по-яс-ни-цу. Ру-
+ []
+
+
+Underfull \hbox (badness 1082) in paragraph at lines 32--32
+\T2A/cmr/m/n/12 нюю ко-неч-ность, об-ра-зо-вав
+ []
+
+
+Underfull \hbox (badness 5189) in paragraph at lines 32--32
+[]\T2A/cmr/m/n/12 15 по-вто-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+[]\T2A/cmr/m/n/12 Нижний
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\T2A/cmr/m/n/12 сег-мент
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\T2A/cmr/m/n/12 пря-мой
+ []
+
+
+Underfull \hbox (badness 1558) in paragraph at lines 34--34
+[]\T2A/cmr/m/n/12 Косые скру-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\T2A/cmr/m/n/12 вто-ре-ний
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+[]\T2A/cmr/m/n/12 Внешние
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\T2A/cmr/m/n/12 ко-сые
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+\T2A/cmr/m/n/12 вто-ре-ний
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+\T2A/cmr/m/n/12 ко-сые
+ []
+
+[2]
+Underfull \hbox (badness 1264) in paragraph at lines 42--42
+\T2A/cmr/m/n/12 на плат-фор-
+ []
+
+
+Underfull \hbox (badness 1142) in paragraph at lines 42--42
+\T2A/cmr/m/n/12 мой ров-но, ру-ки опу-ще-ны,
+ []
+
+
+Underfull \hbox (badness 1142) in paragraph at lines 42--42
+\T2A/cmr/m/n/12 пле-чи слег-ка от-ве-де-ны на-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--42
+[]\T2A/cmr/m/n/12 10-15 по-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--42
+[]\T2A/cmr/m/n/12 Развитие
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--42
+\T2A/cmr/m/n/12 груп-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--42
+\T2A/cmr/m/n/12 пы яго-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--42
+\T2A/cmr/m/n/12 дич-ных
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--42
+\T2A/cmr/m/n/12 мышц,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--42
+\T2A/cmr/m/n/12 а так-же
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--42
+\T2A/cmr/m/n/12 пе-ред-ней
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--42
+\T2A/cmr/m/n/12 и зад-ней
+ []
+
+
+Underfull \hbox (badness 3919) in paragraph at lines 42--42
+\T2A/cmr/m/n/12 ча-сти по-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--42
+\T2A/cmr/m/n/12 верх-но-сти
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--44
+[]\T2A/cmr/m/n/12 Положение
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--44
+[]\T2A/cmr/m/n/12 30-60
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--44
+[]\T2A/cmr/m/n/12 Передней
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--44
+\T2A/cmr/m/n/12 сто-ро-ны
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--44
+\T2A/cmr/m/n/12 дич-ные,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--44
+\T2A/cmr/m/n/12 ик-ро-нож-
+ []
+
+
+Underfull \hbox (badness 1184) in paragraph at lines 46--46
+\T2A/cmr/m/n/12 по-ло-же-ния, при ко-то-ром в
+ []
+
+
+Underfull \hbox (badness 5189) in paragraph at lines 46--46
+[]\T2A/cmr/m/n/12 20 по-вто-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--46
+\T2A/cmr/m/n/12 ре-ний, 3
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--46
+[]\T2A/cmr/m/n/12 Внут-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--46
+\T2A/cmr/m/n/12 рен-яя
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--46
+\T2A/cmr/m/n/12 сто-ро-на
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--50
+[]\T2A/cmr/m/n/12 Растяжка
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
+[]\T2A/cmr/m/n/12 Растяжка
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--54
+[]\T2A/cmr/m/n/12 Растяжка
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--54
+[]\T2A/cmr/m/n/12 Дель-то-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--54
+\T2A/cmr/m/n/12 вид-ные
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--56
+[]\T2A/cmr/m/n/12 Вытягивание
+ []
+
+
+Underfull \hbox (badness 3977) in paragraph at lines 56--56
+\T2A/cmr/m/n/12 впе-ред си-дя
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--56
+[]\T2A/cmr/m/n/12 20-30
+ []
+
+
+Overfull \hbox (15.36784pt too wide) in paragraph at lines 56--56
+[]\T2A/cmr/m/n/12 Широчайшие
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--56
+\T2A/cmr/m/n/12 и ром-бо-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--56
+\T2A/cmr/m/n/12 вид-ные
+ []
+
+[3]
+Overfull \hbox (3.09932pt too wide) in paragraph at lines 62--62
+[]\T2A/cmr/m/n/12 Перевјрнутая
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--62
+\T2A/cmr/m/n/12 рас-тяж-ка
+ []
+
+
+Underfull \hbox (badness 1303) in paragraph at lines 62--62
+\T2A/cmr/m/n/12 ну, ру-ки вдоль те-ла, но-ги
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--62
+[]\T2A/cmr/m/n/12 20-30
+ []
+
+
+Overfull \hbox (1.3365pt too wide) in paragraph at lines 62--62
+[]\T2A/cmr/m/n/12 Пояснична
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--62
+\T2A/cmr/m/n/12 груд-ная,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--62
+\T2A/cmr/m/n/12 ши-ро-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--62
+\T2A/cmr/m/n/12 чай-шие
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 64--64
+[]\T2A/cmr/m/n/12 Обратное
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 64--64
+\T2A/cmr/m/n/12 (Поза вер-
+ []
+
+
+Underfull \hbox (badness 1377) in paragraph at lines 64--64
+[]\T2A/cmr/m/n/12 2 под-хо-да
+ []
+
+
+Underfull \hbox (badness 1960) in paragraph at lines 64--64
+\T2A/cmr/m/n/12 по 10 се-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 64--64
+[]\T2A/cmr/m/n/12 Прямые
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 64--64
+\T2A/cmr/m/n/12 и ко-сые
+ []
+
+
+Underfull \hbox (badness 1859) in paragraph at lines 66--66
+[]\T2A/cmr/m/n/12 Для каж-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--66
+\T2A/cmr/m/n/12 дой но-ги
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--66
+\T2A/cmr/m/n/12 по 10
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--66
+[]\T2A/cmr/m/n/12 Косые
+ []
+
+
+Overfull \hbox (1.30667pt too wide) in paragraph at lines 68--68
+[]\T2A/cmr/m/n/12 Растягивание
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
+\T2A/cmr/m/n/12 мышц пря-
+ []
+
+
+Underfull \hbox (badness 1859) in paragraph at lines 68--68
+[]\T2A/cmr/m/n/12 Для каж-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
+\T2A/cmr/m/n/12 дой но-ги
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
+\T2A/cmr/m/n/12 по 10
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
+[]\T2A/cmr/m/n/12 Ик-ро-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
+\T2A/cmr/m/n/12 нож-ную,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
+\T2A/cmr/m/n/12 кам-ба-ло-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
+\T2A/cmr/m/n/12 вид-ную,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
+\T2A/cmr/m/n/12 зад-нюю
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
+\T2A/cmr/m/n/12 боль-ше-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
+\T2A/cmr/m/n/12 бер-цо-вую
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
+\T2A/cmr/m/n/12 мыш-цу,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
+\T2A/cmr/m/n/12 дву-гла-вую
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
+\T2A/cmr/m/n/12 мыш-цу
+ []
+
+
+Overfull \hbox (1.30667pt too wide) in paragraph at lines 70--70
+[]\T2A/cmr/m/n/12 Растягивание
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--70
+\T2A/cmr/m/n/12 бед-ра лј-жа
+ []
+
+
+Underfull \hbox (badness 1859) in paragraph at lines 70--70
+[]\T2A/cmr/m/n/12 Для каж-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--70
+\T2A/cmr/m/n/12 дой но-ги
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--70
+\T2A/cmr/m/n/12 по 10
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--70
+[]\T2A/cmr/m/n/12 Большую
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--70
+\T2A/cmr/m/n/12 яго-дич-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--72
+[]\T2A/cmr/m/n/12 Наклон к
+ []
+
+
+Underfull \hbox (badness 1715) in paragraph at lines 72--72
+\T2A/cmr/m/n/12 пря-мой но-ге
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--72
+\T2A/cmr/m/n/12 с при-се-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--72
+\T2A/cmr/m/n/12 да-ни-ем на
+ []
+
+
+Underfull \hbox (badness 1418) in paragraph at lines 72--72
+[]\T2A/cmr/m/n/12 И.П - необ-хо-ди-мо вы-не-сти
+ []
+
+
+Underfull \hbox (badness 1320) in paragraph at lines 72--72
+\T2A/cmr/m/n/12 од-ну но-гу немно-го впе-рјд,
+ []
+
+
+Underfull \hbox (badness 1107) in paragraph at lines 72--72
+\T2A/cmr/m/n/12 ся вниз к сто-пе. До-тя-нув-
+ []
+
+
+Underfull \hbox (badness 1859) in paragraph at lines 72--72
+[]\T2A/cmr/m/n/12 Для каж-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--72
+\T2A/cmr/m/n/12 дой но-ги
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--72
+\T2A/cmr/m/n/12 по 10
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--72
+[]\T2A/cmr/m/n/12 Мышцы
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--72
+\T2A/cmr/m/n/12 верх-но-сти
+ []
+
+[4]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 75.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 75.
+ (./z7.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 75.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 75.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 75.
+ ) 
+Here is how much of TeX's memory you used:
+ 22186 strings out of 492167
+ 381792 string characters out of 6131558
+ 452768 words of memory out of 5000000
+ 26187 multiletter control sequences out of 15000+600000
+ 15410 words of font info for 53 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 61i,11n,55p,979b,391s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/
+texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/font
+s/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/
+cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm14
+40.pfb>
+Output written on z7.pdf (5 pages, 76705 bytes).
+PDF statistics:
+ 48 PDF objects out of 1000 (max. 8388607)
+ 36 compressed objects within 1 object stream
+ 5 named destinations out of 1000 (max. 500000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{n}{num} \PYG{n}{in} \PYG{n}{number} \PYG{p}{\PYGZob{}}
+\PYG{c+c1}{// здесь находится тело цикла и расчеты}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

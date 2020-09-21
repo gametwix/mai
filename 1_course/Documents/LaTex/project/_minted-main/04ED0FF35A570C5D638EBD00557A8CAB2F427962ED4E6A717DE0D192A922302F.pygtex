@@ -1,0 +1,44 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{struct} \PYG{n}{node} \PYG{c+c1}{// структура узла дерева}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{struct} \PYG{n}{node} \PYG{o}{*}\PYG{n}{next}\PYG{p}{;} \PYG{c+c1}{// указатель на структуру типа node,}
+					   \PYG{c+c1}{// являющейся братом для данного узла}
+	\PYG{k}{struct} \PYG{n}{node} \PYG{o}{*}\PYG{n}{child}\PYG{p}{;}\PYG{c+c1}{// указатель на структуру типа node,}
+					   \PYG{c+c1}{// являющейся ребенком для данного узла}
+	\PYG{n}{std}\PYG{o}{::}\PYG{n}{string} \PYG{n}{data}\PYG{p}{;} \PYG{c+c1}{// строка данных}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n}{printtree\PYGZus{}r}\PYG{p}{(}\PYG{k}{struct} \PYG{n}{node} \PYG{o}{*}\PYG{n}{node}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{depth}\PYG{p}{)} \PYG{c+c1}{// функция вывода дерева,}
+\PYG{c+c1}{// которая принимает параметры указатель на узел и уровень отступа}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{;}
+	\PYG{k}{while}\PYG{p}{(}\PYG{n}{node}\PYG{p}{)} \PYG{c+c1}{// цикл действующий пока узел не пустой}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{node}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{child}\PYG{p}{)} \PYG{c+c1}{// если ребенок не пустой}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k}{for}\PYG{p}{(}\PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{depth}\PYG{o}{*}\PYG{l+m+mi}{3}\PYG{p}{;}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{c+c1}{// отступ длиной в уровень узла,}
+			\PYG{c+c1}{// умноженный на 3}
+				\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{);}
+			\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZob{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{);}
+			\PYG{n}{printtree\PYGZus{}r}\PYG{p}{(}\PYG{n}{node}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{child}\PYG{p}{,}\PYG{n}{depth}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{);} \PYG{c+c1}{// рекурсивный вызов}
+			\PYG{c+c1}{// функции вывода дерева с ребенком в качестве аргумента}
+			\PYG{k}{for}\PYG{p}{(}\PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{depth}\PYG{p}{;}\PYG{n}{depth}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{);}  \PYG{c+c1}{// отступ длиной на один}
+			\PYG{c+c1}{// уровень больше}
+				\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{);}
+			\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZob{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{);}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{for}\PYG{p}{(}\PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{depth}\PYG{o}{*}\PYG{l+m+mi}{3}\PYG{p}{;}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{c+c1}{// отступ длиной в уровень узла}
+			\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{);}
+		\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}s}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{node}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data}\PYG{p}{.}\PYG{n}{c\PYGZus{}str}\PYG{p}{());}\PYG{c+c1}{// вывод значения узла}
+
+		\PYG{n}{node} \PYG{o}{=} \PYG{n}{node}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{next}\PYG{p}{;} \PYG{c+c1}{// переход к брату}
+		
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n}{printtree}\PYG{p}{(}\PYG{n}{node} \PYG{o}{*}\PYG{n}{root}\PYG{p}{)} \PYG{c+c1}{// Вывод дерева начиная с корня			}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{printtree\PYGZus{}r}\PYG{p}{(}\PYG{n}{root}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);} \PYG{c+c1}{// Вызов функции вывода с произвольной}
+	\PYG{c+c1}{// позиции с корнем, как узлом и нулевым начальным отступом}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

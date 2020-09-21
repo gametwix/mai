@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//рекурсивный                               //итеративный}
+\PYG{n}{Procedure} \PYG{n}{PrintPath}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{o}{:}                 \PYG{o}{|}   \PYG{n}{Procedure} \PYG{n}{PrintPath}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{o}{:}
+\PYG{k}{if} \PYG{n}{parent}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{n}{is} \PYG{n}{not} \PYG{n}{equal} \PYG{n}{to} \PYG{n}{null}       \PYG{o}{|}   \PYG{n}{S} \PYG{o}{=}  \PYG{n}{Stack}\PYG{p}{()}
+    \PYG{n}{PrintPath}\PYG{p}{(}\PYG{n}{parent}\PYG{p}{[}\PYG{n}{u}\PYG{p}{])}                \PYG{o}{|}   \PYG{k}{while} \PYG{n}{parent}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{n}{is} \PYG{n}{not} \PYG{n}{equal} \PYG{n}{to} \PYG{n}{null}                                   \PYG{n}{equal} \PYG{n}{to} \PYG{n}{null}
+\PYG{n}{end} \PYG{k}{if}                                  \PYG{o}{|}       \PYG{n}{S}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}
+\PYG{n}{print} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{u}                              \PYG{o}{|}       \PYG{n+nl}{u} \PYG{p}{:}\PYG{o}{=} \PYG{n}{parent}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}
+                                        \PYG{o}{|}   \PYG{n}{end} \PYG{k}{while}
+                                        \PYG{o}{|}   \PYG{k}{while} \PYG{n}{S} \PYG{n}{is} \PYG{n}{not} \PYG{n}{empty}
+                                        \PYG{o}{|}       \PYG{n}{print} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{S}\PYG{p}{.}\PYG{n}{pop}
+                                        \PYG{o}{|}   \PYG{n}{end} \PYG{k}{while}
+\end{Verbatim}

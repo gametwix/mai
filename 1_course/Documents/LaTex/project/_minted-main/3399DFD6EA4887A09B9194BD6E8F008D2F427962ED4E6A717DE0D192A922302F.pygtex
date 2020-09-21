@@ -1,0 +1,88 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// Программа на языке Си для реализации алгоритма КМП поиска}
+\PYG{c+c1}{// подстроки}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{c+cpf}{\PYGZlt{}stdio.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{c+cpf}{\PYGZlt{}string.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{c+cpf}{\PYGZlt{}stdlib.h\PYGZgt{}}
+\PYG{k+kt}{void} \PYG{n+nf}{computeLPSArray}\PYG{p}{(}\PYG{k+kt}{char} \PYG{o}{*}\PYG{n}{pat}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{M}\PYG{p}{,} \PYG{k+kt}{int} \PYG{o}{*}\PYG{n}{lps}\PYG{p}{);}
+
+\PYG{k+kt}{void} \PYG{n+nf}{KMPSearch}\PYG{p}{(}\PYG{k+kt}{char} \PYG{o}{*}\PYG{n}{pat}\PYG{p}{,} \PYG{k+kt}{char} \PYG{o}{*}\PYG{n}{txt}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{M} \PYG{o}{=} \PYG{n}{strlen}\PYG{p}{(}\PYG{n}{pat}\PYG{p}{);}
+	\PYG{k+kt}{int} \PYG{n}{N} \PYG{o}{=} \PYG{n}{strlen}\PYG{p}{(}\PYG{n}{txt}\PYG{p}{);}
+
+
+	\PYG{k+kt}{int} \PYG{o}{*}\PYG{n}{lps} \PYG{o}{=} \PYG{p}{(}\PYG{k+kt}{int} \PYG{o}{*}\PYG{p}{)}\PYG{n}{malloc}\PYG{p}{(}\PYG{k}{sizeof}\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{o}{*}\PYG{n}{M}\PYG{p}{);}
+	\PYG{k+kt}{int} \PYG{n}{j}  \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+
+	
+	\PYG{n}{computeLPSArray}\PYG{p}{(}\PYG{n}{pat}\PYG{p}{,} \PYG{n}{M}\PYG{p}{,} \PYG{n}{lps}\PYG{p}{);}
+
+	\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{pat}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{==} \PYG{n}{txt}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{j}\PYG{o}{++}\PYG{p}{;}
+			\PYG{n}{i}\PYG{o}{++}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{j} \PYG{o}{==} \PYG{n}{M}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Found pattern at index \PYGZpc{}d }\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{n}{j}\PYG{p}{);}
+			\PYG{n}{j} \PYG{o}{=} \PYG{n}{lps}\PYG{p}{[}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{];}
+		\PYG{p}{\PYGZcb{}}
+
+
+		\PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{N} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{pat}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{!=} \PYG{n}{txt}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k}{if} \PYG{p}{(}\PYG{n}{j} \PYG{o}{!=} \PYG{l+m+mi}{0}\PYG{p}{)}
+				\PYG{n}{j} \PYG{o}{=} \PYG{n}{lps}\PYG{p}{[}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{];}
+			\PYG{k}{else}
+				\PYG{n}{i} \PYG{o}{=} \PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{n}{free}\PYG{p}{(}\PYG{n}{lps}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n+nf}{computeLPSArray}\PYG{p}{(}\PYG{k+kt}{char} \PYG{o}{*}\PYG{n}{pat}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{M}\PYG{p}{,} \PYG{k+kt}{int} \PYG{o}{*}\PYG{n}{lps}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{len} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{;}
+
+	\PYG{n}{lps}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}
+	\PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+
+	\PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{M}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{pat}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{n}{pat}\PYG{p}{[}\PYG{n}{len}\PYG{p}{])}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{len}\PYG{o}{++}\PYG{p}{;}
+			\PYG{n}{lps}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{len}\PYG{p}{;}
+			\PYG{n}{i}\PYG{o}{++}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{else}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k}{if} \PYG{p}{(}\PYG{n}{len} \PYG{o}{!=} \PYG{l+m+mi}{0}\PYG{p}{)}
+			\PYG{p}{\PYGZob{}}
+				
+				\PYG{n}{len} \PYG{o}{=} \PYG{n}{lps}\PYG{p}{[}\PYG{n}{len}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{];}
+
+			\PYG{p}{\PYGZcb{}}
+			\PYG{k}{else}
+			\PYG{p}{\PYGZob{}}
+				\PYG{n}{lps}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+				\PYG{n}{i}\PYG{o}{++}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{char} \PYG{o}{*}\PYG{n}{txt} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}ABABDABACDABABCABAB\PYGZdq{}}\PYG{p}{;}
+	\PYG{k+kt}{char} \PYG{o}{*}\PYG{n}{pat} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}ABABCABAB\PYGZdq{}}\PYG{p}{;}
+	\PYG{n}{KMPSearch}\PYG{p}{(}\PYG{n}{pat}\PYG{p}{,} \PYG{n}{txt}\PYG{p}{);}
+	\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,54 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{public} \PYG{k}{class} \PYG{n+nc}{MergeSort} \PYG{p}{\PYGZob{}}
+	\PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{Merge}\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{[]} \PYG{n}{input}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{l}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{m}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{r}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{;}
+		\PYG{k+kt}{var} \PYG{n}{n1} \PYG{p}{=} \PYG{n}{m} \PYG{p}{\PYGZhy{}} \PYG{n}{l} \PYG{p}{+} \PYG{l+m}{1}\PYG{p}{;} \PYG{c+c1}{// длина левой части}
+		\PYG{k+kt}{var} \PYG{n}{n2} \PYG{p}{=} \PYG{n}{r} \PYG{p}{\PYGZhy{}} \PYG{n}{m}\PYG{p}{;} \PYG{c+c1}{// длина правой части}
+		\PYG{k+kt}{var} \PYG{n}{left} \PYG{p}{=} \PYG{k}{new} \PYG{k+kt}{int}\PYG{p}{[}\PYG{n}{n1}\PYG{p}{];} \PYG{c+c1}{// выделяем память под два массива}
+		\PYG{k+kt}{var} \PYG{n}{right} \PYG{p}{=} \PYG{k}{new} \PYG{k+kt}{int}\PYG{p}{[}\PYG{n}{n2}\PYG{p}{];}
+		\PYG{k}{for} \PYG{p}{(}\PYG{n}{i} \PYG{p}{=} \PYG{l+m}{0}\PYG{p}{;} \PYG{n}{i} \PYG{p}{\PYGZlt{}} \PYG{n}{n1}\PYG{p}{;} \PYG{n}{i}\PYG{p}{++)} \PYG{p}{\PYGZob{}}
+			\PYG{n}{left}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{=} \PYG{n}{input}\PYG{p}{[}\PYG{n}{l} \PYG{p}{+} \PYG{n}{i}\PYG{p}{];} \PYG{c+c1}{// заполняем левыми элементами}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{for} \PYG{p}{(}\PYG{n}{j} \PYG{p}{=} \PYG{l+m}{0}\PYG{p}{;} \PYG{n}{j} \PYG{p}{\PYGZlt{}} \PYG{n}{n2}\PYG{p}{;} \PYG{n}{j}\PYG{p}{++)} \PYG{p}{\PYGZob{}}
+			\PYG{n}{right}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{p}{=} \PYG{n}{input}\PYG{p}{[}\PYG{n}{m} \PYG{p}{+} \PYG{n}{j} \PYG{p}{+} \PYG{l+m}{1}\PYG{p}{];} \PYG{c+c1}{// заполняем правыми элементами}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{n}{i} \PYG{p}{=} \PYG{l+m}{0}\PYG{p}{;}
+		\PYG{n}{j} \PYG{p}{=} \PYG{l+m}{0}\PYG{p}{;}
+		\PYG{k+kt}{var} \PYG{n}{k} \PYG{p}{=} \PYG{n}{l}\PYG{p}{;}
+		\PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\PYGZlt{}} \PYG{n}{n1} \PYG{p}{\PYGZam{}\PYGZam{}} \PYG{n}{j} \PYG{p}{\PYGZlt{}} \PYG{n}{n2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+			\PYG{k}{if} \PYG{p}{(}\PYG{n}{left}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{\PYGZlt{}=} \PYG{n}{right}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// элемент левого массива меньше}
+				\PYG{n}{input}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{p}{=} \PYG{n}{left}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];} \PYG{c+c1}{// заполняем им}
+				\PYG{n}{i}\PYG{p}{++;}
+			\PYG{p}{\PYGZcb{}}
+			\PYG{k}{else} \PYG{p}{\PYGZob{}}
+				\PYG{n}{input}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{p}{=} \PYG{n}{right}\PYG{p}{[}\PYG{n}{j}\PYG{p}{];} \PYG{c+c1}{// иначе элемент правого массива}
+				\PYG{n}{j}\PYG{p}{++;}
+			\PYG{p}{\PYGZcb{}}
+			\PYG{n}{k}\PYG{p}{++;}
+		\PYG{p}{\PYGZcb{}}
+		 \PYG{c+c1}{// один из следующих циклов будет пропущен}
+		\PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\PYGZlt{}} \PYG{n}{n1}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// остается добавить либо левую часть}
+			\PYG{n}{input}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{p}{=} \PYG{n}{left}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+			\PYG{n}{i}\PYG{p}{++;}
+			\PYG{n}{k}\PYG{p}{++;}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{while} \PYG{p}{(}\PYG{n}{j} \PYG{p}{\PYGZlt{}} \PYG{n}{n2}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// либо правую}
+			\PYG{n}{input}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{p}{=} \PYG{n}{right}\PYG{p}{[}\PYG{n}{j}\PYG{p}{];}
+			\PYG{n}{j}\PYG{p}{++;}
+			\PYG{n}{k}\PYG{p}{++;}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{SortMerge}\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{[]} \PYG{n}{input}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{l}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{r}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{l} \PYG{p}{\PYGZlt{}} \PYG{n}{r}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+			\PYG{k+kt}{int} \PYG{n}{m} \PYG{p}{=} \PYG{n}{l} \PYG{p}{+} \PYG{p}{(}\PYG{n}{r} \PYG{p}{\PYGZhy{}} \PYG{n}{l}\PYG{p}{)} \PYG{p}{/} \PYG{l+m}{2}\PYG{p}{;} \PYG{c+c1}{// медианный индекс}
+			\PYG{n}{SortMerge}\PYG{p}{(}\PYG{n}{input}\PYG{p}{,} \PYG{n}{l}\PYG{p}{,} \PYG{n}{m}\PYG{p}{);} \PYG{c+c1}{// рекурсивно разбиваем правую часть}
+			\PYG{n}{SortMerge}\PYG{p}{(}\PYG{n}{input}\PYG{p}{,} \PYG{n}{m} \PYG{p}{+} \PYG{l+m}{1}\PYG{p}{,} \PYG{n}{r}\PYG{p}{);} \PYG{c+c1}{// рекурсивно разбиваем левую часть}
+			\PYG{n}{Merge}\PYG{p}{(}\PYG{n}{input}\PYG{p}{,} \PYG{n}{l}\PYG{p}{,} \PYG{n}{m}\PYG{p}{,} \PYG{n}{r}\PYG{p}{);} \PYG{c+c1}{// сливаем части}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{public} \PYG{k}{static} \PYG{k+kt}{int}\PYG{p}{[]} \PYG{n+nf}{Main}\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{[]} \PYG{n}{input}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{n}{SortMerge}\PYG{p}{(}\PYG{n}{input}\PYG{p}{,} \PYG{l+m}{0}\PYG{p}{,} \PYG{n}{input}\PYG{p}{.}\PYG{n}{Length} \PYG{p}{\PYGZhy{}} \PYG{l+m}{1}\PYG{p}{);}	\PYG{c+c1}{// начало сортировки}
+		\PYG{k}{return} \PYG{n}{input}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

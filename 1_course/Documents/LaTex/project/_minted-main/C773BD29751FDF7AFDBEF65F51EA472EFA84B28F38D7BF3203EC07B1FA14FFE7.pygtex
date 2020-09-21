@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Procedure} \PYG{n+nf}{FindingPerformedJobs}\PYG{p}{(}\PYG{n}{Job}\PYG{p}{,} \PYG{n}{Acc\PYGZus{}Prof}\PYG{p}{,} \PYG{n}{maxProfit}\PYG{p}{):}
+\PYG{n}{S} \PYG{o}{=} \PYG{n}{stack}\PYG{p}{()}
+\PYG{c+c1}{// обратный цикл с условием}
+\PYG{k}{for} \PYG{n}{i} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{n} \PYG{n}{down} \PYG{n}{to} \PYG{l+m+mi}{0} \PYG{n}{and} \PYG{n}{maxProfit} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}
+	\PYG{c+c1}{// если максимальная выгода равна текущей выгоде}
+	\PYG{k}{if} \PYG{n}{maxProfit} \PYG{n}{is} \PYG{n}{equal} \PYG{n}{to} \PYG{n}{Acc\PYGZus{}Prof}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}
+		\PYG{c+c1}{// помещаем название задания в стек}
+		\PYG{n}{S}\PYG{p}{.}\PYG{n+na}{push}\PYG{p}{(}\PYG{n}{Job}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{p}{.}\PYG{n+na}{name}\PYG{p}{)}
+		\PYG{c+c1}{// вычитаем выгоду от выполнения этого задания от maxProfit}
+		\PYG{n}{maxProfit} \PYG{o}{=} \PYG{n}{maxProfit} \PYG{o}{\PYGZhy{}} \PYG{n}{Job}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{p}{.}\PYG{n+na}{profit}
+	\PYG{n}{endif}
+\PYG{n}{endfor}
+\end{Verbatim}

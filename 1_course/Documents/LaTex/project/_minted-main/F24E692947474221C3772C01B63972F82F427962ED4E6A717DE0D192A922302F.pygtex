@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{hashMap} \PYG{o}{=}\PYG{p}{\PYGZob{}}
+    \PYG{n+nl}{s} \PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{,}
+    \PYG{n+nl}{t} \PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{,}
+    \PYG{n+nl}{a} \PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{,}
+    \PYG{n+nl}{c} \PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{,}
+    \PYG{n+nl}{k} \PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{,}
+    \PYG{n+nl}{o} \PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{,}
+    \PYG{n+nl}{v} \PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{,}
+    \PYG{n+nl}{e} \PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{,}
+    \PYG{n+nl}{r} \PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{,}
+    \PYG{n+nl}{f} \PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{,}
+    \PYG{n+nl}{l} \PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{,}
+    \PYG{n+nl}{w} \PYG{p}{:}\PYG{l+m+mi}{0}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

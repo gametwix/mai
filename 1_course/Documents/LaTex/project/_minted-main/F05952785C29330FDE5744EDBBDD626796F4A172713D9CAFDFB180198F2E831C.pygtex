@@ -1,0 +1,37 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public} \PYG{k+kt}{int} \PYG{n+nf}{getMinConversions}\PYG{p}{(}\PYG{n}{String} \PYG{n}{str1}\PYG{p}{,} \PYG{n}{String} \PYG{n}{str2}\PYG{p}{)\PYGZob{}}
+	\PYG{c+c1}{//функция поиска количества элементарных изменений в строке 1}
+	\PYG{c+c1}{//для приведения к строке 2}
+	\PYG{c+c1}{//создаем массив из с количеством строк: длина первой строки плюс один,}
+	\PYG{c+c1}{//и количеством столбцов: длина второй строки плюс один}
+	\PYG{k+kt}{int} \PYG{n}{dp}\PYG{o}{[][]} \PYG{o}{=} \PYG{k}{new} \PYG{k+kt}{int}\PYG{o}{[}\PYG{n}{str1}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{()}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{o}{][}\PYG{n}{str2}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{()}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{;}
+	\PYG{c+c1}{//цикл, количество итераций которого равен длине первой строки}
+	\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}=}\PYG{n}{str1}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{();}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+		\PYG{c+c1}{//вложенный цикл, количество итераций которого равен длине второй строки}
+		\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{j}\PYG{o}{\PYGZlt{}=}\PYG{n}{str2}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{();}\PYG{n}{j}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+			\PYG{c+c1}{//если это первая итерация внешнего цикла}
+			\PYG{k}{if}\PYG{p}{(}\PYG{n}{i}\PYG{o}{==}\PYG{l+m+mi}{0}\PYG{p}{)}
+				\PYG{c+c1}{//заполняем первую строку номерами столбцов}
+				\PYG{n}{dp}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]} \PYG{o}{=} \PYG{n}{j}\PYG{p}{;}
+				\PYG{c+c1}{//если это первый столбец}
+			\PYG{k}{else} \PYG{k}{if}\PYG{p}{(}\PYG{n}{j}\PYG{o}{==}\PYG{l+m+mi}{0}\PYG{p}{)}
+				\PYG{c+c1}{//заполняем первый столбец номерами строк}
+				\PYG{n}{dp}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
+				\PYG{c+c1}{//иначе если i\PYGZhy{}1 символ первой строки и j\PYGZhy{}1 символ второй}
+				\PYG{c+c1}{//строки равны}
+			\PYG{k}{else} \PYG{k}{if}\PYG{p}{(}\PYG{n}{str1}\PYG{p}{.}\PYG{n+na}{charAt}\PYG{p}{(}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{==} \PYG{n}{str2}\PYG{p}{.}\PYG{n+na}{charAt}\PYG{p}{(}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{))}
+				\PYG{c+c1}{// приравниваем элемент верхнему левому по диагонали}
+				\PYG{n}{dp}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]} \PYG{o}{=} \PYG{n}{dp}\PYG{o}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{][}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{;}
+				\PYG{c+c1}{//иначе}
+			\PYG{k}{else}\PYG{p}{\PYGZob{}}
+				\PYG{c+c1}{//иначе, приравниваем единице плюс минимальный из левого,}
+				\PYG{c+c1}{//верхнего и верхнего левого по диагонали}
+				\PYG{n}{dp}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{o}{+} \PYG{n}{Math}\PYG{p}{.}\PYG{n+na}{min}\PYG{p}{(}\PYG{n}{dp}\PYG{o}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]}\PYG{p}{,} \PYG{n}{Math}\PYG{p}{.}\PYG{n+na}{min}\PYG{p}{(}\PYG{n}{dp}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{,}
+				\PYG{n}{dp}\PYG{o}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{][}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{));}
+			\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{c+c1}{//возвращаем нижний правый элемент массива}
+	\PYG{k}{return} \PYG{n}{dp}\PYG{o}{[}\PYG{n}{str1}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{()}\PYG{o}{][}\PYG{n}{str2}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{()}\PYG{o}{]}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

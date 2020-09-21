@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{quicksort}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{):}
+	\PYG{k}{if} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{)} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{1}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} базовый случай}
+		\PYG{k}{return} \PYG{n}{arr}
+	\PYG{n}{pivot} \PYG{o}{=} \PYG{n}{arr}\PYG{p}{[}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mi}{2}\PYG{p}{]} \PYG{c+c1}{\PYGZsh{} опорный элемент посередине}
+	\PYG{n}{left} \PYG{o}{=} \PYG{p}{[}\PYG{n}{x} \PYG{k}{for} \PYG{n}{x} \PYG{o+ow}{in} \PYG{n}{arr} \PYG{k}{if} \PYG{n}{x} \PYG{o}{\PYGZlt{}} \PYG{n}{pivot}\PYG{p}{]} \PYG{c+c1}{\PYGZsh{} все элементы, меньшие опорного}
+	\PYG{n}{middle} \PYG{o}{=} \PYG{p}{[}\PYG{n}{x} \PYG{k}{for} \PYG{n}{x} \PYG{o+ow}{in} \PYG{n}{arr} \PYG{k}{if} \PYG{n}{x} \PYG{o}{==} \PYG{n}{pivot}\PYG{p}{]} \PYG{c+c1}{\PYGZsh{} все равные опорному}
+	\PYG{n}{right} \PYG{o}{=} \PYG{p}{[}\PYG{n}{x} \PYG{k}{for} \PYG{n}{x} \PYG{o+ow}{in} \PYG{n}{arr} \PYG{k}{if} \PYG{n}{x} \PYG{o}{\PYGZgt{}} \PYG{n}{pivot}\PYG{p}{]}	\PYG{c+c1}{\PYGZsh{} все большие опорного}
+	\PYG{c+c1}{\PYGZsh{} рекурсивно обрабатываются две части}
+	\PYG{k}{return} \PYG{n}{quicksort}\PYG{p}{(}\PYG{n}{left}\PYG{p}{)} \PYG{o}{+} \PYG{n}{middle} \PYG{o}{+} \PYG{n}{quicksort}\PYG{p}{(}\PYG{n}{right}\PYG{p}{)}
+
+\PYG{n+nb}{print} \PYG{n}{quicksort}\PYG{p}{([}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{l+m+mi}{8}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{])}
+\end{Verbatim}

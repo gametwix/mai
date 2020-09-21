@@ -1,0 +1,45 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{struct} \PYG{n}{node} \PYG{c+c1}{// структура узла бинарного дерева}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{data}\PYG{p}{;} \PYG{c+c1}{// данные}
+	\PYG{n}{node} \PYG{o}{*}\PYG{n}{left}\PYG{p}{,} \PYG{o}{*}\PYG{n}{right}\PYG{p}{;} \PYG{c+c1}{// указатели на левое и правое поддерево}
+\PYG{p}{\PYGZcb{};}
+\PYG{n}{node}\PYG{o}{*} \PYG{n+nf}{delete\PYGZus{}node}\PYG{p}{(}\PYG{n}{node} \PYG{o}{*}\PYG{n}{root}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{data}\PYG{p}{)} \PYG{c+c1}{// удаление данных из бинарного дерева}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{root} \PYG{o}{==} \PYG{n}{nullptr}\PYG{p}{)} \PYG{k}{return} \PYG{n}{root}\PYG{p}{;} \PYG{c+c1}{// если девево пустое, то ничего не}
+	\PYG{c+c1}{// делаем}
+\PYG{c+c1}{// если данные меньше значения узла, повторяем удаление для левого поддерева}
+	\PYG{k}{else} \PYG{k}{if}\PYG{p}{(}\PYG{n}{data} \PYG{o}{\PYGZlt{}} \PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data}\PYG{p}{)} \PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left} \PYG{o}{=} \PYG{n}{delete\PYGZus{}node}\PYG{p}{(}\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left}\PYG{p}{,} \PYG{n}{data}\PYG{p}{);}
+\PYG{c+c1}{// если данные больше значения узла, повторяем удаление для правого поддерева}
+	\PYG{k}{else} \PYG{k}{if}\PYG{p}{(}\PYG{n}{data} \PYG{o}{\PYGZgt{}} \PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data}\PYG{p}{)} \PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right} \PYG{o}{=} \PYG{n}{delete\PYGZus{}node}\PYG{p}{(}\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{p}{,} \PYG{n}{data}\PYG{p}{);}
+\PYG{c+c1}{// если они равны}
+	\PYG{k}{else}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left} \PYG{o}{==} \PYG{n}{nullptr} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right} \PYG{o}{==} \PYG{n}{nullptr}\PYG{p}{)} \PYG{c+c1}{//1 случай}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{free}\PYG{p}{(}\PYG{n}{root}\PYG{p}{);}
+			\PYG{n}{root} \PYG{o}{=} \PYG{n}{nullptr}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{else} \PYG{k}{if}\PYG{p}{(}\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left} \PYG{o}{==} \PYG{n}{nullptr}\PYG{p}{)}					  \PYG{c+c1}{//2 случай}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{node}\PYG{o}{*} \PYG{n}{temp} \PYG{o}{=} \PYG{n}{root}\PYG{p}{;}
+			\PYG{n}{root} \PYG{o}{=} \PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{p}{;}
+			\PYG{n}{free}\PYG{p}{(}\PYG{n}{temp}\PYG{p}{);}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{else} \PYG{k}{if}\PYG{p}{(}\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right} \PYG{o}{==}\PYG{n}{nullptr}\PYG{p}{)}					  \PYG{c+c1}{//2 случай}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{node}\PYG{o}{*} \PYG{n}{temp} \PYG{o}{=} \PYG{n}{root}\PYG{p}{;}
+			\PYG{n}{root} \PYG{o}{=} \PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left}\PYG{p}{;}
+			\PYG{n}{free}\PYG{p}{(}\PYG{n}{temp}\PYG{p}{);}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{else}												\PYG{c+c1}{//3 случай}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{node}\PYG{o}{*} \PYG{n}{temp} \PYG{o}{=} \PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{p}{;}
+			\PYG{k}{while}\PYG{p}{(}\PYG{n}{temp}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left} \PYG{o}{!=} \PYG{n}{nullptr}\PYG{p}{)} \PYG{n}{temp} \PYG{o}{=} \PYG{n}{temp}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left}\PYG{p}{;}
+			\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data} \PYG{o}{=} \PYG{n}{temp}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data}\PYG{p}{;}
+			\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right} \PYG{o}{=} \PYG{n}{delete\PYGZus{}node}\PYG{p}{(}\PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{p}{,} \PYG{n}{temp}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data}\PYG{p}{);}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{n}{root}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

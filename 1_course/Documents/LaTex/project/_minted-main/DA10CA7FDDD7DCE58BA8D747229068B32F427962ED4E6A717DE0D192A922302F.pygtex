@@ -1,0 +1,29 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{procedure} \PYG{n}{dijkstra}\PYG{p}{(}\PYG{n}{G}\PYG{p}{,} \PYG{n}{source}\PYG{p}{)}\PYG{o}{:}
+	\PYG{c+c1}{// объект очереди с приоритетами}
+	\PYG{n}{Q} \PYG{o}{=} \PYG{n}{priority\PYGZus{}queue}\PYG{p}{()}
+	\PYG{c+c1}{// массив дистанций между source и другими узлами}
+	\PYG{n}{distance}\PYG{p}{[]} \PYG{o}{=} \PYG{n}{infinity}
+	\PYG{c+c1}{// добавление текущей вершины}
+
+	\PYG{n}{Q}\PYG{p}{.}\PYG{n}{enqueue}\PYG{p}{(}\PYG{n}{source}\PYG{p}{)}
+	\PYG{c+c1}{// инициализация дистанции для выбранного узла}
+	\PYG{n}{distance}\PYG{p}{[}\PYG{n}{source}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}
+	\PYG{c+c1}{// пока очередь не пустая}
+	\PYG{k}{while} \PYG{n}{Q} \PYG{n}{is} \PYG{n}{not} \PYG{n}{empty}
+		\PYG{c+c1}{// заносим ближайшую вершину к вершине\PYGZhy{}источнику в u}
+		\PYG{n}{u} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n}{nodes} \PYG{n}{in} \PYG{n}{Q} \PYG{n}{with} \PYG{n}{minimum} \PYG{n}{distance}\PYG{p}{[]}
+		\PYG{c+c1}{// удаляем ближайшую вершину из очереди}
+		\PYG{n}{remove} \PYG{n}{u} \PYG{n}{from} \PYG{n}{the} \PYG{n}{Q}
+		\PYG{k}{for} \PYG{n}{all} \PYG{n}{edges} \PYG{n}{from} \PYG{n}{u} \PYG{n}{to} \PYG{n}{v} \PYG{n}{in} \PYG{n}{G}\PYG{p}{.}\PYG{n}{adjacentEdges}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)} \PYG{k}{do}
+			\PYG{c+cm}{/* если текущая стоимость прохода до проверяемого узла меньше}
+\PYG{c+cm}{			зафиксированной, то обновляем зафиксированное значение */}
+			\PYG{k}{if} \PYG{n}{distance}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{+} \PYG{n}{cost}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{v}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{n}{distance}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]}
+				\PYG{n}{distance}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{n}{distance}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{+} \PYG{n}{cost}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{v}\PYG{p}{]}
+				\PYG{c+c1}{// заносим примыкающий узел}
+				\PYG{n}{Q}\PYG{p}{.}\PYG{n}{enqueue}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}
+			\PYG{n}{end} \PYG{k}{if}
+		\PYG{n}{end} \PYG{k}{for}
+	\PYG{n}{end} \PYG{k}{while}
+\PYG{n}{Return} \PYG{n}{distance}
+\end{Verbatim}

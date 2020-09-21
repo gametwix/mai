@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+	
+\PYG{n}{high} \PYG{o}{=} \PYG{l+m+mi}{100000000000000000}		\PYG{c+c1}{// Верхняя грань поиска}
+\PYG{n}{low} \PYG{o}{=} \PYG{l+m+mi}{1}					\PYG{c+c1}{// Нижняя грань поиска}
+\PYG{k}{while} \PYG{n}{high} \PYG{o}{\PYGZhy{}} \PYG{n}{low} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1}			\PYG{c+c1}{// Пока есть в диапазоне более 1 элемента}
+\PYG{n}{mid} \PYG{o}{=} \PYG{p}{(}\PYG{n}{high} \PYG{o}{+} \PYG{n}{low}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mi}{2}		\PYG{c+c1}{// Берем середину}
+\PYG{n}{supply} \PYG{o}{=} \PYG{n}{getSupply}\PYG{p}{(}\PYG{n}{mid}\PYG{p}{)}			
+\PYG{n}{demand} \PYG{o}{=} \PYG{n}{getDemand}\PYG{p}{(}\PYG{n}{mid}\PYG{p}{)}
+\PYG{k}{if} \PYG{n}{supply} \PYG{o}{\PYGZgt{}} \PYG{n}{demand}		\PYG{c+c1}{// Если текущее число больше искомого}
+\PYG{n}{high} \PYG{o}{=} \PYG{n}{mid}		\PYG{c+c1}{// Решение находится в меньшей половине}
+\PYG{k}{else} \PYG{k}{if} \PYG{n}{demand} \PYG{o}{\PYGZgt{}} \PYG{n}{supply}		
+\PYG{n}{low} \PYG{o}{=} \PYG{n}{mid}		\PYG{c+c1}{// Решение находится в большей половине}
+\PYG{k}{else}				\PYG{c+c1}{// Условие supply==demand}
+\PYG{k}{return} \PYG{n}{mid}		\PYG{c+c1}{// Решение найдено!}
+\end{Verbatim}

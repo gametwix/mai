@@ -1,0 +1,22 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Procedure} \PYG{n}{HuffmanDecompression}\PYG{p}{(}\PYG{n}{root}\PYG{p}{,} \PYG{n}{S}\PYG{p}{):}
+\PYG{c+c1}{\PYGZsh{} root \PYGZhy{} представляет корень дерева Хаффмана S относится к потоку битов,}
+\PYG{c+c1}{\PYGZsh{} который нужно распаковать}
+\PYG{n}{n} \PYG{o}{:=} \PYG{n}{S}\PYG{o}{.}\PYG{n}{length}
+\PYG{k}{for} \PYG{n}{i} \PYG{o}{:=} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{n}
+	\PYG{n}{current} \PYG{o}{=} \PYG{n}{root}
+	\PYG{c+c1}{\PYGZsh{} пока не спустились по дереву}
+	\PYG{k}{while} \PYG{n}{current}\PYG{o}{.}\PYG{n}{left} \PYG{o}{!=} \PYG{n}{NULL} \PYG{o+ow}{and} \PYG{n}{current}\PYG{o}{.}\PYG{n}{right} \PYG{o}{!=} \PYG{n}{NULL}
+		\PYG{c+c1}{\PYGZsh{} переход влево, если попадается 0, иначе \PYGZhy{} вправо}
+		\PYG{k}{if} \PYG{n}{S}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o+ow}{is} \PYG{n}{equal} \PYG{n}{to} \PYG{l+s+s1}{\PYGZsq{}0\PYGZsq{}}
+			\PYG{n}{current} \PYG{o}{:=} \PYG{n}{current}\PYG{o}{.}\PYG{n}{left}
+		\PYG{k}{else}
+			\PYG{n}{current} \PYG{o}{:=} \PYG{n}{current}\PYG{o}{.}\PYG{n}{right}
+		\PYG{n}{endif}
+		\PYG{c+c1}{\PYGZsh{} следующий символ, перехватываем индекс i}
+		\PYG{n}{i} \PYG{o}{:=} \PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}
+	\PYG{n}{endwhile}
+	\PYG{c+c1}{\PYGZsh{} индекс i снова перебирается другим циклом}
+	\PYG{n+nb}{print} \PYG{n}{current}\PYG{o}{.}\PYG{n}{symbol}
+\PYG{n}{endfor}
+\end{Verbatim}

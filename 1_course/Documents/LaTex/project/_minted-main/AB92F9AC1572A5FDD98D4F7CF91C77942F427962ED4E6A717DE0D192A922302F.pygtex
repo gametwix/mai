@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{function} \PYG{n}{incr} \PYG{p}{(}\PYG{n}{n}\PYG{p}{)}
+	\PYG{k}{return} \PYG{n}{n} \PYG{o}{+} \PYG{l+m+mi}{1}
+\end{Verbatim}

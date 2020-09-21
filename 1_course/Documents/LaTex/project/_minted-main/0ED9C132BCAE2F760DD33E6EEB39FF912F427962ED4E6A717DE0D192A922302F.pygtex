@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Procedure} \PYG{n}{PrintLCS}\PYG{p}{(}\PYG{n}{LCSlength}\PYG{p}{,} \PYG{n}{s1}\PYG{p}{,} \PYG{n}{s2}\PYG{p}{)}
+\PYG{n+nl}{temp} \PYG{p}{:}\PYG{o}{=} \PYG{n}{LCSlength}
+\PYG{n}{S} \PYG{o}{=} \PYG{n}{stack}\PYG{p}{()}
+\PYG{n+nl}{i} \PYG{p}{:}\PYG{o}{=} \PYG{n}{s2}\PYG{p}{.}\PYG{n}{length}
+\PYG{n+nl}{j} \PYG{p}{:}\PYG{o}{=} \PYG{n}{s1}\PYG{p}{.}\PYG{n}{length}
+\PYG{k}{while} \PYG{n}{i} \PYG{n}{is} \PYG{n}{not} \PYG{n}{equal} \PYG{n}{to} \PYG{l+m+mi}{0} \PYG{n}{and} \PYG{n}{j} \PYG{n}{is} \PYG{n}{not} \PYG{n}{equal} \PYG{n}{to} \PYG{l+m+mi}{0}
+		\PYG{k}{if} \PYG{n}{Table}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{][}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{==} \PYG{n}{Table}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{n}{and} \PYG{n}{s1}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}\PYG{o}{==}\PYG{n}{s2}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}
+		\PYG{n}{S}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{s1}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])}
+		\PYG{n+nl}{i} \PYG{p}{:}\PYG{o}{=} \PYG{n}{i} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}		
+		\PYG{n+nl}{j} \PYG{p}{:}\PYG{o}{=} \PYG{n}{j} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+	\PYG{n}{elseif} \PYG{n}{Table}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]}\PYG{o}{==} \PYG{n}{Table}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]}
+		\PYG{n+nl}{i} \PYG{p}{:}\PYG{o}{=} \PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+	\PYG{k}{else}
+		\PYG{n+nl}{j} \PYG{p}{:}\PYG{o}{=} \PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+   \PYG{n}{endif}
+\PYG{n}{endwhile}
+\PYG{k}{while} \PYG{n}{S} \PYG{n}{is} \PYG{n}{not} \PYG{n}{empty}
+	\PYG{n}{print}\PYG{p}{(}\PYG{n}{S}\PYG{p}{.}\PYG{n}{pop}\PYG{p}{)}
+\PYG{n}{endwhile}
+\end{Verbatim}

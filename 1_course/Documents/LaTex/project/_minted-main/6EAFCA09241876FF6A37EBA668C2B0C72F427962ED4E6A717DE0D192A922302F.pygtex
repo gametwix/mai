@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d \PYGZdq{}}\PYG{p}{,} \PYG{n}{vertex} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{n}{add} \PYG{n}{this} \PYG{n}{as} \PYG{n}{first} \PYG{n}{line} \PYG{n}{of} \PYG{k}{while} \PYG{n}{loop} \PYG{n}{in} \PYG{n}{BFS}
+\end{Verbatim}

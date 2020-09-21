@@ -1,0 +1,83 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}iostream\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}memory\PYGZgt{}}
+
+\PYG{k}{using} \PYG{k}{namespace} \PYG{n}{std}\PYG{p}{;}
+
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{cacheSize} \PYG{o}{=} \PYG{l+m+mi}{3}\PYG{p}{;}
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{requestLength} \PYG{o}{=} \PYG{l+m+mi}{16}\PYG{p}{;}
+
+\PYG{k}{const} \PYG{k+kt}{char} \PYG{n}{request}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+s+sc}{\PYGZsq{}a\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}a\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}d\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}e\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}b\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}b\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}a\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}c\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}f\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}d\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}e\PYGZsq{}}\PYG{p}{,}
+							\PYG{l+s+sc}{\PYGZsq{}a\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}f\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}b\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}e\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}c\PYGZsq{}}\PYG{p}{\PYGZcb{};}
+\PYG{k+kt}{char} \PYG{n}{cache}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+s+sc}{\PYGZsq{}a\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}b\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}c\PYGZsq{}}\PYG{p}{\PYGZcb{};}
+
+\PYG{k+kt}{char} \PYG{n}{originalCache}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+s+sc}{\PYGZsq{}a\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}b\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}c\PYGZsq{}}\PYG{p}{\PYGZcb{};}
+
+\PYG{k}{class} \PYG{n+nc}{Strategy} \PYG{p}{\PYGZob{}}
+
+\PYG{k}{public}\PYG{o}{:}
+	\PYG{n}{Strategy}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{string} \PYG{n}{name}\PYG{p}{)} \PYG{o}{:} \PYG{n}{strategyName}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{}}
+	\PYG{k}{virtual} \PYG{o}{\PYGZti{}}\PYG{n}{Strategy}\PYG{p}{()} \PYG{o}{=} \PYG{k}{default}\PYG{p}{;}
+	
+	\PYG{k}{virtual} \PYG{k+kt}{int} \PYG{n+nf}{apply}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{requestIndex}\PYG{p}{)} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	
+	\PYG{k}{virtual} \PYG{k+kt}{void} \PYG{n+nf}{update}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{cachePlace}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{requestIndex}\PYG{p}{,} \PYG{k+kt}{bool} \PYG{n}{cacheMiss}\PYG{p}{)} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	
+	\PYG{k}{const} \PYG{n}{std}\PYG{o}{::}\PYG{n}{string} \PYG{n}{strategyName}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{k+kt}{bool} \PYG{n+nf}{updateCache}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{requestIndex}\PYG{p}{,} \PYG{n}{Strategy}\PYG{o}{*} \PYG{n}{strategy}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	
+	\PYG{k+kt}{int} \PYG{n}{cachePlace} \PYG{o}{=} \PYG{n}{strategy}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{apply}\PYG{p}{(}\PYG{n}{requestIndex}\PYG{p}{);}
+	
+	\PYG{k+kt}{bool} \PYG{n}{isMiss} \PYG{o}{=} \PYG{n}{request}\PYG{p}{[}\PYG{n}{requestIndex}\PYG{p}{]} \PYG{o}{!=} \PYG{n}{cache}\PYG{p}{[}\PYG{n}{cachePlace}\PYG{p}{];}
+	
+	\PYG{n}{strategy}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{update}\PYG{p}{(}\PYG{n}{cachePlace}\PYG{p}{,} \PYG{n}{requestIndex}\PYG{p}{,} \PYG{n}{isMiss}\PYG{p}{);}
+	
+	\PYG{n}{cache}\PYG{p}{[}\PYG{n}{cachePlace}\PYG{p}{]} \PYG{o}{=} \PYG{n}{request}\PYG{p}{[}\PYG{n}{requestIndex}\PYG{p}{];}
+	
+	\PYG{k}{return} \PYG{n}{isMiss}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	
+	\PYG{n}{Strategy}\PYG{o}{*} \PYG{n}{selectedStrategy}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{\PYGZob{}} \PYG{k}{new} \PYG{n}{FIFO}\PYG{p}{,} \PYG{k}{new} \PYG{n}{LIFO}\PYG{p}{,}\PYG{k}{new} \PYG{n}{LRU}\PYG{p}{,}
+										\PYG{k}{new} \PYG{n}{LFU}\PYG{p}{,} \PYG{k}{new} \PYG{n}{LFD} \PYG{p}{\PYGZcb{};}
+	
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{strat}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{strat} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{5}\PYG{p}{;} \PYG{o}{++}\PYG{n}{strat}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		
+		\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{cacheSize}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{n}{cache}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{originalCache}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+		
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{Strategy: \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{selectedStrategy}\PYG{p}{[}\PYG{n}{strat}\PYG{p}{]}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{strategyName} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+		
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{Cache initial: (\PYGZdq{}}\PYG{p}{;}
+		\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{cacheSize}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{cache}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{},\PYGZdq{}}\PYG{p}{;}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{cache}\PYG{p}{[}\PYG{n}{cacheSize}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{})}\PYG{l+s+se}{\PYGZbs{}n\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{;}
+		
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Request}\PYG{l+s+se}{\PYGZbs{}t}\PYG{l+s}{\PYGZdq{}}\PYG{p}{;}
+		\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{cacheSize}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}cache \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{i} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}t}\PYG{l+s}{\PYGZdq{}}\PYG{p}{;}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}cache miss\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+		
+		\PYG{k+kt}{int} \PYG{n}{cntMisses} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+		
+		\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{requestLength}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+		
+			\PYG{k+kt}{bool} \PYG{n}{isMiss} \PYG{o}{=} \PYG{n}{updateCache}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,} \PYG{n}{selectedStrategy}\PYG{p}{[}\PYG{n}{strat}\PYG{p}{]);}
+			\PYG{k}{if} \PYG{p}{(}\PYG{n}{isMiss}\PYG{p}{)} \PYG{o}{++}\PYG{n}{cntMisses}\PYG{p}{;}
+			\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{request}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}t}\PYG{l+s}{\PYGZdq{}}\PYG{p}{;}
+			\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{l}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{l} \PYG{o}{\PYGZlt{}} \PYG{n}{cacheSize}\PYG{p}{;} \PYG{o}{++}\PYG{n}{l}\PYG{p}{)}
+			\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{cache}\PYG{p}{[}\PYG{n}{l}\PYG{p}{]} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}t}\PYG{l+s}{\PYGZdq{}}\PYG{p}{;}
+			\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{p}{(}\PYG{n}{isMiss} \PYG{o}{?} \PYG{l+s}{\PYGZdq{}x\PYGZdq{}} \PYG{o}{:} \PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+		
+		\PYG{n}{cout}\PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{Total cache misses: \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{cntMisses} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+		
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{5}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{k}{delete} \PYG{n}{selectedStrategy}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,25 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public} \PYG{k+kt}{int} \PYG{n+nf}{getLongestCommonSubstring}\PYG{p}{(}\PYG{n}{String} \PYG{n}{str1}\PYG{p}{,} \PYG{n}{String} \PYG{n}{str2}\PYG{p}{)\PYGZob{}}
+	\PYG{c+c1}{//определение двумерного массива}
+	\PYG{k+kt}{int} \PYG{n}{arr}\PYG{o}{[][]} \PYG{o}{=} \PYG{k}{new} \PYG{k+kt}{int}\PYG{o}{[}\PYG{n}{str2}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{()}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{o}{][}\PYG{n}{str1}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{()}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{;}
+	\PYG{c+c1}{// инициализируем минимальное значение для поиска максимального}
+	\PYG{k+kt}{int} \PYG{n}{max} \PYG{o}{=} \PYG{n}{Integer}\PYG{p}{.}\PYG{n+na}{MIN\PYGZus{}VALUE}\PYG{p}{;}
+	\PYG{c+c1}{// итерации по матрице}
+	\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}=}\PYG{n}{str2}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{();}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+		\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{n}{j}\PYG{o}{\PYGZlt{}=}\PYG{n}{str1}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{();}\PYG{n}{j}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+			\PYG{c+c1}{// если символы совпадают}
+			\PYG{k}{if}\PYG{p}{(}\PYG{n}{str1}\PYG{p}{.}\PYG{n+na}{charAt}\PYG{p}{(}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{==} \PYG{n}{str2}\PYG{p}{.}\PYG{n+na}{charAt}\PYG{p}{(}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{))\PYGZob{}}
+				\PYG{c+c1}{// записываем в соседнюю клетку, ближе к правому нижнему углу}
+				\PYG{n}{arr}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]} \PYG{o}{=} \PYG{n}{arr}\PYG{o}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{][}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{]+}\PYG{l+m+mi}{1}\PYG{p}{;}
+				\PYG{c+c1}{// запоминаем максимальное значение}
+				\PYG{k}{if}\PYG{p}{(}\PYG{n}{arr}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{max}\PYG{p}{)}
+					\PYG{n}{max} \PYG{o}{=} \PYG{n}{arr}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}
+			\PYG{k}{else} \PYG{c+c1}{// если символы не равны}
+				\PYG{n}{arr}\PYG{o}{[}\PYG{n}{i}\PYG{o}{][}\PYG{n}{j}\PYG{o}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{c+c1}{// возврат максимального значения}
+	\PYG{k}{return} \PYG{n}{max}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

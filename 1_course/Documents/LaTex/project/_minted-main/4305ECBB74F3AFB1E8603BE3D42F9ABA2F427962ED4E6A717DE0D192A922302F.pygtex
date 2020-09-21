@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{a} \PYG{o}{=} \PYG{l+m+mi}{1}
+\PYG{k+kt}{int} \PYG{n+nl}{a} \PYG{p}{:}\PYG{o}{=} \PYG{l+m+mi}{1}
+\PYG{n}{let} \PYG{k+kt}{int} \PYG{n}{a} \PYG{o}{=} \PYG{l+m+mi}{1}
+\PYG{k+kt}{int} \PYG{n}{a} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+m+mi}{1}
+\end{Verbatim}

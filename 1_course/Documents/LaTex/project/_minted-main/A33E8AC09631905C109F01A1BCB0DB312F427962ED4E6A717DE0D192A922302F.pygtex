@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{max} \PYG{o}{\PYGZlt{}} \PYG{n}{array}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])}\PYG{c+c1}{// 1}
+	\PYG{n}{i}\PYG{o}{++}\PYG{p}{;}				\PYG{c+c1}{// 2}
+\PYG{n}{max} \PYG{o}{=} \PYG{n}{array}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}	  \PYG{c+c1}{// 3}
+\end{Verbatim}

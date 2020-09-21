@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{LIS}\PYG{p}{(}\PYG{n}{A}\PYG{p}{[}\PYG{l+m+mf}{1.}\PYG{p}{.}\PYG{n}{n}\PYG{p}{])}\PYG{o}{:}
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{n} \PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{n}{then} \PYG{k}{return} \PYG{l+m+mi}{0}
+	\PYG{n}{m} \PYG{o}{=} \PYG{n}{LIS}\PYG{p}{(}\PYG{n}{A}\PYG{p}{[}\PYG{l+m+mf}{1.}\PYG{p}{.(}\PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)])}
+	\PYG{n}{B} \PYG{n}{is} \PYG{n}{subsequence} \PYG{n}{of} \PYG{n}{A}\PYG{p}{[}\PYG{l+m+mf}{1.}\PYG{p}{.(}\PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)]} \PYG{n}{with} \PYG{n}{only} \PYG{n}{elements} \PYG{n}{less} \PYG{n}{than} \PYG{n}{a}\PYG{p}{[}\PYG{n}{n}\PYG{p}{]}
+	\PYG{p}{(}\PYG{o}{*} \PYG{n}{let} \PYG{n}{h} \PYG{n}{be} \PYG{n}{size} \PYG{n}{of} \PYG{n}{B}\PYG{p}{,} \PYG{n}{h} \PYG{o}{\PYGZlt{}=} \PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{*}\PYG{p}{)}
+	\PYG{n}{m} \PYG{o}{=} \PYG{n}{max}\PYG{p}{(}\PYG{n}{m}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{o}{+} \PYG{n}{LIS}\PYG{p}{(}\PYG{n}{B}\PYG{p}{[}\PYG{l+m+mf}{1.}\PYG{p}{.}\PYG{n}{h}\PYG{p}{]))}
+	\PYG{n}{Output} \PYG{n}{m}
+\end{Verbatim}

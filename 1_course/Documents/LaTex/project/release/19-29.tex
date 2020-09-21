@@ -1,0 +1,534 @@
+% Ивенкова
+\chapter*{Глава 4: Деревья}
+
+\vspace{\baselineskip}
+\section*{Раздел 4.1: Типичное представление анарного дерева}
+
+\vspace{\baselineskip}
+Обычно мы представляем анарное дерево (один узел с потенциально неограниченным числом дочерних элементов) в виде двоичного дерева (один узел ровно с парой детей). «Следующий» ребенок считается родным братом. Обратите внимание, что если дерево является двоичным, то такое представление создает дополнительные узлы.
+
+\vspace{\baselineskip}
+Затем мы повторяем итерацию над братьями и сестрами и возвращаемся к детям. Поскольку большинство деревьев относительно мелкие, имеем много детей только на нескольких уровнях иерархии, что приводит к оптимизации кода. Обратите внимание, что человеческие родословные являются исключением (много уровней предков и только несколько детей на уровень).
+
+\vspace{\baselineskip}
+При необходимости можно сохранить обратные указатели, чтобы по дереву можно было подняться наверх. Такие деревья сложнее хранить.
+
+\vspace{\baselineskip}
+Обратите внимание, что нормально иметь одну функцию для вызова у корня и рекурсивную функцию с дополнительными параметрами, в данном случае глубиной дерева.
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}
+struct node // структура узла дерева
+{
+	struct node *next; // указатель на структуру типа node, 
+					   // являющейся братом для данного узла
+	struct node *child;// указатель на структуру типа node, 
+					   // являющейся ребенком для данного узла
+	std::string data; // строка данных
+}
+
+void printtree_r(struct node *node, int depth) // функция вывода дерева, 
+// которая принимает параметры указатель на узел и уровень отступа
+{
+	int i;
+	while(node) // цикл действующий пока узел не пустой
+	{
+		if(node->child) // если ребенок не пустой
+		{
+			for(i=0;i<depth*3;i++) // отступ длиной в уровень узла, 
+			// умноженный на 3
+				printf(" ");
+			printf("{\n");
+			printtree_r(node->child,depth+1); // рекурсивный вызов 
+			// функции вывода дерева с ребенком в качестве аргумента
+			for(i=0;i<depth;depth+1);  // отступ длиной на один 
+			// уровень больше
+				printf(" ");
+			printf("{\n");
+		}
+		for(i=0;i<depth*3;i++) // отступ длиной в уровень узла
+			printf(" ");
+		printf("%s\n", node->data.c_str());// вывод значения узла
+
+		node = node->next; // переход к брату
+		
+	}
+}
+
+void printtree(node *root) // Вывод дерева начиная с корня			
+{
+	printtree_r(root, 0); // Вызов функции вывода с произвольной 
+	// позиции с корнем, как узлом и нулевым начальным отступом
+}
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+\section*{Раздел 4.2: Введение}
+
+\vspace{\baselineskip}
+\href{https://vk.cc/atDAwi}{\underline{Деревья}} являются подтипом более общей структуры данных узловых графов.
+
+
+%\newpage
+\includeimage{0.7}{images/20.pdf}
+
+\newpage
+Чтобы быть деревом, граф должен удовлетворять двум требованиям:
+
+\begin{itemize}
+  \item {\bfseries Он является ациклическим.} Он не содержит циклов (или "зацикливания").
+  \item {\bfseries Он подключен.} Для любой заданной вершины на графе доступна каждая вершина. Все узлы доступны через один путь в графе.
+\end{itemize}
+
+\vspace{\baselineskip}
+Древовидная структура данных довольно распространена в компьютерной науке. Деревья используются для моделирования многих различных алгоритмических структур данных, таких как обычные бинарные деревья, красно-черные деревья, B-деревья, AB-деревья,куча, 23-деревья и многие другие.
+
+\vspace{\baselineskip}
+Принято называть дерево "корневым":
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+Выбирается {\color{Purple}{один}} узел, который будет называться "корнем". 
+
+Нарисовав "корень" на вершине, 
+
+создаем нижние слои для каждой ячейки на графе в зависимости от их расстояния до корня - чем больше расстояние, тем ниже листья (пример выше)
+\end{tcolorbox}
+
+
+\vspace{\baselineskip}
+Общий символ для деревьев: Т
+
+\section*{Раздел 4.3: Проверка, одинаковы два двоичных дерева или нет}
+
+\vspace{\baselineskip}
+Например, если входные данные такие:
+
+\vspace{\baselineskip}
+{\bfseries Пример: 1}
+
+\vspace{\baselineskip}
+a) \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b)
+ 
+\includeimage{1}{images/21_1.pdf} \ \ \ \ \ \includeimage{1}{images/21_1.pdf}
+
+{\bfseries Результатом должна быть истина.}
+
+\newpage
+{\bfseries Пример: 2}
+
+\vspace{\baselineskip}
+Если входные данные такие:
+
+\vspace{\baselineskip}
+a) \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  b)
+
+\includeimage{1}{images/21_2.pdf} \ \ \ \ \ \includeimage{1}{images/21_3.pdf}
+
+{\bfseries Результатом должна быть ложь.}
+
+\vspace{\baselineskip}
+Псевдокод для этого случая:
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}
+bookean sameTree(node root1, node root2){ // функция сравнивающая два дерева,
+								// принимает в себя указатели на узлы деревьев	
+if(root1 == NULL && root2 == NULL) // проверяет пустые ли два узла	
+	return true; // если оба узла пустые, то эти 2 поддерева равны 
+			 // и мы возвращаем истину		
+if(root1 == NULL || root2 == NULL) // если только один из узлов пустой		
+	return false; //то поддеревья не равны и мы возвращаем ложь
+// если оба поддерева не пустые то сравниваем их значение, и равны ли левое и
+// правое поддверево			
+if(root1->data == root2->data 
+	&& sameTree(root1->left,root2->left) //рекурсивно сравниваем поддеревья
+	&& sameTree(root1->right, root2->right))	
+	return true;
+}
+\end{minted}
+\end{tcolorbox}
+
+\chapter*{Глава 5: Поиск в двоичных деревьях}
+
+Двоичное дерево - это дерево, в котором каждый узел имеет максимум два дочерних элемента. Двоичное дерево поиска (BST) - это двоичное дерево, элементы которого расположены в специальном порядке. В каждом BST все значения (т.е. ключи) в левом поддереве меньше по значению, чем в правом
+
+\vspace{\baselineskip}
+\section*{Раздел 5.1: Дерево поиска двоичных файлов - Вставка (Python)}
+
+\vspace{\baselineskip}
+Это простая реализация вставки Binary Search Tree  с использованием Python.
+
+\vspace{\baselineskip}
+Пример: \href{http://i.stack.imgur.com/3NG0e.gif}{\underline{анимация}}
+
+\vspace{\baselineskip}
+Следуя за фрагментом кода, каждое изображение показывает визуализацию выполнения кода, что облегчает представление того, как это происходит.
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{Python}
+class Node:		# класс узла поддерева
+	def __init__(self, val): # Поля класса
+		self.l_child = None # указатель на узел левого поддерева
+		self.r_child = None # указатель на узел правого поддерева
+		self.data = val # значение 
+
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+\includeimage{0.8}{images/23.pdf}
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{Python}
+def insert(root, node): # добавление элемента в дерево 
+						# принимает в себя корень и новый узел
+	if root is None: # пустой ли корень
+		root = node # если корень пуст, то присваиваем ему введенный узел
+	else:
+		if root.data > node.data: # больше ли элемент данного узла
+			if root.l_child is None: # пустой ли левый ребенок
+				root.l_childe = node # присваиваем ему узел
+			else: #если левый узел не пустой
+				insert(root.l_child, node) # повторяем функцию 
+										  # для левого поддерева
+		else:
+			if root.r_child is None: # пустой ли правый ребенок
+				root.r_childe = node # присваиваем ему узел
+			else: #если  правый узел не пустой
+				insert(root.r_child, node) # повторяем функцию 
+										  # для правого поддерева
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+\includeimage{0.8}{images/24_1.pdf}
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{Python}
+def in_order_print(root): # инфиксный вывод дерева
+	if not root: # пустой ли корень
+		return
+	in_order_print(root.l_child) # рекурсивно вызываем функцию 
+								# с левым ребенком
+print root.data # выводим данные
+in_order_print(root.r_child) # рекурсивно вызываем функцию с правым ребенком
+\end{minted}
+\end{tcolorbox}
+
+\includeimage{0.8}{images/24_2.pdf}
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{Python}
+def pre_order_print(root): # префиксный вывод дерева
+	if not root: # пустой ли корень
+		return
+	print root.data # выводим данные
+	pre_order_print(root.l_child) # рекурсивно вызываем функцию 
+								 # с левым ребенком
+	pre_order_print(root.r_child) # рекурсивно вызываем функцию 
+								 # с правым ребенком
+
+\end{minted}
+\end{tcolorbox}
+
+%\newpage
+\vspace{\baselineskip}
+\includeimage{0.8}{images/25_1.pdf}
+
+\vspace{\baselineskip}
+\section*{Раздел 5.2: Дерево двоичного поиска - удаление (C++)}
+
+\vspace{\baselineskip}
+Перед началом удаления, я хочу рассказать, что является деревом двоичного поиска (BST). Каждый узел в BST может иметь максимум две вершины (левая и правая дочерние). Левое поддерево вершины имеет ключ, меньший или равный ключу родительского узла. Правое поддерево узла имеет ключ больше, чем ключ родительского узла.
+
+\vspace{\baselineskip}
+Удаление узла в дереве при сохранении {\bfseries свойства} самого {\bfseries дерева двоичного поиска.}
+
+\vspace{\baselineskip}
+\includeimage{0.2}{images/25_2.pdf}
+
+\vspace{\baselineskip}
+При удалении узла необходимо учитывать три случая:
+
+\vspace{\baselineskip}
+\begin{itemize}
+  \item Случай 1: Удаляемый узел - это узел листа (узел со значением 22).
+  \item Случай 2: У удаляемого узла есть один дочерний элемент (узел со значением 26). 
+  \item Случай 3: У удаляемого узла есть оба дочерних узла (узел со значением 49).
+\end{itemize}
+
+\vspace{\baselineskip}
+{\bfseries Пояснения по случаям:}
+
+\begin{enumerate} 
+	\item Когда удаляемый узел является узлом листа, просто удалите узел и передайте nullptr его родительскому узлу.
+	\item Когда удаляемый узел имеет только один дочерний, скопируйте дочернее значение в значение узла и удалите ребёнка {\bfseries (преобразовано в случай 1)}
+	\item Если удаляемый узел имеет двух детей, то минимальное количество детей из его правого поддерева может быть скопировано в узел, а затем минимальное значение может быть удалено из правого поддерева узла {\bfseries (преобразовано в случай 2)}
+\end{enumerate}
+
+\vspace{\baselineskip}
+{\bfseries Примечание:} минимум в правом поддереве может иметь максимум одного ребенка, и этот правый ребенок, если у него есть левый ребенок, либо не минимальное значение, либо не следует свойству BST.
+
+\vspace{\baselineskip}
+Структура узла в дереве и код для удаления:
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}
+struct node // структура узла бинарного дерева
+{
+	int data; // данные
+	node *left, *right; // указатели на левое и правое поддерево
+};
+node* delete_node(node *root, int data) // удаление данных из бинарного дерева
+{
+	if(root == nullptr) return root; // если девево пустое, то ничего не 
+	// делаем
+// если данные меньше значения узла, повторяем удаление для левого поддерева
+	else if(data < root->data) root->left = delete_node(root->left, data); 
+// если данные больше значения узла, повторяем удаление для правого поддерева
+	else if(data > root->data) root->right = delete_node(root->right, data);
+// если они равны
+	else
+	{
+		if(root->left == nullptr && root->right == nullptr) //1 случай
+		{
+			free(root);
+			root = nullptr;
+		}
+		else if(root->left == nullptr)					  //2 случай
+		{
+			node* temp = root;
+			root = root->right;
+			free(temp);
+		}
+		else if(root->right ==nullptr)					  //2 случай
+		{
+			node* temp = root;
+			root = root->left;
+			free(temp);
+		}
+		else												//3 случай
+		{
+			node* temp = root->right;
+			while(temp->left != nullptr) temp = temp->left;
+			root->data = temp->data;
+			root->right = delete_node(root->right, temp->data);
+		}
+	}
+	return root;
+}
+
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Временная сложность приведенного кода - O(h), где h - это высота дерева.
+
+\vspace{\baselineskip}
+\section*{Раздел 5.3: Самый низкий предок в BST}
+
+\vspace{\baselineskip}
+Рассмотрим BST:
+
+\includeimage{0.2}{images/25_2.pdf}
+
+\vspace{\baselineskip}
+Самый низкий родоначальник 22 и 26 - 24
+
+\vspace{\baselineskip}
+Самый низкий родоначальник 26 и 49 - 46.
+
+\vspace{\baselineskip}
+Самый низкий родоначальник 22 и 24 - 24
+
+\vspace{\baselineskip}
+Свойство поиска двоичного дерева может быть использовано для нахождения узлов самого низкого предка
+
+\vspace{\baselineskip}
+{\bfseries Псевдокод:}
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{C}
+lowestCommonAncestor(root,node1,node2) //нахождение общего предка для 2 узлов
+{
+if(root == NULL) return NULL;
+else if(node1->data == root->data || node2->data == root->data) //один из узлов
+																//корень
+	return root; //возвращаем корень
+else if((node1->data <= root->data && node->data > root->data) //узлы по разные
+	|| (node2->data <= root->data && node1->data > root->data)){ //стороны 
+																//от корня
+	return root; //возвращаем корень
+	}
+else if(root->data >max(node1->data,node2->data)){ //узлы меньше корня
+//ищем общего предка для этих узлов в левом поддереве
+	return lowestCommonAncestor(root->left, node1, node2); 
+	}
+else{ //узлы больше корня
+//ищем общего предка для этих узлов в левом поддереве
+	return lowestCommonAncestor(root->right, node1, node2);		
+	}
+}
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+\section*{Раздел 5.4: Поиск в двоичном  дереве - Python}
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3]{Python}
+class Node(object): # узел двоичного дерева
+	def __init__(self, val):
+		self.l_child = None # Указатель на левое поддерево
+		self.r_child = None # Указатель на правое поддерево
+		self.val = val # Значение
+
+class BinarySearchTree(object): # Функция поиска в бинарном дереве
+	def insert(self, root, node):
+		if root is None: # если корень пустой, то корень равен узлу
+			return node
+		if root.val < node.val # если значение узла больше узла корня
+			root.r_child = self.insert(root.r_child, node) # ищем в правом поддереве
+		else:	# если меньше
+			root.l_child = self.insert(root.l_child, node) # ищем в левом поддереве
+		return root 
+
+	def in_order_place(self, root): # вывод в инфиксной форме
+		if not root: # пустой ли корень
+			return None
+		else:
+			self.in_order_place(root.l_child) # рекурсивно вызываем функцию 
+											  # с левым ребенком
+			print root.val # выводим данные
+			self.in_order_place(root.r_child) # рекурсивно вызываем функцию 
+											  # с правым ребенком
+
+	def pre_order_place(self, root):	# вывод в префиксной форме
+		if not root: # пустой ли корень
+			return None
+		else:
+			print root.val # выводим данные
+			self.pre_order_place(root.l_child) # рекурсивно вызываем функцию 
+											   # с левым ребенком
+			self.pre_order_place(root.r_child) # рекурсивно вызываем функцию 
+											   # с правым ребенком
+
+
+def post_order_place(self, root):	# вывод в постфиксной форме
+		if not root: # пустой ли корень
+			return None
+		else:
+			print root.val # выводим данные
+			self.pre_order_place(root.l_child) # рекурсивно вызываем функцию 
+											   # с левым ребенком
+			self.pre_order_place(root.r_child) # рекурсивно вызываем функцию 
+											   # с правым ребенком
+
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+"""Создать другой узел и вставить в него данные"""
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{Python}
+r = Node(3)				# создания корня со значением 3
+node = BinarySearchTree()			# создание бинарного дерева
+nodeList = [1, 8, 5, 12, 14, 6, 15, 7, 16, 8] # массив вводимых значений
+for nd in nodeList:				# заполнение дерева
+	node.insert(r, Node(nd))
+print "------In order ---------"			# вывод дерева 
+print (node.in_order_place(r))
+print "------Pre order ---------"
+print (node.pre_order_place(r))
+print "------Post order ---------"
+print (node.post_order_place(r))
+\end{minted}
+\end{tcolorbox}
+
+\chapter*{Глава 6: Проверка, является дерево BST или нет}
+
+\vspace{\baselineskip}
+\section*{Раздел 6.1: Алгоритм проверки, является ли данное двоичное дерево BST}
+
+\vspace{\baselineskip}
+Двоичное дерево является BST, если оно удовлетворяет одному из следующих условий:
+
+\begin{enumerate} 
+	\item Оно пусто.
+	\item У него нет поддерева
+	\item В дереве для каждого узла x все ключи (если таковые имеются) в левом поддереве должны быть меньше, чем ключ (x), а все ключи (любые) в правом поддереве должны быть больше, чем ключ(x).
+\end{enumerate}
+
+Так что прямолинейный рекурсивный алгоритм был бы такой:
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}[obeytabs=true,tabsize=3]{Python}
+is_BST(root): 	# является ли дерево бинарным поиска
+	if root == NULL: 	# если дерево пустое то оно BST
+		return true
+	# Проверка значения левого поддерева
+	if root->left != NULL;
+		max_key_in_left = find_max_key(root->left)  # максимальное значение 
+													# в левом поддереве
+		if max_key_in_left > root->key: # если оно больше корня, то оно не BST
+			return false
+
+	# Проверка правого поддерева
+	if root->right != NULL:
+		min_key_in_right = find_min_key(root->right)   # максимальное значение 
+													   # в правом поддереве
+		if min_key_in_right < root->key: # если оно меньше корня, то оно не BST
+			return false
+	return is_BST(root->left) && is_BST(root->right) # возвращаем значение 
+												# для левого и правого поддерева
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Вышеуказанный рекурсивный алгоритм корректен, но неэффективен, т.к. он обходит каждый узел несколько раз.
+
+\vspace{\baselineskip}
+Другой подход к минимизации многократных посещений каждого узла заключается в запоминании минимально и максимально возможных значений ключей в поддереве, которые мы посещаем. Пусть минимально возможное значение любого ключа будет K\_MIN, а максимальное значение будет K\_MAX. Когда мы начинаем с корня дерева, диапазон значений в дереве будет  [K\_MIN, K\_MAX]. Пусть ключ от корня узла будет х, тогда диапазон значений в левом поддереве равен [K\_MIN, x), а диапазон значений в правом поддереве равен (x, K\_MAX]. Мы будем использовать эту идею для разработки более эффективного алгоритма.
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{Python}
+is_BST(root, min, max):  # является ли дерево бинарным в заданном диапазоне
+if root == NULL	# если пустое, то является
+	return true
+
+# узел выходит за диапазон?
+if root->key < min || root->key >max # если нет, то возвращаем ложь
+	return false
+# проверка, являются ли левое и правое поддерево BST на диапозоне
+return if_BST(root->left,min,root->key-1) && is_BST(root->right,root->key+1,max)
+
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Первоначально он будет называться так:
+
+\vspace{\baselineskip}
+\begin{tcolorbox}
+\begin{minted}{Python}
+is_BST(my_tree_root, KEY_MIN, KEY_MAX)
+\end{minted}
+\end{tcolorbox}
+
+\vspace{\baselineskip}
+Другой подход будет заключаться в обходе двоичного дерева. Если обход по порядку производит отсортированную последовательность ключей, то данное дерево является BST. Чтобы проверить, отсортирована ли последовательность ключей, запомните значение ранее посещенного узла и сравните его с текущим узлом.

@@ -1,0 +1,23 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} Задача о рюкзаке}
+\PYG{k}{def} \PYG{n+nf}{knapSack}\PYG{p}{(}\PYG{n}{W}\PYG{p}{,} \PYG{n}{wt}\PYG{p}{,} \PYG{n}{val}\PYG{p}{,} \PYG{n}{n}\PYG{p}{):}
+	\PYG{n}{K} \PYG{o}{=} \PYG{p}{[[}\PYG{l+m+mi}{0} \PYG{k}{for} \PYG{n}{x} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{W}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)]} \PYG{k}{for} \PYG{n}{x} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{n}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)]} \PYG{c+c1}{\PYGZsh{} Максимальная стоимость}
+	\PYG{c+c1}{\PYGZsh{} предметов, которые можно уложить в рюкзак вместимости W, если можно}
+	\PYG{c+c1}{\PYGZsh{} использовать только первые n предметов}
+	\PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{n}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{):}
+		\PYG{k}{for} \PYG{n}{w} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{W}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{):}
+			\PYG{k}{if} \PYG{n}{i}\PYG{o}{==}\PYG{l+m+mi}{0} \PYG{o+ow}{or} \PYG{n}{w}\PYG{o}{==}\PYG{l+m+mi}{0}\PYG{p}{:}
+				\PYG{n}{K}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{w}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0} \PYG{c+c1}{\PYGZsh{} Предмет не лежит в рюкзаке}
+			\PYG{k}{elif} \PYG{n}{wt}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{\PYGZlt{}=} \PYG{n}{w}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} Вес i\PYGZhy{}1 предмета меньше вместимости рюкзака}
+				\PYG{n}{K}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{w}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{max}\PYG{p}{(}\PYG{n}{val}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+} \PYG{n}{K}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{][}\PYG{n}{w}\PYG{o}{\PYGZhy{}}\PYG{n}{wt}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]],}  \PYG{n}{K}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{][}\PYG{n}{w}\PYG{p}{])} \PYG{c+c1}{\PYGZsh{} Выбираем}
+			    \PYG{c+c1}{\PYGZsh{} предмет наибольшей стоимости}
+			\PYG{k}{else}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} Не берем предмет с номером i}
+				\PYG{n}{K}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{w}\PYG{p}{]} \PYG{o}{=} \PYG{n}{K}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{][}\PYG{n}{w}\PYG{p}{]}
+	\PYG{k}{return} \PYG{n}{K}\PYG{p}{[}\PYG{n}{n}\PYG{p}{][}\PYG{n}{W}\PYG{p}{]} \PYG{c+c1}{\PYGZsh{} Выводим максимальную стоимость предметов, которые мы кладем}
+	               \PYG{c+c1}{\PYGZsh{} в рюкзак}
+\PYG{n}{val} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{60}\PYG{p}{,} \PYG{l+m+mi}{100}\PYG{p}{,} \PYG{l+m+mi}{120}\PYG{p}{]} \PYG{c+c1}{\PYGZsh{} Входные значения стоимостей}
+\PYG{n}{wt} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{10}\PYG{p}{,} \PYG{l+m+mi}{20}\PYG{p}{,} \PYG{l+m+mi}{30}\PYG{p}{]} \PYG{c+c1}{\PYGZsh{} Входные значения весов}
+\PYG{n}{W} \PYG{o}{=} \PYG{l+m+mi}{50} \PYG{c+c1}{\PYGZsh{} Вместимость рюкзака}
+\PYG{n}{n} \PYG{o}{=} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{val}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} Количество предметов}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{knapSack}\PYG{p}{(}\PYG{n}{W}\PYG{p}{,} \PYG{n}{wt}\PYG{p}{,} \PYG{n}{val}\PYG{p}{,} \PYG{n}{n}\PYG{p}{))} \PYG{c+c1}{\PYGZsh{} Вывод ответа к задаче}
+\end{Verbatim}

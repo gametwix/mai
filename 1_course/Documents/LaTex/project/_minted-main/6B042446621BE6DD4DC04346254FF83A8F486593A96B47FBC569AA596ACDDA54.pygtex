@@ -1,0 +1,24 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{cost}\PYG{p}{[}\PYG{n}{N}\PYG{p}{][}\PYG{n}{N}\PYG{p}{];} \PYG{c+c1}{// Установить значение N, если необходимо}
+\PYG{k+kt}{int} \PYG{n}{memo}\PYG{p}{[}\PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{N}\PYG{p}{][}\PYG{n}{N}\PYG{p}{];} \PYG{c+c1}{// Установить здесь все на \PYGZhy{}1}
+\PYG{c+c1}{// Задача коммивояжера}
+\PYG{k+kt}{int} \PYG{n+nf}{TSP}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{bitmask}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{pos}\PYG{p}{)\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{cost} \PYG{o}{=} \PYG{n}{INF}\PYG{p}{;} \PYG{c+c1}{// Присваиваем бесконечно большое значение стоимости}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{bitmask} \PYG{o}{==} \PYG{p}{((}\PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{N}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{))\PYGZob{}} \PYG{c+c1}{// Если все вершины были посещены}
+		\PYG{k}{return} \PYG{n}{cost}\PYG{p}{[}\PYG{n}{pos}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{];} \PYG{c+c1}{// Стоимость возвращения}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{memo}\PYG{p}{[}\PYG{n}{bitmask}\PYG{p}{][}\PYG{n}{pos}\PYG{p}{]} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)\PYGZob{}} \PYG{c+c1}{// Если данное значение уже было вычислено}
+		\PYG{k}{return} \PYG{n}{memo}\PYG{p}{[}\PYG{n}{bitmask}\PYG{p}{][}\PYG{n}{pos}\PYG{p}{];} \PYG{c+c1}{// Просто возвратить значение,}
+		                          \PYG{c+c1}{// не нужно пересчитывать}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)\PYGZob{}} \PYG{c+c1}{// Для каждой вершины}
+		\PYG{k}{if} \PYG{p}{((}\PYG{n}{bitmask} \PYG{o}{\PYGZam{}} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{i}\PYG{p}{))} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)\PYGZob{}} \PYG{c+c1}{// Если вершина не была посещена}
+			\PYG{n}{cost} \PYG{o}{=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{cost}\PYG{p}{,}\PYG{n}{TSP}\PYG{p}{(}\PYG{n}{bitmask} \PYG{o}{|}
+			\PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{i}\PYG{p}{)} \PYG{p}{,} \PYG{n}{i}\PYG{p}{)} \PYG{o}{+} \PYG{n}{cost}\PYG{p}{[}\PYG{n}{pos}\PYG{p}{][}\PYG{n}{i}\PYG{p}{]);} \PYG{c+c1}{// Посетить вершину}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{n}{memo}\PYG{p}{[}\PYG{n}{bitmask}\PYG{p}{][}\PYG{n}{pos}\PYG{p}{]} \PYG{o}{=} \PYG{n}{cost}\PYG{p}{;} \PYG{c+c1}{// Сохранить результат}
+	\PYG{k}{return} \PYG{n}{cost}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{//Вызвать TSP(1,0)}
+\end{Verbatim}

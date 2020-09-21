@@ -1,0 +1,32 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c}{(* вариант утилиты *)}
+\PYG{k}{let} \PYG{n}{optmin} \PYG{n}{x} \PYG{n}{y} \PYG{o}{=}
+	\PYG{c}{(* если в паре есть один элемент None, то получить соседнее значение *)}
+	\PYG{k}{match} \PYG{n}{x}\PYG{o}{,} \PYG{n}{y} \PYG{k}{with}
+	\PYG{o}{|} \PYG{n+nc}{None}\PYG{o}{,} \PYG{n}{a} \PYG{o}{|} \PYG{n}{a}\PYG{o}{,} \PYG{n+nc}{None} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{a}
+	\PYG{o}{|} \PYG{n+nc}{Some} \PYG{n}{x}\PYG{o}{,} \PYG{n+nc}{Some} \PYG{n}{y} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n+nc}{Some} \PYG{o}{(}\PYG{n}{min} \PYG{n}{x} \PYG{n}{y}\PYG{o}{)}
+
+\PYG{c}{(* инкремент входного аргумента, за исключением None *)}
+\PYG{k}{let} \PYG{n}{optsucc} \PYG{o}{=} \PYG{k}{function}
+	\PYG{o}{|} \PYG{n+nc}{Some} \PYG{n}{x} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n+nc}{Some} \PYG{o}{(}\PYG{n}{x}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{o}{)}
+	\PYG{o}{|} \PYG{n+nc}{None} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n+nc}{None}
+
+\PYG{c}{(* Проблема изменения *)}
+\PYG{k}{let} \PYG{n}{change\PYGZus{}make} \PYG{n}{money\PYGZus{}system} \PYG{n}{amount} \PYG{o}{=}
+	\PYG{k}{let} \PYG{k}{rec} \PYG{n}{loop} \PYG{n}{n} \PYG{o}{=}
+		\PYG{k}{let} \PYG{n}{onepiece} \PYG{n}{acc} \PYG{n}{piece} \PYG{o}{=}
+			\PYG{c}{(* если разница долга и сдачи равна 0, то *)}
+			\PYG{k}{match} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{n}{piece} \PYG{k}{with}
+			\PYG{o}{|} \PYG{l+m+mi}{0} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{c}{(* проблема решена одной монетой *)}
+				\PYG{n+nc}{Some} \PYG{l+m+mi}{1}
+			\PYG{o}{|} \PYG{n}{x} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{k}{if} \PYG{n}{x} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0} \PYG{k}{then}
+				\PYG{c}{(* если не достигаем 0, то отбрасываем это решение *)}
+				\PYG{n+nc}{None}
+			\PYG{k}{else}
+				\PYG{c}{(* ищем наименьший путь, отличный от None с остальными частями *)}
+				\PYG{n}{optmin} \PYG{o}{(}\PYG{n}{optsucc} \PYG{o}{(}\PYG{n}{loop} \PYG{n}{x}\PYG{o}{))} \PYG{n}{acc}
+	\PYG{k}{in}
+	\PYG{c}{(* называем onepiece для всех частей *)}
+	\PYG{n+nn}{List}\PYG{p}{.}\PYG{n}{fold\PYGZus{}left} \PYG{n}{onepiece} \PYG{n+nc}{None} \PYG{n}{money\PYGZus{}system}
+\PYG{k}{in} \PYG{n}{loop} \PYG{n}{amount}
+\end{Verbatim}

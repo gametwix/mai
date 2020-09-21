@@ -1,0 +1,58 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}math.h\PYGZgt{}}
+
+\PYG{c+c1}{// PI для вычисления sin или cos}
+\PYG{c+cp}{\PYGZsh{}define PI       3.1415926535897932384626433832795}
+
+\PYG{c+c1}{// 2*PI для вычисления sin или cos}
+\PYG{c+cp}{\PYGZsh{}define TWOPI    6.283185307179586476925286766559}
+
+\PYG{c+c1}{// Коэффициент для перевода из градусов в радианы}
+\PYG{c+cp}{\PYGZsh{}define Deg2Rad  0.017453292519943295769236907684886}
+
+\PYG{c+c1}{// Коэффициент для перевода из радиан в градусы}
+\PYG{c+cp}{\PYGZsh{}define Rad2Deg  57.295779513082320876798154814105}
+
+\PYG{c+c1}{// Логарифм числа 2 по основанию 10}
+\PYG{c+cp}{\PYGZsh{}define log10\PYGZus{}2  0.30102999566398119521373889472449}
+
+\PYG{c+c1}{// 1/Log10(2)}
+\PYG{c+cp}{\PYGZsh{}define log10\PYGZus{}2\PYGZus{}INV 3.3219280948873623478703194294948}
+
+\PYG{c+c1}{// структура: комплексная переменная (двойная точность)}
+\PYG{k}{struct} \PYG{n}{complex}
+\PYG{p}{\PYGZob{}}
+\PYG{n+nl}{public}\PYG{p}{:}
+	\PYG{k+kt}{double}  \PYG{n}{Re}\PYG{p}{,} \PYG{n}{Im}\PYG{p}{;}        \PYG{c+c1}{// Не так уж и сложно в конце концов}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{k+kt}{void} \PYG{n+nf}{rad2InverseFFT}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{N}\PYG{p}{,} \PYG{n}{complex} \PYG{o}{*}\PYG{n}{x}\PYG{p}{,} \PYG{n}{complex} \PYG{o}{*}\PYG{n}{DFT}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{// M \PYGZhy{} это количество итераций, которые нужно выполнить. 2\PYGZca{}M = N	}
+	\PYG{k+kt}{double} \PYG{n}{Mx} \PYG{o}{=} \PYG{p}{(}\PYG{n}{log10}\PYG{p}{((}\PYG{k+kt}{double}\PYG{p}{)}\PYG{n}{N}\PYG{p}{)} \PYG{o}{/} \PYG{n}{log10}\PYG{p}{((}\PYG{k+kt}{double}\PYG{p}{)}\PYG{l+m+mi}{2}\PYG{p}{));}
+	\PYG{k+kt}{int} \PYG{n}{a} \PYG{o}{=} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)(}\PYG{n}{ceil}\PYG{p}{(}\PYG{n}{pow}\PYG{p}{(}\PYG{l+m+mf}{2.0}\PYG{p}{,} \PYG{n}{Mx}\PYG{p}{)));}
+	\PYG{k+kt}{int} \PYG{n}{status} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{a} \PYG{o}{!=} \PYG{n}{N}\PYG{p}{)} \PYG{c+c1}{// Проверить, является ли N степенью 2}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{x} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+		\PYG{n}{DFT} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{throw} \PYG{l+s}{\PYGZdq{}rad2InverseFFT(): N must be a power of 2 for Radix 2 Inverse FFT\PYGZdq{}}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+
+	\PYG{n}{complex} \PYG{o}{*}\PYG{n}{pDFT} \PYG{o}{=} \PYG{n}{DFT}\PYG{p}{;}        \PYG{c+c1}{// Сбросить вектор для указателей DFT}
+	\PYG{n}{complex} \PYG{o}{*}\PYG{n}{pX} \PYG{o}{=} \PYG{n}{x}\PYG{p}{;}            \PYG{c+c1}{// Сбросить вектор для указателя x[n]}
+	\PYG{k+kt}{double} \PYG{n}{NN} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{o}{/} \PYG{p}{(}\PYG{k+kt}{double}\PYG{p}{)}\PYG{n}{N}\PYG{p}{;}  \PYG{c+c1}{// Коэффициент уточнения для обратного FFT}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{,} \PYG{n}{DFT}\PYG{o}{++}\PYG{p}{)}
+		\PYG{n}{DFT}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Im} \PYG{o}{*=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{c+c1}{// Найти комплексное сопряжение частотного спектра}
+
+	\PYG{n}{DFT} \PYG{o}{=} \PYG{n}{pDFT}\PYG{p}{;}                 \PYG{c+c1}{// Сбросить DFT(Указатель Частотной Области)}
+	\PYG{n}{rad2FFT}\PYG{p}{(}\PYG{n}{N}\PYG{p}{,} \PYG{n}{DFT}\PYG{p}{,} \PYG{n}{x}\PYG{p}{);} \PYG{c+c1}{// Выполнить прямой FFT с замененными переменными}
+
+	\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{;}
+	\PYG{n}{complex}\PYG{o}{*} \PYG{n}{x}\PYG{p}{;}
+	\PYG{k}{for} \PYG{p}{(} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{x} \PYG{o}{=} \PYG{n}{pX}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{,} \PYG{n}{x}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+\PYG{n}{x}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Re} \PYG{o}{*=} \PYG{n}{NN}\PYG{p}{;} \PYG{c+c1}{// Разделить временную область на N для точного вычисления амплитуды}
+\PYG{n}{x}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Im} \PYG{o}{*=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}    \PYG{c+c1}{// Изменить обозначение ImX}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
