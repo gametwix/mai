@@ -68,17 +68,19 @@ def find_fams(lines):
     return fams
 
 def construct(names,sexs,fams):
-    answers = []
+    answers = [[],[]]
     for family in fams:
         for parent in family[0]:
             for child in family[1]:
                 try:
                     if sexs[parent] == 'M':
                         ans = 'father('+names[parent]+','+names[child]+').'
+                        answers[0].append(ans)
                         #print(ans)
                     else: 
                         ans = 'mother('+names[parent]+','+names[child]+').'
-                    answers.append(ans)
+                        answers[1].append(ans)
+                    
                 except:
                     print("Dont have item with id "+str(parent) +"or " + str(child))
                 
@@ -105,7 +107,10 @@ if __name__ == '__main__':
 
 
     with open("ans.pl","w") as p:
-        for answer in answers:
+        for answer in answers[0]:
             p.write(answer+'\n')
+        for answer in answers[1]:
+            p.write(answer+'\n')
+
    
 
