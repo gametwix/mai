@@ -5,12 +5,17 @@ class BritishMoney
 {
     private:
 
+        unsigned long long pounds;
+        unsigned char shilling;
+        unsigned char penny;    
 
         BritishMoney sum(const BritishMoney &a,const BritishMoney &b);
 
         BritishMoney diff(BritishMoney a,BritishMoney b);
 
-        BritishMoney norm(BritishMoney a);
+        BritishMoney norm(const BritishMoney &a);
+
+        void norm();
         
         double div(BritishMoney a,BritishMoney b);
 
@@ -18,9 +23,38 @@ class BritishMoney
         
 
     public:
-        unsigned long long pounds;
-        unsigned char shilling;
-        unsigned char penny;
+        //операции ввода вывода
+        friend std::ostream& operator<< (std::ostream &out, const BritishMoney &a)
+        {
+            out << a.pounds << " " << (int)a.shilling << " " << (int)a.penny;
+            return out;
+        }
+
+        friend std::istream& operator>>(std::istream &in, BritishMoney &a)
+        {
+            unsigned long long pounds;
+            int shilling;
+            int penny;
+            BritishMoney c;
+            in >> pounds >> shilling >> penny;
+            a.pounds = pounds;  
+            a.shilling = shilling;
+            a.penny = penny;
+            a.norm();
+            return in;
+        }
+
+
+        void get(unsigned long long pounds, int shilling,int penny)
+        {
+            this->pounds = pounds;
+            this->shilling = shilling;
+            this->penny = penny;
+            norm(*this);
+        }
+
+        void print();
+
         BritishMoney()
         {
             this->pounds = 0;
@@ -28,10 +62,15 @@ class BritishMoney
             this->penny = 0;
         }
 
+        //операция присваивания
+        void operator =(const BritishMoney &b)
+        {
+            pounds = b.pounds;
+            shilling = b.shilling;
+            penny = b.penny;
+        }
 
-        void print();
-        
-
+        //арефимитические операции
         BritishMoney operator+(BritishMoney b)
         {
             return sum(*this,b);
@@ -41,8 +80,6 @@ class BritishMoney
         {
             return diff(*this,b);
         }
-
-        
 
         BritishMoney operator*(double b) 
         {
@@ -61,13 +98,7 @@ class BritishMoney
             return div(*this,b);
         }
 
-        void operator =(const BritishMoney &b)
-        {
-            this->pounds = b.pounds;
-            this->shilling = b.shilling;
-            this->penny = b.penny;
-        }
-
+        //операции сравнения
         bool operator==(const BritishMoney &b)
         {
             if(this->pounds == b.pounds && this->shilling == b.shilling && this->penny == b.penny)
@@ -79,7 +110,6 @@ class BritishMoney
         {
             return !(*this == b);
         }
-
 
         bool operator>(const BritishMoney &b)
         {

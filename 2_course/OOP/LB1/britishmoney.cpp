@@ -1,6 +1,38 @@
 #include "britishmoney.hpp"
 
 
+BritishMoney BritishMoney::norm(const BritishMoney &a)
+{
+    BritishMoney c;
+    c = a;
+    //если количество монет больше максимума,то переносим на больший разряд
+    if((int)c.penny>=12)
+        {
+            c.shilling += (int)c.penny/12;
+            c.penny = (int)c.penny%12;
+        }
+        if((int)c.shilling>=20)
+        {
+            c.pounds += (int)c.shilling/20;
+            c.shilling = (int)c.shilling%20;
+        }
+    return c;
+}
+
+void BritishMoney::norm()
+{
+     if((int)this->penny>=12)
+        {
+            this->shilling += (int)this->penny/12;
+            this->penny = (int)this->penny%12;
+        }
+        if((int)this->shilling>=20)
+        {
+            this->pounds += (int)this->shilling/20;
+            this->shilling = (int)this->shilling%20;
+        }
+}
+
 BritishMoney BritishMoney::sum(const BritishMoney &a,const BritishMoney &b)
 {
     BritishMoney c;
@@ -33,22 +65,6 @@ BritishMoney BritishMoney::diff(BritishMoney a,BritishMoney b)
         c.pounds=a.pounds-b.pounds-minuspound;
     }
     return c;
-}
-
-BritishMoney BritishMoney::norm(BritishMoney a)
-{
-    //если количество монет больше максимума,то переносим на больший разряд
-    if((int)a.penny>=12)
-        {
-            a.shilling += (int)a.penny/12;
-            a.penny = (int)a.penny%12;
-        }
-        if((int)a.shilling>=20)
-        {
-            a.pounds += (int)a.shilling/20;
-            a.shilling = (int)a.shilling%20;
-        }
-    return a;
 }
 
 double BritishMoney::div(BritishMoney a,BritishMoney b)
