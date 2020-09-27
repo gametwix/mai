@@ -92,7 +92,7 @@ def construct(names,sexs,fams):
 if __name__ == '__main__':
     lines = []
 
-    with open("gods_v1.ged", "r", encoding="utf-8") as f:
+    with open("tree.ged", "r", encoding="utf-8") as f:
         for line in f:
             lines.append(line)
 
