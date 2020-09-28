@@ -1,4 +1,6 @@
+//Функции объявле
 #include "britishmoney.hpp"
+
 
 
 BritishMoney BritishMoney::norm(const BritishMoney &a)

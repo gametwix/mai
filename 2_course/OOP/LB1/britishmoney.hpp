@@ -1,3 +1,5 @@
+//Класс для взаимодействия с суммами британских денег
+
 #include <iostream>
 
 
@@ -37,9 +39,19 @@ class BritishMoney
             int penny;
             BritishMoney c;
             in >> pounds >> shilling >> penny;
-            a.pounds = pounds;  
-            a.shilling = shilling;
-            a.penny = penny;
+            if (pounds >= 0 && shilling >= 0 && penny >= 0)
+            {
+                a.pounds = pounds;  
+                a.shilling = shilling;
+                a.penny = penny;
+            }
+            else
+            {
+                a.pounds = 0;  
+                a.shilling = 0;
+                a.penny = 0;
+            }
+            
             a.norm();
             return in;
         }
