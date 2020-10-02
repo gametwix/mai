@@ -1,31 +1,42 @@
 #include "vector.hpp"
+#include "carnum.hpp"
 #include <iostream>
 
-class Dd
+
+class TBase_elem
 {
     public:
-    int a;
-    void operator =(int b)
+    NCarnum::TCarnum Carnum;
+    char Str[64];
+
+    TBase_elem()
     {
-        a+=b;
+        for(int i = 0; i<64;i++)
+        {
+            Str[i] = '\0';
+        }
     }
-    void operator =(Dd b)
-    {
-        this->a+=b.a;
-    }
-    Dd()
-    {
-        std::cout << "i alive" << std::endl;
-        a = 3;
-    }
+
+    friend std::istream& operator>>(std::istream &in, TBase_elem &elem)
+        {
+            in >> elem.Carnum;
+            in.peek();
+            in >> elem.Str;
+            return in;
+        }
+
+    friend std::ostream& operator<< (std::ostream &out, const TBase_elem &elem)
+        {
+            out << elem.Carnum << "\t" <<  elem.Str;
+            return out;
+        }
 };
+
 
 
 int main()
 {
-    NVector::TVector<int> a;
-    for(int i = 0; i < a.End();++i)
-    {
-        std::cout<< a[i] << std::endl;
-    }
+    TBase_elem elem;
+    std::cin >> elem;
+    std::cout << elem << std::endl;
 }
