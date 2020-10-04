@@ -49,4 +49,4 @@ mother(joanna,tyrion).
 parent(X,Y):-mother(X,Y).
 parent(X,Y):-father(X,Y).
 
-third(X,Y):-parent(Z1,X),parent(Z2,Z1),parent(Z2,Z3),parent(Z3,Y).
+third(X,Y):-parent(Z1,X),parent(Z2,Z1),parent(Z2,Z3),parent(Z3,Y),Z3\=Z1,X\=Y.
