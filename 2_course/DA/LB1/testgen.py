@@ -34,7 +34,7 @@ if __name__ == '__main__':
 
     dd = generate()
     for i in range(10):
-        with open("tests/test_"+str(i),"w") as f:
+        with open("tests/test_"+str(i)+".t","w") as f:
             for d in dd:
                 f.write(d.sym[0] + ' ' + str(d.num).rjust(3,'0') + ' ' + d.sym[1] + d.sym[2] + '\t'+d.strk + '\n')
 
@@ -43,7 +43,7 @@ if __name__ == '__main__':
         dd = sorted(dd,key=lambda x: x.num)
         dd = sorted(dd,key=lambda x: x.sym[0])
 
-        with open("answers/ans_"+str(i),"w") as f:
+        with open("tests/test_"+str(i)+".a","w") as f:
             for d in dd:
                 f.write(d.sym[0] + ' ' + str(d.num).rjust(3,'0') + ' ' + d.sym[1] + d.sym[2] + '\t'+d.strk + '\n')
     

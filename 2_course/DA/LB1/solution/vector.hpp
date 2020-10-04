@@ -76,17 +76,12 @@ namespace NVector
 
 
     template <typename T>
-    void TVector<T>::Copy(T* old_data, size_t begin, size_t end, T* new_data)    
+    void TVector<T>::Copy(T* &old_data, size_t begin, size_t end, T* &new_data)    
     {
-        size_t new_size = sizeof(new_data) / sizeof(T);
+       
         for(size_t i = 0; i < (end - begin);++i)
         {
-            //if(i<=new_size)
-            //{
-                new_data[i] = old_data[begin+i];
-           //} 0x4d97420
-            //else
-                //break;
+            new_data[i] = old_data[begin+i];
         }
     }
 
@@ -96,8 +91,9 @@ namespace NVector
     {
         T * new_data = new T[new_size];
         Copy(old_data,0,min(old_size,new_size),new_data);
-        delete old_data;
+        delete(old_data);
         old_data = new_data;
+        new_data = nullptr;
     }
 
 
