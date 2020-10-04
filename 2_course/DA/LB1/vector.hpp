@@ -33,7 +33,16 @@ namespace NVector
         void Push_back(T ins);
         int Size();
         T& operator [](size_t iter);
-
+        void operator=(TVector<T> second_vect)
+        {
+            delete(this->Data);
+            this->Size_data = 0;
+            this->Size_malloc = 0;
+            for(int i = 0;i<second_vect.End();++i)
+            {
+                this->Push_back(second_vect.Data[i]);
+            }
+        }
 
         //TVector(std::initializer_list<T> list);
 
@@ -107,6 +116,7 @@ namespace NVector
         Size_malloc = new_size;
     }
 
+    
 
     template <typename T>
     void TVector<T>::Push_back(T ins)
@@ -120,7 +130,7 @@ namespace NVector
             }
             else
             { 
-                Resize(Data,Size_malloc,Size_malloc*2);
+                Resize(Data,Size_malloc,Size_malloc+1);
                 ++Size_malloc;
             }
 

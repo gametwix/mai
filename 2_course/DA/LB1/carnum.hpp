@@ -6,28 +6,37 @@ namespace NCarnum
     class TCarnum
     {
         public:
-        int num;
-        char sym[3];
+        int Num;
+        char Sym[3];
 
         TCarnum()
         {
-            num = 0;
+            Num = 0;
 
             for(int i=0;i<3;++i)
             {
-                sym[i] = 'A';
+                Sym[i] = 'A';
+            }
+        }
+
+        void operator=(TCarnum &second_elem)
+        {
+            this->Num = second_elem.Num;
+            for(int i=0;i<3;++i)
+            {
+                this->Sym[i] = second_elem.Sym[i];
             }
         }
 
         friend std::istream& operator>>(std::istream &in, TCarnum &carnum)
         {
-            in >> carnum.sym[0] >> carnum.num >> carnum.sym[1] >> carnum.sym[2];
+            in >> carnum.Sym[0] >> carnum.Num >> carnum.Sym[1] >> carnum.Sym[2];
             return in;
         }
 
         friend std::ostream& operator<< (std::ostream &out, const TCarnum &carnum)
         {
-            out << carnum.sym[0] << " " <<  std::setfill('0') << std::setw(3) << carnum.num << " " << carnum.sym[1] << carnum.sym[2];
+            out << carnum.Sym[0] << " " <<  std::setfill('0') << std::setw(3) << carnum.Num << " " << carnum.Sym[1] << carnum.Sym[2];
             return out;
         }
         

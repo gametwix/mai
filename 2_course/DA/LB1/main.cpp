@@ -17,6 +17,17 @@ class TBase_elem
         }
     }
 
+    void operator=(TBase_elem &second_elem)
+    {
+        this->Carnum = second_elem.Carnum;
+        for(int i=0;i<64;++i)
+        {
+            this->Str[i] = second_elem.Str[i];
+        }
+        
+    }
+
+
     friend std::istream& operator>>(std::istream &in, TBase_elem &elem)
         {
             in >> elem.Carnum;
@@ -32,11 +43,47 @@ class TBase_elem
         }
 };
 
+NVector::TVector<TBase_elem> Sort_ch(NVector::TVector<TBase_elem> &base, int num)
+{
+    int k[26] = {};
+    NVector::TVector<TBase_elem> newbase;
 
+    for(int i = 0;i < base.End();++i)
+    {
+        ++k[(int)base[i].Carnum.Sym[num]-65];
+    }
+    for(int i=1;i<26;++i)
+    {
+        k[i]+=k[i-1];
+    }
+    for(int i = base.End() - 1;i >= 0;--i)
+    {
+        newbase[k[(int)base[i].Carnum.Sym[num]-65]] = base[i];
+    }
+    return newbase;
+}
+
+void Sort(NVector::TVector<TBase_elem> &base)
+{
+    base = Sort_ch(base,0);
+}
 
 int main()
 {
     TBase_elem elem;
-    std::cin >> elem;
-    std::cout << elem << std::endl;
+    NVector::TVector<TBase_elem> base;
+    while(std::cin >> elem)
+    {
+        //std::cout << elem << std::endl;
+        base.Push_back(elem);
+    }
+
+    Sort(base);
+    std::cout << "1" << base.End()<<base[0]<< std::endl;
+    for(int i = 0; i < base.End(); ++i)
+    {
+        std::cout << base[i] << std::endl;
+    }
+
+   
 }
