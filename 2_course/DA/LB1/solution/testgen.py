@@ -11,7 +11,7 @@ class data:
 def generate():
 
     dd=[]
-    rint = random.randint(1, 1000)
+    rint = random.randint(10000, 100000)
     for i in range(0,rint,1):
         num = random.randint(0,999)
         sym = []
@@ -50,7 +50,7 @@ if __name__ == '__main__':
 
 
 
-            
+
 
 
 

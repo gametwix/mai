@@ -1,156 +1,151 @@
-#include <cstddef>
-#include <initializer_list>
-#include <iostream>
+#ifndef VECTOR
+#define VECTOR
 
+#include <cstring>
+#include <cstddef>
+#include <iostream>
 
 namespace NVector
 {
-    int min(int first, int second)
+    int min(int a,int b)
     {
-        if(first < second)
-            return first;
-        else
-            return second;
+        if(a < b) return a;
+        else return b;
     }
-
+    
     template <typename T>
     class TVector
     {
         protected:
+        T *Data;
+        size_t Size_data;
+        size_t Size_malloc;
 
-        T *Data;                //Укачатель на массив объектов
-        size_t Size_data;       //Длина массива
-        size_t Size_malloc;     //Доступная длина
-
-        void Resize(T*& old_data, size_t old_size, size_t new_size);
-        void Copy(T* old_data, size_t begin, size_t end, T* new_data);
-
-        public:
-
-        void Resize(size_t new_size);
-        TVector();
-        int Begin();
-        int End();
-        void Push_back(T ins);
-        T& operator [](size_t iter);
-
-
-        void operator=(TVector<T> second_vect)
+        void Resize(size_t newsize)
         {
-            //delete(Data);
+            T *new_data = new T[newsize];
+
+            std::memcpy(new_data,Data,sizeof(T)*Size_data);
+            //Copy(Data,new_data,0,min(Size_data,newsize));
+            delete[] Data;
+            Data = nullptr;
+            Data = new_data;
+        }
+
+        void Copy(T*& data1, T*& data2, size_t begin, size_t end)
+        {
+            for(int i=0;i < (end-begin); ++i)
+            {
+                data2[i] = data1[begin+i];
+            }
+        }
+
+        void Clear()
+        {
+            delete[] Data;
             Data = nullptr;
             Size_data = 0;
             Size_malloc = 0;
-            for(int i = 0;i<second_vect.End();++i)
+        }
+        
+
+        public:
+
+        TVector()
+        {
+            Data = nullptr;
+            Size_data = 0;
+            Size_malloc = 0;
+        }
+
+        ~TVector()
+        {
+            Clear();
+        }
+        
+
+        const int Size()
+        const 
+        {
+            return Size_data;
+        }
+
+
+        int Size()
+        {
+            return Size_data;
+        }
+
+        void Renew(size_t new_size)
+        {
+            Resize(new_size);
+            Size_data = new_size;
+            Size_malloc = new_size;
+        }
+
+        T* Begin()
+        {
+            return Data;
+        }
+
+        T* End()
+        {
+            return &Data[Size()];
+        }
+        
+        
+
+        void Push_back(const T& item)
+        {
+
+            if(Size_data+1 > Size_malloc)
             {
-                Push_back(second_vect.Data[i]);
+                if(Size_malloc == 0)
+                    Size_malloc = 2;
+                else 
+                    Size_malloc *= 2;
+
+
+                size_t newsize= Size_malloc;
+                T *new_data = new T[newsize];
+
+                std::memcpy(new_data,Data,sizeof(T)*Size_data);
+                //Copy(Data,new_data,0,min(Size_data,newsize));
+                delete[] Data;
+                Data = nullptr;
+                Data = new_data;
+                // Resize(Size_malloc);
             }
-            //delete(second_vect.Data);
-        }
-        
-
-    
-
-    }; // class TVector
-
-    template <typename T>
-    TVector<T>::TVector()
-    {
-        Size_data = 0;
-        Size_malloc = 0;
-        Data = nullptr;
-    }
-
-    
-    template <typename T>
-    int TVector<T>::Begin()
-    {
-        return 0;
-    }
-
-    template <typename T>
-    int TVector<T>::End()
-    {
-        return Size_data;
-    }
-
-
-    template <typename T>
-    void TVector<T>::Copy(T* &old_data, size_t begin, size_t end, T* &new_data)    
-    {
-       
-        for(size_t i = 0; i < (end - begin);++i)
-        {
-            new_data[i] = old_data[begin+i];
-        }
-    }
-
-
-    template <typename T>
-    void TVector<T>::Resize(T*& old_data, size_t old_size, size_t new_size)
-    {
-        T * new_data = new T[new_size];
-        Copy(old_data,0,min(old_size,new_size),new_data);
-        delete(old_data);
-        old_data = new_data;
-        new_data = nullptr;
-    }
-
-
-    template <typename T>
-    void TVector<T>::Resize(size_t new_size)
-    {
-        Resize(this->Data,Size_malloc,new_size);
-        Size_malloc = new_size;
-        Size_data = new_size;
-    }
-
-    
-
-    template <typename T>
-    void TVector<T>::Push_back(T ins)
-    {
-        if (Size_data+1 > Size_malloc)
-        {
-            if(Size_malloc != 0)
-            { 
-                Resize(Data,Size_malloc,Size_malloc*2);
-                Size_malloc*= 2;
-            }
-            else
-            { 
-                Resize(Data,Size_malloc,Size_malloc+1);
-                ++Size_malloc;
-            }
-
-           
+            
+            Data[Size_data] = item;
+            ++Size_data;
         }
 
-        Data[Size_data] = ins;
-        
-        ++Size_data;
-    }
-
-
-
-    /*template <typename T>
-    void TVector<T>::operator delete(TVector<T> vec)
-    {
-        delete(vec.Data);
-    }
-*/
-    template <typename T>
-    T& TVector<T>::operator [](size_t iter)
-    {
-        if(iter < Size_data && iter >= 0)
-            return Data[iter];
-        else
+        T& operator[](size_t itr)
         {
-            T *err = nullptr;
-            return *err;   
-        }           
-    }
+            return Data[itr];
+        }
 
-} // namespace NVector
+        const T &operator[](size_t itr) const {
+            return Data[itr];
+        }
 
+        void operator=(const TVector<T> &second) 
+        {
+            Clear();
+
+            for(int i=0;i < second.Size_data;++i)
+            {
+                Push_back(second.Data[i]);
+            }
+        }
+
+
+
+    }; //class TVector
+
+    
+} //namespace NVector
+
+#endif
 
