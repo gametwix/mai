@@ -13,4 +13,5 @@ class Squere: public Figure
     double Area() override;
     void Print_cord() override;
     Dot Center() override;
+    void Cords(Dot*& cord);
 };

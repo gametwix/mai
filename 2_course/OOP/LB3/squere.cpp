@@ -2,14 +2,24 @@
 #include <iostream>
 
 
+
 double Squere::Area()
 {
     return size*size;
 }
 
+void Squere::Cords(Dot*& cord)
+{
+    cord[1].x = size;
+    cord[2].x = size;
+    cord[2].y = size;
+    cord[3].y = size;
+}
+
 void Squere::Print_cord()
 {
-    std::cout << "0,0 "<< size<<",0 " << size <<"," << size << " 0," << size << std::endl;
+    Dot cord[4];
+    std::cout << cord[0] << " " << cord[1] << " " << cord[2] << " " << cord[3] << " " << std::endl;
 }
 
 Dot Squere::Center()
