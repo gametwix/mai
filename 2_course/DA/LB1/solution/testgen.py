@@ -11,7 +11,7 @@ class data:
 def generate():
 
     dd=[]
-    rint = random.randint(100000, 200000)
+    rint = random.randint(100000, 1000000)
     for i in range(0,rint,1):
         num = random.randint(0,999)
         sym = []
@@ -32,8 +32,9 @@ if __name__ == '__main__':
     
 
 
-    dd = generate()
+    
     for i in range(10):
+        dd = generate()
         with open("tests/test_"+str(i)+".t","w") as f:
             for d in dd:
                 f.write(d.sym[0] + ' ' + str(d.num).rjust(3,'0') + ' ' + d.sym[1] + d.sym[2] + '\t'+d.strk + '\n')

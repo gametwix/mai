@@ -5,13 +5,8 @@ class Squere: public Figure
     
     double size;
 
-    Squere(double s)
-    {
-        size = s;
-    }
-
     double Area() override;
     void Print_cord() override;
     Dot Center() override;
-    void Cords(Dot*& cord);
+    void Cords(Dot* cord);
 };

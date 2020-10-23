@@ -8,7 +8,7 @@ double Squere::Area()
     return size*size;
 }
 
-void Squere::Cords(Dot*& cord)
+void Squere::Cords(Dot* cord)
 {
     cord[1].x = size;
     cord[2].x = size;
@@ -19,6 +19,7 @@ void Squere::Cords(Dot*& cord)
 void Squere::Print_cord()
 {
     Dot cord[4];
+    Cords(cord);
     std::cout << cord[0] << " " << cord[1] << " " << cord[2] << " " << cord[3] << " " << std::endl;
 }
 
