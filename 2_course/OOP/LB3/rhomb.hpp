@@ -4,8 +4,8 @@ class Rhomb: public Figure
 {
     public:
 
-    double size;
-    double big_angle;
+    double diag_1;
+    double diag_2;
 
     double Area() override;
     void Print_cord() override;

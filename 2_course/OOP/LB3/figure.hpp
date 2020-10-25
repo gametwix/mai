@@ -3,7 +3,7 @@
 class Figure
 {
     public:
-    virtual double Area() = 0;
-    virtual void Print_cord() = 0;
-    virtual Dot Center() = 0;
+    virtual double Area() {};
+    virtual void Print_cord() {};
+    virtual Dot Center() {};
 };
