@@ -5,6 +5,10 @@ class Squere: public Figure
     
     double size;
 
+    Squere(double s_size)
+    {
+        size = s_size;
+    }
     double Area() override;
     void Print_cord() override;
     Dot Center() override;
