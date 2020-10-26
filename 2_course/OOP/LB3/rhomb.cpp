@@ -26,7 +26,7 @@ void Rhomb::Print_cord()
 
 Dot Rhomb::Center()
 {
-    return Dot(diag_1/2,diag_2/2);
+    return Dot(0,diag_2/2);
 }
 
 

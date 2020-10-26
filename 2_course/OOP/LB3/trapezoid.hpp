@@ -1,3 +1,4 @@
+#pragma once
 #include "figure.hpp"
 
 class Trapezoid: public Figure
@@ -14,6 +15,7 @@ class Trapezoid: public Figure
         osn_2 = t_osn_2;
         lateral = t_lat;
     }
+    Trapezoid(){}
     double Area() override;
     void Print_cord() override;
     Dot Center() override;

@@ -1,3 +1,4 @@
+#pragma once
 #include "figure.hpp"
 
 class Rhomb: public Figure
@@ -12,6 +13,7 @@ class Rhomb: public Figure
         diag_1 = r_diag_1;
         diag_2 = r_diag_2;
     }
+    Rhomb(){}
     double Area() override;
     void Print_cord() override;
     Dot Center() override;

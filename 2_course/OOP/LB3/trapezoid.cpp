@@ -16,10 +16,19 @@ void Trapezoid::Cords(Dot* cord)
     double osn = abs((osn_1-osn_2)/2);
     double high = sqrt(lateral*lateral - osn*osn);
     cord[1].x = osn_1;
-    cord[2].x = osn+osn_2;
+    if(osn_1 > osn_2)
+    {
+        cord[2].x = osn+osn_2;
+        cord[3].x = osn;
+    }
+    else
+    {
+        cord[2].x = osn_2 - osn;
+        cord[3].x = -osn;
+    }
     cord[2].y = high;
     cord[3].y = high;
-    cord[3].x = osn;
+    
 }
 
 void Trapezoid::Print_cord()
@@ -50,5 +59,5 @@ Dot Trapezoid::Center()
     }
     
     double y = (high*(2*bolsh+mensh))/(3*(bolsh+mensh));
-    return Dot(cords[2].x/2,y);
+    return Dot(cords[1].x/2,y);
 }
