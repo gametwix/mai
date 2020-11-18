@@ -212,8 +212,6 @@ namespace rb
             if(Tree->Left!=this->Nil)
                 save_vect(Tree->Left,vect);
             
-            //for(int i=0;i<lvl;++i) std::cout << "\t";
-            //std::cout << Tree->Key <<std::endl;
             vect.Push_back(Tree->Key);
             if(Tree->Right!=this->Nil)
                 save_vect(Tree->Right,vect);
@@ -223,12 +221,6 @@ namespace rb
         {
             NVector::TVector<T> vect;
             save_vect(this->Root,vect);
-            /*FILE *f;
-            f=fopen(ch, "wb");
-            
-            fwrite(&size, sizeof(size_t), 1, f);
-            fwrite(vect.Get_data(), vect.Size()*sizeof(T), 1, f);
-            fclose(f);*/
             size_t size = vect.Size();
             std::ofstream wf;
             wf.open(ch, std::ios::out | std::ios::binary);
@@ -240,23 +232,18 @@ namespace rb
         void load(char *ch)
         {
             NVector::TVector<T> vect;
-            //FILE *f;
-            //f=fopen("./t.b", "rb");
             std::ifstream rf;
             rf.open(ch, std::ios::out | std::ios::binary);
             size_t size;
             rf.read((char *) &size,sizeof(size_t));
-            //fread(&size, sizeof(size_t), 1, f);
             std::cout <<size<<std::endl;
             T *dat = new T[size];
             std::cout <<"Test"<<std::endl;
             rf.read((char *) dat,sizeof(T)*size);
-            //fread(dat, sizeof(T), size, f);
             std::cout <<"Test"<<std::endl;
             vect.Set(dat,size);
             load_vect(vect);
             rf.close();
-            //fclose(f);
         }
         
         void load_vect(NVector::TVector<T> &vect)
@@ -269,6 +256,31 @@ namespace rb
             }   
         }
 
+        T& Search(const T& sample,bool& success)
+        {
+            rb_tree_elem<T> *x = this->Root;
+            while(x != Tree.Nil)
+            {   
+                if(x == sample)
+                {
+                    success = true;
+                    return x;
+                }
+                else
+                {
+                    if(sample < x->Key)
+                    {
+                        x = x->Left;
+                    }
+                    else
+                    {
+                        x = x->Right;
+                    }
+                }
+                success = false;
+                return sample;
+            }
+        }
     };
 
 }//namespace rb
