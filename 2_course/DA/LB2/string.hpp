@@ -6,12 +6,16 @@ namespace NString
 {
     class TString
     {
-        private:
-            char* str;
+            
         public:
+            char* str;
+            size_t size;
+
+            
             TString()
             {
                 str = new char[256];
+                size = 0;
             }
 
             void operator=(const TString &second)
@@ -61,49 +65,52 @@ namespace NString
                 return false;
             }
 
-         friend std::ostream& operator<< (std::ostream &out, const TString &str)
-        {
-            out << str.str;
-            return out;
-        }
-
-        friend std::istream& operator>>(std::istream &in, TString &str)
-        {
-            
-            in >> str.str;
-            return in;
-        }
-
-        int find(char ch)
-        {
-            for(int i=0;i<256;++i)
+            friend std::ostream& operator<< (std::ostream &out, const TString &str)
             {
-                if(this->str[i] == ch)
-                    return i;
-                if(this->str[i] == '\0')
-                    return -1;
+                out << str.str;
+                return out;
             }
-            return -1;
-        }
 
-        int find(const char &ch, int &start)
-        {
-            if(start > 256)
-                start = 256;
-            for(int i=start;i<256;++i)
+            friend std::istream& operator>>(std::istream &in, TString &str)
             {
-                if(this->str[i] == ch)
-                    return i;
-                if(this->str[i] == '\0')
-                    return -1;
-            }
-            return -1;
-        }
+                
+                in >> str.str;
 
-        char &operator[](size_t index)
-        {
-            return this->str[index];
-        }
+                while(str.str[str.size] != '\0')
+                    ++str.size;
+                return in;
+            }
+
+            int find(char ch)
+            {
+                for(int i=0;i<256;++i)
+                {
+                    if(this->str[i] == ch)
+                        return i;
+                    if(this->str[i] == '\0')
+                        return -1;
+                }
+                return -1;
+            }
+
+            int find(const char ch, int start)
+            {
+                if(start > 256)
+                    start = 256;
+                for(int i=start;i<256;++i)
+                {
+                    if(this->str[i] == ch)
+                        return i;
+                    if(this->str[i] == '\0')
+                        return -1;
+                }
+                return -1;
+            }
+
+            char &operator[](size_t index)
+            {
+                return this->str[index];
+            }
         
     };
 } //namespace NString
