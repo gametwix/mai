@@ -30,3 +30,15 @@ a_term(T,V):-append([X],["V"|Y],T),a_term(Y,Vy),check("V",X,Vy,V).
 a_term(T,V):-append([X],["~"|_],T),check("~",X,V).
 a_term(T,V):-append([X],["^"|Y],T),a_term(Y,Vy),check("^",X,Vy,V).
 a_term(T,V):-append([X],["=>"|Y],T),a_term(Y,Vy),check("=>",Vy,X,V).
+
+no_skobok([H|T],S,X):-S >0,no_skobok(T,S,X1),append([H],X1,X).
+no_skobok([H|T],S,X):-H = "(",S1 is S + 1,no_skobok(T,S1,X),!.
+no_skobok([H|T],S,X):-H = ")",S1 is S - 1,no_skobok(T,S1,X),!.
+no_skobok([_|T],0,X):-no_skobok(T,0,X).
+no_skobok([],0,[]).
+
+no_skobok([H|T],X):-no_skobok([H|T],0,X).
+
+razb(L):-length(L, I),I>0,no_skobok(L,R1),write(R1),razb(R1).
+
+

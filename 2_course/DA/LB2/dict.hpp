@@ -1,5 +1,6 @@
 #pragma once
 
+<<<<<<< HEAD
 #include "pair.hpp"
 #include "string.hpp"
 #include "rb_vect.hpp"
@@ -22,3 +23,5 @@ void parse_comand(NString::TString str)
 
     }
 }
+=======
+>>>>>>> c04fcb32051e38e7811346906e1474b0b8fca1c9
