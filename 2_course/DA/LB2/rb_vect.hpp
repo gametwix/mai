@@ -181,6 +181,19 @@ namespace rb
             ins_fix(Tree,z);
         }
 
+        void transplant(rb_tree_elem<T> *u,rb_tree_elem<T> *v)
+        {
+            if(u->Par == this->Nil)
+                this->Root = v;
+            else if(u == u->Par->Left)
+                u->Par->Left = v;
+            else
+                u->Par->Right = v;
+            v->Par = u->Par;
+        }
+
+        
+
         void insert_data(T data)
         {
             rb_tree_elem<T> *z = new rb_tree_elem<T>;
