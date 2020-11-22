@@ -272,7 +272,7 @@ namespace rb
         T& Search(const T& sample,bool& success)
         {
             rb_tree_elem<T> *x = this->Root;
-            while(x != Tree.Nil)
+            while(x != this->Nil)
             {   
                 if(x == sample)
                 {

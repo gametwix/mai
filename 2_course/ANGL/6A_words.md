@@ -24,7 +24,6 @@
 24. launch - запуск
 25. orbital stations - орбитальные станции
 26. advantages - преимущества
-27. propertiess - собственность
 28. zero-gravity condition - условие невесомости
 29. physics of the weightless state - физика невесомого состояния
 30. theoretical basis - теоретическая база
