@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-
+#include <iostream>
 
 template <typename T>
 class Queue
@@ -20,7 +20,7 @@ class Queue
                     next = nullptr;
                     prev = nullptr;
                 }
-                Queue_elem(const int data)
+                Queue_elem(const Q data)
                 {
                     key = data;
                     next = nullptr;
@@ -31,11 +31,12 @@ class Queue
     size_t size = 0;
     std::shared_ptr<Queue_elem<T>> start;
     std::shared_ptr<Queue_elem<T>> finish;
+    std::shared_ptr<Queue_elem<T>> Nil;
 
 
     Queue_elem<T>* Top()
     {
-        return finish;
+        return start;
     }
 
     public:
@@ -44,29 +45,38 @@ class Queue
         {
             start = nullptr;
             finish = nullptr;
+            Nil = std::shared_ptr<Queue_elem<T>>(new Queue_elem<T>);
+            Nil->prev = nullptr;
+            Nil->next = start;
         }
 
 
         void Push(const T& data)
         {
-            std::shared_ptr<Queue_elem<T>> elem(new Queue_elem<T>(data));
+            Queue_elem<T>* l = new Queue_elem<T>(data);
+            std::shared_ptr<Queue_elem<T>> elem(l);
             if(start == nullptr)
             {
-                start = elem;
                 finish = elem;
             }
             else
             {
                 elem->next = start;
                 start->prev = elem;
-                start = elem;
             }
+            elem->prev = Nil;
+            Nil->next = elem;
+            start = elem;
             ++size;
         }
 
 
         T Pop()
         {
+            if(finish == nullptr)
+            {
+                throw -1;
+            }
             T data = finish->key;
             if(finish->prev == nullptr)
             {
@@ -76,7 +86,6 @@ class Queue
             else
             {
                 finish = finish->prev;
-                finish->next = nullptr;
             }
             --size;
             return data;
@@ -84,30 +93,146 @@ class Queue
 
         class iterator
         {
-            T* data_iter;
+            
+            Queue_elem<T>* data_iter;
             public:
-                T* operator->()
+            using value_type = T;
+            using reference = T&;
+            using pointer = T*;
+            using difference_type = ptrdiff_t;
+            using iterator_category = std::forward_iterator_tag;
+
+                iterator()
                 {
-                    return data_iter;
+                    data_iter = nullptr;
+                }
+                
+                iterator(Queue_elem<T>* second)
+                {
+                    data_iter = second;
                 }
 
-                T* operator*()
+                T*& operator->()
                 {
-                    return *data_iter;
+                    return &data_iter->key;
                 }
 
-                bool operator==(const iterator& second)
+                T& operator*()
                 {
-                    return data_iter == second.data_iter;
+                    return data_iter->key;
                 }
 
-                bool operator==(const T& second)
+                bool operator==(const iterator &second)
                 {
-                    return data_iter == second;
+                    return (data_iter == second.data_iter);
+                }
+
+                bool operator==(const T* &second)
+                {
+                    return (data_iter == second);
+                }
+
+                bool operator!=(const iterator &second)
+                {
+                    return (data_iter != second.data_iter);
+                }
+
+                bool operator!=(const T* &second)
+                {
+                    return (data_iter != second);
+                }
+
+                void operator=(const iterator &second)
+                {
+                    data_iter = second.data_iter;
+                }
+
+                void operator=(const T* &second)
+                {
+                    data_iter = second;
+                }
+
+                iterator operator++()
+                {
+                    data_iter = data_iter->prev.get();
+                    return iterator(data_iter);
+                }
+
+                iterator operator--()
+                {
+                    data_iter = data_iter->next.get();
+                    return iterator(data_iter);
+                }
+
+                iterator operator+(const size_t &ind)
+                {
+                    iterator it(data_iter);
+                    for(int i=0;i<ind;++i)
+                    {
+                        it.data_iter = it.data_iter->prev.get();
+                    }
+                    return it;
+                }
+
+                iterator operator-(const size_t &ind)
+                {
+                    iterator it(data_iter);
+                    for(int i=0;i<ind;++i)
+                    {
+                        it.data_iter = it.data_iter->next.get();
+                    }
+                    return it;
                 }
         };
 
+        iterator Begin()
+        {
+            return iterator(finish.get());
+            
+        }
 
+        iterator End()
+        {
+            iterator iter = start.get();
+            ++iter;
+            return (iter);
+        }
 
+        void Insert(iterator it,T data)
+        {
+            if(it == nullptr)
+            {
+                throw -1;
+            }
+            if(it == End())
+                Push(data);
+            else
+            {
+                Push(T());
+                for(iterator iter = End() - 1;iter != it;--iter)
+                {
+                    *iter = *(iter-1);
+                }
+                *it = data;
+            }
+            
+        }
 
+        void Erase(iterator it)
+        {
+            if((it == nullptr) || (it == Nil.get()))
+            {
+                throw -1;
+            }
+            for(iterator iter = it;iter != Begin();--iter)
+            {
+                *iter = *(iter-1);
+            }
+            Pop();
+        }
+
+        int Size()
+        {
+            return size;
+        }
 };
