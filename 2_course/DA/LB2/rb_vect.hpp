@@ -1,8 +1,9 @@
+#pragma once
 #include <iostream>
 #include <stdio.h>
 #include <fstream>
-#include "vector.hpp"
-#pragma once
+
+
 
 namespace rb
 {
@@ -183,8 +184,8 @@ namespace rb
 
         void transplant(rb_tree_elem<T> *u,rb_tree_elem<T> *v)
         {
-            if(u->Par == this->Nil)
-                this->Root = v;
+            if(u->Par == Nil)
+                Root = v;
             else if(u == u->Par->Left)
                 u->Par->Left = v;
             else
@@ -203,71 +204,85 @@ namespace rb
 
         void print(rb_tree_elem<T> *Tree,int lvl)
         {
-            if(Tree->Right!=this->Nil)
+            if(Tree->Right!=Nil)
                 print(Tree->Right,(lvl+1));
             for(int i=0;i<lvl;++i) std::cout << "\t";
             std::cout << Tree->Color << " " << Tree->Key <<std::endl;
-            if(Tree->Left!=this->Nil)
+            if(Tree->Left!=Nil)
                 print(Tree->Left,(lvl+1));
         }
 
         void clear(rb_tree_elem<T> *Tree)
         {
-            if(Tree->Left!=this->Nil)
+            if(Tree->Left!=Nil)
                 clear(Tree->Left);
-            if(Tree->Right!=this->Nil)
+            if(Tree->Right!=Nil)
                 clear(Tree->Right);
             delete Tree;
         }
 
-        void save_vect(rb_tree_elem<T> *Tree,NVector::TVector<T> &vect)
+        void save_tree(rb_tree_elem<T> *Tree,std::ofstream& wf)
         {
-            if(Tree->Left!=this->Nil)
-                save_vect(Tree->Left,vect);
-            
-            vect.Push_back(Tree->Key);
-            if(Tree->Right!=this->Nil)
-                save_vect(Tree->Right,vect);
+            bool have_left = (Tree->Left != Nil);
+            bool have_right = (Tree->Right != Nil);
+
+            wf.write((char *) &have_left, sizeof(bool));
+            wf.write((char *) &have_right, sizeof(bool));
+
+            wf.write((char *) &Tree->Key, sizeof(T));
+
+            if(have_left)
+                save_tree(Tree->Left,wf);
+            if(have_right)
+                save_tree(Tree->Right,wf);
         }
 
         void save(char *ch)
         {
-            NVector::TVector<T> vect;
-            save_vect(this->Root,vect);
-            size_t size = vect.Size();
             std::ofstream wf;
             wf.open(ch, std::ios::out | std::ios::binary);
-            wf.write((char *) &size,sizeof(size_t));
-            wf.write((char *) vect.Get_data(),vect.Size()*sizeof(T));
+            save_tree(Root,wf);
             wf.close();
+        }
+
+        void load_tree(rb_tree_elem<T> *Tree,std::ifstream& rf)
+        {
+            bool have_left;
+            bool have_right;
+            rf.read((char *) &have_left, sizeof(bool));
+            rf.read((char *) &have_right, sizeof(bool));
+
+            rf.read((char *) &Tree->Key, sizeof(T));
+
+            if(have_left)
+            {
+                Tree->Left = new rb_tree_elem<T>;
+                Tree->Left->Left = Nil;
+                Tree->Left->Right = Nil;
+                load_tree(Tree->Left,rf);
+            }
+
+            if(have_right)
+            {
+                Tree->Right = new rb_tree_elem<T>;
+                Tree->Right->Left = Nil;
+                Tree->Right->Right = Nil;
+                load_tree(Tree->Right,rf);
+            }
         }
 
         void load(char *ch)
         {
-            NVector::TVector<T> vect;
             std::ifstream rf;
             rf.open(ch, std::ios::out | std::ios::binary);
-            size_t size;
-            rf.read((char *) &size,sizeof(size_t));
-            std::cout <<size<<std::endl;
-            T *dat = new T[size];
-            std::cout <<"Test"<<std::endl;
-            rf.read((char *) dat,sizeof(T)*size);
-            std::cout <<"Test"<<std::endl;
-            vect.Set(dat,size);
-            load_vect(vect);
+            Root = new rb_tree_elem<T>;
+            Root->Left = Nil;
+            Root->Right = Nil;
+            load_tree(Root,rf);
             rf.close();
         }
         
-        void load_vect(NVector::TVector<T> &vect)
-        {
-            this->clear(this->Root);
-            this->Root = this->Nil;
-            for(int i=0;i<vect.Size();++i)
-            {
-                insert_data(vect[i]);
-            }   
-        }
+        
 
         T& Search(const T& sample,bool& success)
         {
