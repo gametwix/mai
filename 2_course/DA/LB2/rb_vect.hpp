@@ -39,6 +39,12 @@ namespace rb
             Root = Nil;
         }
 
+        ~rb_tree()
+        {
+            clear(Root);
+            delete Nil;
+        }
+
         void left_rotate(rb_tree &Tree,rb_tree_elem<T> *x)
         {
             rb_tree_elem<T> *y = x->Right;
@@ -275,6 +281,7 @@ namespace rb
         {
             std::ifstream rf;
             rf.open(ch, std::ios::out | std::ios::binary);
+            clear(Root);
             Root = new rb_tree_elem<T>;
             Root->Left = Nil;
             Root->Right = Nil;

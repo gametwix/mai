@@ -25,7 +25,7 @@ struct Square{
     {
         for(int i = 0;i < 4;++i)
         {
-            out << sq.dot[i].first << " " << sq.dot[i].second << " ";
+            out << "(" << sq.dot[i].first << "," << sq.dot[i].second << ") ";
         }
         return out;
     }

@@ -78,7 +78,7 @@ class Queue
                 throw -1;
             }
             T data = finish->key;
-            if(finish->prev == nullptr)
+            if(finish->prev == Nil)
             {
                 finish = nullptr;
                 start = nullptr;
@@ -154,12 +154,20 @@ class Queue
 
                 iterator operator++()
                 {
+                    if(data_iter == nullptr)
+                    {
+                        throw -1;
+                    }
                     data_iter = data_iter->prev.get();
                     return iterator(data_iter);
                 }
 
                 iterator operator--()
                 {
+                    if(data_iter == nullptr)
+                    {
+                        throw -1;
+                    }
                     data_iter = data_iter->next.get();
                     return iterator(data_iter);
                 }
@@ -169,6 +177,10 @@ class Queue
                     iterator it(data_iter);
                     for(int i=0;i<ind;++i)
                     {
+                        if(it.data_iter == nullptr)
+                        {
+                            throw -1;
+                        }
                         it.data_iter = it.data_iter->prev.get();
                     }
                     return it;
@@ -179,6 +191,10 @@ class Queue
                     iterator it(data_iter);
                     for(int i=0;i<ind;++i)
                     {
+                        if(it.data_iter == nullptr)
+                        {
+                            throw -1;
+                        }
                         it.data_iter = it.data_iter->next.get();
                     }
                     return it;
@@ -200,11 +216,7 @@ class Queue
 
         void Insert(iterator it,T data)
         {
-            if(it == nullptr)
-            {
-                throw -1;
-            }
-            if(it == End())
+            if((it == nullptr) || (it == Nil.get()))
                 Push(data);
             else
             {
