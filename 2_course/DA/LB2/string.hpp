@@ -14,18 +14,18 @@ namespace NString
             
             TString()
             {
-                str = new char[256];
+                str = new char[257];
                 size = 0;
             }
 
             void operator=(const TString &second)
             {
-            std::memcpy(str,second.str,sizeof(char)*256);
+            std::memcpy(str,second.str,sizeof(char)*257);
             }
 
             bool operator==(const TString &second)
             {
-                for(int i=0;i<256;++i)
+                for(int i=0;i<257;++i)
                 {
                     if(str[i]!=second.str[i])
                         return false;
@@ -37,7 +37,7 @@ namespace NString
 
             bool operator>(const TString &second)
             {
-                for(int i=0;i<256;++i)
+                for(int i=0;i<257;++i)
                 {
                     if(str[i]==second.str[i] && str[i]!='\0')
                         continue;
@@ -52,7 +52,7 @@ namespace NString
 
             bool operator<(const TString &second)
             {
-                for(int i=0;i<256;++i)
+                for(int i=0;i<257;++i)
                 {
                     if(str[i]==second.str[i] && str[i]!='\0')
                         continue;
@@ -83,7 +83,7 @@ namespace NString
 
             int find(char ch)
             {
-                for(int i=0;i<256;++i)
+                for(int i=0;i<257;++i)
                 {
                     if(this->str[i] == ch)
                         return i;
@@ -95,9 +95,9 @@ namespace NString
 
             int find(const char ch, int start)
             {
-                if(start > 256)
-                    start = 256;
-                for(int i=start;i<256;++i)
+                if(start > 257)
+                    start = 257;
+                for(int i=start;i<257;++i)
                 {
                     if(this->str[i] == ch)
                         return i;

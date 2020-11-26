@@ -44,6 +44,13 @@ int main()
     tree.print(tree.Root,0);
     tree.load(l);
     tree.print(tree.Root,0);
+    for(int i=0;i<3;++i)
+    {
+        int a;
+        std::cin >> a;
+        tree.Delete(a);
+    }
+    tree.print(tree.Root,0);
     //tree.print(tree.Root,0);
     //FILE *f;
     //f=fopen("./t.b", "wb");

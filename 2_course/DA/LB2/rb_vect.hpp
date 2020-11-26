@@ -48,6 +48,8 @@ namespace rb
         void left_rotate(rb_tree &Tree,rb_tree_elem<T> *x)
         {
             rb_tree_elem<T> *y = x->Right;
+            if(x == Root)
+                Root = y;
             x->Right = y->Left;
 
             if (y->Left != Tree.Nil)
@@ -76,6 +78,8 @@ namespace rb
         void right_rotate(rb_tree &Tree,rb_tree_elem<T> *y)
         {
             rb_tree_elem<T> *x = y->Left;
+            if(y == Root)
+                Root = x;
             y->Left = x->Right;
 
             if(x->Right != Tree.Nil)
@@ -151,6 +155,7 @@ namespace rb
                 }
             }
             Tree.Root->Color = 0;
+            //Tree.Root->Par = Nil;
         }
 
         void insert(rb_tree &Tree,rb_tree_elem<T> *z)
@@ -236,7 +241,8 @@ namespace rb
             wf.write((char *) &have_right, sizeof(bool));
 
             wf.write((char *) &Tree->Key, sizeof(T));
-
+            wf.write((char *) &Tree->Color, sizeof(bool));
+            
             if(have_left)
                 save_tree(Tree->Left,wf);
             if(have_right)
@@ -259,12 +265,14 @@ namespace rb
             rf.read((char *) &have_right, sizeof(bool));
 
             rf.read((char *) &Tree->Key, sizeof(T));
+            rf.read((char *) &Tree->Color, sizeof(bool));
 
             if(have_left)
             {
                 Tree->Left = new rb_tree_elem<T>;
                 Tree->Left->Left = Nil;
                 Tree->Left->Right = Nil;
+                Tree->Left->Par = Tree;
                 load_tree(Tree->Left,rf);
             }
 
@@ -273,6 +281,7 @@ namespace rb
                 Tree->Right = new rb_tree_elem<T>;
                 Tree->Right->Left = Nil;
                 Tree->Right->Right = Nil;
+                Tree->Left->Par = Tree;
                 load_tree(Tree->Right,rf);
             }
         }
@@ -283,6 +292,7 @@ namespace rb
             rf.open(ch, std::ios::out | std::ios::binary);
             clear(Root);
             Root = new rb_tree_elem<T>;
+            Root->Par = Nil;
             Root->Left = Nil;
             Root->Right = Nil;
             load_tree(Root,rf);
@@ -291,12 +301,12 @@ namespace rb
         
         
 
-        T* &Search(const T& sample,bool& success)
+        rb_tree_elem<T>* Search(const T& sample,bool& success)
         {
-            rb_tree_elem<T> *x = this->Root;
-            while(x != this->Nil)
+            rb_tree_elem<T> *x = Root;
+            while(x != Nil)
             {   
-                if(x == sample)
+                if(x->Key == sample)
                 {
                     success = true;
                     return x;
@@ -312,12 +322,12 @@ namespace rb
                         x = x->Right;
                     }
                 }
-                success = false;
-                return sample;
             }
+            success = false;
+            return x;
         }
 
-        T*& Tree_min(rb_tree_elem<T>* &elem)
+        rb_tree_elem<T>* Tree_min(rb_tree_elem<T>* elem)
         {
             while(elem->Left != Nil)
                 elem = elem->Left;
@@ -325,6 +335,143 @@ namespace rb
             return elem;
         }
 
+        void rb_delete(rb_tree_elem<T>* &elem)
+        {
+            rb_tree_elem<T>* y = elem;
+            rb_tree_elem<T>* x;
+            bool y_orig_color = y->Color;
+            if(elem->Left == Nil)
+            {
+                x = elem->Right;
+                transplant(elem,elem->Right);
+            }
+            else if(elem->Right == Nil)
+            {
+                rb_tree_elem<T>* x = elem->Left;
+                transplant(elem,elem->Left);
+            }
+            else 
+            {
+                y = Tree_min(elem->Right);
+                y_orig_color = y->Color;
+                x = y->Right;
+                if(y->Par == elem)
+                {
+                    x->Par = y;
+                }
+                else
+                {
+                    transplant(y,y->Right);
+                    y->Right = elem->Right;
+                    y->Right->Par = y;
+                }
+                y->Left = elem->Left;
+                y->Left->Par = y;
+                y->Color = elem->Color;
+                if(elem == Root)
+                    Root = y;
+            }
+
+            if(y_orig_color == 0)
+                {
+                    delete_fix(x);
+                }
+            delete elem;
+        }
+
+        void delete_fix(rb_tree_elem<T>* &x)
+        {
+            while((x != Root) && (x->Color == 0))
+            {
+                if(x == x->Par->Left)
+                {
+                    rb_tree_elem<T>* w = x->Par->Right;
+                    if(w->Color == 1)
+                    {
+                        w->Color = 0;
+                        x->Par->Color = 1;
+                        left_rotate(*this,x->Par);
+                        if(Root == x->Par)
+                            Root = x->Par->Par;
+                        w = x->Par->Right;
+                    }
+                    if((w->Left->Color == 0) && (w->Right->Color == 0))
+                    {
+                        w->Color = 1;
+                        x = x->Par;
+                    }
+                    else 
+                    {
+                        if(w->Right->Color == 0)
+                        {
+                            w->Left->Color = 0;
+                            w->Color = 1;
+                            right_rotate(*this,w);
+                            if(w == Root)
+                                Root = w->Par;
+                            w = x->Par->Right;
+                        }
+                        w->Color = x->Par->Color;
+                        x->Par->Color = 0;
+                        w->Right->Color = 0;
+                        left_rotate(*this,x->Par);
+                        if(Root == x->Par)
+                            Root = x->Par->Par;
+                        x = Root;
+                    }
+                }
+                else
+                {
+                    rb_tree_elem<T>* w = x->Par->Left;
+                    if(w->Color == 1)
+                    {
+                        w->Color = 0;
+                        x->Par->Color = 1;
+                        right_rotate(*this,x->Par);
+                        if(Root == x->Par)
+                            Root = x->Par->Par;
+                        w = x->Par->Left;
+                    }
+                    if((w->Right->Color == 0) && (w->Left->Color == 0))
+                    {
+                        w->Color = 1;
+                        x = x->Par;
+                    }
+                    else 
+                    {
+                        if(w->Left->Color == 0)
+                        {
+                            w->Right->Color = 0;
+                            w->Color = 1;
+                            left_rotate(*this,w);
+                            if(w == Root)
+                                Root = w->Par;
+                            w = x->Par->Left;
+                        }
+                        w->Color = x->Par->Color;
+                        x->Par->Color = 0;
+                        w->Left->Color = 0;
+                        right_rotate(*this,x->Par);
+                        if(Root == x->Par)
+                            Root = x->Par->Par;
+                        x = Root;
+                    }
+                }
+            }
+        }
+
+        void Delete(const T& sample)
+        {
+            bool sucs = false;
+            rb_tree_elem<T>* elem  = nullptr;
+            elem = Search(sample,sucs);
+            if(sucs)
+            {
+                rb_delete(elem);
+            }
+        }
     };
+
+    
 
 }//namespace rb
