@@ -6,30 +6,6 @@
 int main()
 {
     Queue<Square<int>> que;
-/*
-    q.Push(1);
-    q.Push(2);
-    q.Push(3);
-
-    q.Insert((q.Begin()+1),5);
-    q.Erase(q.Begin()+2);
-
-
-
-    //Queue<int>::iterator a = q.Begin();
-
-
-
-
-    auto print = [](int n) { std::cout << " " << n; };
-    std::for_each(q.Begin(),q.End(),print);
-
-    ///std::cout << 1;
-    for (Queue<int>::iterator iter = q.Begin(); iter != q.End(); ++iter)
-    {
-        std::cout <<*iter << std::endl;
-    }*/
-
 
      while(true)
     {
@@ -40,7 +16,6 @@ int main()
         int minimal_suare = 0;
         auto print = [](Square<int> n) { std::cout << n << std::endl; };
         
-
         std::cout << std::endl;
         std::cout << "0 - Выход" << std::endl;
         std::cout << "1 - Добавить квадрат в конец очереди" << std::endl;
@@ -136,8 +111,6 @@ int main()
             }
         }
     }
-
-
 
     return 0;
 }

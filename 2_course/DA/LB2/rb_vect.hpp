@@ -291,7 +291,7 @@ namespace rb
         
         
 
-        T& Search(const T& sample,bool& success)
+        T* &Search(const T& sample,bool& success)
         {
             rb_tree_elem<T> *x = this->Root;
             while(x != this->Nil)
@@ -316,6 +316,15 @@ namespace rb
                 return sample;
             }
         }
+
+        T*& Tree_min(rb_tree_elem<T>* &elem)
+        {
+            while(elem->Left != Nil)
+                elem = elem->Left;
+
+            return elem;
+        }
+
     };
 
 }//namespace rb
