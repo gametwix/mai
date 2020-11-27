@@ -2,23 +2,18 @@
 #include <string>
 #include "rb_vect.hpp"
 #include "vector.hpp"
+#include "string.hpp"
+#include "dict.hpp"
 #include <stdio.h> 
 
-class T2
-{
-    public:
-    int key;
-    T2 *l;
-};
-
-class Test
-{
-    public:
-    T2 a[3];
-};
 int main()
 {
     rb::rb_tree<int> tree;
+    NString::TString cmd;
+
+    std::cin >> cmd;
+    parse_comand(cmd);
+    /*rb::rb_tree<int> tree;
     NVector::TVector<int> vec;
     for(int i=0;i<5;++i)
     {
@@ -50,7 +45,7 @@ int main()
         std::cin >> a;
         tree.Delete(a);
     }
-    tree.print(tree.Root,0);
+    tree.print(tree.Root,0);*/
     //tree.print(tree.Root,0);
     //FILE *f;
     //f=fopen("./t.b", "wb");

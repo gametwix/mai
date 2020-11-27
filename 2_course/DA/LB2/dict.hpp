@@ -7,18 +7,37 @@
 #include <iostream>
 #include <cstring>
 
-void parse_comand(NString::TString str)
+void parse_comand(NString::TString &cmd)
 {
-    if(str[0] == '+')
+    NString::TString word;
+    NString::TString path;
+    int num;
+    switch(cmd[0])
     {
-        int word_end = str.find(' ',2);
-        NString::TString word;
-        NString::TString num;
-        std::memcpy(word.str,&str.str[2],word_end-2);
-        word.size = word_end-2;
-        std::memcpy(num.str,&str.str[word_end+1],str.size - (word_end+2));
-        num.size = str.size - (word_end+2);
+        case '+':
+        std::cin >> word >> num;
+        std::cout << word << '|' << num << std::endl;
+        break;
+        case '-':
+        std::cin >> word >> num;
+        std::cout << word << '|' << num << std::endl;
+        break;
+        case '!':
+        std::cin >> word >> path;
+        if(word == "Load")
+        {
 
+        }
+        else
+        {
+            
+        }
+        break;
+        default:
+        std::cin >> word ;
+        std::cout << word << std::endl;
+        break;
 
     }
+    
 }

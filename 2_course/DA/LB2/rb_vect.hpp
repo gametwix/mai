@@ -225,11 +225,14 @@ namespace rb
 
         void clear(rb_tree_elem<T> *Tree)
         {
-            if(Tree->Left!=Nil)
-                clear(Tree->Left);
-            if(Tree->Right!=Nil)
-                clear(Tree->Right);
-            delete Tree;
+            if(Tree!=Nil)
+            {
+                if(Tree->Left!=Nil)
+                    clear(Tree->Left);
+                if(Tree->Right!=Nil)
+                    clear(Tree->Right);
+                delete Tree;
+            }
         }
 
         void save_tree(rb_tree_elem<T> *Tree,std::ofstream& wf)

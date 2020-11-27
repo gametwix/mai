@@ -18,9 +18,36 @@ namespace NString
                 size = 0;
             }
 
+            TString(const TString &second)
+            {
+                str = new char[257];
+                size = second.size;
+                std::memcpy(str,second.str,sizeof(char)*257);
+            }
+
+            TString(const char *second)
+            {
+                str = new char[257];
+                size = sizeof(second);
+                std::memcpy(str,second,sizeof(char)*size);
+            }
+
+            ~TString()
+            {
+                delete str;
+            }
+
+
             void operator=(const TString &second)
             {
             std::memcpy(str,second.str,sizeof(char)*257);
+            size = second.size;
+            }
+
+            void operator=(const char *second)
+            {
+            size = sizeof(second);
+            std::memcpy(str,second,sizeof(char)*size);
             }
 
             bool operator==(const TString &second)
@@ -28,6 +55,18 @@ namespace NString
                 for(int i=0;i<257;++i)
                 {
                     if(str[i]!=second.str[i])
+                        return false;
+                    if(str[i]=='\0')
+                        break;
+                }
+                return true;
+            }
+
+            bool operator==(const char *second)
+            {
+                for(int i=0;i<257;++i)
+                {
+                    if(str[i]!=second[i])
                         return false;
                     if(str[i]=='\0')
                         break;
