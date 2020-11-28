@@ -1,0 +1,183 @@
+\section{Описание}
+Как сказано в \cite{Kormen}: \enquote{Красно-черное дерево представляет собой бинарное дерево поиска с одним дополнительным битом цвета в каждом узле}. Цвет узла либо черный, либо красный. Такое дерево должно удовлетворять следующим свойствам:
+\begin{itemize}
+	\item Каждый узел является либо красным, либо черным.
+	\item Корень дерева является черным узлом.
+	\item Каждый лист дерева (Nil) является черным узлом.
+	\item Если узел красный, то оба его дочерних узла черные.
+\end{itemize}
+
+Вставка и удаление в дереве будет описана далее на примере исходного кода.
+\pagebreak
+
+\section{Исходный код}
+Данную программу можно разбить на несколько основных частей:
+\begin{itemize}
+	\item Парсинг введенной команды.
+	\item Вставка, удаление и поиск в дереве.
+	\item Сохранение в файл и загрузка дерева из файла.
+\end{itemize}
+
+Парсинг происходит в два этапа. Сначала мы считываем первое слово, из которого можно определить тип команды. Далее мы смотрим на первый символ этой строки и при помощи switch мы выбираем нужный вариан. Далее, по необходимости, мы считываем дополнительное слово или число. В случае вызова switch default, мы принимаем первое слово с командой как ключ для поиска.
+
+\begin{lstlisting}[language=C++]
+class TDict
+{
+	rb::rb_tree<NPair::TPair> Tree;
+	public:
+	void parse_comand(NString::TString &cmd)
+	{
+		NString::TString word;
+		NString::TString path;
+		NPair::TPair Data;
+		bool res;
+		switch(cmd[0])
+		{
+			case '+':
+			std::cin >> Data.Str >> Data.Num;
+			Data.Str.lower();
+
+			Tree.Search(Data,res);
+			if(res == false)
+			{
+				Tree.insert_data(Data);
+				std::cout << "OK" << std::endl;
+			}   
+			else
+				std::cout << "Exist" << std::endl;
+			break;
+			case '-':
+			std::cin >> Data.Str;
+			Data.Str.lower();
+			Tree.Search(Data,res);
+			if(res == true)
+			{
+				Tree.Delete(Data);
+				std::cout << "OK" << std::endl;
+			}   
+			else
+				std::cout << "NoSuchWord" << std::endl;
+			
+			break;
+			case '!':
+			std::cin >> word >> path;
+			word.lower();
+			if(word == "load")
+			{
+				if(Tree.load(path.str))
+					std::cout << "OK" <<std::endl;
+				else
+					std::cout << "ERROR: can't open file" <<std::endl;
+			}
+			else
+			{
+				if(Tree.save(path.str))
+					std::cout << "OK" <<std::endl;
+				else
+					std::cout << "ERROR: can't open file" <<std::endl;
+			}
+			break;
+			default:
+			Data.Str = cmd;
+			Data.Str.lower();
+			rb::rb_tree_elem<NPair::TPair> *elem = Tree.Search(Data,res);
+			
+			if(res)
+			{
+				std::cout<< "OK: " << elem->Key.Num << std::endl;
+			}
+			else
+				std::cout << "NoSuchWord" << std::endl;
+			break;
+		}
+	}
+
+};
+\end{lstlisting}
+
+Вставка в дерево это немного модифицированная вставка в обычное бинарное дерево поиска. Для того чтобы вставка сохраняла красно-черные свойства дерево используется фенкция ins_fix(), которая перекрашивает узлы и выполняет повороты.
+
+\begin{lstlisting}[language=C++]
+void insert(rb_tree_elem<T> *z)
+{
+	rb_tree_elem<T> *y = Nil;
+	rb_tree_elem<T> *x = Root;
+	while(x != Nil)
+	{
+		y = x;
+		if(z->Key < x->Key)
+		{
+			x = x->Left;
+		}
+		else
+		{
+			x = x->Right;
+		}
+	}
+	z->Par = y;
+	if(y == Nil)
+	{
+		Root = z;
+	}
+	else if(z->Key < y->Key)
+	{
+		y->Left = z;
+	}
+	else
+	{
+		y->Right = z;
+	}
+	z->Left = Nil;
+	z->Right = Nil;
+	z->Color = 1;
+	
+	ins_fix(z);
+}
+\end{lstlisting}
+
+Исправление вставки можно разделить на 3 случая:
+\begin{itemize}
+	\item "Дядя" у узла z - красный. Так как z и z.p красный мы красим родителя z и y в черный, а для сохраннения колличества черных узлов мы красим z.p.p в красный, z.p.p становится новым узлом z.
+	\item "Дядя" у узла z черный, и z - правый потомок. В случае если мы правый потомок мы поднимаемся на уровень выше и делаем левый поворот. Далее делаем те же действия, что и в случае 3.
+	\item "Дядя" у узла z черный, и z - левый потомок.
+\end{itemize} 
+
+В случае, если код не помещается на одну-две страницы $A4$, тогда следует сделать табличку следующего вида:
+\begin{longtable}{|p{7.5cm}|p{7.5cm}|}
+\hline
+\rowcolor{lightgray}
+\multicolumn{2}{|c|} {main.c}\\
+\hline
+void sort(struct KV \& B, struct KV \& Res, int max, int size)&Функция сортировки подсчётом\\
+\hline
+\rowcolor{lightgray}
+\multicolumn{2}{|c|} {file1.c}\\
+\hline
+void function\_name()&Функция, \enquote{которая почти всегда работает, но неясно, что она делает}.\\
+\hline
+\end{longtable}
+В этом случае структуры или классы должны быть полностью приведены в листинге (без реализации методов).
+\begin{lstlisting}[language=C]
+struct KV{
+	int key;
+	char value;
+} KV;
+\end{lstlisting}
+\pagebreak
+
+\section{Консоль}
+\begin{alltt}
+a.kukhticev$ gcc -pedantic -Wall -std=c99 -Werror -Wno-sign-compare -lm da10.c -o da10 --some_long_argument=true
+a.kukhticev$ cat test1 
+87	a
+13	b
+89	c
+13	d
+a.kukhticev$ ./da10 < test1 
+13	b
+13	d
+87	a
+89	c
+\end{alltt}
+\pagebreak
+
