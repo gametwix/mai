@@ -11,8 +11,7 @@ int main()
 
     while(std::cin >> cmd)
     {
-        dict.parse_comand(cmd);
-        
+        dict.parse_comand(cmd);   
     }
    
     

@@ -24,6 +24,8 @@ namespace NDict
             {
                 case '+':
                 std::cin >> Data.Str >> Data.Num;
+                Data.Str.lower();
+
                 Tree.Search(Data,res);
                 if(res == false)
                 {
@@ -35,6 +37,7 @@ namespace NDict
                 break;
                 case '-':
                 std::cin >> Data.Str;
+                Data.Str.lower();
                 Tree.Search(Data,res);
                 if(res == true)
                 {
@@ -47,6 +50,7 @@ namespace NDict
                 break;
                 case '!':
                 std::cin >> word >> path;
+                word.lower();
                 if(word == "load")
                 {
                     if(Tree.load(path.str))
@@ -64,6 +68,7 @@ namespace NDict
                 break;
                 default:
                 Data.Str = cmd;
+                Data.Str.lower();
                 rb::rb_tree_elem<NPair::TPair> *elem = Tree.Search(Data,res);
                 
                 

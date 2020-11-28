@@ -114,12 +114,11 @@ namespace NString
 
             friend std::istream& operator>>(std::istream &in, TString &str)
             {
-                
-                in >> str.str;
-                str.lower(str.str);
-
-                while(str.str[str.size] != '\0')
+                if(in >> str.str)
+                {
+                    while(str.str[str.size] != '\0')
                     ++str.size;
+                }
                 return in;
             }
 
@@ -165,12 +164,9 @@ namespace NString
                 rf.read((char *) &size,sizeof(int));
                 rf.read(str,sizeof(char)*(size+1));
             }
-            void lower(char* Str) 
+            void lower()
             {
-                int len =std::strlen(Str);
-                
-                
-                for(int i = 0; i < len; i++) 
+                for(int i = 0; i < size+1; i++) 
                 {
                     str[i] = std::tolower(str[i]);
                 }
