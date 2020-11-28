@@ -2,7 +2,7 @@
 
 #include "pair.hpp"
 #include "string.hpp"
-#include "rb_vect.hpp"
+#include "rb.hpp"
 
 #include <iostream>
 #include <cstring>

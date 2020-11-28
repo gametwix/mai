@@ -312,16 +312,19 @@ namespace rb
         {
             std::ifstream rf;
             rf.open(ch, std::ios::out | std::ios::binary);
-           ;
             if(rf)
             {
                 clear(Root);
                 rb_tree();
-                Root = new rb_tree_elem<T>;
-                Root->Par = Nil;
-                Root->Left = Nil;
-                Root->Right = Nil;
-                load_tree(Root,rf);
+                Root = Nil;
+                if(!isFileEmpty(ch))
+                {
+                    Root = new rb_tree_elem<T>;
+                    Root->Par = Nil;
+                    Root->Left = Nil;
+                    Root->Right = Nil;
+                    load_tree(Root,rf);
+                }
                 rf.close();
                 return true;
             }
@@ -504,6 +507,11 @@ namespace rb
             {
                 rb_delete(elem);
             }
+        }
+
+        bool isFileEmpty(const char* filename)
+        {
+            return std::ifstream(filename).peek() == EOF;
         }
     };
 
