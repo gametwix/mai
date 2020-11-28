@@ -111,40 +111,8 @@ def checker_func(args):
 
     for i in range(args.tests_count):
         test = generate_test(os.curdir, args.rows_count, args.percent_load_save, args.probability_load_save)
-        test_myself = test.copy()
-        test_myself = list(map(lambda x: x.replace('db', 'dbother'), test_myself))
-        f_myself_out = io.StringIO()
-        with contextlib.redirect_stdout(f_myself_out):
-            solve_problem(test_myself)
-
-        f_myself_out.seek(0)
-        f_myself_out_lines = f_myself_out.readlines()
-        f_myself_out.close()
-
-        proc = subprocess.Popen([f'"{prog}"'], stdout=subprocess.PIPE, stdin=subprocess.PIPE,
-                                stderr=subprocess.PIPE, shell=True)
-        proc.stdin.write(('\n'.join(test)).encode())
-        proc.stdin.close()
-        proc.wait(args.time_limit)
-        proc.terminate()
-        if proc.poll() is None:
-            proc.kill()
-        if proc.returncode != 0:
-            print('some error:', proc.returncode)
-            print('stderr:', proc.stderr.read().decode())
-            print(*test, sep='\n', file=open(os.path.join(os.path.dirname(__file__), args.out_testfile), 'w'))
-            break
-        out = list(map(lambda x: x.decode(), proc.stdout.readlines()))
-
-        gen = list(difflib.unified_diff(out, f_myself_out_lines))
-
-        if len(gen) > 0:
-            print(*gen)
-            print(*test, sep='\n')
-            break
-
-    os.chdir(prev_dir)
-    shutil.rmtree(tmp_dir)
+        print(*test, sep='\n')
+       
 
 
 def main():

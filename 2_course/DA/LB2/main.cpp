@@ -8,6 +8,9 @@ int main()
     
     NString::TString cmd;
     NDict::TDict dict;
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
 
     while(std::cin >> cmd)
     {
