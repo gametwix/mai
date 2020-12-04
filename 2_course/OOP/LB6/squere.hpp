@@ -4,7 +4,8 @@
 template <class T>
 struct Square{
     using vertex_t = std::pair<T,T>;
-    vertex_t dot[4];
+    vertex_t Center;
+    T Size
 
     int square()
     {
