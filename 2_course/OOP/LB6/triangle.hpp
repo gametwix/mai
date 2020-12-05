@@ -2,32 +2,43 @@
 
 #include <iostream>
 #include <utility>
+#include <cmath>
 
 template <typename T>
 class Triangle
 {
-    private:
-        using vertex_t = std::pair<T,T>;
+    using vertex_t = std::pair<T,T>;
+    
+    public:
+        
         vertex_t Center;
         T Size;
-    public:
+
+        Triangle() : Size(0)
+        {
+            Center.first = 0;
+            Center.second = 0;
+        }
+
+    
 
         friend std::ostream& operator<< (std::ostream &out, const Triangle &triangle)
         {
-            for(int i = 0;i < 3;++i)
-            {
-                out << "(" << triangle.dot[i].first << "," << triangle.dot[i].second << ") ";
-            }
+            
+            double height = triangle.Size * sqrt(3) / 2.0;
+            out << "{";
+            out << "(" << triangle.Center.first + triangle.Size / 2.0 << ", " << triangle.Center.second - height / 3.0 << "), ";
+            out << "(" << triangle.Center.first << ", " << triangle.Center.second + 2 * height / 3.0 << "), ";
+            out << "(" << triangle.Center.first - triangle.Size / 2.0 << ", " << triangle.Center.second - height / 3.0 << ")";
+            out << "}";
+
             return out;
         }
 
-        friend std::istream& operator>>(std::istream &in, Triangle &triangle)
+        double Square()
         {
-            int size;
-            in >> size;
-            triangle.dot[1].first = size;
-            triangle.dot[2].first = size/2;
-            triangle.dot[2].second = (std::sqrt(3)/2)*;
-            return in;
+            return (sqrt(3)/2)*Size*Size;
         }
+
+
 };

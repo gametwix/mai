@@ -4,57 +4,55 @@
 #include <iostream>
 #include "allocator.hpp"
 
-template <class T>
+template <typename T>
 class Queue
 {
     private:
-        
+
+        template <typename Q>
         struct Queue_elem
         {
-            T key;
-            std::shared_ptr<Queue_elem> next;
-            std::shared_ptr<Queue_elem> prev;
+            Q key;
+            std::shared_ptr<Queue_elem<Q>> next;
+            std::shared_ptr<Queue_elem<Q>> prev;
 
-            //static alloc::custom_allocator<Queue_elem,20> al;
-            static alloc::custom_allocator<Queue_elem,20> &get_allocator()
+            static alloc::custom_allocator<Queue_elem<Q>,20> &get_allocator()
             {
-                static alloc::custom_allocator<Queue_elem,20> al;
+                static alloc::custom_allocator<Queue_elem<Q>,20> al;
                 return al;
             }
-            
-            
 
-                Queue_elem()
-                {
-                    next = nullptr;
-                    prev = nullptr;
-                }
-                Queue_elem(const T data)
-                {
-                    key = data;
-                    next = nullptr;
-                    prev = nullptr;
-                }
 
-                void* operator new(size_t size)
-                {
-                    return get_allocator().allocate();
-                }
-                void operator delete(void* point)
-                {
-                    get_allocator().deallocate((Queue_elem*)point);
-                }
+            void* operator new(size_t size)
+            {
+                return get_allocator().allocate();
+            }
+            void operator delete(void* point)
+            {
+                get_allocator().deallocate((Queue_elem<Q>*)point);
+            }
+            Queue_elem()
+            {
+                next = nullptr;
+                prev = nullptr;
+            }
+
+
+            Queue_elem(const Q data)
+            {
+                key = data;
+                next = nullptr;
+                prev = nullptr;
+            }
         };
 
     size_t size = 0;
-    std::shared_ptr<Queue_elem> start;
-    std::shared_ptr<Queue_elem> finish;
-    std::shared_ptr<Queue_elem> Nil;
-    
+    std::shared_ptr<Queue_elem<T>> start;
+    std::shared_ptr<Queue_elem<T>> finish;
+    std::shared_ptr<Queue_elem<T>> Nil;
 
 
-
-    Queue_elem* Top()
+    Queue_elem<T>* Top()
     {
         return start;
     }
@@ -65,7 +63,7 @@ class Queue
         {
             start = nullptr;
             finish = nullptr;
-            Nil = std::shared_ptr<Queue_elem>(new Queue_elem);
+            Nil = std::shared_ptr<Queue_elem<T>>(new Queue_elem<T>);
             Nil->prev = nullptr;
             Nil->next = start;
         }
@@ -73,8 +71,8 @@ class Queue
 
         void Push(const T& data)
         {
-            Queue_elem* l = new Queue_elem(data);
-            std::shared_ptr<Queue_elem> elem(l);
+            Queue_elem<T>* l = new Queue_elem<T>(data);
+            std::shared_ptr<Queue_elem<T>> elem(l);
             if(start == nullptr)
             {
                 finish = elem;
@@ -114,7 +112,7 @@ class Queue
         class iterator
         {
             
-            Queue_elem* data_iter;
+            Queue_elem<T>* data_iter;
             public:
             using value_type = T;
             using reference = T&;
@@ -127,7 +125,7 @@ class Queue
                     data_iter = nullptr;
                 }
                 
-                iterator(Queue_elem* second)
+                iterator(Queue_elem<T>* second)
                 {
                     data_iter = second;
                 }

@@ -6,7 +6,7 @@ namespace alloc
         private:
             T* memory; 
             T** free_memory_pos;
-            size_t size_free = size_mem;
+            size_t size_free;
             size_t size = size_mem;
 
         public:
@@ -30,6 +30,7 @@ namespace alloc
 
             custom_allocator()
             {
+                size_free = size;
                 memory = new T[size];
                 free_memory_pos = new T*[size];
                 for(size_t i = 0; i < size;++i)
@@ -52,8 +53,9 @@ namespace alloc
             {
                 if(size_free > 0)
                 {
-                    --
-                    return free_memory_pos[size_free];
+                    
+                    --size_free;
+                    return free_memory_pos[size_free];                    
                 }
                 else
                     return nullptr;
@@ -67,3 +69,6 @@ namespace alloc
 
     };
 }
+
+
+
