@@ -4,8 +4,11 @@
 #include "triangle.hpp"
 
 int main()
-{
-    Queue<Triangle<int>> que;
+{   
+    Queue<Triangle<int>, 3> que;
+    if(!que.be)
+        return 0;
+
 
      while(true)
     {
@@ -41,8 +44,15 @@ int main()
                 std::cin >> tr.Size;
                 std::cout << "Введите координаты центра треугольника:";
                 std::cin >> tr.Center.first >> tr.Center.second;
-                que.Push(tr);
-                std::cout << std::endl << "Добавление произведено успешно" << std::endl;
+                try
+                {
+                    que.Push(tr);
+                    std::cout << std::endl << "Добавление произведено успешно" << std::endl;
+                }
+                catch(int i)
+                {
+                    std::cout << "Выход за границу аллокатора" << std::endl;
+                }
                 break;
             case 2:
                 std::cout << "Введите длину стороны треугольника:";

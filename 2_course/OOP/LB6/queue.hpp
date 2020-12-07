@@ -4,7 +4,7 @@
 #include <iostream>
 #include "allocator.hpp"
 
-template <typename T>
+template <typename T, size_t size_alloc>
 class Queue
 {
     private:
@@ -16,16 +16,19 @@ class Queue
             std::shared_ptr<Queue_elem<Q>> next;
             std::shared_ptr<Queue_elem<Q>> prev;
 
-            static alloc::custom_allocator<Queue_elem<Q>,20> &get_allocator()
+            static alloc::custom_allocator<Queue_elem<Q>,size_alloc> &get_allocator()
             {
-                static alloc::custom_allocator<Queue_elem<Q>,20> al;
+                static alloc::custom_allocator<Queue_elem<Q>,size_alloc> al;
                 return al;
             }
 
 
             void* operator new(size_t size)
             {
-                return get_allocator().allocate();
+                void* point = get_allocator().allocate();
+                if(point == nullptr)
+                    throw -1;
+                return point;
             }
             void operator delete(void* point)
             {
@@ -58,14 +61,25 @@ class Queue
     }
 
     public:
+    bool be = false;
 
         Queue()
         {
             start = nullptr;
             finish = nullptr;
-            Nil = std::shared_ptr<Queue_elem<T>>(new Queue_elem<T>);
-            Nil->prev = nullptr;
-            Nil->next = start;
+            Nil = nullptr;
+            try
+            {
+                Nil = std::shared_ptr<Queue_elem<T>>(new Queue_elem<T>);
+                Nil->prev = nullptr;
+                Nil->next = start;
+                be = true;
+            }
+            catch(int i)
+            {
+                std::cout << "Невозможно создать очередь такого размера" << std::endl;
+                be = false;
+            }
         }
 
 

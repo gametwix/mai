@@ -20,8 +20,6 @@ class Triangle
             Center.second = 0;
         }
 
-    
-
         friend std::ostream& operator<< (std::ostream &out, const Triangle &triangle)
         {
             
@@ -39,6 +37,4 @@ class Triangle
         {
             return (sqrt(3)/2)*Size*Size;
         }
-
-
 };

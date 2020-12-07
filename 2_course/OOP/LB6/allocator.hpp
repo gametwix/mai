@@ -10,6 +10,11 @@ namespace alloc
             size_t size = size_mem;
 
         public:
+            using value_type = T;
+            using pointer = T*;
+            using const_pointer = const T*;
+            using reference = T&;
+            using const_reference = const T&;
             
             void destroy()
             {
@@ -47,18 +52,24 @@ namespace alloc
             void free()
             {
                 size_free = size;
+                for(size_t i = 0; i < size;++i)
+                {
+                    free_memory_pos[i] = memory + i;
+                }
             }
 
             T* allocate()
             {
                 if(size_free > 0)
                 {
-                    
                     --size_free;
                     return free_memory_pos[size_free];                    
                 }
                 else
+                {
                     return nullptr;
+                }
+                    
             }
 
             void deallocate(T* point)
