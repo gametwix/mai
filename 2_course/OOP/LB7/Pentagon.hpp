@@ -3,6 +3,8 @@
 #include "Figure.hpp"
 #include <iostream>
 #include <utility>
+#include <cmath>
+#include <fstream>
 
 #define PI 3.1415926
 template <typename T>
@@ -11,16 +13,21 @@ class Pentagon: public Figure<T>
 protected:
     T Size;
 public:
+    Pentagon Rhomb(std::pair<T,T> C,T S){
+        Size = S;
+        this->Center.first = C.first;
+        this->Center.second = C.second;
+    }
     void print()
     override{
         std::pair<double,double> cords[5];
-        double R = sqrt(10)*sqrt(5+sqrt(5)))*Size/10
+        double R = sqrt(10)*sqrt(5+sqrt(5))*Size/10;
         for(int i = 0;i < 5;++i)
         {
-            cords[i].first = Center.first;
-            cords[i].second = Center.second;
-            cords[i].first +=R*cos(2*Pi*i/5); 
-            cords[i].first +=R*sin(2*Pi*i/5);
+            cords[i].first = this->Center.first;
+            cords[i].second = this->Center.second;
+            cords[i].first +=R*cos(2*PI*i/5); 
+            cords[i].first +=R*sin(2*PI*i/5);
         }
 
         std::cout << "{";
