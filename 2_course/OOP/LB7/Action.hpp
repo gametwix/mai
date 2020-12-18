@@ -59,7 +59,7 @@ class Document
         {
             elems.clear();
             while (!actions.empty())
-                actions.pop;
+                actions.pop();
         }
 
         void Add(size_t pos,std::shared_ptr<Type> elem)
