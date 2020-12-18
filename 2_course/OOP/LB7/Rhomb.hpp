@@ -5,10 +5,12 @@
 #include <utility>
 #include <fstream>
 
+
 template <typename T>
 class Rhomb: public Figure<T>
 {
 protected:
+    const size_t TYPE = 1;
     T Diag_1, Diag_2;
 public:
     Rhomb(std::pair<T,T> C,T D1,T D2):Diag_1(D1),Diag_2(D2){
@@ -32,15 +34,16 @@ public:
         std::cout << "{";
         for(int i = 0;i < 4;++i)
             std::cout << "(" << cords[i].first << "," << cords[i].second << ")";  
-        std::cout << "}";
+        std::cout << "}"<<std::endl;
     }
 
     void write(std::ofstream& file)
     override{
-        file.write((const char*) &(this->Center.first), sizeof (T));
-        file.write((const char*) &(this->Center.second), sizeof (T));
-        file.write((const char*) &(this->Diag_1), sizeof (T));
-        file.write((const char*) &(this->Diag_2), sizeof (T));
+        file.write((char*) &(this->TYPE), sizeof(size_t));
+        file.write((char*) &(this->Center.first), sizeof (T));
+        file.write((char*) &(this->Center.second), sizeof (T));
+        file.write((char*) &(this->Diag_1), sizeof (T));
+        file.write((char*) &(this->Diag_2), sizeof (T));
     }
 
 };
