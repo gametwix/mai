@@ -95,7 +95,7 @@ class TDict
 };
 \end{lstlisting}
 
-Вставка в дерево это немного модифицированная вставка в обычное бинарное дерево поиска. Для того чтобы вставка сохраняла красно-черные свойства дерево используется фенкция ins_fix(), которая перекрашивает узлы и выполняет повороты.
+Вставка в дерево это немного модифицированная вставка в обычное бинарное дерево поиска. Для того чтобы вставка сохраняла красно-черные свойства дерево используется фенкция ins\_fix(), которая перекрашивает узлы и выполняет повороты.
 
 \begin{lstlisting}[language=C++]
 void insert(rb_tree_elem<T> *z)
@@ -142,42 +142,149 @@ void insert(rb_tree_elem<T> *z)
 	\item "Дядя" у узла z черный, и z - левый потомок.
 \end{itemize} 
 
-В случае, если код не помещается на одну-две страницы $A4$, тогда следует сделать табличку следующего вида:
+\newpage
+Определение функций:
 \begin{longtable}{|p{7.5cm}|p{7.5cm}|}
 \hline
 \rowcolor{lightgray}
-\multicolumn{2}{|c|} {main.c}\\
+\multicolumn{2}{|c|} {dict.hpp}\\
 \hline
-void sort(struct KV \& B, struct KV \& Res, int max, int size)&Функция сортировки подсчётом\\
+void parse\_comand(NString::TString \&cmd&Парсинг запросов\\
 \hline
 \rowcolor{lightgray}
-\multicolumn{2}{|c|} {file1.c}\\
+\multicolumn{2}{|c|} {rb.hpp}\\
 \hline
-void function\_name()&Функция, \enquote{которая почти всегда работает, но неясно, что она делает}.\\
+void left\_rotate(rb\_tree \&Tree,rb\_tree\_elem<T> *x)&Левый поворот дерева.\\
+\hline
+void right\_rotate(rb\_tree \&Tree,rb\_tree\_elem<T> *y)&Правый поворот дерева.\\
+\hline
+void ins\_fix(rb\_tree\_elem<T> *z)&Исправление вставки в дерево\\
+\hline
+void insert(rb\_tree\_elem<T> *z)&Вставка в дерево.\\
+\hline
+void transplant(rb\_tree\_elem<T> *u,rb\_tree\_elem<T> *v)&Переносит элимент в дереве.\\
+\hline
+void insert\_data(T data)&Создает элимент дерева для вызова вставки.\\
+\hline
+void print(rb\_tree\_elem<T> *Tree,int lvl)&Вывод дерева.\\
+\hline
+void clear(rb\_tree\_elem<T> *Tree)&Очистка дерева.\\
+\hline
+void save\_tree(rb\_tree\_elem<T> *Tree,std::ofstream\& wf)&Сохраняет дерево в файл.\\
+\hline
+bool save(char *ch)&Проверяет возможность создания и открывает файл на запись.\\
+\hline
+void load\_tree(rb\_tree\_elem<T> *Tree,std::ifstream\& rf)&Загрузка дерева из файла.\\
+\hline
+bool load(char *ch)&Проверяет наличие файла и возможность открыть его на чтение.\\
+\hline
+rb\_tree\_elem<T>* Search(T\& sample,bool\& success)&Поиск элемента в дереве.\\
+\hline
+rb\_tree\_elem<T>* Tree\_min(rb\_tree\_elem<T>* elem)&Поиск минимального элемента в дереве\\
+\hline
+void rb\_delete(rb\_tree\_elem<T>* \&elem)&Удаление элемента из дерева.\\
+\hline
+void delete\_fix(rb\_tree\_elem<T>* x)&Исправление дерева после удаления элемента.\\
+\hline
+void Delete(T\& sample)&Проверяет дерево на возможность удаления и вызывает удаление.\\
+\hline
+bool isFileEmpty(const char* filename)&Проверяет закончился ли файл.\\
 \hline
 \end{longtable}
-В этом случае структуры или классы должны быть полностью приведены в листинге (без реализации методов).
+
+\newpage
+Листинг:
 \begin{lstlisting}[language=C]
-struct KV{
-	int key;
-	char value;
-} KV;
+#pragma once
+#include <iostream>
+#include <stdio.h>
+#include <fstream>
+
+namespace rb
+{
+	template <typename T>
+	class rb_tree_elem
+	{
+		public:
+		bool Color;
+		T Key;
+		rb_tree_elem *Left;
+		rb_tree_elem *Right;
+		rb_tree_elem *Par;
+
+		rb_tree_elem()
+	};
+
+	template <typename T>
+	class rb_tree
+	{
+		public:
+		rb_tree_elem<T> *Root;
+		rb_tree_elem<T> *Nil;
+
+		rb_tree()
+
+		~rb_tree()
+
+		void left_rotate(rb_tree &Tree,rb_tree_elem<T> *x)
+
+		void right_rotate(rb_tree &Tree,rb_tree_elem<T> *y)
+
+		void ins_fix(rb_tree_elem<T> *z)
+
+		void insert(rb_tree_elem<T> *z)
+
+		void transplant(rb_tree_elem<T> *u,rb_tree_elem<T> *v)
+
+		void insert_data(T data)
+
+		void print(rb_tree_elem<T> *Tree,int lvl)
+
+		void clear(rb_tree_elem<T> *Tree)
+
+		void save_tree(rb_tree_elem<T> *Tree,std::ofstream& wf)
+
+		bool save(char *ch)
+
+		void load_tree(rb_tree_elem<T> *Tree,std::ifstream& rf)
+
+		bool load(char *ch)
+
+		rb_tree_elem<T>* Search(T& sample,bool& success)
+
+		rb_tree_elem<T>* Tree_min(rb_tree_elem<T>* elem)
+
+		void rb_delete(rb_tree_elem<T>* &elem)
+
+		void delete_fix(rb_tree_elem<T>* x)
+		
+		void Delete(T& sample)
+
+		bool isFileEmpty(const char* filename)
+	};
+
+}//namespace rb
 \end{lstlisting}
 \pagebreak
 
 \section{Консоль}
 \begin{alltt}
-a.kukhticev$ gcc -pedantic -Wall -std=c99 -Werror -Wno-sign-compare -lm da10.c -o da10 --some_long_argument=true
-a.kukhticev$ cat test1 
-87	a
-13	b
-89	c
-13	d
-a.kukhticev$ ./da10 < test1 
-13	b
-13	d
-87	a
-89	c
+	pavel@DESKTOP-VBSMFB3:~/Projects/mai/2_course/DA/LB2/tosol/solution$ cat test0
+	+ a 1
+	+ A 2
+	+ aa 18446744073709551615
+	aa
+	A
+	- A
+	a
+	pavel@DESKTOP-VBSMFB3:~/Projects/mai/2_course/DA/LB2/tosol/solution$ cat test0 |./solution
+	OK
+	Exist
+	OK
+	OK: 18446744073709551615
+	OK: 1
+	OK
+	NoSuchWord
 \end{alltt}
 \pagebreak
 

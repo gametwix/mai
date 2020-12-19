@@ -515,6 +515,4 @@ namespace rb
         }
     };
 
-    
-
 }//namespace rb
