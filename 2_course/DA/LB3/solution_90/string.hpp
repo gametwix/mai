@@ -117,7 +117,7 @@ namespace NString
                 if(in >> str.str)
                 {
                     while(str.str[str.size] != '\0')
-                        ++str.size;
+                    ++str.size;
                 }
                 return in;
             }
