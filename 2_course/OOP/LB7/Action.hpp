@@ -64,6 +64,8 @@ class Document
 
         void Add(size_t pos,std::shared_ptr<Type> elem)
         {
+            if(pos > elems.size())
+                throw -1;
             Add_elem(pos,elem);
             auto act = new B_Del_Action(pos);
             actions.push(std::shared_ptr<BackAction>(act));
@@ -71,6 +73,8 @@ class Document
 
         void Del(size_t pos)
         {
+            if(pos > elems.size()-1)
+                throw -1;
             auto act = new B_Add_Action(pos,elems.at(pos));
             actions.push(std::shared_ptr<BackAction>(act));
             Del_elem(pos);

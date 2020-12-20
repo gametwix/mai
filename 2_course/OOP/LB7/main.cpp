@@ -9,7 +9,9 @@
 template <typename T>
 void Save(Document<Figure<T>> &doc,char* FileName)
 {
-    std::ofstream file(FileName,std::ios::binary);
+    std::ofstream file;(FileName,std::ios::binary);
+    if(!file.is_open())
+        throw -1;
     std::cout << doc.elems.size() <<std::endl;
     for(int i = 0;i < doc.elems.size();++i)
     {
@@ -23,6 +25,8 @@ template <typename T>
 void Load(Document<Figure<T>> &doc,char* FileName)
 {
     std::ifstream file(FileName,std::ios::binary);
+    if(!file.is_open())
+        throw -1;
     int i = 0;
     while(file.peek() != EOF)
     {
@@ -93,12 +97,27 @@ int main()
                 doc.Create();
                 std::cout << "Введите название файла: ";
                 std::cin >> filename;
-                Load(doc,filename);
+                try
+                {
+                    Load(doc,filename);
+                }
+                catch(int i)
+                {
+                    std::cout << "Не удалось открыть файл" << std::endl;
+                }
                 break;
             case 3:
                 std::cout << "Введите название файла: ";
                 std::cin >> filename;
-                Save(doc,filename);
+                try
+                {
+                    Save(doc,filename);
+                }
+                catch(int i)
+                {
+                    std::cout << "Не удалось открыть файл" << std::endl;
+                }
+
             case 4:
                 std::cout << "Введите позицию: ";
                 std::cin >> pos;
@@ -110,13 +129,16 @@ int main()
                 switch(sw2)
                 {
                     case 1:
-                        doc.Add(pos,Factory<int,Rhomb<int>>::CreatFig());
+                        try{doc.Add(pos,Factory<int,Rhomb<int>>::CreatFig());}
+                        catch(int p){std::cout << "Выход за границы контейнера" << std::endl;}
                         break;
                     case 2:
-                        doc.Add(pos,Factory<int,Pentagon<int>>::CreatFig());
+                        try{doc.Add(pos,Factory<int,Pentagon<int>>::CreatFig());}
+                        catch(int p){std::cout << "Выход за границы контейнера" << std::endl;}
                         break;
                     case 3:
-                        doc.Add(pos,Factory<int,Hexagon<int>>::CreatFig());
+                        try{doc.Add(pos,Factory<int,Hexagon<int>>::CreatFig());}
+                        catch(int p){std::cout << "Выход за границы контейнера" << std::endl;}
                         break;
                     default:
                         break;
@@ -125,12 +147,18 @@ int main()
             case 5:
                 std::cout << "Введите позицию: ";
                 std::cin >> pos;
-                doc.Del(pos);
+                try{doc.Del(pos);}
+                catch(int p){std::cout << "Выход за границы контейнера" << std::endl;}
                 break;
             case 6:
-                doc.Undo();
+                try{doc.Undo();}
+                catch(int p){std::cout << "Нет обратных действий" << std::endl;}
                 break;
             case 7:
+                if(doc.elems.size() == 0)
+                {
+                    std::cout << "Контейнер пуст" << std::endl;
+                }
                 for(int i = 0;i < doc.elems.size();++i)
                     doc.elems[i]->print();
                 break;
