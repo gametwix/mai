@@ -12,13 +12,14 @@ size_t CreateBor(TAhoKarasik &ahk)
     size_t pos = 0;
     long long num = 0;
     size_t pattern_count = 0;
-    size_t ch = std::getchar();
+    size_t ch;
     bool in_num = false;
     bool in_pat = false;
     std::vector<SPattern*> patterns;
     SPattern* cur_pattern = new SPattern();
-
-    while(true){
+    char in;
+    while(std::cin.get(in)){
+        ch = in;
         if(ch == 63){
             pos++;
             patterns.push_back(cur_pattern);
@@ -41,7 +42,6 @@ size_t CreateBor(TAhoKarasik &ahk)
             num = 0;
             ++pos;
         }
-        ch = std::getchar();
         if(ch == 10){
             if(!in_pat)
                 cur_pattern->Pos_start = pos;
@@ -50,7 +50,9 @@ size_t CreateBor(TAhoKarasik &ahk)
             patterns.push_back(cur_pattern);
             break;
         }
-    }    
+    }
+    if(patterns.empty())
+        delete cur_pattern;    
     for(auto i:patterns){
         ahk.Push(i->Pattern,i->Pos_start);
         ++pattern_count;

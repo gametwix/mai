@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <memory>
 #include <unordered_map>
@@ -82,7 +83,7 @@ class TAhoKarasik{
 			}
 		}
 
-		void AddLast(elem_ptr cur,std::vector<size_t>& vect,const size_t &pos){
+		void AddLast(elem_ptr cur,std::vector<int>& vect,const size_t &pos){
 			size_t size = cur->JockerPos.size();
 			for(size_t i = 0;i < size;++i){
 				if(pos-cur->JockerPos[i]>=0)
@@ -90,18 +91,21 @@ class TAhoKarasik{
 			}
 		}
 
-		void Find(const std::vector<long long> &text,std::vector<size_t> &pos){
+		void Find(std::vector<long long> &text,std::vector<int> &pos){
 			size_t text_size = text.size();
 			elem_ptr cur = &Root;
-			pos.resize(text_size);
 			for(int i = 0;i < text_size;++i){
-				while(cur->HaveChild(text[i])==nullptr)
+				while(cur->HaveChild(text[i])==nullptr && cur->Suf!=nullptr)
+				{
 					cur = cur->Suf;
-				cur = cur->Childs.at(text[i]);
-				if(cur->Stop!=nullptr){
-					AddLast(cur->Stop,pos,i);}
-				if(cur->IsLast){
-					AddLast(cur,pos,i);}
+				}
+				if(cur->HaveChild(text[i])!=nullptr){
+					cur = cur->Childs.at(text[i]);
+					if(cur->Stop!=nullptr){
+						AddLast(cur->Stop,pos,i);}
+					if(cur->IsLast){
+						AddLast(cur,pos,i);}
+				}
 			}
 		}
 
