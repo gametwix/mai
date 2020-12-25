@@ -56,7 +56,6 @@ class TAhoKarasik{
 			}
 			cur_elem->IsLast = true;
 			cur_elem->JockerPos.push_back(pos);
-			std::cout << pos << "+_" << std::endl;
 		}
 
 		void SearchSufPtr()
@@ -72,7 +71,6 @@ class TAhoKarasik{
 
 				long long x = item->Sym;
 				elem_ptr par = item->Parent;
-				std::cout << par <<std::endl;
 				if(item == &Root)
 					continue;
 				
@@ -92,7 +90,6 @@ class TAhoKarasik{
 		{
 			size_t size = cur->JockerPos.size();
 			for(size_t i = 0;i < size;++i){
-				std::cout << pos-cur->JockerPos[i] << "+" <<std::endl;
 				if(pos-cur->JockerPos[i]>=0)
 					++vect[pos-cur->JockerPos[i]];
 			}

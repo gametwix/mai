@@ -50,10 +50,8 @@ size_t CreateBor(TAhoKarasik &ahk)
             patterns.push_back(cur_pattern);
             break;
         }
-        std::cout << pos << "P" << std::endl;
     }    
     for(auto i:patterns){
-        std::cout << i->Pattern[0]<< '-' << std::endl;
         ahk.Push(i->Pattern,i->Pos_start);
         ++pattern_count;
         delete(i);
@@ -104,7 +102,7 @@ int main()
 {
     size_t pattern_count;
     TAhoKarasik ahk;
-    CreateBor(ahk);
+    pattern_count = CreateBor(ahk);
     std::vector<long long> text;
     std::vector<size_t> size_line;
     ReadText(text,size_line);
@@ -114,18 +112,19 @@ int main()
     size_t size_text = pos.size();
     for(size_t i = 0;i < size_text;++i)
     {
-        std::cout << pos[i] <<std::endl;
         if(pos[i]==pattern_count)
         {
             if(i>=size_line[size_line.size()-1])
             {
                 std::cout<< "("<<size_line.size()<<","<< i - size_line[size_line.size()-1] +1 <<")" <<std::endl;
             }
-            for(int j = 0; j<size_line.size()-1;++j)
-            {
-                if(i>=size_line[j])
+            else{
+                for(int j = 0; j<size_line.size()-1;++j)
                 {
-                    std::cout<< "("<<j+1<<","<< i - size_line[j] +1 <<")" <<std::endl;
+                    if(i>=size_line[j] && i<=size_line[j])
+                    {
+                        std::cout<< "("<<j+1<<","<< i - size_line[j] +1 <<")" <<std::endl;
+                    }
                 }
             }
         }
