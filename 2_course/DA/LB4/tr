@@ -1,0 +1,15 @@
+	public:
+		TElem Root;
+		void Push(std::vector<long long>& vect){
+			std::queue<TElem*> q;
+			q.push(&Root);
+			while(!q.empty()){
+				TElem* item = q.front();
+				q.pop();
+				for(auto i: item->Childs){
+					q.push(i.second)
+				}
+			}
+		}
+
+}; //TAhoKarasik
