@@ -60,10 +60,10 @@ size_t CreateBor(TAhoKarasik &ahk)
     return pattern_count;
 }
 
-void ReadText(std::vector<long long> &text,std::vector<size_t> &size_line){
+void ReadText(std::vector<long long> &text,std::vector<int> &size_line){
     char ch;
     long long num = 0;
-    size_t num_word = 0;
+    int num_word = 0;
     bool in_num = false;
     while(std::cin.get(ch)){
         int in = ch;
@@ -97,6 +97,21 @@ void ReadText(std::vector<long long> &text,std::vector<size_t> &size_line){
             size_line.push_back(num_word-1);
 }
 
+std::vector<int> Compact_size_text(std::vector<int> size_line)
+{
+    std::vector<int> new_vect;
+    int last = -1;
+    int size = size_line.size();
+    for(size_t i = 0;i < size;++i)
+    {
+        if(size_line[i] != last)
+        {
+            last = size_line[i];
+            new_vect.push_back(last);
+        }
+    }
+    return new_vect;
+}
 
 int main()
 {
@@ -104,24 +119,25 @@ int main()
     TAhoKarasik ahk;
     pattern_count = CreateBor(ahk);
     std::vector<long long> text;
-    std::vector<size_t> size_line;
+    std::vector<int> size_line;
     ReadText(text,size_line);
     std::vector<size_t> pos;
     pos.resize(text.size());
     ahk.Find(text,pos);
+    size_line = Compact_size_text(size_line);
     size_t size_text = pos.size();
     for(size_t i = 0;i < size_text;++i)
     {
         if(pos[i]==pattern_count)
         {
-            if(i>=size_line[size_line.size()-1])
-            {
-                std::cout<< "("<<size_line.size()<<","<< i - size_line[size_line.size()-1] +1 <<")" <<std::endl;
+            size_t size_abz = size_line.size();
+            if(i>=size_line[size_abz-1]){
+                std::cout<< "("<<size_abz<<","<< i - size_line[size_abz-1] +1 <<")" <<std::endl;
             }
             else{
-                for(int j = 0; j<size_line.size()-1;++j)
+                for(int j = 0; j<size_abz-1;++j)
                 {
-                    if(i>=size_line[j] && i<=size_line[j])
+                    if(i>=size_line[j] && i<size_line[j+1])
                     {
                         std::cout<< "("<<j+1<<","<< i - size_line[j] +1 <<")" <<std::endl;
                     }
