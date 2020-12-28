@@ -1,144 +1,120 @@
+#include "ahok.hpp"
 #include <iostream>
 #include <vector>
-#include "ahok.hpp"
 
-size_t CreateBor(TAhoKarasik &ahk)
-{
-    struct SPattern{
-        std::vector<long long> Pattern;
-        size_t Pos_start;
-    };
-
-    size_t pos = 0;
+int ReadPattern(TAhoKorasik &ahok){
+    char ch;
+    int ind;
+    int pos_pattern = 0;
+    bool innum = false;
     long long num = 0;
-    size_t pattern_count = 0;
-    size_t ch;
-    bool in_num = false;
-    bool in_pat = false;
-    std::vector<SPattern*> patterns;
-    SPattern* cur_pattern = new SPattern();
-    char in;
-    while(std::cin.get(in)){
-        ch = in;
-        if(ch == 63){
-            pos++;
-            patterns.push_back(cur_pattern);
-            cur_pattern = new SPattern();
-            in_pat = false;
-        }
-        else if((ch>47)&&(ch<58)){
+    int num_pattern = 0;
+    std::vector<long long> pattern;
+    while(std::cin.get(ch)){
+        ind = ch;
+        if(ind > 47 && ind < 58){
+            innum = true;
             num *= 10;
-            num += ch-48;
-            in_num = true;
-            
+            num += ind - 48;
         }
-        else if(ch == 32 && in_num){
-            in_num = false;
-            if(!in_pat){
-                cur_pattern->Pos_start = pos;
-                in_pat = true;
-            }
-            cur_pattern->Pattern.push_back(num);
+        if(ind == 32 && innum){
+            ++pos_pattern;
+            pattern.push_back(num);
             num = 0;
-            ++pos;
+            innum = false;
         }
-        if(ch == 10){
-            if(!in_pat)
-                cur_pattern->Pos_start = pos;
-            if(in_num)
-                cur_pattern->Pattern.push_back(num);
-            patterns.push_back(cur_pattern);
+        if(ind == 63){
+            ahok.Push(pattern,pos_pattern-1);
+            ++num_pattern;
+            pattern.clear();
+            ++pos_pattern;
+        }
+        if(ind == 10){
+            if(innum){
+                ++pos_pattern;
+                pattern.push_back(num);
+                num = 0;
+                innum = false;
+            }
+            ahok.Push(pattern,pos_pattern-1);
+            ++num_pattern;
             break;
         }
     }
-    if(patterns.empty())
-        delete cur_pattern;    
-    for(auto i:patterns){
-        ahk.Push(i->Pattern,i->Pos_start);
-        ++pattern_count;
-        delete(i);
-    }
-    ahk.SearchSufPtr();
-    return pattern_count;
+    return num_pattern;
 }
 
-void ReadText(std::vector<long long> &text,std::vector<int> &size_line){
-    char ch;
-    long long num = 0;
-    int num_word = 0;
-    bool in_num = false;
-    while(std::cin.get(ch)){
-        int in = ch;
-        if((in>47)&&(in<58)){
-            num *= 10;
-            num += in-48;
-            in_num = true;
-        }
-        else if(in == 32 && in_num){
-            in_num = false;
-            text.push_back(num);
-            num = 0;
-            ++num_word;
-        }
-        else if(in == 10){
-            if(in_num){
-                in_num = false;
-                text.push_back(num);
-                num = 0;
-                ++num_word;
-            }
-            size_line.push_back(num_word-1);
-        }
-    }
-    if(in_num){
-                in_num = false;
-                text.push_back(num);
-                num = 0;
-                ++num_word;
-            }
-            size_line.push_back(num_word-1);
-}
 
-std::vector<int> Compact_size_text(std::vector<int> size_line){
-    std::vector<int> new_vect;
-    int last = -1;
-    int size = size_line.size();
-    for(size_t i = 0;i < size;++i){
-        if(size_line[i] != last){
-            last = size_line[i];
-            new_vect.push_back(last);
-        }
-    }
-    return new_vect;
-}
-
-int main()
+void ReadText(std::vector<long long> &text,std::vector<int> &poslast)
 {
-    size_t pattern_count;
-    TAhoKarasik ahk;
-    pattern_count = CreateBor(ahk);
-    std::vector<long long> text;
-    std::vector<int> size_line;
-    ReadText(text,size_line);
-    std::vector<size_t> pos;
-    pos.resize(text.size());
-    ahk.Find(text,pos);
-    size_line = Compact_size_text(size_line);
-    size_t size_text = pos.size();
-    for(size_t i = 0;i < size_text;++i){
-        if(pos[i]==pattern_count){
-            size_t size_abz = size_line.size();
-            if(i>=size_line[size_abz-1]){
-                std::cout<<size_abz<<", "<< i - size_line[size_abz-1] +1  <<std::endl;
+    char ch;
+    int ind;
+    int numelem = 0;
+    long long num = 0;
+    bool innum = false;
+    while(std::cin.get(ch)){
+        ind = ch;
+        if(ind > 47 && ind < 58){
+            innum = true;
+            num *= 10;
+            num += ind - 48;
+        }
+        if(ind == 32 && innum){
+            innum = false;
+            text.push_back(num);
+            ++numelem;
+            num = 0;
+        }
+        if(ind == 10){
+            if(innum)
+            {
+                innum = false;
+                text.push_back(num);
+                ++numelem;
+                num = 0;
             }
-            else{
-                for(int j = 0; j<size_abz-1;++j){
-                    if(i>=size_line[j] && i<size_line[j+1]){
-                        std::cout<< j+1<<", "<< i - size_line[j] +1  <<std::endl;
-                    }
+            poslast.push_back(numelem-1);
+        }
+    }
+    if(innum)
+    {
+        ++numelem;
+        text.push_back(num);
+        poslast.push_back(numelem-1);
+    }
+}
+
+int main(){
+    TAhoKorasik ahok;
+    int num_pattern;
+    std::vector<long long> text;
+    std::vector<int> lastposline;
+    num_pattern = ReadPattern(ahok);
+    ReadText(text,lastposline);
+    int intext = text.size();
+    std::vector<int> pos(intext);
+    ahok.BorSuf();
+    ahok.Find(text,pos);
+    int size_lines = lastposline.size();
+    for(int i = 0; i < intext; ++i){
+        if(pos[i] == num_pattern){
+            if(i > lastposline[size_lines - 1]){
+                std::cout << size_lines<<", "<< i - lastposline[size_lines - 1] <<std::endl;
+                continue;
+            }
+            if(i <= lastposline[0]){
+                std::cout << 1 << ", "<< i+1 <<std::endl;
+                continue;
+            }
+            for(int j = 0; j < size_lines - 1; ++j){
+                if(i > lastposline[j] && i <= lastposline[j+1])
+                {
+                    std::cout << j+2 << ", " << i - lastposline[j] <<std::endl;
+                    break;
                 }
             }
         }
     }
-    return 0;	
+
+    return 0;
 }

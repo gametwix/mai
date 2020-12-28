@@ -3,6 +3,7 @@
 #include <vector>
 #include <unordered_map>
 #include <queue>
+#include <iostream>
 
 class TAhoKorasik{
 protected:
@@ -11,7 +12,7 @@ class TNode{
     using node_ptr = TNode*;
     long long Sym;                 //Data
     bool Last;
-    std::vector<size_t> Jockers;
+    std::vector<int> Jockers;
     node_ptr Parent;               //Ptrs
     node_ptr Suffix;
     node_ptr SubLast;
@@ -42,12 +43,16 @@ using node_ptr = TNode::node_ptr;
 
 node_ptr Root;
 
-TAhoKorasik():Root(new TNode()){}
+public:
+
+TAhoKorasik(){
+    Root = new TNode();
+}
 ~TAhoKorasik(){
     delete(Root);
 }
 
-void Push(const std::vector<long long> &pattern, size_t pos){
+void Push(const std::vector<long long> &pattern, int pos){
     node_ptr cur = Root;
     for(auto elem_pattern: pattern){
         node_ptr child = cur->ChildPrt(elem_pattern);
@@ -95,6 +100,32 @@ void BorSuf(){
             elem->SubLast = elem->Suffix->SubLast;
         //~SubLast
     }//while
+}
+
+void ThisLast(node_ptr Cur,std::vector<int> &vect_incl,int pos){
+    if(Cur->SubLast != nullptr)
+        ThisLast(Cur->SubLast,vect_incl,pos);
+    for(auto jocker: Cur->Jockers){ 
+        if(pos-jocker >= 0)
+            ++vect_incl[pos-jocker];
+    }
+}
+
+void Find(std::vector<long long> &text,std::vector<int> &pos_incl){
+    node_ptr cur = Root;
+    int i=0;
+    for(auto elem: text){
+        while(cur->ChildPrt(elem)==nullptr && cur->Suffix!=nullptr)
+            cur = cur->Suffix;
+        if(cur->ChildPrt(elem)!=nullptr){
+            cur = cur->Childs.at(elem);
+            if(cur->Last)
+                ThisLast(cur,pos_incl,i);
+            else if(cur->SubLast != nullptr)
+                ThisLast(cur->SubLast,pos_incl,i);
+        }
+        ++i;
+    }
 }
 
 };//TAhoKorasik

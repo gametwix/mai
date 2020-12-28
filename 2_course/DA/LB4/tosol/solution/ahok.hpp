@@ -1,108 +1,131 @@
-#include <iostream>
-#include <memory>
-#include <unordered_map>
+#pragma once
+
 #include <vector>
-#include <stdexcept>
+#include <unordered_map>
 #include <queue>
+#include <iostream>
 
+class TAhoKorasik{
+protected:
+class TNode{
+    public:
+    using node_ptr = TNode*;
+    long long Sym;                 //Data
+    bool Last;
+    std::vector<int> Jockers;
+    node_ptr Parent;               //Ptrs
+    node_ptr Suffix;
+    node_ptr SubLast;
+    std::unordered_map<long long,node_ptr> Childs;
 
-class TAhoKarasik{
-	private:
-		class TElem{
-			using elem_ptr = TElem*;
-			public:
-				long long Sym;
-				bool IsLast;
-				elem_ptr Suf;
-				elem_ptr Stop;
-				elem_ptr Parent;
-				std::unordered_map<long long,elem_ptr> Childs;
-				std::vector<size_t> JockerPos;
-			public:
-				TElem(long long S = -1,bool IsL=false):Sym(S),IsLast(IsL),Suf(nullptr),Stop(nullptr),Parent(nullptr){}
-				~TElem(){
-					for(auto& i: Childs)
-					{
-						delete(i.second);
-					}
-				};
-				elem_ptr HaveChild(long long x)
-				{
-					try{ return Childs.at(x); }
-					catch(std::out_of_range){ return nullptr; }
-				}
-		}; //TElem
-		using elem_ptr = TElem*;
-	public:
-		TElem Root;
-		~TAhoKarasik(){};
-		void Push(std::vector<long long>& vect,size_t pos){
-			elem_ptr cur_elem(&Root);
-			size_t size_vect = vect.size();
-			elem_ptr child;
-			for(int i = 0;i < size_vect;++i){
-				try{	
-					cur_elem = cur_elem->Childs.at(vect[i]);
-				}
-				catch(std::out_of_range){
-					child = new TElem(vect[i]);
-					cur_elem->Childs.insert({vect[i],child});
-					child->Parent = cur_elem;
-					cur_elem = child;
-				}
-			}
-			cur_elem->IsLast = true;
-			cur_elem->JockerPos.push_back(pos);
-		}
+    TNode(long long inSym = -1,bool inLast = false):Sym(inSym),Last(inLast){
+        Parent = nullptr;
+        Suffix = nullptr;
+        SubLast = nullptr;
+    }
 
-		void SearchSufPtr(){
-			std::queue<elem_ptr> q;
-			q.push(&Root);
-			while(!q.empty()){
-				elem_ptr item = q.front();
-				q.pop();
-				for(auto i: item->Childs){
-					q.push(i.second);
-				}
+    ~TNode(){
+        for(auto Child: Childs){
+            delete(Child.second);
+        }
+    }
 
-				long long x = item->Sym;
-				elem_ptr par = item->Parent;
-				if(item == &Root)
-					continue;
-				
-				par = par->Suf;
-				while((par != nullptr) && (par->HaveChild(x) == nullptr))
-					par = par->Suf;
-				if(par == nullptr)
-					item->Suf = &Root;
-				else
-					item->Suf = par->Childs.at(x);
-				if(item->Suf->Stop != nullptr)
-					item->Stop = item->Suf->Stop;
-			}
-		}
+    node_ptr ChildPrt(long long inSym){
+        try{
+            return Childs.at(inSym);
+        }
+        catch(std::out_of_range){
+            return 0;
+        }
+    }
+};//TNode
+using node_ptr = TNode::node_ptr;
 
-		void AddLast(elem_ptr cur,std::vector<size_t>& vect,const size_t &pos){
-			size_t size = cur->JockerPos.size();
-			for(size_t i = 0;i < size;++i){
-				if(pos-cur->JockerPos[i]>=0)
-					++vect[pos-cur->JockerPos[i]];
-			}
-		}
+node_ptr Root;
 
-		void Find(const std::vector<long long> &text,std::vector<size_t> &pos){
-			size_t text_size = text.size();
-			elem_ptr cur = &Root;
-			pos.resize(text_size);
-			for(int i = 0;i < text_size;++i){
-				while(cur->HaveChild(text[i])==nullptr)
-					cur = cur->Suf;
-				cur = cur->Childs.at(text[i]);
-				if(cur->Stop!=nullptr){
-					AddLast(cur->Stop,pos,i);}
-				if(cur->IsLast){
-					AddLast(cur,pos,i);}
-			}
-		}
+public:
 
-}; //TAhoKarasik
+TAhoKorasik(){
+    Root = new TNode();
+}
+~TAhoKorasik(){
+    delete(Root);
+}
+
+void Push(const std::vector<long long> &pattern, int pos){
+    node_ptr cur = Root;
+    for(auto elem_pattern: pattern){
+        node_ptr child = cur->ChildPrt(elem_pattern);
+        if(child == nullptr){
+            child = new TNode(elem_pattern);
+            child->Parent = cur;
+            cur->Childs.insert({elem_pattern,child});
+        }
+        cur = child;
+    }
+    cur->Last = true;
+    cur->Jockers.push_back(pos);
+}
+
+void BorSuf(){
+    //BFS
+    std::queue<node_ptr> queue;
+    queue.push(Root);
+    while(!queue.empty()){
+        node_ptr elem = queue.front();
+        queue.pop();
+        for(auto child: elem->Childs)
+        {
+            queue.push(child.second);
+        }
+        //~BFS
+        //Suf
+        if(elem == Root) //not for Root
+		    continue;
+        
+        node_ptr parent = elem->Parent;
+        parent = parent->Suffix;
+        while(parent != nullptr && parent->ChildPrt(elem->Sym) == nullptr)
+            parent = parent->Suffix;
+        
+        if(parent == nullptr)
+            elem->Suffix = Root;
+        else
+            elem->Suffix = parent->ChildPrt(elem->Sym);
+        //~Suf
+        //SubLast
+        if(elem->Suffix->Last)
+            elem->SubLast = elem->Suffix;
+        else if(elem->Suffix->SubLast != nullptr)
+            elem->SubLast = elem->Suffix->SubLast;
+        //~SubLast
+    }//while
+}
+
+void ThisLast(node_ptr Cur,std::vector<int> &vect_incl,int pos){
+    if(Cur->SubLast != nullptr)
+        ThisLast(Cur->SubLast,vect_incl,pos);
+    for(auto jocker: Cur->Jockers){ 
+        if(pos-jocker >= 0)
+            ++vect_incl[pos-jocker];
+    }
+}
+
+void Find(std::vector<long long> &text,std::vector<int> &pos_incl){
+    node_ptr cur = Root;
+    int i=0;
+    for(auto elem: text){
+        while(cur->ChildPrt(elem)==nullptr && cur->Suffix!=nullptr)
+            cur = cur->Suffix;
+        if(cur->ChildPrt(elem)!=nullptr){
+            cur = cur->Childs.at(elem);
+            if(cur->Last)
+                ThisLast(cur,pos_incl,i);
+            else if(cur->SubLast != nullptr)
+                ThisLast(cur->SubLast,pos_incl,i);
+        }
+        ++i;
+    }
+}
+
+};//TAhoKorasik
