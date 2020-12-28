@@ -10,7 +10,11 @@
 #include "functions.hpp"
 #include "factory.hpp"
 
-
+/*
+Автор: Мохляков Павел
+Лабораторная работа на тему многопоточность
+Обработка фигор происходит в отдельном потоке
+*/
 int main(int argc, char **argv){
     size_t buf_size = 10;
     if(argc == 2){
@@ -20,7 +24,6 @@ int main(int argc, char **argv){
     }
 
     Functions<Figure<int>> func(buf_size);
-
     
     func.AddFunction([](const std::vector<Figure<int>*>& figures){
         for(const auto& figure: figures) {
@@ -31,10 +34,12 @@ int main(int argc, char **argv){
     func.AddFunction([](const std::vector<Figure<int>*>& figures){
         static int i = 0;
         std::string str  = std::to_string(i)+".txt";
+        std::ofstream file(str);
         for(auto figure: figures) {
-            figure->write(str);
+            figure->write(file);
         }
         ++i;
+        file.close();
     });
 
     func.Start();

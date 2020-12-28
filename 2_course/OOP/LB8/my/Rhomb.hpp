@@ -33,15 +33,13 @@ public:
    std::cout << "(" << cords[i].first << "," << cords[i].second << ")";  
   std::cout << "}"<<std::endl;
  }
- void write(std::string name)
+ void write(std::ofstream &file)
  override{
-  std::ofstream file(name);
   std::pair<double,double> cords[4];
   for(int i = 0;i < 4;++i){
    cords[i].first = this->Center.first;
    cords[i].second = this->Center.second;
   }
-  file << 1 <<std::endl;
   cords[2].first  -=  (double)Diag_1/2;
   cords[0].first  +=  (double)Diag_1/2;
   cords[1].second -=  (double)Diag_2/2;
@@ -50,7 +48,6 @@ public:
   for(int i = 0;i < 4;++i){
    file << "(" << cords[i].first << "," << cords[i].second << ")";  }
   file << "}"<<std::endl;
-  file.close();
  }
  
 };

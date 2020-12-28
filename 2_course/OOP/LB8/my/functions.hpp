@@ -29,7 +29,13 @@ static void Processing(Functions *who)
         who->waiter.wait(lock);
         
             if(!who->queue.empty()){
-                for(int i = 0; i < who->size_queue;++i){
+                int size_l;
+                if(who->size_queue == who->queue.size())
+                    size_l = who->size_queue;
+                else
+                    size_l = who->queue.size();
+
+                for(int i = 0; i < size_l;++i){
                     T* elem = who->queue.front();
                     who->vector.push_back(elem);
                     who->queue.pop();

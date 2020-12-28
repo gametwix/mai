@@ -39,9 +39,8 @@ public:
   std::cout << "}" <<std::endl;
  }
 
- void write(std::string name)
+ void write(std::ofstream &file)
  override{
-  std::ofstream file(name);
   std::pair<double,double> cords[5];
   double R = sqrt(10)*sqrt(5+sqrt(5))*Size/10;
   for(int i = 0;i < 5;++i){
@@ -57,5 +56,4 @@ public:
   file << "}" <<std::endl;
  }
 
- 
 };
