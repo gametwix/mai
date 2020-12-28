@@ -15,8 +15,24 @@ def generate_alphavit():
         alphavit.append(random.randint(1,1000000))
     return alphavit
 
-def generate_pattern():
-    
+def generate_pattern(alphavit):
+    ids = []
+    for i in range(0,random.randint(0,10),1):
+        ids.append(random.randint(0,len(alphavit)))
+    for i in range(0,random.randint(0,4),1):
+        ids[random.randint(1,len(ids))-1] = len(alphavit)
+    return ids
+
+def generate_text(alphavit):
+    count_lines = random.randint(0,1000)
+    text = []
+    for i in range(0,count_lines)
+        line = []
+        for j in range(0,random.randint(0,80))
+            line.append(alphavit[random.randint(0, len(alphavit))])
+        text.append(line)
+    return text
+
 
 
 
@@ -24,21 +40,6 @@ def generate_pattern():
 if __name__ == '__main__':
     random.seed()
     
-
-
-    
-    for i in range(5):
-        dd = generate(i)
-        with open("tests/test_"+str(i)+".t","w") as f:
-            for d in dd:
-                f.write(d.sym[0] + ' ' + str(d.num).rjust(3,'0') + ' ' + d.sym[1] + d.sym[2] + '\t'+d.strk + '\n')
-
-        dd = sorted(dd,key=lambda x: x.sym[2])
-        dd = sorted(dd,key=lambda x: x.sym[1])
-        dd = sorted(dd,key=lambda x: x.num)
-        dd = sorted(dd,key=lambda x: x.sym[0])
-
-        with open("tests/test_"+str(i)+".a","w") as f:
-            for d in dd:
-                f.write(d.sym[0] + ' ' + str(d.num).rjust(3,'0') + ' ' + d.sym[1] + d.sym[2] + '\t'+d.strk + '\n')
-    
+    alphavit = generate_alphavit()
+    ids = generate_pattern(alphavit)
+    print(ids, ' ', len(alphavit))
