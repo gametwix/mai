@@ -5,6 +5,14 @@
 #include <queue>
 #include <iostream>
 
+struct SText
+{
+    long long Sym;
+    int str;
+    int word;
+};
+
+
 class TAhoKorasik{
 protected:
 class TNode{
@@ -111,19 +119,19 @@ void ThisLast(node_ptr Cur,std::vector<int> &vect_incl,int pos){
     }
 }
 
-void Find(std::vector<long long> &text,std::vector<int> &pos_incl){
+void Find(std::vector<SText> &text,std::vector<int> &pos_incl){
     node_ptr cur = Root;
     int i=0;
     for(auto elem: text){
-        while(cur->ChildPrt(elem)==nullptr && cur->Suffix!=nullptr)
+        while(cur->ChildPrt(elem.Sym)==nullptr && cur->Suffix!=nullptr)
             cur = cur->Suffix;
-        if(cur->ChildPrt(elem)!=nullptr){
-            cur = cur->Childs.at(elem);
-            if(cur->Last)
-                ThisLast(cur,pos_incl,i);
-            else if(cur->SubLast != nullptr)
-                ThisLast(cur->SubLast,pos_incl,i);
-        }
+        if(cur->ChildPrt(elem.Sym)!=nullptr)
+            cur = cur->Childs.at(elem.Sym);
+        if(cur->Last)
+            ThisLast(cur,pos_incl,i);
+        else if(cur->SubLast != nullptr)
+            ThisLast(cur->SubLast,pos_incl,i);
+        
         ++i;
     }
 }

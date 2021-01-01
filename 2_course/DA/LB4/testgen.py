@@ -1,45 +1,39 @@
-import random
-import sys
+from random import *
+from string import ascii_letters
 
-class data:
-    def __init__(self,num,sym,strk):
-        self.num = num
-        self.sym = sym
-        self.strk = strk
+def get_random_pattern_key():
+    return ''.join(choice('123456789') for i in range(randint(1,3)))
 
+def get_random_text_key():
+    return ''.join(choice('123456789') for i in range(randint(1,5)))
 
-def generate_alphavit():
-    size_alpth = random.randint(1,100)
-    alphavit = []
-    for i in range(0,size_alpth,1):
-        alphavit.append(random.randint(1,1000000))
-    return alphavit
+if __name__ == "__main__":
+    pattern = ''
+    text = ''
+    keys = []
+    test_file_name = "tests/{:02d}".format( 10 )
+    with open( "{0}.t".format( test_file_name ), 'w' ) as output_file:
+        for x in range(5):
+            check = randint(1, 100000)
+            if check % 2 == 0:
+                key = '?'
+            else:
+                key = get_random_pattern_key()
+                if key not in keys:
+                    keys.append(key)
+            pattern = pattern + ' ' + key
+        output_file.write("{0}\n".format( pattern.lstrip() ))
 
-def generate_pattern(alphavit):
-    ids = []
-    for i in range(0,random.randint(0,10),1):
-        ids.append(random.randint(0,len(alphavit)))
-    for i in range(0,random.randint(0,4),1):
-        ids[random.randint(1,len(ids))-1] = len(alphavit)
-    return ids
-
-def generate_text(alphavit):
-    count_lines = random.randint(0,1000)
-    text = []
-    for i in range(0,count_lines)
-        line = []
-        for j in range(0,random.randint(0,80))
-            line.append(alphavit[random.randint(0, len(alphavit))])
-        text.append(line)
-    return text
-
-
-
-
-
-if __name__ == '__main__':
-    random.seed()
-    
-    alphavit = generate_alphavit()
-    ids = generate_pattern(alphavit)
-    print(ids, ' ', len(alphavit))
+        for i in range(10000): # kolvo strok v file
+            if i % 1000 == 0:
+                print('Generate ', i)
+            text = ''
+            for x in range(100): # kolvo chisel v str
+                check = randint(1, 100000)
+                if check % 2 == 0 and len(keys) > 0:
+                    key = choice(keys)
+                    text = text + ' ' + key
+                else:
+                    key = get_random_text_key()
+                    text = text + ' ' + key
+            output_file.write("{0}\n".format( text.lstrip() ))

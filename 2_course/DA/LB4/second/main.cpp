@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 
+
 int ReadPattern(TAhoKorasik &ahok){
     char ch;
     int ind;
@@ -24,10 +25,15 @@ int ReadPattern(TAhoKorasik &ahok){
             innum = false;
         }
         if(ind == 63){
-            ahok.Push(pattern,pos_pattern-1);
-            ++num_pattern;
-            pattern.clear();
-            ++pos_pattern;
+            if(!pattern.empty())
+            {
+                ahok.Push(pattern,pos_pattern-1);
+                ++num_pattern;
+                pattern.clear();
+                ++pos_pattern;
+            }
+            else
+                ++pos_pattern;
         }
         if(ind == 10){
             if(innum){
@@ -45,13 +51,15 @@ int ReadPattern(TAhoKorasik &ahok){
 }
 
 
-void ReadText(std::vector<long long> &text,std::vector<int> &poslast)
+void ReadText(std::vector<SText> &text,std::vector<int> pos,TAhoKorasik &ahok)
 {
     char ch;
     int ind;
-    int numelem = 0;
+    int numelem = 1;
+    int numsrt = 1;
     long long num = 0;
     bool innum = false;
+    SText word;
     while(std::cin.get(ch)){
         ind = ch;
         if(ind > 47 && ind < 58){
@@ -61,7 +69,12 @@ void ReadText(std::vector<long long> &text,std::vector<int> &poslast)
         }
         if(ind == 32 && innum){
             innum = false;
-            text.push_back(num);
+            word.Sym = num;
+            word.str = numsrt;
+            word.word = numelem;
+            text.push_back(word);
+            ahok.Find(num,pos);
+
             ++numelem;
             num = 0;
         }
@@ -69,50 +82,42 @@ void ReadText(std::vector<long long> &text,std::vector<int> &poslast)
             if(innum)
             {
                 innum = false;
-                text.push_back(num);
+                word.Sym = num;
+                word.str = numsrt;
+                word.word = numelem;
+                text.push_back(word);
+                ahok.Find(num,pos);
                 ++numelem;
                 num = 0;
             }
-            poslast.push_back(numelem-1);
+            ++numsrt;
+            numelem = 1;
         }
     }
     if(innum)
     {
-        ++numelem;
-        text.push_back(num);
-        poslast.push_back(numelem-1);
+        word.Sym = num;
+        word.str = numsrt;
+        word.word = numelem;
+        text.push_back(word);
+        ahok.Find(num,pos);
     }
 }
 
 int main(){
     TAhoKorasik ahok;
     int num_pattern;
-    std::vector<long long> text;
-    std::vector<int> lastposline;
+    std::vector<SText> text;
     num_pattern = ReadPattern(ahok);
-    ReadText(text,lastposline);
-    int intext = text.size();
-    std::vector<int> pos(intext);
     ahok.BorSuf();
-    ahok.Find(text,pos);
-    int size_lines = lastposline.size();
-    for(int i = 0; i < intext; ++i){
-        if(pos[i] == num_pattern){
-            if(i > lastposline[size_lines - 1]){
-                std::cout << size_lines<<", "<< i - lastposline[size_lines - 1] <<std::endl;
-                continue;
-            }
-            if(i <= lastposline[0]){
-                std::cout << 1 << ", "<< i+1 <<std::endl;
-                continue;
-            }
-            for(int j = 0; j < size_lines - 1; ++j){
-                if(i > lastposline[j] && i <= lastposline[j+1])
-                {
-                    std::cout << j+2 << ", " << i - lastposline[j] <<std::endl;
-                    break;
-                }
-            }
+    std::vector<int> pos;
+    ReadText(text,pos,ahok);
+    int intext = text.size();
+    for(int i = 0;i < intext;++i)
+    {
+        if(pos[i] == num_pattern)
+        {
+            std::cout << text[i].str << ", " << text[i].word <<std::endl;
         }
     }
 

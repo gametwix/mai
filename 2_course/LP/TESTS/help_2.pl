@@ -42,3 +42,5 @@ all_rep(List,List):-not(member("(",List)),not(member(")",List)).
 
 
 calculate(Expr,Val):-all_rep(Expr,X),cal(X,Val).
+
+
