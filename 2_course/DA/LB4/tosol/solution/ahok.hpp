@@ -38,13 +38,12 @@ class TNode{
         }
     }
 
-    node_ptr ChildPrt(long long inSym){
-        try{
-            return Childs.at(inSym);
-        }
-        catch(std::out_of_range){
-            return 0;
-        }
+    node_ptr ChildPrt(long long &inSym){
+        std::unordered_map<long long,node_ptr>::iterator child = Childs.find(inSym);
+        if(child == Childs.end())
+            return nullptr;
+        else
+            return child->second;    
     }
 };//TNode
 using node_ptr = TNode::node_ptr;

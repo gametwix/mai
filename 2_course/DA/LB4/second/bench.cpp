@@ -1,9 +1,10 @@
 #include "ahok.hpp"
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <utility>
 
-
-int ReadPattern(TAhoKorasik &ahok){
+int ReadPattern(TAhoKorasik &ahok,std::vector<std::pair<int,std::vector<long long>>> &VPattern){
     char ch;
     int ind;
     int pos_pattern = 0;
@@ -28,6 +29,7 @@ int ReadPattern(TAhoKorasik &ahok){
             if(!pattern.empty())
             {
                 ahok.Push(pattern,pos_pattern-1);
+                VPattern.push_back({pos_pattern-1,pattern});
                 ++num_pattern;
                 pattern.clear();
                 ++pos_pattern;
@@ -43,6 +45,7 @@ int ReadPattern(TAhoKorasik &ahok){
                 innum = false;
             }
             ahok.Push(pattern,pos_pattern-1);
+            VPattern.push_back({pos_pattern-1,pattern});
             ++num_pattern;
             break;
         }
@@ -100,11 +103,16 @@ void ReadText(std::vector<SText> &text)
     }
 }
 
+bool Find(std::vector<long long> pattern, std::vector<SText> text){
+    
+}
+
 int main(){
     TAhoKorasik ahok;
+    std::vector<std::pair<int,std::vector<long long>>> patterns;
     int num_pattern;
     std::vector<SText> text;
-    num_pattern = ReadPattern(ahok);
+    num_pattern = ReadPattern(ahok,patterns);
     ReadText(text);
     int intext = text.size();
     std::vector<int> pos(intext);
