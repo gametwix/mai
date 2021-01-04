@@ -118,6 +118,5 @@ int main(){
             std::cout << text[i].str << ", " << text[i].word <<std::endl;
         }
     }
-
     return 0;
 }
