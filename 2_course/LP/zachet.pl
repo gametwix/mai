@@ -25,10 +25,10 @@ comb(O,D,I,N,M,G):-cifra(O),add_new(O,[],L1),
 %M = 1,
 %G = 4 ;
 
-sliyanie([H1|T1],[H2|T2],[H1|Res1]):-H1<H2,sliyanie(T1,[H2|T2],Res1).
-sliyanie([H1|T1],[H2|T2],[H2|Res1]):-H1>=H2,sliyanie([H1|T1],T2,Res1).
-sliyanie([],Res,Res).
-sliyanie(Res,[],Res).
+merge([],Res,Res).
+merge(Res,[],Res).
+merge([H1|T1],[H2|T2],[H1|Res1]):-H1<H2,merge(T1,[H2|T2],Res1).
+merge([H1|T1],[H2|T2],[H2|Res1]):-H1>=H2,merge([H1|T1],T2,Res1).
 
 
-sliyanie2()
+
