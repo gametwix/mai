@@ -1,5 +1,5 @@
 #include <stdio.h>
-//#include <string.h>
+#include <string.h>
 #include <unistd.h>
 #include <sys/mman.h>
 #include <sys/types.h>
@@ -13,10 +13,9 @@
 
 int main()
 {
-    char *filename = NULL;
-    getline(filename,NULL,stdin);
-    filename[sizeof(filename)-1] = '\0';
-    printf("%s",filename);
+    char filename[100];
+    scanf("%s",filename);
+    printf("%s\n",filename);
     //можно ли юзать готовый mutex? | не получится передать)))
     /*pthread_mutex_t lock;
     pthread_mutex_init(&lock, NULL);*/
