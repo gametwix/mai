@@ -3,13 +3,20 @@
 int main(){
     long long sum = 0;
     int num;
-    while(scanf("%d",&num) != EOF)
-    {
-        sum += num;
-    }
+    char ch;
     FILE *file;
-    file = fopen("output", "w");
-    fprintf(file,"%lld\n",sum);
+    char filename[100];
+    scanf("%s",filename);
+    file = fopen(filename, "w");
+    while(scanf("%d%c",&num,&ch) != EOF){
+        sum += num;
+        if(ch == '\n'){
+            fprintf(file,"%lld\n",sum);
+            fflush(stdout);
+            sum = 0;
+        }
+    }
     fclose(file);
     return 0;
 }
+

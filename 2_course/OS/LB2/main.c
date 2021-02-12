@@ -1,28 +1,25 @@
 #include "unistd.h"
+#include "string.h"
 #include "stdio.h"
 
 int main(){
-    
     int fd[2];
     pipe(fd);
     int id = fork();
-    if(id == 0)
-    {
-        int input = dup(fd[0]);
+    if(id == 0){
         close(fd[1]);
-        close(fd[0]);
-        dup2(input,0);
+        dup2(fd[0],0);
         execl("./sum","sum",(char*) NULL);
-    }
-    else
-    {
+    } else {
         close(fd[0]);
-        dup2(fd[1],1);
+        char filename[100];
+        scanf("%s",filename);
+        filename[strlen(filename)] = '\n';
+        write(fd[1],filename,strlen(filename));
         int num;
-        while(scanf("%d",&num) != EOF)
-        {
-            printf("%d\n",num);
-            fflush(stdout);
+        char ch;
+        while(scanf("%c",&ch) != EOF){
+            write(fd[1],&ch,sizeof(ch));  
         }
         close(fd[1]);
     }
