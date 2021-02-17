@@ -9,14 +9,13 @@ int main(){
     if(id == 0){
         close(fd[1]);
         dup2(fd[0],0);
-        execl("./sum","sum",(char*) NULL);
+        execl("./child","child",(char*) NULL);
     } else {
         close(fd[0]);
         char filename[100];
         scanf("%s",filename);
         filename[strlen(filename)] = '\n';
         write(fd[1],filename,strlen(filename));
-        int num;
         char ch;
         while(scanf("%c",&ch) != EOF){
             write(fd[1],&ch,sizeof(ch));  
