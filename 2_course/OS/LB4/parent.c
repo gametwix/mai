@@ -7,62 +7,79 @@
 #include <pthread.h>
 
 #define SH_NAME "my_shared_mem"
-#define SH_NAME_SIZE "my_shared_mem_size"
+#define SH_SIZE_NAME "my_shared_mem_size"
 #define MUTEX_NAME "my_mutex"
 
 
+
+void wait(int *elem, int num){
+    while (*elem != num){
+        //printf("%d\n",*elem);
+    }
+}
+
 int main()
 {
-    char filename[100];
+    //Create shared memory
+    //Create fd shared file
+    int fd_shared_data = shm_open(SH_NAME, O_RDWR | O_CREAT, S_IRWXU);
+    int fd_shared_data_size = shm_open(SH_SIZE_NAME, O_RDWR | O_CREAT, S_IRWXU);
+    int fd_mutex = shm_open(MUTEX_NAME,O_RDWR | O_CREAT, S_IRWXU);
+    //Resize shared file
+    ftruncate(fd_shared_data,getpagesize());
+    ftruncate(fd_shared_data_size,sizeof(int));
+    ftruncate(fd_mutex,sizeof(pthread_mutex_t*));
+    //Map shared files in memory
+    int *Data = (int*) mmap(NULL,getpagesize(),PROT_READ | PROT_WRITE, MAP_SHARED, fd_shared_data, 0);
+    int *Size = (int*) mmap(NULL,sizeof(int),PROT_READ | PROT_WRITE, MAP_SHARED, fd_shared_data_size, 0);
+    pthread_mutex_t *Lock = (pthread_mutex_t*) mmap(NULL,sizeof(pthread_mutex_t*),PROT_READ | PROT_WRITE, MAP_SHARED,fd_mutex,0);
+    //Get shared mutex
+    pthread_mutexattr_t MutexAttribute;
+    pthread_mutexattr_setpshared(&MutexAttribute, PTHREAD_PROCESS_SHARED);
+    //Init Size and Lock
+    *Size = 0;
+    pthread_mutex_init(Lock,&MutexAttribute);    
+    //Program
+    //Read filename
+    char filename[256];
     scanf("%s",filename);
-    printf("%s\n",filename);
-    //можно ли юзать готовый mutex? | не получится передать)))
-    /*pthread_mutex_t lock;
-    pthread_mutex_init(&lock, NULL);*/
-
-
-    int mutex_file = shm_open(MUTEX_NAME, O_RDWR | O_CREAT, S_IRWXU);
-    int pipe = shm_open(SH_NAME, O_RDWR | O_CREAT, S_IRWXU);
-    int pipe_size = shm_open(SH_NAME_SIZE, O_RDWR | O_CREAT, S_IRWXU);
-    //Проверить создание pid shared memory файлов
-
-    ftruncate(pipe, getpagesize());
-    ftruncate(pipe, sizeof(int));
-    ftruncate(mutex_file, sizeof(pthread_mutex_t));
-    //Добавить проверку того, что длина файла успешно изменена 
-
-    int* share_data = (int*) mmap(NULL, getpagesize(), PROT_READ | PROT_WRITE, MAP_SHARED, pipe, 0);
-    int* share_data_size = (int*) mmap(NULL, sizeof(int), PROT_READ | PROT_WRITE, MAP_SHARED, pipe_size, 0);
-    pthread_mutex_t* lock = (pthread_mutex_t*) mmap(NULL, sizeof(pthread_mutex_t), PROT_READ | PROT_WRITE, MAP_SHARED, pipe_size, 0);
-    //Проверить удачность проекции файла на память
-
-    pthread_mutex_init(lock,NULL); 
-    //Проверить удачноcть инициализации mutex'а
-
-    share_data_size = 0;
+    //Fork
     int id = fork();
-    if(id == 0){
-        execl("./child","child",filename,SH_NAME,SH_NAME_SIZE,MUTEX_NAME,(char*) NULL);
-    } else {
+    //Chouse who are me
+    if(id == 0)
+        //Child
+        execl("./child","child",filename,SH_NAME,SH_SIZE_NAME,MUTEX_NAME,(char*) NULL);
+    else{
+        //Parent
         int num;
-        char ch;
-        
-        while(scanf("%d%c",&num,&ch) != EOF){
-            pthread_mutex_lock(lock);
-            share_data[pipe_size] = num;
-            ++pipe_size;
-
-            if(ch = '\n'){
-                pthread_mutex_unlock(lock);
-
-                //wait child
-                while(pipe_size == 0){}
+        char sym;
+        pthread_mutex_lock(Lock);
+        while(scanf("%d%c",&num,&sym) > 0){
+            Data[*Size] = num;
+            *Size += 1;
+            if(sym == '\n'){
+                pthread_mutex_unlock(Lock);
+                wait(Size,0);
+                pthread_mutex_lock(Lock);
             }
         }
-        pthread_mutex_lock(lock);
-        pipe_size = -1;
-        pthread_mutex_unlock(lock);
-
+        *Size = -1;
+        pthread_mutex_unlock(Lock);
     }
+    //~Program
+    //Close shared memory
+    //Unmap memory
+    munmap(Data,getpagesize());
+    munmap(Size,sizeof(int));
+    munmap(Lock,sizeof(pthread_mutex_t*));
+    //Close fd shared memory
+    close(fd_shared_data);
+    close(fd_shared_data_size);
+    close(fd_mutex);
+    //Unlick shared memory;
+    shm_unlink(SH_NAME);
+    shm_unlink(SH_SIZE_NAME);
+    shm_unlink(MUTEX_NAME);
+
     return 0;
 }

@@ -12,7 +12,6 @@ int main(){
         sum += num;
         if(ch == '\n'){
             fprintf(file,"%lld\n",sum);
-            fflush(stdout);
             sum = 0;
         }
     }
