@@ -7,12 +7,7 @@ double birthday(double dw);
 extern double dd;
 extern double mm;
 extern double yyyy;
-//...
-//(define (neg-to-pos d)
-// (cond((< d 0)(+ d 7))
-//      (#t d)
-// )
-//)
+
 double day__of__week(){
   return zeller(dd,
          mm < 3. ? mm + 10. : mm - 2., 
@@ -51,6 +46,8 @@ double birthday(double dw){
          dw == 5. ? "Friday " :
          dw == 6. ? "Saturday " :
          "Sunday ");
+ display(dd);display(".");
+ display(mm);display(".");
  return  yyyy;
 }
 
