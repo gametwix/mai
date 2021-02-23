@@ -6,10 +6,14 @@ int main(){
     float (*Square)(float, float) = NULL;
     char* (*Translation)(long) = NULL;
     int sw = -1;
-    char* libs[] = {"libf1.so","libf2.so"};
+    char* libs[] = {"lib1.so","lib2.so"};
     int lib = 0;
     void* handle = NULL;
-    handle = dlopen("libf1.so",RTLD_LAZY);
+    handle = dlopen(libs[lib],RTLD_LAZY);
+    if (!handle) {
+        printf("%s\n", dlerror());
+        return 1;
+    }
     printf("%p \n", handle);
     Square = dlsym(handle,"Square");
     Translation = dlsym(handle,"Translation");
