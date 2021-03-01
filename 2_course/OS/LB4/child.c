@@ -6,7 +6,7 @@
 #include <pthread.h>
 
 
-int main(int argc,char *argv[]){
+int main(int argc,char **argv){
     //Read args
     if(argc < 5){
         printf("Arguments error");

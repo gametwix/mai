@@ -41,8 +41,10 @@ int main()
     pthread_mutex_init(Lock,&MutexAttribute);    
     //Program
     //Read filename
-    char filename[256];
-    scanf("%s",filename);
+    char *filename = NULL;
+    size_t sizename = 0;
+    getline(&filename,&sizename,stdin);
+    filename[strlen(filename)-1] = '\0';
     //Fork
     int id = fork();
     //Chouse who are me

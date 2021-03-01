@@ -1,6 +1,6 @@
 #include <dlfcn.h>
 #include <stdio.h>
-//#include "functions.h"
+
 
 int main(){
     float (*Square)(float, float) = NULL;
@@ -30,7 +30,7 @@ int main(){
         } else if(sw == 0) {
             dlclose(handle);
             lib = (lib + 1) % 2;
-            handle = dlopen(libs[lib],RTLD_NOW);
+            handle = dlopen(libs[lib],RTLD_LAZY);
             Square = dlsym(handle,"Square");
             Translation = dlsym(handle,"Translation");
         }

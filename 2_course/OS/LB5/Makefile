@@ -2,10 +2,11 @@
 CC = gcc
 CFLAGS = -g -c -Wall
 ADDLIB = -lm
+
 # Реализация 1 или 2
 REALIZE_STATIC_LIB = 1
 
-all: static dynamic
+all: static dynamic ls
 
 static: static.o libfunc.a
 	$(CC) static.o -o static -L. -lfunc $(ADDLIB)
@@ -30,3 +31,6 @@ lib2.so: libfunc_2.o
 
 clean:
 	rm -r *.o *.a *.so static dynamic
+
+ls:
+	ls $(PWD)
