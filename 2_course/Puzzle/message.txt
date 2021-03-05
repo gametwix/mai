@@ -1,0 +1,139 @@
+{
+    public partial class Form2 : Form
+    {
+        public Form2()
+        {
+            InitializeComponent();
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "school2DataSet.Teatcher". При необходимости она может быть перемещена или удалена.
+            this.teatcherTableAdapter.Fill(this.school2DataSet.Teatcher);
+
+        }
+
+        bool correct(Context db)
+        {
+            if (txtBoxFullname.Text == "" || comboBoxSpec.Text == "")
+                MessageBox.Show("Введены не все данные");
+            else
+            {
+                if (txtBoxFullname.Text.Length > 50 || comboBoxSpec.Text.Length > 50)
+                    MessageBox.Show("Вводите не более 50 символов");
+                //else if (!regex2.IsMatch(txtBoxSpec.Text))
+                //MessageBox.Show("Неверно записано название специальности");
+                else return true;
+            }
+            return false;
+        }
+
+        private void btnInsert_Click(object sender, EventArgs e)
+        {
+            using (Context db = new Context())
+            {
+                if (correct(db))
+                {
+                    db.Teatcher.Add
+                     (
+                          new Teatcher
+                          {
+                              Fullname = txtBoxFullname.Text,
+                              specialization = comboBoxSpec.Text,
+                              price = (int)numericUpDownPrice.Value
+                          }
+                     );
+                    try
+                    {
+                        db.SaveChanges();
+                        dataGridView1.DataSource = db.Teatcher.ToList();
+                        dataGridView1.ClearSelection();
+                        txtBoxFullname.Clear();
+                        comboBoxSpec.SelectedIndex = -1;
+                        //comboBox1.Clear();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Такой Учитель уже есть!");
+                    }
+                }
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            int id = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
+            using (Context db = new Context())
+            {
+                if (correct(db))
+                {
+                    Teatcher selectTeatcher = db.Teatcher.Where(d => d.teachId == id).FirstOrDefault();
+                    selectTeatcher.Fullname = txtBoxFullname.Text;
+                    selectTeatcher.specialization = comboBoxSpec.Text;
+                    selectTeatcher.price = (int)numericUpDownPrice.Value;
+
+                    try
+                    {
+                        db.SaveChanges();
+                        dataGridView1.DataSource = db.Teatcher.ToList();
+                        dataGridView1.ClearSelection();
+                        txtBoxFullname.Clear();
+                        comboBoxSpec.SelectedIndex = -1;
+                        //comboBox1.Clear();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Такой Учитель уже есть!");
+                    }
+                }
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            using (Context db = new Context())
+            {
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    int id = (int)row.Cells[0].Value;
+                    Teatcher selectTeatcher = db.Teatcher.Where(d => d.teachId == id).FirstOrDefault();
+                    DialogResult result = MessageBox.Show($"Хотите удалить {selectTeatcher.Fullname}?", "Подвердите удаление", MessageBoxButtons.YesNo);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        if (selectTeatcher.Dopolnitelnie.Count > 0)
+                        {
+                            result = MessageBox.Show($"К учителю есть записи. Удалить их? {selectTeatcher.Fullname}?", "Подвердите удаление", MessageBoxButtons.YesNo);
+                            if (result == DialogResult.Yes)
+                            {
+                                db.Dopolnitelnie.RemoveRange(selectTeatcher.Dopolnitelnie);
+                                db.Teatcher.Remove(selectTeatcher);
+                            }
+                        }
+                        else db.Teatcher.Remove(selectTeatcher);
+                    }
+                }
+                db.SaveChanges();
+                dataGridView1.DataSource = db.Teatcher.ToList();
+                dataGridView1.ClearSelection();
+            }
+        }
+
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.formMain.Show();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtBoxFullname.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+            comboBoxSpec.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+            numericUpDownPrice.Value = Decimal.Parse(dataGridView1.SelectedRows[0].Cells[3].Value.ToString());
+        }
+
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+    }
+}
