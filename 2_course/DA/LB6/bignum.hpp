@@ -28,11 +28,15 @@ public:
     void SetMaxSize(unsigned long long maxsize);
     void SetNum(unsigned long long pos,int num);
     void FromStr(std::string str);
+    void Revers();
     
     TBigNum& operator=(const TBigNum& other);
     TBigNum operator+(TBigNum& other);
     TBigNum operator-(TBigNum& other);
     TBigNum operator*(TBigNum& other);
+    TBigNum operator*(int other);
+    TBigNum operator/(TBigNum& other);
+
 
     friend std::ostream& operator<< (std::ostream &out, const TBigNum &num){
         unsigned long long size = num.Size;

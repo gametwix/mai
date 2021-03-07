@@ -8,7 +8,7 @@ int main(){
     num[0] = "123456"_bn;
     std::cin >> num[1] >> num[2];
     std::cout << num[0] << "\t" << num[1] << "\t"<< num[2]  << std::endl;
-    num[2] = num[2] * num[1];
+    num[2] = num[2] * 10;
     std::cout << num[0] << "\t" << num[1] << "\t"<< num[2]  << std::endl;
     return 0;
     
