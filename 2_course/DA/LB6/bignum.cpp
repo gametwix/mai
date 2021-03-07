@@ -1,4 +1,5 @@
 #include "bignum.hpp"
+#include <string>
 
 
 namespace NBigNum{
@@ -19,6 +20,15 @@ int TBigNum::GetNum(unsigned long long pos){ return Nums[pos]; }
 void TBigNum::SetSize(unsigned long long size){ Size = size; }
 void TBigNum::SetMaxSize(unsigned long long maxsize){ MaxSize = maxsize; }
 void TBigNum::SetNum(unsigned long long pos,int num){ Nums[pos] = num; }
+
+void TBigNum::Revers(){
+    int tmp;
+    for(int i = 0;i < Size/2 ;++i){
+        tmp = Nums[Size - i - 1];
+        Nums[Size - i - 1] = Nums[i];
+        Nums[i] = tmp;
+    }
+}
 
 TBigNum& TBigNum::operator=(const TBigNum& other){
     if(&other == this) return *this;
@@ -43,7 +53,7 @@ void TBigNum::FromStr(std::string str){
         MaxSize = size_num;
         Nums.resize(MaxSize);
     }
-    Size = size_num;
+    
     
     for( unsigned long long i = 0; i < size_num;++i){
         start = size - i*POW;
@@ -57,6 +67,10 @@ void TBigNum::FromStr(std::string str){
         //std::cout << stoi(str.substr(start,length)) <<std::endl;
         Nums[i]=stoi(str.substr(start,length));
     }   
+
+    int i = size_num - 1;
+    while( i > 0 && Nums[i] == 0) --i;
+    Size = i+1;
 }
 
 TBigNum TBigNum::operator+(TBigNum& other){
@@ -147,15 +161,51 @@ TBigNum TBigNum::operator*(TBigNum& other){
     }
 
     unsigned long long i = Size + other.Size - 1;
-    std::cout << i << std::endl;
-    while ((i > 0) && (answer.Nums[i] == 0)){
-        std::cout << "Num " << (answer.Nums[i] == 0) << std::endl;
-        --i;
-    } 
-    std::cout << i << std::endl;
+    
+    while ((i > 0) && (answer.Nums[i] == 0)) --i;
+
     answer.Size = i+1;
 
     return answer;
+}
+
+
+TBigNum TBigNum::operator*(int other){
+    if(other > BASE){
+        TBigNum tmp;
+        tmp.FromStr(std::to_string(other));
+        return (*this) * tmp;
+    }
+    int tmp = 0;
+    int past = 0;
+    TBigNum answer(Size + 1);
+
+    for(unsigned long long i = 0; i < Size; ++i){
+        tmp = Nums[i]*other + past;
+        past = tmp / BASE;
+        tmp = tmp % BASE;
+        answer.Nums[i] = tmp;
+    }
+    answer.Nums[Size + 1] = past;
+
+    unsigned long long i = Size;
+    
+    while ((i > 0) && (answer.Nums[i] == 0)) --i;
+
+    answer.Size = i+1;
+
+    return answer;
+}
+
+TBigNum TBigNum::operator/(TBigNum& other){
+    if(other.Size == 1 && other.Nums[0] == 0){
+        throw -1;
+    }
+
+    unsigned long long min = Size - other.Size;
+    for(unsigned long long i = Size; i < min;--i){
+        
+    }
 }
 
 
