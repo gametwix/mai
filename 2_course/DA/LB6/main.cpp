@@ -4,12 +4,22 @@
 
 
 int main(){
-    NBigNum::TBigNum num[3];
-    num[0] = "123456"_bn;
-    std::cin >> num[1] >> num[2];
-    std::cout << num[0] << "\t" << num[1] << "\t"<< num[2]  << std::endl;
-    num[2] = num[2] * 10;
-    std::cout << num[0] << "\t" << num[1] << "\t"<< num[2]  << std::endl;
+    NBigNum::TBigNum num[2];
+    char sym;
+    while(std::cin >> num[0] >> num[1] >> sym){
+        if(sym == '+')
+            std::cout << num[0] + num[1] << std::endl;
+        if(sym == '-'){
+            try{
+                std::cout << num[0] - num[1] << std::endl;
+            } catch( int i){
+                std::cout << "Error" <<std::endl;
+            }
+        }
+            
+        if(sym == '*')
+            std::cout << num[0] * num[1] << std::endl;
+}
     return 0;
     
 }

@@ -4,9 +4,10 @@
 #include <algorithm>
 #include <string>
 #include <iostream>
+#include <iomanip>
 
-#define BASE 100000
-#define POW 5
+#define BASE 10000
+#define POW 4
 
 namespace NBigNum{
 class TBigNum{
@@ -19,6 +20,7 @@ public:
     TBigNum();
     TBigNum(unsigned long long size);
     TBigNum(const TBigNum &other);
+    TBigNum(const char* &str);
     ~TBigNum();
 
     unsigned long long GetSize();
@@ -36,12 +38,15 @@ public:
     TBigNum operator*(TBigNum& other);
     TBigNum operator*(int other);
     TBigNum operator/(TBigNum& other);
-
+    bool operator<(const TBigNum& other);
 
     friend std::ostream& operator<< (std::ostream &out, const TBigNum &num){
         unsigned long long size = num.Size;
-        for(unsigned long long i = size; i > 0 ; --i){
-            out << num.Nums[i-1];
+        if(size > 0){
+            out << num.Nums[size-1];
+        }
+        for(unsigned long long i = size - 1; i > 0 ; --i){
+            out <<std::setw(POW) << std::setfill('0')<< num.Nums[i-1];
         }
         return out;
     }

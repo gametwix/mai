@@ -12,6 +12,10 @@ TBigNum::TBigNum(const TBigNum &other):Size(other.Size), MaxSize(other.MaxSize){
     std::copy(other.Nums.begin(),other.Nums.begin()+other.Size,Nums.begin());
 }
 
+TBigNum::TBigNum(const char* &str){
+    (*this).FromStr(str);
+}
+
 TBigNum::~TBigNum(){}
 
 unsigned long long TBigNum::GetSize(){ return Size; }
@@ -23,7 +27,7 @@ void TBigNum::SetNum(unsigned long long pos,int num){ Nums[pos] = num; }
 
 void TBigNum::Revers(){
     int tmp;
-    for(int i = 0;i < Size/2 ;++i){
+    for(unsigned long long i = 0;i < Size/2 ;++i){
         tmp = Nums[Size - i - 1];
         Nums[Size - i - 1] = Nums[i];
         Nums[i] = tmp;
@@ -39,6 +43,18 @@ TBigNum& TBigNum::operator=(const TBigNum& other){
     Size = other.Size;
     std::copy(other.Nums.begin(),other.Nums.begin()+other.Size,Nums.begin());
     return *this;
+}
+
+bool TBigNum::operator<(const TBigNum& other){
+    if(Size < other.Size) return true;
+    else if(Size > other.Size) return false;
+    else {
+        bool ans = false;
+        for(unsigned long long i = 0; i < Size; ++i){
+            if(Nums[i] < other.Nums[i]) ans = true;
+        }
+        return ans;
+    }
 }
 
 void TBigNum::FromStr(std::string str){
@@ -158,6 +174,7 @@ TBigNum TBigNum::operator*(TBigNum& other){
             answer.Nums[i+j] = tmp;
         }
         answer.Nums[i + other.Size] = past;
+        past = 0;
     }
 
     unsigned long long i = Size + other.Size - 1;
@@ -186,14 +203,12 @@ TBigNum TBigNum::operator*(int other){
         tmp = tmp % BASE;
         answer.Nums[i] = tmp;
     }
-    answer.Nums[Size + 1] = past;
+    answer.Nums[Size] = past;
 
     unsigned long long i = Size;
-    
     while ((i > 0) && (answer.Nums[i] == 0)) --i;
-
     answer.Size = i+1;
-
+    //std::cout << "ans\t" << answer << std::endl;
     return answer;
 }
 
@@ -201,11 +216,30 @@ TBigNum TBigNum::operator/(TBigNum& other){
     if(other.Size == 1 && other.Nums[0] == 0){
         throw -1;
     }
-
-    unsigned long long min = Size - other.Size;
-    for(unsigned long long i = Size; i < min;--i){
-        
+    TBigNum tmp(0), ans(0);
+    for(unsigned long long i = Size; i > 0;--i){
+        tmp.Nums.insert(tmp.Nums.begin(),this->Nums[i - 1]);
+        ++tmp.MaxSize;
+        ++tmp.Size;
+        unsigned long long l = 0,r = BASE,t = 0;
+        while (l < r &&  other < tmp ){
+            t = (l + r)/2;
+            if(other * t < tmp) l = t + 1;
+            else r = t - 1;
+        }
+        if(t > 0) t = (l + r)/2;
+        ans.Nums.insert(ans.Nums.begin(),t);
+        ++ans.MaxSize;
+        ++ans.Size;
+        TBigNum mul(other * t);
+        tmp = tmp - mul;
     }
+
+    unsigned long long i = ans.Size-1;
+    while ((i > 0) && (ans.Nums[i] == 0)) --i;
+    ans.Size = i+1;
+
+    return ans;
 }
 
 
