@@ -29,7 +29,7 @@ int main(){
                 }
                 break;
             case '^':
-               try{
+                try{
                 std::cout << (num[0] ^ num[1]) << std::endl;
                 } catch( int i){
                     std::cout << "Error" <<std::endl;

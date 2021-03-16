@@ -6,7 +6,7 @@ test = []
 ans = []
 
 for i in range(size):
-    a = random.randint(0,100000000000000000000000000000000)
+    a = random.randint(0,10000000)
     b = random.randint(0,10000000)
     s = random.randint(0,7)
     sym = ' '
@@ -29,8 +29,8 @@ for i in range(size):
         else:
             ans.append(a // b)
     elif s == 4:
-        sym = '^'
-        ans.append(a ^ b)
+        sym = '+'
+        ans.append(a + b)
     elif s == 5:
         sym = '>'
         if a > b:

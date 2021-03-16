@@ -6,10 +6,12 @@ test = []
 ans = []
 
 for i in range(size):
-    a = random.randint(0,1000000)
-    b = random.randint(0,1000000)
-    sym = '*'
-    ans.append(a * b)
+    a = random.randint(0,pow(10,100))
+    b = random.randint(0,pow(10,100))
+    sym = '+'
+
+    ans.append(a + b)
+    #ans.append(a - b)
     test.append(a)
     test.append(b)
     test.append(sym)

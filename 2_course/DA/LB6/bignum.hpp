@@ -6,17 +6,16 @@
 #include <iostream>
 #include <iomanip>
 
-const int BASE = 100000;
-const int POW = 5;
+const long long BASE = 1000000000;
+const long long POW = 9;
 
 namespace NBigNum{
 class TBigNum{
 private:
     long long Size,MaxSize;
-    std::vector<unsigned int> Nums;
+    std::vector<long long> Nums;
     TBigNum ShortDiv(TBigNum other);
     TBigNum LongDiv(TBigNum other);
-
 public:
     
     TBigNum();
@@ -42,7 +41,7 @@ public:
     TBigNum operator-(TBigNum& other);
     TBigNum operator-(int number);
     TBigNum operator*(TBigNum& other);
-    TBigNum operator*(int other);
+    TBigNum operator*(int number);
     TBigNum operator/(TBigNum other);
     TBigNum operator/(int number);
     TBigNum operator^(TBigNum other);
