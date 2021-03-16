@@ -16,13 +16,14 @@ double VARIANT=22.;
 
 double LAST__DIGIT__OF__GROUP__NUMBER=5.;
 
-double KINDS__OF__COINS=3.;
+double KINDS__OF__COINS=4.;
 
 double first__denomination(double kinds__of__coins){
    return
 	( kinds__of__coins == 1. ? 1.
-	: kinds__of__coins == 2. ? 3.
+	: kinds__of__coins == 2. ? 2.
  	: kinds__of__coins == 3. ? 5.
+  : kinds__of__coins == 4. ? 10.
 	: 0.
 	);
 }

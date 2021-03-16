@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -c -g -Wall
+CFLAGS = -c -g --std=c++14 -Wall
 
 all: main
 
@@ -10,4 +10,18 @@ main.o: main.cpp
 bignum.o: bignum.cpp
 	$(CC) $(CFLAGS) bignum.cpp
 clean:
-	rm -r *.o solution
+	rm -rf *.o solution
+
+clean_tar:
+	rm solution.tar
+	make clean_folder
+
+clean_folder:
+	rm -rf solution
+
+get_sol: main.cpp bignum.cpp bignum.hpp Makefile
+	mkdir solution
+	cp main.cpp bignum.cpp bignum.hpp Makefile ./solution
+	tar -rf solution.tar solution
+	#make clean_folder
+

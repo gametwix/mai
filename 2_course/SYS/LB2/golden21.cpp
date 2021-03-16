@@ -24,7 +24,7 @@ double fun(double x){
 
 double golden__section__search(double a,double b){
     {
-        xmin = (a < b) ? golden__start(a,b):golden__start(b,a);
+        double xmin = ((a < b) ? golden__start(a,b):golden__start(b,a));
         newline();
         return xmin;
     }
@@ -34,21 +34,21 @@ double golden__start(double a,double b){
     total__iterations = 0.;
     {
         double xa = a + mphi*(b-a),
-            xb = b - mphi*(b - a);
+            xb = b + (- mphi*(b - a));
         return __MPA__try(a,b,xa,fun(xa),xb,fun(xb));
     }
 }
 
-double mphi = (3. - sqrt(5.))  / 2.0;
+double mphi = (3. - sqrt(5.))*(1.0 / 2.0);
 
 double __MPA__try(double a,double b, 
                 double xa, double ya,
                 double xb, double yb){
-    return close__enough_Q(a,b) ?
-        (a + b) * 0.5:
+    return ( close__enough_Q(a,b) ?
+        ((a + b) * 0.5):
         ( display("+"),
         total__iterations = total__iterations + 1,
-        (ya < yb) ?
+        ( (ya < yb) ?
             (b = xb,
             xb = xa,
             yb = ya,
@@ -59,8 +59,8 @@ double __MPA__try(double a,double b,
             xa = xb,
             ya = yb,
             xb = b - (mphi*(b - a)),
-            __MPA__try(a,b,xa,ya,xb,fun(xb)))
-        )
+            __MPA__try(a,b,xa,ya,xb,fun(xb))) )
+        ) )
     ;
 }
 

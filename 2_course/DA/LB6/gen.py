@@ -6,9 +6,9 @@ test = []
 ans = []
 
 for i in range(size):
-    a = random.randint(0,100000000000000000000000)
-    b = random.randint(0,100000000000000000000000)
-    s = random.randint(0,2)
+    a = random.randint(0,100000000000000000000000000000000)
+    b = random.randint(0,10000000)
+    s = random.randint(0,7)
     sym = ' '
     if s == 0:
         sym = '+'
@@ -22,6 +22,37 @@ for i in range(size):
     elif s == 2:
         sym = '*'
         ans.append(a * b)
+    elif s == 3:
+        sym = '/'
+        if b == 0 :
+            ans.append('Error')
+        else:
+            ans.append(a // b)
+    elif s == 4:
+        sym = '^'
+        ans.append(a ^ b)
+    elif s == 5:
+        sym = '>'
+        if a > b:
+            s = 'true'
+        else:
+            s = 'false'
+        ans.append(s)
+    elif s == 6:
+        sym = '<'
+        if a < b:
+            s = 'true'
+        else:
+            s = 'false'
+        ans.append(s)
+    elif s == 7:
+        sym = '='
+        if a == b:
+            s = 'true'
+        else:
+            s = 'false'
+        ans.append(s)
+    
     test.append(a)
     test.append(b)
     test.append(sym)
