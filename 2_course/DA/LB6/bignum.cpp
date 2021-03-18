@@ -44,8 +44,8 @@ TBigNum TBigNum::ShortDiv(TBigNum other){
     TBigNum ans(0);
     int past = 0;
     for(int i = Size - 1; i >=0; --i){
-        int q = (Nums[i] + past*BASE);
-        int num = q / other.Nums[0];
+        long long q = (Nums[i] + past*BASE);
+        long long num = q / other.Nums[0];
         ans.Nums.insert(ans.Nums.begin(),num);
         ++ans.MaxSize;
         ++ans.Size;
