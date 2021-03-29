@@ -6,11 +6,14 @@ test = []
 ans = []
 
 for i in range(size):
-    a = random.randint(pow(10,100000),pow(10,1000000))
-    b = random.randint(pow(10,100000),pow(10,1000000))
-    sym = '*'
-
-    ans.append(a * b)
+    a = random.randint(10,pow(10,100))
+    b = random.randint(10,pow(10,100))
+    sym = '-'
+   
+    if b > a :
+        ans.append('Error')
+    else:
+        ans.append(a - b)
     #ans.append(a - b)
     test.append(a)
     test.append(b)

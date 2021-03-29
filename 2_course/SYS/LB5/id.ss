@@ -1,5 +1,4 @@
 ; id.ss
-"$id"
  good		;01
  eE		;02
  count-change	;03

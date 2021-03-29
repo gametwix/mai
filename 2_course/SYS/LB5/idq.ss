@@ -1,5 +1,4 @@
 ; idq.ss
-"$idq"
  ?              ;01
  What?          ;02
  good-enough?	;03

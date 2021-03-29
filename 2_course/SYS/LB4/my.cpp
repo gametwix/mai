@@ -13,8 +13,8 @@ int main()
   addstr(fsm,0,"+",1);
   addstr(fsm,0,"-",1);
   addstr(fsm,0,".",2);
+  addrange(fsm,0,'0','9',1);
   addstr(fsm,1,".",2);
-  addrange(fsm,0,'0','9',0);
   addrange(fsm,1,'0','9',1);
   addrange(fsm,2,'0','9',3);
   addrange(fsm,3,'0','9',3);
