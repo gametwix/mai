@@ -8,12 +8,9 @@ ans = []
 for i in range(size):
     a = random.randint(10,pow(10,100))
     b = random.randint(10,pow(10,100))
-    sym = '-'
+    sym = '*'
    
-    if b > a :
-        ans.append('Error')
-    else:
-        ans.append(a - b)
+    ans.append(a * b)
     #ans.append(a - b)
     test.append(a)
     test.append(b)
