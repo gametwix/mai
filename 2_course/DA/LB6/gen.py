@@ -6,8 +6,8 @@ test = []
 ans = []
 
 for i in range(size):
-    a = random.randint(0,10000000)
-    b = random.randint(0,10000000)
+    a = random.randint(0,pow(10,100))
+    b = random.randint(0,pow(10,100))
     s = random.randint(0,7)
     sym = ' '
     if s == 0:
@@ -64,3 +64,5 @@ with open("test","w") as f:
 with open("ans","w") as f:
      for s in ans:
         f.write(str(s)+"\n")
+
+
