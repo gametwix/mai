@@ -3,22 +3,6 @@
 		{
 			"name": "mai",
 			"path": "."
-		},
-		{
-			"name": "mangalib_parser",
-			"path": "../other/mangalib_parser"
-		},
-		{
-			"name": "Python",
-			"path": "../../Python"
-		},
-		{
-			"name": "other",
-			"path": "../other"
-		},
-		{
-			"name": "snake",
-			"path": "../snake"
 		}
 	],
 	"remoteAuthority": "wsl+Ubuntu",
