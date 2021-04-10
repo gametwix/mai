@@ -33,3 +33,11 @@ void send_message(zmq::socket_t &socket, const std::string &msg) {
     memcpy(message.data(), msg.c_str(), msg.size());
     socket.send(message);
 }
+
+std::string reseave(zmq::socket_t &socket){
+    zmq::message_t message;
+    int size = (int)socket.recv(&message);
+    std::string str(static_cast<char*>(message.data()), message.size());
+    return str;
+}
+
