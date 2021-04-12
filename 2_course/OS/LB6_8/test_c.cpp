@@ -1,5 +1,6 @@
 #include <zmq.hpp>
 #include <string>
+#include "net_func.hpp"
 #include <iostream>
 #ifndef _WIN32
 #include <unistd.h>
@@ -12,25 +13,22 @@
 int main () {
     //  Prepare our context and socket
     zmq::context_t context (1);
-    zmq::socket_t socket (context, ZMQ_REP);
-    socket.bind ("tcp://*:5555");
-    socket.setsockopt(ZMQ_SNDTIMEO,1000);
+    zmq::socket_t socket (context, ZMQ_REQ);
+    my_net::connect(&socket,4049);
     while (true) {
-        int time = 1000;
-        zmq_setsockopt(&socket,ZMQ_SNDTIMEO,&time,sizeof(int));
-        zmq::message_t request;
-
         //  Wait for next request from client
-        socket.recv (&request);
+        //my_net::send_message(&socket,"Hi");
+        std::string msg("Hi");
+        std::cout << 1 << std::endl;
+        zmq::message_t message(msg.size());
+        std::cout << 1 << std::endl;
+        memcpy(message.data(), msg.c_str(), msg.size());
+        std::cout << 1 << std::endl;
+        socket.send(message);
         std::cout << "Received Hello" << std::endl;
 
         //  Do some 'work'
     	sleep(1);
-
-        //  Send reply back to client
-        zmq::message_t reply (5);
-        memcpy (reply.data (), "World", 5);
-        socket.send (reply);
     }
     return 0;
 }

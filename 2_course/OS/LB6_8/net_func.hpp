@@ -7,8 +7,8 @@
 
 namespace my_net{
 
-    #define MY_PORT 5000
-    #define MY_IP "tcp://*:"
+    #define MY_PORT 4040
+    #define MY_IP "tcp://127.0.0.1:"
 
     int bind(zmq::socket_t *socket, int id){
         int port  = MY_PORT + id;
@@ -40,31 +40,41 @@ namespace my_net{
     }
 
     void send_message(zmq::socket_t *socket, const std::string msg) {
+        //std::cout << "c:send" << std::endl;
         zmq::message_t message(msg.size());
+        //std::cout << "c:send" << std::endl;
+        
         memcpy(message.data(), msg.c_str(), msg.size());
-        socket->send(message,0);
+        
+        //std::cout << "c:send " << msg << std::endl;
+        try{
+        socket->send(message);
+        }catch(...){}
     }
 
-    std::string reseave(zmq::socket_t *socket,int time = -1){
-        std::cout << 1 << std::endl;
-        socket->setsockopt(ZMQ_RCVTIMEO,time);
-        std::cout << 1 << std::endl;
+    std::string reseave(zmq::socket_t *socket){
+        //std::cout << "c:reseave" << std::endl;
+        //std::cout << "c:reseave" << std::endl;
         zmq::message_t message;
-        std::cout << 1 << std::endl;
+        //std::cout << "c:reseave" << std::endl;
         bool success = true;
-        std::cout << 1 << std::endl;
+        //std::cout << "c:reseave" << std::endl;
         try{
-            std::cout << 1 << std::endl;
-        socket->recv(&message,0);
-        std::cout << 1 << std::endl;
+            //std::cout << "c:reseave" << std::endl;
+            socket->recv(&message,0);
         }catch(...){
             success = false;
         }
-        std::cout << 2 <<std::endl; 
-        if(!success || message.size() == 0)
+        if(!success || message.size() == 0){
+            //std::cout << "c:Throw" << std::endl;
             throw -1;
-        std::cout << 2 <<std::endl; 
+        }
         std::string str(static_cast<char*>(message.data()), message.size());
+        //std::cout << str << std::endl;
+        //std::cout << "c:reseave" << std::endl;
+        
+        //std::cout << "c:reseave" << std::endl;
+       
         return str;
     }
 
