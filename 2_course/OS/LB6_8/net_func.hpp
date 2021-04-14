@@ -40,41 +40,25 @@ namespace my_net{
     }
 
     void send_message(zmq::socket_t *socket, const std::string msg) {
-        //std::cout << "c:send" << std::endl;
         zmq::message_t message(msg.size());
-        //std::cout << "c:send" << std::endl;
-        
         memcpy(message.data(), msg.c_str(), msg.size());
-        
-        //std::cout << "c:send " << msg << std::endl;
         try{
-        socket->send(message);
+            socket->send(message);
         }catch(...){}
     }
 
     std::string reseave(zmq::socket_t *socket){
-        //std::cout << "c:reseave" << std::endl;
-        //std::cout << "c:reseave" << std::endl;
         zmq::message_t message;
-        //std::cout << "c:reseave" << std::endl;
         bool success = true;
-        //std::cout << "c:reseave" << std::endl;
         try{
-            //std::cout << "c:reseave" << std::endl;
             socket->recv(&message,0);
         }catch(...){
             success = false;
         }
-        if(!success || message.size() == 0){
-            //std::cout << "c:Throw" << std::endl;
+        if(!success || message.size() == 0){;
             throw -1;
         }
         std::string str(static_cast<char*>(message.data()), message.size());
-        //std::cout << str << std::endl;
-        //std::cout << "c:reseave" << std::endl;
-        
-        //std::cout << "c:reseave" << std::endl;
-       
         return str;
     }
 

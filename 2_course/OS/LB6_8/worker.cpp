@@ -20,15 +20,10 @@ int main(int argc, char **argv){
     
     Node me(atoi(argv[1]),atoi(argv[2]));
     std::string prog_path = "./worker";
-    //std::ofstream mylog;
-    //Log("Start");
     while(1){
         std::string message;
         std::string command = " ";
-        //Log("While"); 
         message = my_net::reseave(&(me.parent));
-        //std::cout << "Parent messege " << message  << std::endl;
-        //Log(message);
         std::istringstream  request(message);
         request >> command;
 
@@ -36,8 +31,6 @@ int main(int argc, char **argv){
         if(command == "create"){
             int id_child, id_parent;
             request >> id_child;
-            //Log("Child create id ="+std::to_string(me.id)+" id_child="+std::to_string(id_child)+"\n");
-            //std::cout << "Child create id ="<<me.id<< " id_child=" << id_child << std::endl;
             std::string ans = me.Create_child(id_child, prog_path);
             my_net::send_message(&me.parent,ans);
         } else if(command == "pid"){
@@ -46,10 +39,7 @@ int main(int argc, char **argv){
         } else if(command == "ping"){
             int id_child;
             request >> id_child;
-            //std::cout << "Child Ping id" << id_child << std::endl;
-            //Log("Child Ping id" + std::to_string(id_child) + "\n");
             std::string ans = me.Ping_child(id_child);
-            //std::cout << "ans: " << ans << std::endl;
             my_net::send_message(&me.parent,ans);
         } else if(command == "send"){
             int id;
@@ -58,7 +48,6 @@ int main(int argc, char **argv){
             getline(request, str);
             str.erase(0,1);
             std::string ans;
-            //std::cout << me.id << ": send id-" << id<< " str: " << str <<std::endl;
             ans = me.Send(str,id);
             my_net::send_message(&me.parent,ans);
         } else if(command == "exec"){
@@ -84,8 +73,6 @@ int main(int argc, char **argv){
             to_send = "Ok:" + std::to_string(me.id) + ":" + to_send;
             my_net::send_message(&me.parent,to_send);
         } else if(command == "remove"){
-            
-            //std::cout << "remove " << me.id << std::endl;
             std::string ans = me.Remove();
             ans = std::to_string(me.id) + " " + ans;
             my_net::send_message(&me.parent, ans);
@@ -94,9 +81,7 @@ int main(int argc, char **argv){
             break;
         }
     }
-    //std::cout << "exit " << me.id << std::endl;
     sleep(1);
-    //kill(getpid(),SIGKILL);
     return 0;
 }
 
