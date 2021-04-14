@@ -4,17 +4,24 @@
 
 int main(){
     int fd[2];
-    pipe(fd);
+    if(pipe(fd) < 0){
+        printf("Error pipe create\n");
+        return -1;
+    }
     int id = fork();
-    if(id == 0){
+    if(id == -1){
+        printf("Error fork\n");
+        return -1;
+    }else if(id == 0){
         close(fd[1]);
         dup2(fd[0],0);
         execl("./child","child",(char*) NULL);
     } else {
         close(fd[0]);
-        char filename[100];
-        scanf("%s",filename);
-        filename[strlen(filename)] = '\n';
+        char *filename = NULL;
+        size_t sizename = 0;
+        getline(&filename,&sizename,stdin);
+        filename[strlen(filename)-1] = '\n';
         write(fd[1],filename,strlen(filename));
         char ch;
         while(scanf("%c",&ch) != EOF){
