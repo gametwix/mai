@@ -21,9 +21,9 @@ public:
         if(_id != -1){
             //std::cout << "New node" << std::endl;
             my_net::connect(&parent,_parent_port);
-            parent.setsockopt(ZMQ_LINGER,300);
+            //parent.setsockopt(ZMQ_LINGER,300);
             //parent.setsockopt(ZMQ_RCVTIMEO,3000);
-            parent.setsockopt(ZMQ_LINGER,100);
+            //parent.setsockopt(ZMQ_LINGER,100);
             //std::cout << "New node connected" << std::endl;
         }
     }
@@ -204,7 +204,7 @@ public:
             try{
                 children[child_id]->setsockopt(ZMQ_SNDTIMEO,3000);
                 //children[child_id]->setsockopt(ZMQ_RCVTIMEO,3000);
-                children[child_id]->setsockopt(ZMQ_LINGER,300);
+                //children[child_id]->setsockopt(ZMQ_LINGER,300);
                 //std::cout <<"Parent send pid request" << std::endl;
                 my_net::send_message(children[child_id],"pid");
                 //std::cout << "Parent try reseave" << std::endl;
@@ -284,7 +284,11 @@ public:
                             ans =  msg;
                     } catch(int){}
                 }
+                //children[child.first]->setsockopt(ZMQ_SNDTIMEO,0);
+                //children[child.first]->setsockopt(ZMQ_RCVTIMEO,0);
+                //children[child.first]->setsockopt(ZMQ_SNDTIMEO,-1);
                 my_net::unbind(children[child.first], children_port[child.first]);
+                children[child.first]->close();
 
             }
             children.clear();

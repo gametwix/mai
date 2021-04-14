@@ -19,7 +19,7 @@ int main(int argc, char **argv){
     }
     
     Node me(atoi(argv[1]),atoi(argv[2]));
-    std::string prog_path = "./work";
+    std::string prog_path = "./worker";
     //std::ofstream mylog;
     //Log("Start");
     while(1){
@@ -90,12 +90,13 @@ int main(int argc, char **argv){
             ans = std::to_string(me.id) + " " + ans;
             my_net::send_message(&me.parent, ans);
             my_net::disconnect(&me.parent, me.parent_port);
+            me.parent.close();
             break;
         }
     }
     //std::cout << "exit " << me.id << std::endl;
     sleep(1);
-    kill(getpid(),SIGKILL);
+    //kill(getpid(),SIGKILL);
     return 0;
 }
 
