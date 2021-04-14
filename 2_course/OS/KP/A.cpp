@@ -16,7 +16,7 @@ int main(){
 
     std::string str;
     std::vector<std::string> all_strings;
-    while(std::cin >> str){
+    while(std::getline(std::cin,str)){
         all_strings.push_back(str);
     }
 
