@@ -97,15 +97,14 @@ int main(){
                         not_availvable.erase(tmp);
                     }
                     ans = "Ok";
+                    if(me.children.find(id) != me.children.end()){
+                        my_net::unbind(me.children[id],me.children_port[id]);
+                        me.children[id]->close();
+                        me.children.erase(id);
+                        me.children_port.erase(id);
+                    }
                 }
                 std::cout << ans << std::endl;
-                if(me.children.find(id) != me.children.end()){
-                    my_net::unbind(me.children[id],me.children_port[id]);
-                    me.children[id]->close();
-                    me.children.erase(id);
-                    me.children_port.erase(id);
-                }
-               
             }
         }
     }
