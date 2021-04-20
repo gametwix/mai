@@ -5,6 +5,8 @@
 
 #define MAXINT 2147483647
 
+#define timer
+
 int SizeStep(int Num){
     int i = 1;
     while(i < Num)
@@ -32,16 +34,25 @@ int main(int argc, char *argv[]){
     for(int i = input_size; i < size_array; ++i)
         array[i] = MAXINT;
 
+    #ifdef timer
     struct timeval startwtime, endwtime;
     gettimeofday(&startwtime, NULL);
+    #endif
+
     bitonicsort(array, size_array, threads);
+
+    #ifdef timer
     gettimeofday(&endwtime, NULL);
     double time = (double)((endwtime.tv_usec - startwtime.tv_usec)/1.0e6 + endwtime.tv_sec - startwtime.tv_sec);
-
     printf("%f\n", time);
+    #endif
+
+
+    #ifndef timer
     for(int i=0;i<input_size;++i){
         printf("%d\n",array[i]);
     }
+    #endif
 
     free(array);
     return 0;

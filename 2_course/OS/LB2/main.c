@@ -8,6 +8,10 @@ int main(){
         printf("Error pipe create\n");
         return -1;
     }
+    char *filename = NULL;
+    size_t sizename = 0;
+    getline(&filename,&sizename,stdin);
+    filename[strlen(filename)-1] = '\0';
     int id = fork();
     if(id == -1){
         printf("Error fork\n");
@@ -15,14 +19,9 @@ int main(){
     }else if(id == 0){
         close(fd[1]);
         dup2(fd[0],0);
-        execl("./child","child",(char*) NULL);
+        execl("./child","child",filename,(char*) NULL);
     } else {
         close(fd[0]);
-        char *filename = NULL;
-        size_t sizename = 0;
-        getline(&filename,&sizename,stdin);
-        filename[strlen(filename)-1] = '\n';
-        write(fd[1],filename,strlen(filename));
         char ch;
         while(scanf("%c",&ch) != EOF){
             write(fd[1],&ch,sizeof(ch));  

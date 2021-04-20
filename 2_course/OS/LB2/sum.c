@@ -1,16 +1,15 @@
 #include "stdio.h"
 #include "string.h"
 
-int main(){
+int main(int argc, char **argv){
+    if(argc != 2){
+        return -1;
+    }
     long long sum = 0;
     int num;
     char ch;
     FILE *file;
-    char *filename = NULL;
-    size_t sizename = 0;
-    getline(&filename,&sizename,stdin);
-    filename[strlen(filename)-1] = '\0';
-    file = fopen(filename, "w");
+    file = fopen(argv[1], "w");
     while(scanf("%d%c",&num,&ch) != EOF){
         sum += num;
         if(ch == '\n'){
