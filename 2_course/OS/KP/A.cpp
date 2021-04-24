@@ -47,8 +47,7 @@ int main(){
         if(ans != "OK")
             break;
     }
-    //std::cout << "Exit" << std::endl;
-    ans = "Break";
+    ans = "$$$";
     message = zmq::message_t(ans.size());
     memcpy(message.data(), ans.c_str(), ans.size());
     to_c.send(message);
@@ -60,7 +59,6 @@ int main(){
     to_b.send(message);
 
 
-    //std::cout << "Exit" << std::endl;
     to_c.unbind(ADDRESS_C);
     to_b.disconnect(ADDRESS_B);
 

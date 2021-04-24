@@ -22,7 +22,7 @@ int main(){
     while(true){
         to_a.recv(message);
         std::string ans(static_cast<char*>(message.data()), message.size());
-        if(ans == "Break"){
+        if(ans == "$$$"){
             break;
         }else{
             std::string msg = "Success";

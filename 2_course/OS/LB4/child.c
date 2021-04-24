@@ -7,7 +7,6 @@
 
 
 int main(int argc,char **argv){
-    //Read args
     if(argc < 5){
         printf("Arguments error");
         return 1;
@@ -17,8 +16,6 @@ int main(int argc,char **argv){
     char *sh_data_size_name = argv[3];
     char *mutex_name = argv[4];
 
-    //Open shared memory
-    //Create fd shared file
     int fd_shared_data = shm_open(sh_data_name, O_RDWR | O_CREAT, S_IRWXU);
     int fd_shared_data_size = shm_open(sh_data_size_name, O_RDWR | O_CREAT, S_IRWXU);
     int fd_mutex = shm_open(mutex_name,O_RDWR | O_CREAT, S_IRWXU);
@@ -26,7 +23,6 @@ int main(int argc,char **argv){
         printf("Error: shared memory open\n");
         return -1;
     }
-    //Map shared files in memory
     int *Data = (int*) mmap(NULL,getpagesize(),PROT_READ | PROT_WRITE, MAP_SHARED, fd_shared_data, 0);
     int *Size = (int*) mmap(NULL,sizeof(int),PROT_READ | PROT_WRITE, MAP_SHARED, fd_shared_data_size, 0);
     pthread_mutex_t *Lock = (pthread_mutex_t*) mmap(NULL,sizeof(pthread_mutex_t*),PROT_READ | PROT_WRITE, MAP_SHARED,fd_mutex,0);
@@ -34,7 +30,6 @@ int main(int argc,char **argv){
         printf("Error: map file\n");
         return -1;
     }
-    //Program
     FILE *file;
     file = fopen(filename,"w");
     if(file == NULL){
@@ -64,9 +59,6 @@ int main(int argc,char **argv){
         printf("Error: fclose file\n");
         return -1;
     }
-    //~Program
-    //Close shared memory
-    //Unmap memory
     if(munmap(Data,getpagesize()) != 0){
         printf("Error: unmap file\n");
         return -1;
@@ -79,7 +71,6 @@ int main(int argc,char **argv){
         printf("Error: unmap file\n");
         return -1;
     }
-    //Close fd shared memory
     if(close(fd_shared_data) < 0){
         printf("Error: close file\n");
         return -1;
@@ -92,7 +83,6 @@ int main(int argc,char **argv){
         printf("Error: close file\n");
         return -1;
     }
-    //Unlick shared memory;
     if(shm_unlink(sh_data_name) != 0){
         printf("Error: shared memory unlink\n");
         return -1;

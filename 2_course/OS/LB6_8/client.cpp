@@ -7,7 +7,7 @@
 
 int main(){
     std::set<int> all_nodes;
-    std::set<int> not_availvable;
+    //std::set<int> not_availvable;
     std::string prog_path = "./worker";
     Node me(-1);
     all_nodes.insert(-1);
@@ -18,8 +18,6 @@ int main(){
             std::cin >> id_child >> id_parent;
             if(all_nodes.find(id_child) != all_nodes.end()){
                 std::cout << "Error: Already exists" << std::endl;
-            }else if(not_availvable.find(id_child) != not_availvable.end()){
-                std::cout << "Error: It was not available before " << std::endl;
             } else if(all_nodes.find(id_parent) == all_nodes.end()){
                 std::cout << "Error: Parent not found" << std::endl;
             }else if(id_parent == me.id){
@@ -30,9 +28,6 @@ int main(){
                 std::string str = "create " + std::to_string(id_child);
                 std::string ans = me.Send(str, id_parent);
                 std::cout << ans << std::endl;
-                if(ans == "Error: not find"){
-                    not_availvable.insert(id_parent);
-                }
                 all_nodes.insert(id_child);
             }   
         } else if(command == "ping"){
@@ -40,22 +35,14 @@ int main(){
             std::cin >> id_child;
             if(all_nodes.find(id_child) == all_nodes.end()){
                 std::cout << "Error: Not found" << std::endl;
-            }else if(not_availvable.find(id_child) != not_availvable.end()){
-                std::cout << "Error: It was not available before " << std::endl;
             }else if(me.children.find(id_child) != me.children.end()){
                 std::string ans = me.Ping_child(id_child);
-                if(ans == "Ok: 0"){
-                    not_availvable.insert(id_child);
-                }
                 std::cout << ans << std::endl;
             }else{
                 std::string str = "ping " + std::to_string(id_child);
                 std::string ans = me.Send(str, id_child);
                 if(ans == "Error: not find"){
                     ans = "Ok: 0";
-                }
-                if(ans == "Ok: 0"){
-                    not_availvable.insert(id_child);
                 }
                 std::cout << ans << std::endl;
             }
@@ -67,13 +54,8 @@ int main(){
             std::string msg = "exec " + str + " " + pattern;
             if(all_nodes.find(id) == all_nodes.end()){
                 std::cout << "Error: Not found" << std::endl;
-            }else if(not_availvable.find(id) != not_availvable.end()){
-                std::cout << "Error: It was not available before " << std::endl;
             }else{
                 std::string ans = me.Send(msg,id);
-                if(ans == "Error: not find"){
-                    not_availvable.insert(id);
-                }
                 std::cout << ans << std::endl;
             }
             
@@ -83,18 +65,13 @@ int main(){
             std::string msg = "remove";
             if(all_nodes.find(id) == all_nodes.end()){
                 std::cout << "Error: Not found" << std::endl;
-            }else if(not_availvable.find(id) != not_availvable.end()){
-                std::cout << "Error: It was not available before " << std::endl;
             }else{
                 std::string ans = me.Send(msg,id);
-                if(ans == "Error: not find"){
-                    not_availvable.insert(id);
-                }else{
+                if(ans != "Error: not find"){
                     std::istringstream ids(ans);
                     int tmp;
                     while(ids >> tmp){
                         all_nodes.erase(tmp);
-                        not_availvable.erase(tmp);
                     }
                     ans = "Ok";
                     if(me.children.find(id) != me.children.end()){

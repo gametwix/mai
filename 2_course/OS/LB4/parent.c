@@ -10,18 +10,13 @@
 #define SH_SIZE_NAME "my_shared_mem_size"
 #define MUTEX_NAME "my_mutex"
 
-
-
 void wait(int *elem, int num){
     while (*elem != num){
-        //printf("%d\n",*elem);
     }
 }
 
 int main()
 {
-    //Create shared memory
-    //Create fd shared file
     int fd_shared_data = shm_open(SH_NAME, O_RDWR | O_CREAT, S_IRWXU);
     int fd_shared_data_size = shm_open(SH_SIZE_NAME, O_RDWR | O_CREAT, S_IRWXU);
     int fd_mutex = shm_open(MUTEX_NAME,O_RDWR | O_CREAT, S_IRWXU);
@@ -30,7 +25,6 @@ int main()
         printf("Error: shared memory open\n");
         return -1;
     }
-    //Resize shared file
     if(ftruncate(fd_shared_data,getpagesize()) == -1){
         printf("Error: ftruncate\n");
         return -1;
@@ -44,7 +38,6 @@ int main()
         return -1;
     }
 
-    //Map shared files in memory
     int *Data = (int*) mmap(NULL,getpagesize(),PROT_READ | PROT_WRITE, MAP_SHARED, fd_shared_data, 0);
     int *Size = (int*) mmap(NULL,sizeof(int),PROT_READ | PROT_WRITE, MAP_SHARED, fd_shared_data_size, 0);
     pthread_mutex_t *Lock = (pthread_mutex_t*) mmap(NULL,sizeof(pthread_mutex_t*),PROT_READ | PROT_WRITE, MAP_SHARED,fd_mutex,0);
@@ -52,35 +45,32 @@ int main()
         printf("Error: map file\n");
         return -1;
     }
-    //Get shared mutex
     pthread_mutexattr_t MutexAttribute;
     if(pthread_mutexattr_setpshared(&MutexAttribute, PTHREAD_PROCESS_SHARED) != 0){
         printf("Error: set shared attribute mutex\n");
         return -1;
     }
-    //Init Size and Lock
     *Size = 0;
     if(pthread_mutex_init(Lock, &MutexAttribute) != 0){
         printf("Error: mutex init\n");
         return -1;
     }    
-    //Program
-    //Read filename
+
     char *filename = NULL;
     size_t sizename = 0;
     getline(&filename,&sizename,stdin);
     filename[strlen(filename)-1] = '\0';
-    //Fork
+
     int id = fork();
-    //Chouse who are me
+
     if(id == -1){
         printf("Error: fork\n");
         return -1;
     } else if(id == 0) {
-        //Child
+
         execl("./child","child",filename,SH_NAME,SH_SIZE_NAME,MUTEX_NAME,(char*) NULL);
     } else {
-        //Parent
+
         int num;
         char sym;
         if(pthread_mutex_lock(Lock) != 0){
@@ -108,9 +98,6 @@ int main()
             return -1;
         }
     }
-    //~Program
-    //Close shared memory
-    //Unmap memory
 
     if(munmap(Data,getpagesize()) != 0){
         printf("Error: unmap file\n");
@@ -124,7 +111,6 @@ int main()
         printf("Error: unmap file\n");
         return -1;
     }
-    //Close fd shared memory
     if(close(fd_shared_data) < 0){
         printf("Error: close file\n");
         return -1;
