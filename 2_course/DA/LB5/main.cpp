@@ -1,11 +1,13 @@
-//#include "SuffTree.hpp"
+#include "SuffO3.h"
 
 #include <iostream>
 #include <memory>
 
 int main(){
-    std::shared_ptr<int> i;
-    i = std::shared_ptr<int>(new int(3));
-    i = std::shared_ptr<int>(new int(5));
+    std::string text;
+    std::cin >> text;
+    CompactTrie Trie;
+    Trie.Init(text);
+    Trie.Print();
     return 0;
 }
