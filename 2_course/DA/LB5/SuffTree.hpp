@@ -10,6 +10,7 @@ struct TNode{
     std::unordered_map<char,std::shared_ptr<TNode>> Children;   //Указатели на детей
     std::shared_ptr<TNode> SuffixLink;                          //Суффиксная ссылка
     int ListId;                                                 //Номер листа, если не листи, то -1
+    std::shared_ptr<TNode> Parent;                              //Pодитель
     TNode(int InpStart,int InpEnd,int InpId) :  Start(InpStart), 
                                                 End(new int(InpEnd)), 
                                                 ListId(InpId),

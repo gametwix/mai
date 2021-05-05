@@ -25,7 +25,21 @@ void TSuffTree::AddAllSuffix(int InpEnd){
     std::cout << "Cur_node after: " << cur_node << std::endl;
     if(!CreateNode(cur_node,last_add,cur_pos_in_node,InpEnd))
         return;
-    cur_node = cur_node->SuffixLink;
+    else{
+        if(last_add->ListId != -1){
+            cur_node = cur_node->SuffixLink;
+            if(cur_node == Root)
+                --cur_pos_in_node;                                                  //сюда по идее не должно зайти
+        } else {
+            char Save_point;
+            if(cur_node->Parent == Root)
+                Save_point = Text[cur_node->Start + 1];
+            else
+                Save_point = Text[cur_node->Start];
+            cur_node = cur_node->
+        }
+    }
+    
     std::cout << ListNum << "\t" << InpEnd << std::endl;
     for(int i = ListNum; i <= InpEnd;++i){                                         //Все суффиксы
         if(CreateNode(cur_node,new_node,cur_pos_in_node,InpEnd)){
@@ -77,6 +91,7 @@ bool TSuffTree::CreateNode(std::shared_ptr<TNode> &Node, std::shared_ptr<TNode> 
             NewNode = std::shared_ptr<TNode>(new TNode(AddNum,End,ListNum + 1));
             ListNum++;
             Node->Children.insert({Text[AddNum],NewNode});
+            NewNode->Parent = Node;
             return true;
         }
     } else {
@@ -87,6 +102,7 @@ bool TSuffTree::CreateNode(std::shared_ptr<TNode> &Node, std::shared_ptr<TNode> 
                 NewNode = std::shared_ptr<TNode>(new TNode(AddNum,End,ListNum + 1));
                 ListNum++;
                 Node->Children.insert({Text[AddNum],NewNode});
+                NewNode->Parent = Node;
                 return true;
             }
         } else {                                                                    //если посреди ноды
@@ -96,10 +112,13 @@ bool TSuffTree::CreateNode(std::shared_ptr<TNode> &Node, std::shared_ptr<TNode> 
                 NewNode = std::shared_ptr<TNode>(new TNode(Node->Start + pos,Node->End,Node->ListId));
                 Node->End = std::shared_ptr<int>(new int(Node->Start + pos - 1));
                 NewNode->Children = Node->Children;
+                NewNode->Parent = Node;
                 Node->Children.insert({Text[Node->Start + pos],NewNode});
                 std::shared_ptr<TNode> List(new TNode(AddNum,End,ListNum));
                 ListNum++;
                 Node->Children.insert({Text[AddNum],List});
+                List->Parent = Node;
+                NewNode = Node;
                 return true;
             }
         }
