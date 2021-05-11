@@ -19,6 +19,7 @@ struct TNode{
                                                 End(InpEnd), 
                                                 ListId(InpId),
                                                 SuffixLink(nullptr){}
+    int Length(){return *End - Start + 1;}
     void Print(int level, std::string &text);
 };
 
@@ -27,10 +28,10 @@ private:
     std::string Text;                                           //Текст
     std::shared_ptr<TNode> Root;                                //Корень
     int ListNum;                                                //Количество листьев
-    void GoTo(std::shared_ptr<TNode> &Node, int &pos, int Start, int Finish);
+    void GoTo(std::shared_ptr<TNode> &CurNode, int &Length, int Start, int Finish);
     bool CreateNode(std::shared_ptr<TNode> &Node, std::shared_ptr<TNode> &NewNode,int pos, int AddNum);
 public:
-    TSuffTree():Root(new TNode(-1,-1,-1)),End(new int(-1)),ListNum(0){Root->SuffixLink = Root;}
+    TSuffTree():Root(new TNode(-1,-2,-1)),End(new int(-1)),ListNum(0){Root->SuffixLink = Root;}
     void Init(std::string InpText);
     void AddAllSuffix(int InpEnd);
     void Print();

@@ -6,119 +6,97 @@ void TSuffTree::Init(std::string InpText){
     int SizeText = Text.size();
     for(int i = 0;i < SizeText; ++i){
         AddAllSuffix(i);
-        Print();
     }
 }
 
 void TSuffTree::AddAllSuffix(int InpEnd){
-    std::cout << "AddAllSuffix\t" << InpEnd << std::endl;
-    //Добавляем ко всем листьям символ
-    ++(*End);
-    
-    std::shared_ptr<TNode> cur_node(Root);
-    std::shared_ptr<TNode> last_add(nullptr);
-    std::shared_ptr<TNode> new_node(nullptr);
-    int cur_pos_in_node = 0;
-
-    std::cout << "Cur_node before: " << cur_node << std::endl;
-    GoTo(cur_node, cur_pos_in_node, ListNum, InpEnd - 1);
-    std::cout << "Cur_node after: " << cur_node << std::endl;
-    if(!CreateNode(cur_node,last_add,cur_pos_in_node,InpEnd))
-        return;
-    else{
-        if(last_add->ListId != -1){
-            cur_node = cur_node->SuffixLink;
-            if(cur_node == Root)
-                --cur_pos_in_node;                                                  //сюда по идее не должно зайти
-        } else {
-            char Save_point;
-            if(cur_node->Parent == Root)
-                Save_point = Text[cur_node->Start + 1];
-            else
-                Save_point = Text[cur_node->Start];
-            cur_node = cur_node->
-        }
-    }
-    
-    std::cout << ListNum << "\t" << InpEnd << std::endl;
-    for(int i = ListNum; i <= InpEnd;++i){                                         //Все суффиксы
-        if(CreateNode(cur_node,new_node,cur_pos_in_node,InpEnd)){
-            if(last_add->ListId != -1){
-                last_add->SuffixLink = new_node;
-                last_add = new_node;
+    std::shared_ptr<TNode> CurNode = Root;
+    std::shared_ptr<TNode> Next = nullptr;
+    std::shared_ptr<TNode> LastAdd = nullptr;
+    (*End)++;
+    int Length;
+    GoTo(CurNode, Length, ListNum,InpEnd - 1);
+    int CountSuf = ListNum;
+    for(int i = CountSuf; i <= InpEnd; ++i){
+        if(CreateNode(CurNode,LastAdd,Length,InpEnd)){
+            if(CurNode == Root){
+                Length--;
+            } else {
+                CurNode = CurNode->SuffixLink;
             }
-            cur_node = cur_node->SuffixLink;
         } else {
             break;
         }
     }
 }
 
-void TSuffTree::GoTo(std::shared_ptr<TNode> &CurNode, int &pos, int Start, int Finish){
-    for(int i = Start; i <= Finish; ++i){
-        if(CurNode == Root){
-            if(CurNode->Children.find(Text[i]) != CurNode->Children.end()){
-                CurNode = CurNode->Children.find(Text[i])->second;
-                pos = 1;
-            } else {
-                throw -1;
+void TSuffTree::GoTo(std::shared_ptr<TNode> &CurNode, int &Length, int Start, int Finish){
+    Length = Finish - Start + 1;
+    std::shared_ptr<TNode> Next = nullptr;
+    while(Length > 0){
+        if(Next != nullptr){
+            std::cout << Next->Length() << std::endl;
+            for(int i = Next->Start; i <= *(Next->End); ++i){
+                std::cout << Text[i];
             }
-        } else {
-            if(CurNode->Start + pos > *(CurNode->End)){
-                if(CurNode->Children.find(Text[i]) != CurNode->Children.end()){
-                    CurNode = CurNode->Children.find(Text[i])->second;
-                    pos = 1;
-                } else {
-                    throw -1;
-                }
-            }else{
-                if(Text[CurNode->Start + pos] == Text[i]){
-                    pos++;
-                }else{
-                    throw -1;
-                }
-            }
+            std::cout << std::endl;
+            if(Next->Length() >= Length)
+                break;
+            CurNode = Next;
         }
+        Next = CurNode->Children[Text[Start + CurNode->Length()]];
+        Start += CurNode->Length();
     }
 }
 
-bool TSuffTree::CreateNode(std::shared_ptr<TNode> &Node, std::shared_ptr<TNode> &NewNode,int pos, int AddNum){
-    std::cout << "Create: Root: " << Root << "Node: " << Node << std::endl;
-    if(Node == Root){                                                               //если в корне
-        if(Node->Children.find(Text[AddNum]) != Node->Children.end()){
-            return false;
-        } else {
-            NewNode = std::shared_ptr<TNode>(new TNode(AddNum,End,ListNum + 1));
-            ListNum++;
-            Node->Children.insert({Text[AddNum],NewNode});
-            NewNode->Parent = Node;
-            return true;
+bool TSuffTree::CreateNode(std::shared_ptr<TNode> &Node, std::shared_ptr<TNode> &LastAdd,int Length, int AddNum){
+    std::shared_ptr<TNode> Next = nullptr;
+    if(Node->Children.find(Text[AddNum - Length]) != Node->Children.end()){
+        Next = Node->Children[Text[AddNum - Length]];
+    }
+    if(Next == nullptr){
+        std::shared_ptr<TNode> NewNode(new TNode(AddNum,End,ListNum + 1));
+        Node->Children.insert({Text[AddNum],NewNode});
+        ++ListNum;
+        if(LastAdd != nullptr){
+            LastAdd->SuffixLink = NewNode;
         }
+        return true;
     } else {
-        if(Node->Start + pos > *(Node->End)){                                         //если в конце ноды
-            if(Node->Children.find(Text[AddNum]) != Node->Children.end()){
-                return false;
-            } else {
-                NewNode = std::shared_ptr<TNode>(new TNode(AddNum,End,ListNum + 1));
-                ListNum++;
-                Node->Children.insert({Text[AddNum],NewNode});
-                NewNode->Parent = Node;
+        if(Length == Next->Length()){
+            if(Next->Children.find(Text[AddNum]) == Next->Children.end()){
+                std::shared_ptr<TNode> NewNode(new TNode(AddNum,End,ListNum + 1));
+                Next->Children.insert({Text[AddNum],NewNode});
+                ++ListNum;
+                if(LastAdd != nullptr){
+                    LastAdd->SuffixLink = NewNode;
+                }
+                LastAdd = NewNode;
                 return true;
+            } else {
+                if(LastAdd != nullptr){
+                    LastAdd->SuffixLink = Next->Children[Text[AddNum]];
+                }
+                return false;
             }
-        } else {                                                                    //если посреди ноды
-            if(Text[Node->Start+pos] == Text[AddNum]){
+        } else {
+            if(Text[Next->Start + Length] == Text[AddNum]){
+                if(LastAdd != nullptr){
+                    LastAdd->SuffixLink = Next->Children[Text[AddNum]];
+                }
                 return false;
             } else {
-                NewNode = std::shared_ptr<TNode>(new TNode(Node->Start + pos,Node->End,Node->ListId));
-                Node->End = std::shared_ptr<int>(new int(Node->Start + pos - 1));
-                NewNode->Children = Node->Children;
-                NewNode->Parent = Node;
-                Node->Children.insert({Text[Node->Start + pos],NewNode});
-                std::shared_ptr<TNode> List(new TNode(AddNum,End,ListNum));
+                std::shared_ptr<TNode> NewNode(new TNode(Next->Start,Next->Start + Length - 1,-1));
+                Node->Children[Text[Next->Start]] = NewNode;
+                Next->Start += Next->Start + Length;
+                NewNode->Children.insert({Text[Next->Start],Next});
+                std::shared_ptr<TNode> List(new TNode(AddNum,End,ListNum + 1));
                 ListNum++;
-                Node->Children.insert({Text[AddNum],List});
-                List->Parent = Node;
-                NewNode = Node;
+                NewNode->Children.insert({Text[AddNum],List});
+                if(LastAdd != nullptr){
+                    LastAdd->SuffixLink = NewNode;
+                }
+                LastAdd = NewNode;
                 return true;
             }
         }
@@ -129,7 +107,7 @@ void TNode::Print(int level,std::string &text){
     for(int i = 0;i < level;++i){
         std::cout << "\t";
     }
-    for(int i = Start; i < *End; ++i){
+    for(int i = Start; i <= *End; ++i){
         std::cout << text[i];
     }
     std::cout << std::endl;
